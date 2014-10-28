@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+	<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<p>
+		  <strong>Name:</strong>
+		  <%= @exercise.name %>
+		</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @exercise.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @exercise.description %>
-</p>
-
-<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-<%= link_to 'Back', exercises_path %>
+		<p>
+		  <strong>Description:</strong>
+		  <%= @exercise.description %>
+		</p>
+	</div>
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
+		<%= link_to 'Back', exercises_path %>
+	</div>
+</div>
