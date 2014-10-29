@@ -1,24 +1,35 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @workout.name %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @workout.category %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @workout.description %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @workout.duration %>
-</p>
-
-<%= link_to 'Edit', edit_workout_path(@workout) %> |
-<%= link_to 'Back', workouts_path %>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<p>
+				  <strong>Name:</strong>
+				  <%= @workout.name %>
+				</p>
+			</li>
+			<li class="list-group-item">
+				<p>
+				  <strong>Category:</strong>
+				  <%= @workout.category %>
+				</p>
+			</li>
+			<li class="list-group-item">
+				<p>
+				  <strong>Description:</strong>
+				  <%= @workout.description %>
+				</p>
+			</li>
+			<li class="list-group-item">
+				<p>
+				  <strong>Duration:</strong>
+				  <%= @workout.duration %>
+				</p>
+			</li>
+		</ul>
+	</div>
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_workout_path(@workout) %> |
+		<%= link_to 'Back', workouts_path %>
+	</div>
+</div>
