@@ -1,31 +1,34 @@
-<h1>Listing workoutbits</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>Listing workoutbits</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Workout</th>
-      <th>Exercise</th>
-      <th>Sets</th>
-      <th>Reps</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table class= "table">
+      <thead>
+        <tr>
+          <th>Workout</th>
+          <th>Exercise</th>
+          <th>Sets</th>
+          <th>Reps</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @workoutbits.each do |workoutbit| %>
-      <tr>
-        <td><%= workoutbit.workout_id %></td>
-        <td><%= workoutbit.exercise_id %></td>
-        <td><%= workoutbit.sets %></td>
-        <td><%= workoutbit.reps %></td>
-        <td><%= link_to 'Show', workoutbit %></td>
-        <td><%= link_to 'Edit', edit_workoutbit_path(workoutbit) %></td>
-        <td><%= link_to 'Destroy', workoutbit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Workoutbit', new_workoutbit_path %>
+      <tbody>
+        <% @workoutbits.each do |workoutbit| %>
+          <tr>
+            <td><%= workoutbit.workout_id %></td>
+            <td><%= workoutbit.exercise_id %></td>
+            <td><%= workoutbit.sets %></td>
+            <td><%= workoutbit.reps %></td>
+            <td><%= link_to 'Show', workoutbit %></td>
+            <td><%= link_to 'Edit', edit_workoutbit_path(workoutbit) %></td>
+            <td><%= link_to 'Destroy', workoutbit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+    <%= link_to 'New Workoutbit', new_workoutbit_path %>
+  </div>
+</div>
