@@ -14,6 +14,12 @@
 				  <%= @exercise.description %>
 				</p>
 			</li>
+			<li class="list-group-item">
+				<p>
+				  <strong>Diagram:</strong>
+				  <%= image_tag @exercise.diagram.url(:medium) %>
+				</p>
+			</li>
 		</ul>
 	</div>
 	<div class="panel-footer">

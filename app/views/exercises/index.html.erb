@@ -16,6 +16,7 @@
           <tr>
             <td><%= exercise.name %></td>
             <td><%= exercise.description %></td>
+            <td><%= image_tag exercise.diagram.url(:medium) %></td>
             <td><%= link_to 'Show', exercise %></td>
             <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
             <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
