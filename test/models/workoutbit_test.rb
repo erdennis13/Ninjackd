@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WorkoutassignmentTest < ActiveSupport::TestCase
+class WorkoutbitTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

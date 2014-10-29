@@ -1,4 +1,4 @@
 class Workout < ActiveRecord::Base
-	has_many :workoutassignments
-	has_many :exercises, :through => :workoutassignments
+	has_many :workoutbits
+	has_many :exercises, :through => :workoutbits
 end

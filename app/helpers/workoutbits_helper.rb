@@ -1,0 +1,2 @@
+module WorkoutbitsHelper
+end

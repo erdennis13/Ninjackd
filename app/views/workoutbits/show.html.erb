@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Workout:</strong>
+  <%= @workoutbit.workout_id %>
+</p>
+
+<p>
+  <strong>Exercise:</strong>
+  <%= @workoutbit.exercise_id %>
+</p>
+
+<p>
+  <strong>Sets:</strong>
+  <%= @workoutbit.sets %>
+</p>
+
+<p>
+  <strong>Reps:</strong>
+  <%= @workoutbit.reps %>
+</p>
+
+<%= link_to 'Edit', edit_workoutbit_path(@workoutbit) %> |
+<%= link_to 'Back', workoutbits_path %>

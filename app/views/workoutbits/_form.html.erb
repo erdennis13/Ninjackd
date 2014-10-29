@@ -1,0 +1,33 @@
+<%= form_for(@workoutbit) do |f| %>
+  <% if @workoutbit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workoutbit.errors.count, "error") %> prohibited this workoutbit from being saved:</h2>
+
+      <ul>
+      <% @workoutbit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :workout_id %>
+    <%= f.number_field :workout_id, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :exercise_id %>
+    <%= f.number_field :exercise_id, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :sets %>
+    <%= f.number_field :sets, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :reps %>
+    <%= f.number_field :reps, class: "form-control" %>
+  </div>
+  <div class="actions form-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
