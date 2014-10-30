@@ -55,6 +55,7 @@ class WorkoutbitsController < ApplicationController
     end
 
     def workoutbit_params
+      #params.require(:workoutbit).permit(workout_attributes: [:workout_id], exercise_attributes: [:exercise_id], :sets, :reps)
       params.require(:workoutbit).permit(:workout_id, :exercise_id, :sets, :reps)
     end
 end

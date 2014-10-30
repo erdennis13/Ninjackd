@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [:show, :edit, :update, :destroy]
+  before_action :set_workout, only: [:show, :edit, :update, :destroy, :assign]
 
   def index
     @workouts = Workout.all
@@ -8,8 +8,14 @@ class WorkoutsController < ApplicationController
   def show
   end
 
+  def assign
+  end
+
   def new
     @workout = Workout.new
+
+    @workoutbits = @workout.workoutbits.build
+    @exercise = @workoutbits.build_exercise
   end
 
   def edit
@@ -55,6 +61,7 @@ class WorkoutsController < ApplicationController
     end
 
     def workout_params
-      params.require(:workout).permit(:name, :category, :description, :duration)
+      #params.require(:workout).permit(:name, :category, :description, :duration)
+      params.require(:workout).permit(:name, :category, :description, :duration, workoutbits_attributes: [ :id, :sets, :reps, exercise_attributes: [:id]])
     end
 end

@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <% f.fields_for :workoutbit do |workoutbit_form| %>
+    <% workoutbit_form.label :workout_id %>
+    <% workoutbit_form.number_field :workout_id %>
+    <h3>Hello there</h3>
+  <% end %>
+
   <div class="field form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>

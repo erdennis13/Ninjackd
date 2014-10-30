@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h1><%= @workout.name %></h1>
+
+		<%= form_for(@workout) do |f| %>
+			Here I am...
+			
+		<% end %>
+
+
+	</div>
+	<div class="panel-footer">
+		<%= link_to "Back", workouts_path %>
+	</div>
+</div>
