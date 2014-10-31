@@ -1,10 +1,11 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		<h1><%= @workout.name %></h1>
+		<h1><%= @workout.name %>
+		<small><%= @workout.description %></small></h1>
 
 		<%= form_for(@workout) do |f| %>
 			Here I am...
-			
+
 		<% end %>
 
 
