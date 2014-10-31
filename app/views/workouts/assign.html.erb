@@ -2,10 +2,33 @@
 	<div class="panel-body">
 		<h1><%= @workout.name %>
 		<small><%= @workout.description %></small></h1>
+		<hr/>
 
 		<%= form_for(@workout) do |f| %>
-			Here I am...
+			<!--Here I am...in the form!-->
+			<%#= f.text_field :name %>
+			<%= f.fields_for :workoutbits do |workoutbit_form| %>
+				<%= workoutbit_form.fields_for :exercises do |exercise_form| %>
+	      				<%= exercise_form.label :exercise_id, "Exercise ID: " %>
+	      				<%= exercise_form.text_field :exercise_id %>
+	      				&nbsp
+				<% end %>
+   				
+      				<%#= workoutbit_form.label :id, "Workoutbit ID: " %>
+      				<%#= workoutbit_form.number_field :id %>
 
+ 					<%= workoutbit_form.label :sets, "Sets: "%>
+ 					<%= workoutbit_form.number_field :sets %>
+ 					&nbsp
+
+ 					<%= workoutbit_form.label :reps, "Reps: "%>
+ 					<%= workoutbit_form.number_field :reps %>
+
+ 					<hr/>
+
+			<% end %>
+
+			<%= f.submit %>
 		<% end %>
 
 
