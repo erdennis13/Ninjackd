@@ -9,6 +9,7 @@ class WorkoutsController < ApplicationController
   end
 
   def assign
+    @exerciseOptions = Exercise.all
   end
 
   def new

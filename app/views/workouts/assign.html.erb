@@ -14,6 +14,7 @@
 			<hr/>
 		<% end %>
 
+<% if false %> <%#Acting as a mutliline comment %>
 
 		<%= form_for(@workout) do |f| %>
 			<!--Here I am...in the form!-->
@@ -38,23 +39,31 @@
  					<%= workoutbit_form.label :reps, "Reps: "%>
  					<%= workoutbit_form.number_field :reps %>
 
- 					<hr/>
+ 					
 
 			<% end %>
 
 			<%= f.submit %>
 			
 		<% end %>
+<% end %>
+
 
 		<%= form_for :workoutbit, url: workoutbits_path do |form| %>
-		<hr/>
-			I'm in the workoutbits form!!<br/>
+
+			<%#= form.collection_select :exercises, Exercise.all, to_s, to_s %>
+
+			<%#= fields_for :exercise do |exerform| %>
+				<%#= form.collection_select :workoutbits, :exercise_id, Exercise.all, :name %>
+			<%# end %>
+
+
 
 			<%= form.label :workout_id, "Workout ID:" %>
-			<%= form.number_field :workout_id %>
+			<%= form.select :workout_id, options_for_select([1,2,3]) %>
 
 			<%= form.label :exercise_id, "Exercise ID:" %>
-			<%= form.number_field :exercise_id %>
+			<%= form.select :exercise_id, options_for_select(@exerciseOptions) %>
 
 			<%= form.label :sets, "Sets" %>
 			<%= form.number_field :sets %>
