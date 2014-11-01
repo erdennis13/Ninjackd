@@ -39,40 +39,43 @@
  					<%= workoutbit_form.label :reps, "Reps: "%>
  					<%= workoutbit_form.number_field :reps %>
 
- 					
-
 			<% end %>
 
 			<%= f.submit %>
 			
 		<% end %>
 <% end %>
+	<% @exerciseidoptions = [] %>
+	<% @exerciseOptions.each do |try| %>
+		<% @exerciseidoptions.append(try.id) %>
+		<% @exerciseidoptions %>
+	<% end %>
 
 
 		<%= form_for :workoutbit, url: workoutbits_path do |form| %>
 
-			<%#= form.collection_select :exercises, Exercise.all, to_s, to_s %>
+			<%#= form.label :workout_id, "Workout ID:" %>
+			<%#= form.select :workout_id, options_for_select([@workout.id]) %>
+			<%= form.hidden_field :workout_id, value: @workout.id %>
 
-			<%#= fields_for :exercise do |exerform| %>
-				<%#= form.collection_select :workoutbits, :exercise_id, Exercise.all, :name %>
-			<%# end %>
-
-
-
-			<%= form.label :workout_id, "Workout ID:" %>
-			<%= form.select :workout_id, options_for_select([1,2,3]) %>
-
-			<%= form.label :exercise_id, "Exercise ID:" %>
-			<%= form.select :exercise_id, options_for_select(@exerciseOptions) %>
-
-			<%= form.label :sets, "Sets" %>
-			<%= form.number_field :sets %>
-
-			<%= form.label :reps, "Reps" %>
-			<%= form.number_field :reps %><br/>
-
-			<%= form.submit "Add workoutbit" %>
-
+			<div class "row">
+				<div class = 'col-xs-2'>
+					<%= form.label :exercise_id, "Exercise ID:" %>
+					<%= form.select :exercise_id, options_for_select(@exerciseidoptions), {}, {class: "form-control"} %>
+				</div>
+				<div class = 'col-xs-4'>
+					<%= form.label :sets, "Sets" %>
+					<%= form.number_field :sets, class: "form-control" %>
+				</div>
+				<div class = 'col-xs-4'>
+					<%= form.label :reps, "Reps" %>
+					<%= form.number_field :reps, class: "form-control" %>
+				</div>
+			</div>
+			<br/>
+			<div class="form-group">
+				<%= form.submit "Add Workoutbit", class: "btn btn-primary" %>
+			</div>
 
 		<% end %>
 

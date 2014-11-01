@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get "about" => "pages#about"
   get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'
-  #get "assign" => "workout_assignment#assign"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
