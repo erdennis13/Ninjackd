@@ -14,6 +14,7 @@
 			<hr/>
 		<% end %>
 
+
 		<%= form_for(@workout) do |f| %>
 			<!--Here I am...in the form!-->
 			<%#= f.text_field :name %>
@@ -45,6 +46,26 @@
 			
 		<% end %>
 
+		<%= form_for :workoutbit, url: workoutbits_path do |form| %>
+		<hr/>
+			I'm in the workoutbits form!!<br/>
+
+			<%= form.label :workout_id, "Workout ID:" %>
+			<%= form.number_field :workout_id %>
+
+			<%= form.label :exercise_id, "Exercise ID:" %>
+			<%= form.number_field :exercise_id %>
+
+			<%= form.label :sets, "Sets" %>
+			<%= form.number_field :sets %>
+
+			<%= form.label :reps, "Reps" %>
+			<%= form.number_field :reps %><br/>
+
+			<%= form.submit "Add workoutbit" %>
+
+
+		<% end %>
 
 	</div>
 	<div class="panel-footer">
