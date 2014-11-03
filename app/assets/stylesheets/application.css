@@ -15,7 +15,7 @@
  */
 
 .center {
-	text-align: center
+	text-align: center;
 }
 
 .workoutLink {
@@ -27,4 +27,8 @@
 	/*font-family: 'Permanent Marker', cursive;*/
 	font-family: 'Rock Salt', cursive;
 	color:#e67e22;
+}
+
+.alignRight {
+	float: right;
 }

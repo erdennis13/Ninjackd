@@ -10,14 +10,14 @@ class WorkoutsController < ApplicationController
 
   def assign
     @exerciseOptions = Exercise.all
+    @exerciseidoptions = []
+    @exerciseOptions.each do |add|
+      @exerciseidoptions.append(add.id)
+    end
   end
 
   def new
     @workout = Workout.new
-    
-    #@workout.workoutbits.build
-    #@workout.exercises.build
-
     @workoutbits = @workout.workoutbits.build
     @exercise = @workoutbits.build_exercise
   end

@@ -10,6 +10,7 @@
 
 			Sets: <%= work.sets %> &nbsp
 			Reps: <%= work.reps %>
+			<%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger alignRight btn-xs" %>
 
 			<hr/>
 		<% end %>
@@ -45,19 +46,16 @@
 			
 		<% end %>
 <% end %>
-	<% @exerciseidoptions = [] %>
-	<% @exerciseOptions.each do |try| %>
-		<% @exerciseidoptions.append(try.id) %>
-		<% @exerciseidoptions %>
-	<% end %>
+
+		<%# @exerciseidoptions = [] %><!--Add into workouts controller -->
+		<%# @exerciseOptions.each do |try| %>
+			<%# @exerciseidoptions.append(try.id) %>
+			<%# @exerciseidoptions %>
+		<%# end %>
 
 
 		<%= form_for :workoutbit, url: workoutbits_path do |form| %>
-
-			<%#= form.label :workout_id, "Workout ID:" %>
-			<%#= form.select :workout_id, options_for_select([@workout.id]) %>
 			<%= form.hidden_field :workout_id, value: @workout.id %>
-
 			<div class "row">
 				<div class = 'col-xs-2'>
 					<%= form.label :exercise_id, "Exercise ID:" %>
@@ -71,12 +69,10 @@
 					<%= form.label :reps, "Reps" %>
 					<%= form.number_field :reps, class: "form-control" %>
 				</div>
-			</div>
-			<br/>
+			</div>			
 			<div class="form-group">
-				<%= form.submit "Add Workoutbit", class: "btn btn-primary" %>
+				<%= form.submit "Add Workoutbit", class: "btn btn-primary alignRight" %>
 			</div>
-
 		<% end %>
 
 	</div>

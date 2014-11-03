@@ -20,9 +20,9 @@
             <td><%= workout.category %></td>
             <td><%= workout.description %></td>
             <td><%= workout.duration %></td>
-            <td><%= link_to 'Show', workout %></td>
-            <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
-            <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', workout, class: "btn btn-primary btn-xs" %></td>
+            <td><%= link_to 'Edit', edit_workout_path(workout), class: "btn btn-primary btn-xs" %></td>
+            <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
           </tr>
         <% end %>
       </tbody>
