@@ -9,20 +9,19 @@
           <th>Category</th>
           <th>Description</th>
           <th>Duration (min)</th>
-          <th colspan="3"></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
 
       <tbody>
         <% @workouts.each do |workout| %>
           <tr>
-            <td><%= link_to workout.name, assign_path(workout), class: "workoutLink" %></td>
+            <td><%= link_to workout.name, workout, class: "workoutLink" %></td>
             <td><%= workout.category %></td>
             <td><%= workout.description %></td>
             <td><%= workout.duration %></td>
-            <td><%= link_to 'Show', workout, class: "btn btn-primary btn-xs" %></td>
-            <td><%= link_to 'Edit', edit_workout_path(workout), class: "btn btn-primary btn-xs" %></td>
-            <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+            <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
+            <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>

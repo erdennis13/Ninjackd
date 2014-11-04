@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 <div class="panel panel-default">
 	<div class="panel-body">
+
+	<% if false %>
 		<ul class="list-group">
 			<li class="list-group-item">
 				<p>
@@ -27,9 +29,61 @@
 				</p>
 			</li>
 		</ul>
+	<% end %>
+
+	<h1><%= @workout.name %>
+		<small><%= @workout.description %></small></h1>
+	
+
+		<h3>Category: <small><%= @workout.category %></small></h3>
+		<h3>Duration (min): <small><%= @workout.duration %></small></h3>
+
+	<hr/>
+
+
+		<% @workout.workoutbits.each do |work|  %>
+
+			<h3><%= link_to Exercise.find(work.exercise_id).name, Exercise.find(work.exercise_id), class: "workoutLink" %></h3>
+
+			Sets: <%= work.sets %> &nbsp
+			Reps: <%= work.reps %>
+			<%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger alignRight btn-xs" %>
+
+			<hr/>
+		<% end %>
+
+
+		<%# @exerciseidoptions = [] %><!--Add into workouts controller -->
+		<%# @exerciseOptions.each do |try| %>
+			<%# @exerciseidoptions.append(try.id) %>
+			<%# @exerciseidoptions %>
+		<%# end %>
+
+
+		<%= form_for :workoutbit, url: workoutbits_path do |form| %>
+			<%= form.hidden_field :workout_id, value: @workout.id %>
+			<div class "row">
+				<div class = 'col-xs-2'>
+					<%= form.label :exercise_id, "Exercise ID:" %>
+					<%= form.select :exercise_id, options_for_select(@exerciseidoptions), {}, {class: "form-control"} %>
+				</div>
+				<div class = 'col-xs-4'>
+					<%= form.label :sets, "Sets" %>
+					<%= form.number_field :sets, class: "form-control" %>
+				</div>
+				<div class = 'col-xs-4'>
+					<%= form.label :reps, "Reps" %>
+					<%= form.number_field :reps, class: "form-control" %>
+				</div>
+			</div>			
+			<div class="form-group">
+				<%= form.submit "Add Workoutbit", class: "btn btn-primary alignRight" %>
+			</div>
+		<% end %>
+
 	</div>
 	<div class="panel-footer">
-		<%= link_to 'Edit', edit_workout_path(@workout) %> |
+		<%= link_to 'Edit', edit_workout_path(@workout) %> | 
 		<%= link_to 'Back', workouts_path %>
 	</div>
 </div>

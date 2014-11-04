@@ -6,9 +6,6 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-  end
-
-  def assign
     @exerciseOptions = Exercise.all
     @exerciseidoptions = []
     @exerciseOptions.each do |add|
