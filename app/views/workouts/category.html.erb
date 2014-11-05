@@ -2,6 +2,20 @@
 	<div class="panel-body">
 		<h1>Select the type of workout you'd like</h1>
 
+		<%# @strength.each do |print| %>
+			<%#= print.name %>
+		<%# end %>
+
+
+		<%= form_tag category_path, :method => 'get' do %>
+
+			<%= label_tag(:cat, "Category search:") %>
+			<%= text_field_tag :cat, params[:cat] %>
+
+			<%= submit_tag("Search", :name => nil) %>
+		<% end %>
+
+<% if false %>
 		<%= form_for :categorySelect, url: workouts_path do |f| %>
 
 			<%= f.label :categorySelect, "Select workout" %>
@@ -9,6 +23,7 @@
 
 			<%= f.submit %>
 		<% end %>
+<% end %>
 
 
 		<table class="table">

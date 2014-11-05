@@ -26,6 +26,11 @@ class WorkoutsController < ApplicationController
       @workoutCategories.append(add.category)
     end
     @categorySelect
+
+    #@strength = @workouts.where(category: "Strength")
+    @strength = @workouts.strength
+
+    @workouts = @workouts.cat(params[:cat]) if params[:cat].present?
   end
 
   def edit
