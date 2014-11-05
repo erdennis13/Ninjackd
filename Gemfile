@@ -32,6 +32,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'paperclip', github: 'thoughtbot/paperclip'
+# gem 'filterrific'
 
 # Use unicorn as the app server
 # gem 'unicorn'

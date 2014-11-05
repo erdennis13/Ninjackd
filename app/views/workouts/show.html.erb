@@ -43,21 +43,15 @@
 
 		<% @workout.workoutbits.each do |work|  %>
 
-			<h3><%= link_to Exercise.find(work.exercise_id).name, Exercise.find(work.exercise_id), class: "workoutLink" %></h3>
+			<%#= link_to Exercise.find(work.exercise_id).name, Exercise.find(work.exercise_id), class: "workoutLink" %>
 
+			<h3><%= link_to work.exercise.name, work.exercise, class: "workoutLink" %></h3>
 			Sets: <%= work.sets %> &nbsp
 			Reps: <%= work.reps %>
 			<%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger alignRight btn-xs" %>
 
 			<hr/>
 		<% end %>
-
-
-		<%# @exerciseidoptions = [] %><!--Add into workouts controller -->
-		<%# @exerciseOptions.each do |try| %>
-			<%# @exerciseidoptions.append(try.id) %>
-			<%# @exerciseidoptions %>
-		<%# end %>
 
 
 		<%= form_for :workoutbit, url: workoutbits_path do |form| %>

@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h1>Select the type of workout you'd like</h1>
+
+		<%= form_for :categorySelect, url: workouts_path do |f| %>
+
+			<%= f.label :categorySelect, "Select workout" %>
+			<%= f.select :categorySelect, options_for_select(@workoutCategories), {}, {class: "form-control"} %>
+
+			<%= f.submit %>
+		<% end %>
+
+
+		<table class="table">
+			<th>Workout</th>
+			<th>Category</th>
+			<th>Description</th>
+
+			<% @workouts.each do |list| %>
+				<tr>
+					<td><h3><%= list.name %></h3></td>
+					<td><%= list.category %></td>
+					<td><%= list.description %></td>
+				</tr>
+			<% end %>
+
+		</table>
+
+
+
+
+		<% if false %>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+		    	Select from here
+		   		<span class="caret"></span>
+		  		</button>
+			  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"> 
+			   		<% @workoutCategories.each do |list| %>
+			    		<li role="presentation"><a role="menuitem" tabindex="-1"><%= list %></a></li>
+			    	<% end %>
+			  	</ul>
+			</div>
+		<% end %>
+
+
+	</div>
+</div>

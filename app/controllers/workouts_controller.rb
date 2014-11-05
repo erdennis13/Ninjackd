@@ -19,6 +19,15 @@ class WorkoutsController < ApplicationController
     @exercise = @workoutbits.build_exercise
   end
 
+  def category
+    @workouts = Workout.all
+    @workoutCategories = []
+    @workouts.each do |add|
+      @workoutCategories.append(add.category)
+    end
+    @categorySelect
+  end
+
   def edit
   end
 
@@ -47,6 +56,7 @@ class WorkoutsController < ApplicationController
       end
     end
   end
+
 
   def destroy
     @workout.destroy
