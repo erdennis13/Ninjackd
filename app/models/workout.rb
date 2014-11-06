@@ -8,5 +8,5 @@ class Workout < ActiveRecord::Base
 
 	scope :cat, -> (cat) { where category: cat }
 	scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
-
+	scope :duration_lt, lambda { |less_than| where('workouts.duration <= ?', less_than)}
 end

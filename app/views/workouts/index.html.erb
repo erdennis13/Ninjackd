@@ -7,27 +7,32 @@
         <%= form_tag workouts_path, :method => 'get' do %>
 
           <td>
-            <%= label_tag(:starts_with, "Starts with:") %>
-            <%= text_field_tag :starts_with, params[:starts_with], class: "form-control" %>
+            <%= label_tag(:starts_with, "Search") %>
+            <%= text_field_tag :starts_with, params[:starts_with], class: "form-control", placeholder: "type here..." %>
           </td>
 
-          <td>
+          <td width="20%">
             <%= label_tag(:cat, "Category:") %>
             <%= select_tag :cat, options_for_select(@workoutCategories), class: "form-control" %>
           </td>
 
-          <td align="left", style="vertical-align:bottom">
+          <td width="20%">
+            <%= label_tag(:less_than, "Duration (min) <= ") %>
+            <%= number_field_tag :less_than, params[:less_than], class: "form-control" %>
+          </td>
+
+          <td align="center", style="vertical-align:bottom", width="10%">
             <%= submit_tag("Filter", :name => nil, class: "btn btn-success") %>
           </td>
         <% end %>
 
         <%= form_tag workouts_path, :method => 'get' do %>
-          <td align="left" style="vertical-align:bottom"><%= submit_tag("Reset Filter", class: "btn btn-primary" )%></td>
+          <td align="center" style="vertical-align:bottom", width="10%"><%= submit_tag("Reset Filter", class: "btn btn-primary" )%></td>
         <% end %>     
 
     </table>
 
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Name</th>

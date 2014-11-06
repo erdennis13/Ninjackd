@@ -9,6 +9,7 @@ class WorkoutsController < ApplicationController
     end
     @workouts = @workouts.cat(params[:cat]) if params[:cat].present?
     @workouts = @workouts.starts_with(params[:starts_with]) if params[:starts_with].present?
+    @workouts = @workouts.duration_lt(params[:less_than]) if params[:less_than].present?
   end
 
   def show
