@@ -9,10 +9,9 @@
 
 		<%= form_tag category_path, :method => 'get' do %>
 
-			<%= label_tag(:cat, "Category search:") %>
-			<%= text_field_tag :cat, params[:cat] %>
-
-			<%= submit_tag("Search", :name => nil) %>
+			<%= label_tag(:cat, "Category:") %>
+			<%= select_tag :cat, options_for_select(@workoutCategories) %>
+			<%= submit_tag("Filter", :name => nil) %>
 		<% end %>
 
 <% if false %>

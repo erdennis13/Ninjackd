@@ -21,7 +21,7 @@ class WorkoutsController < ApplicationController
 
   def category
     @workouts = Workout.all
-    @workoutCategories = []
+    @workoutCategories = ["",]
     @workouts.each do |add|
       @workoutCategories.append(add.category)
     end
