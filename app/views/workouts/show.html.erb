@@ -2,78 +2,55 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 
-	<% if false %>
-		<ul class="list-group">
-			<li class="list-group-item">
-				<p>
-				  <strong>Name:</strong>
-				  <%= @workout.name %>
-				</p>
-			</li>
-			<li class="list-group-item">
-				<p>
-				  <strong>Category:</strong>
-				  <%= @workout.category %>
-				</p>
-			</li>
-			<li class="list-group-item">
-				<p>
-				  <strong>Description:</strong>
-				  <%= @workout.description %>
-				</p>
-			</li>
-			<li class="list-group-item">
-				<p>
-				  <strong>Duration:</strong>
-				  <%= @workout.duration %>
-				</p>
-			</li>
-		</ul>
-	<% end %>
+	<h1><%= @workout.name %> <small><%= @workout.description %></small></h1>
 
-	<h1><%= @workout.name %>
-		<small><%= @workout.description %></small></h1>
-	
-
-		<h3>Category: <small><%= @workout.category %></small></h3>
-		<h3>Duration (min): <small><%= @workout.duration %></small></h3>
+	<div class="row">
+		<div class="col-xs-3">
+			<h3>Category: <small><%= @workout.category %></small></h3>
+		</div>
+		<div class="col-xs-3">
+			<h3>Duration (min): <small><%= @workout.duration %></small></h3>
+		</div>
+	</div>
 
 	<hr/>
+	<h2>Exercises:</h2>
 
-
+	<table class="table">
 		<% @workout.workoutbits.each do |work|  %>
 
 			<%#= link_to Exercise.find(work.exercise_id).name, Exercise.find(work.exercise_id), class: "workoutLink" %>
+			<tr>
+				<td><h4><%= link_to work.exercise.name, work.exercise, class: "workoutLink" %></h4></td>
+				<td style="vertical-align:middle">Sets: <%= work.sets %> </td>
+				<td style="vertical-align:middle">Reps: <%= work.reps %> </td>
+				<td style="vertical-align:middle"><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+			</tr>
 
-			<h3><%= link_to work.exercise.name, work.exercise, class: "workoutLink" %></h3>
-			Sets: <%= work.sets %> &nbsp
-			Reps: <%= work.reps %>
-			<%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger alignRight btn-xs" %>
-
-			<hr/>
 		<% end %>
+	</table>
 
-
+	<table class="table">
 		<%= form_for :workoutbit, url: workoutbits_path do |form| %>
 			<%= form.hidden_field :workout_id, value: @workout.id %>
-			<div class "row">
-				<div class = 'col-xs-2'>
+			<tr>
+				<td>
 					<%= form.label :exercise_id, "Exercise ID:" %>
 					<%= form.select :exercise_id, options_for_select(@exerciseidoptions), {}, {class: "form-control"} %>
-				</div>
-				<div class = 'col-xs-4'>
+				</td>
+				<td>
 					<%= form.label :sets, "Sets" %>
 					<%= form.number_field :sets, class: "form-control" %>
-				</div>
-				<div class = 'col-xs-4'>
+				</td>
+				<td>
 					<%= form.label :reps, "Reps" %>
 					<%= form.number_field :reps, class: "form-control" %>
-				</div>
-			</div>			
-			<div class="form-group">
-				<%= form.submit "Add Workoutbit", class: "btn btn-primary alignRight" %>
-			</div>
+				</td>		
+			
+				<td style="vertical-align:bottom"><%= form.submit "Add Workoutbit", class: "btn btn-primary alignRight" %></td>
+			</tr>
 		<% end %>
+	</table>
 
 	</div>
 	<div class="panel-footer">

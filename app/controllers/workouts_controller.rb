@@ -3,6 +3,12 @@ class WorkoutsController < ApplicationController
 
   def index
     @workouts = Workout.all
+    @workoutCategories = ["",]
+    @workouts.each do |add|
+      @workoutCategories.append(add.category)
+    end
+    @workouts = @workouts.cat(params[:cat]) if params[:cat].present?
+    @workouts = @workouts.starts_with(params[:starts_with]) if params[:starts_with].present?
   end
 
   def show
@@ -17,21 +23,6 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new
     @workoutbits = @workout.workoutbits.build
     @exercise = @workoutbits.build_exercise
-  end
-
-  def category
-    @workouts = Workout.all
-    @workoutCategories = ["",]
-    @workouts.each do |add|
-      @workoutCategories.append(add.category)
-    end
-    @categorySelect
-
-    #@strength = @workouts.where(category: "Strength")
-    @strength = @workouts.strength
-
-    @workouts = @workouts.cat(params[:cat]) if params[:cat].present?
-    @workouts = @workouts.starts_with(params[:starts_with]) if params[:starts_with].present?
   end
 
   def edit

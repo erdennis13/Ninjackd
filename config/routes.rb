@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   get "about" => "pages#about"
-  get "category" => "workouts#category"
-  post "category" => "workouts#category"
+  #get "category" => "workouts#category"
+  #post "category" => "workouts#category"
   #get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'
 
   # The priority is based upon order of creation: first created -> highest priority.

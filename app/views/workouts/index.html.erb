@@ -1,6 +1,31 @@
 <div class="panel panel-default">
   <div class=panel-body>
-    <h1>Listing workouts</h1>
+    <h1>Workouts</h1>
+
+    <table class="table">
+
+        <%= form_tag workouts_path, :method => 'get' do %>
+
+          <td>
+            <%= label_tag(:starts_with, "Starts with:") %>
+            <%= text_field_tag :starts_with, params[:starts_with], class: "form-control" %>
+          </td>
+
+          <td>
+            <%= label_tag(:cat, "Category:") %>
+            <%= select_tag :cat, options_for_select(@workoutCategories), class: "form-control" %>
+          </td>
+
+          <td align="left", style="vertical-align:bottom">
+            <%= submit_tag("Filter", :name => nil, class: "btn btn-success") %>
+          </td>
+        <% end %>
+
+        <%= form_tag workouts_path, :method => 'get' do %>
+          <td align="left" style="vertical-align:bottom"><%= submit_tag("Reset Filter", class: "btn btn-primary" )%></td>
+        <% end %>     
+
+    </table>
 
     <table class="table">
       <thead>
