@@ -22,7 +22,7 @@ class WorkoutbitsController < ApplicationController
         format.html { redirect_to @workoutbit, notice: 'Workoutbit was successfully created.' }
         format.json { render action: 'show', status: :created, location: @workoutbit }
       else
-        format.html { redirect_to @workoubit, notice: 'Workoutbit was successfully created.' }
+        format.html { redirect_to @workoubit, notice: 'Workoutbit was unsuccessfully created.' }
         format.json { render action: 'show', status: :created, location: @workoutbit }
       end
     end
@@ -32,10 +32,10 @@ class WorkoutbitsController < ApplicationController
     @workoutbit.update(workoutbit_params)
     respond_to do |format|
       if @workoutbit.save
-        format.html { redirect_to @workoutbit, notice: 'Workoutbit was successfully created.' }
+        format.html { redirect_to @workoutbit, notice: 'Workoutbit was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @workoutbit }
       else
-        format.html { redirect_to @workoubit, notice: 'Workoutbit was successfully created.' }
+        format.html { redirect_to @workoubit, notice: 'Workoutbit was unsuccessfully updated.' }
         format.json { render action: 'show', status: :created, location: @workoutbit }
       end
     end

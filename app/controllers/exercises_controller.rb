@@ -25,7 +25,7 @@ class ExercisesController < ApplicationController
         format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
         format.json { render action: 'show', status: :created, location: @exercise }
       else
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
+        format.html { redirect_to @exercise, notice: 'Exercise was unsuccessfully created.' }
         format.json { render action: 'show', status: :created, location: @exercise }
       end
     end
@@ -39,7 +39,7 @@ class ExercisesController < ApplicationController
         format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
         format.json { render action: 'show', status: :created, location: @exercise }
       else
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
+        format.html { redirect_to @exercise, notice: 'Exercise was unsuccessfully created.' }
         format.json { render action: 'show', status: :created, location: @exercise }
       end
     end
