@@ -3,7 +3,8 @@ class Workout < ActiveRecord::Base
 	has_many :exercises, :through => :workoutbits
 	accepts_nested_attributes_for :workoutbits
 
-	scope :strength, -> { where(category: 'Strength')}
+	has_many :subscriptions
+	has_many :users, :through => :subscriptions
 
 
 	scope :cat, -> (cat) { where category: cat }
