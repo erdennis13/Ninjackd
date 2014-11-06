@@ -1,5 +1,9 @@
 == README
 
+Welcome to EasyFit!
+
+Mission statement: "No frills, fuss or fads. Just kick-ass workouts"
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
