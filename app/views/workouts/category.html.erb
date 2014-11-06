@@ -6,24 +6,30 @@
 			<%#= print.name %>
 		<%# end %>
 
+		<table class="table">
 
-		<%= form_tag category_path, :method => 'get' do %>
+				<%= form_tag category_path, :method => 'get' do %>
 
-			<%= label_tag(:cat, "Category:") %>
-			<%= select_tag :cat, options_for_select(@workoutCategories) %>
-			<%= submit_tag("Filter", :name => nil) %>
-		<% end %>
+					<td>
+						<%= label_tag(:starts_with, "Starts with:") %>
+						<%= text_field_tag :starts_with, params[:starts_with], class: "form-control" %>
+					</td>
 
-<% if false %>
-		<%= form_for :categorySelect, url: workouts_path do |f| %>
+					<td>
+						<%= label_tag(:cat, "Category:") %>
+						<%= select_tag :cat, options_for_select(@workoutCategories), class: "form-control" %>
+					</td>
 
-			<%= f.label :categorySelect, "Select workout" %>
-			<%= f.select :categorySelect, options_for_select(@workoutCategories), {}, {class: "form-control"} %>
+					<td align="left", style="vertical-align:bottom">
+						<%= submit_tag("Filter", :name => nil, class: "btn btn-default") %>
+					</td>
+				<% end %>
 
-			<%= f.submit %>
-		<% end %>
-<% end %>
+				<%= form_tag category_path, :method => 'get' do %>
+					<td align="left" style="vertical-align:bottom"><%= submit_tag("Reset Filter", class: "btn btn-primary" )%></td>
+				<% end %>			
 
+		</table>
 
 		<table class="table">
 			<th>Workout</th>
@@ -39,24 +45,6 @@
 			<% end %>
 
 		</table>
-
-
-
-
-		<% if false %>
-			<div class="dropdown">
-				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-		    	Select from here
-		   		<span class="caret"></span>
-		  		</button>
-			  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"> 
-			   		<% @workoutCategories.each do |list| %>
-			    		<li role="presentation"><a role="menuitem" tabindex="-1"><%= list %></a></li>
-			    	<% end %>
-			  	</ul>
-			</div>
-		<% end %>
-
 
 	</div>
 </div>

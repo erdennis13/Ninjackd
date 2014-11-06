@@ -31,6 +31,7 @@ class WorkoutsController < ApplicationController
     @strength = @workouts.strength
 
     @workouts = @workouts.cat(params[:cat]) if params[:cat].present?
+    @workouts = @workouts.starts_with(params[:starts_with]) if params[:starts_with].present?
   end
 
   def edit
