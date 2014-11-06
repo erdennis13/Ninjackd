@@ -1,8 +1,6 @@
-== README
+== Welcome to EasyFit!
 
-Welcome to EasyFit!
-
-Mission statement: "No frills, fuss or fads. Just kick-ass workouts"
+Mission statement: "No frills, fuss or fads. Just kick-ass workouts at your fingertips"
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
