@@ -16,8 +16,8 @@
       <tbody>
         <% @workoutbits.each do |workoutbit| %>
           <tr>
-            <td><%= workoutbit.workout_id %></td>
-            <td><%= workoutbit.exercise_id %></td>
+            <td><%= workoutbit.workout.name %></td>
+            <td><%= workoutbit.exercise.name %></td>
             <td><%= workoutbit.sets %></td>
             <td><%= workoutbit.reps %></td>
             <td><%= link_to 'Show', workoutbit %></td>
