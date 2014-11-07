@@ -4,16 +4,24 @@
 
 	<h1><%= @workout.name %> <small><%= @workout.description %></small></h1>
 
-	<div class="row">
-		<div class="col-xs-3">
-			<h3>Category: <small><%= @workout.category %></small></h3>
-		</div>
-		<div class="col-xs-3">
-			<h3>Duration (min): <small><%= @workout.duration %></small></h3>
-		</div>
-	</div>
+	<table class="table">
+		<tr>
+			<td>
+				<h3>Category: <small><%= @workout.category %></small></h3>
+			</td>
+			<td>
+				<h3>Duration (min): <small><%= @workout.duration %></small></h3>
+			</td>
+			<td style="vertical-align:bottom" align="right">
+				<%= form_for :subscription, url: subscriptions_path do |form| %>
+					<%= form.hidden_field :workout_id, value: @workout.id %>
+					<%= form.hidden_field :user_id, value: current_user.id %>
+					<%= form.submit "Subscribe" , class: "btn btn-primary" %>
+				<% end %>
+			</td>
+		</tr>
+	</table>
 
-	<hr/>
 	<h2>Exercises:</h2>
 
 	<table class="table table-striped">
@@ -47,12 +55,10 @@
 					<%= form.number_field :reps, class: "form-control" %>
 				</td>		
 			
-				<td style="vertical-align:bottom"><%= form.submit "Add Workoutbit", class: "btn btn-primary alignRight" %></td>
+				<td style="vertical-align:bottom"><%= form.submit "Add Exercise", class: "btn btn-primary alignRight" %></td>
 			</tr>
 		<% end %>
 	</table>
-
-	
 
 	</div>
 	<div class="panel-footer">
