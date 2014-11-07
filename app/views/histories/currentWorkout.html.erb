@@ -36,7 +36,7 @@
 		<% end %>
 	<% end %>
 
-
+	<h1><%= @subscription.workout.name %> <small><%= @subscription.workout.description %></small></h1>
 	<table class="table table-striped">
 		<thead>
 			<th>Exercise</th>
@@ -47,19 +47,28 @@
 			<tr>
 				<td><%= this.exercise.name %></td>
 
-				<%= form_for @history do |form| %>
-				
-					<%= form.hidden_field :subscription_id, value: @subscription.id %>
-					<%= form.hidden_field :exercise_id, value: this.exercise.id %>
+				<%# This queury checks whether or not the user has already marked an exercise as complete and changes the output accordingly %>
+				<% check = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).exists? %>
 
-					<td>
-						<% form.label :complete %>
-						<%= form.check_box :complete %>
-					</td>
+				<% unless check %>
+					<%= form_for @history do |form| %>
+					
+						
+						<%= form.hidden_field :subscription_id, value: @subscription.id %>
+						<%= form.hidden_field :exercise_id, value: this.exercise.id %>
 
-					<td><%= form.submit "Mark complete" %></td>
+						<td>
+							<% form.label :complete %>
+							<%= form.check_box :complete %>
+						</td>
 
+						<td><%= form.submit "Submit" %></td>
+
+					<% end %>
+				<% else %>
+					<td colspan="2"></td>
 				<% end %>
+
 
 			</tr>
 		<% end %>

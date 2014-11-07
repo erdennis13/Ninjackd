@@ -14,7 +14,6 @@ class HistoriesController < ApplicationController
 
   def currentWorkout
     #@histories = History.where(subscription_id: :subscription_id)
-    #@subscription = Subscription.first
     @subscription = Subscription.find(params[:subscription_id])
     @history = History.new
   end
