@@ -17,7 +17,7 @@
 	        	</thead>
 				<% @subscriptions.each do |this| %>
 					<tr>
-						<td><%= link_to "Start workout", histories_path, class: "btn btn-primary" %></td>
+						<td><%= link_to "Start workout", currentWorkout_path, class: "btn btn-primary" %></td>
 						<td><%= link_to this.workout.name, this.workout, class: "workoutLink" %></td>
 						<td><%= this.workout.category %></td>
 						<td><%= this.workout.description %></td>

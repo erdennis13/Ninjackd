@@ -12,6 +12,11 @@ class HistoriesController < ApplicationController
     @history = History.new
   end
 
+  def currentWorkout
+    @histories = History.all
+    @history = History.new
+  end
+
   def edit
   end
 
@@ -19,7 +24,7 @@ class HistoriesController < ApplicationController
     @history = History.new(history_params)
     respond_to do |format|
       if @history.save
-        format.html { redirect_to @history, notice: 'Histoy was successfully created.' }
+        format.html { redirect_to @history, notice: 'History was successfully created.' }
         format.json { render action: 'show', status: :created, location: @history }
       else
         format.html { redirect_to @history, notice: 'History was unsuccessfully created.' }
