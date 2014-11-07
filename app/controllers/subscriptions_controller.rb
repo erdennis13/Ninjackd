@@ -23,7 +23,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
+        format.html { redirect_to profile_url, notice: 'Subscription was successfully created.' }
         format.json { render action: 'show', status: :created, location: @subscription }
       else
         format.html { redirect_to @subscription, notice: 'Subscription was unsuccessfully created.' }
@@ -48,7 +48,7 @@ class SubscriptionsController < ApplicationController
   def destroy
     @subscription.destroy
     respond_to do |format|
-      format.html { redirect_to subscriptions_url }
+      format.html { redirect_to profile_url }
       format.json { head :no_content }
     end
   end

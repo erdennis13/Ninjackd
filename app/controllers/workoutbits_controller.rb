@@ -19,11 +19,11 @@ class WorkoutbitsController < ApplicationController
     @workoutbit = Workoutbit.new(workoutbit_params)
     respond_to do |format|
       if @workoutbit.save
-        format.html { redirect_to @workoutbit, notice: 'Workoutbit was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @workoutbit }
+        format.html { redirect_to workouts_url, notice: 'Workoutbit was successfully created.' }
+        format.json { render action: 'show', status: :created, location: workouts_url }
       else
-        format.html { redirect_to @workoubit, notice: 'Workoutbit was unsuccessfully created.' }
-        format.json { render action: 'show', status: :created, location: @workoutbit }
+        format.html { redirect_to workouts_url, notice: 'Workoutbit was unsuccessfully created.' }
+        format.json { render action: 'show', status: :created, location: workouts_url }
       end
     end
   end
@@ -32,7 +32,7 @@ class WorkoutbitsController < ApplicationController
     @workoutbit.update(workoutbit_params)
     respond_to do |format|
       if @workoutbit.save
-        format.html { redirect_to @workoutbit, notice: 'Workoutbit was successfully updated.' }
+        format.html { redirect_to @workoutbits, notice: 'Workoutbit was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @workoutbit }
       else
         format.html { redirect_to @workoubit, notice: 'Workoutbit was unsuccessfully updated.' }
@@ -44,7 +44,7 @@ class WorkoutbitsController < ApplicationController
   def destroy
     @workoutbit.destroy
     respond_to do |format|
-      format.html { redirect_to workoutbits_url }
+      format.html { redirect_to workouts_url }
       format.json { head :no_content }
     end
   end
