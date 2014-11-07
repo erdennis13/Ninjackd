@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h1><%= current_user.email %> <small>Here are your workouts</small></h1>
+
+		<% @subscriptions.each do |this| %>
+			<%= link_to this.workout.name, this.workout, class: "workoutLink" %>
+		<% end %>
+
+	</div>
+
+</div>

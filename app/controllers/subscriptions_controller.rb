@@ -15,6 +15,10 @@ class SubscriptionsController < ApplicationController
   def edit
   end
 
+  def profile
+    @subscriptions = current_user.subscriptions.all
+  end
+
   def create
     @subscription = Subscription.new(subscription_params)
     respond_to do |format|

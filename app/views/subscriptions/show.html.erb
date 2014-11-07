@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+	<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<p>
+		  <strong>User:</strong>
+		  <%= @subscription.user_id %>
+		</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @subscription.user_id %>
-</p>
-
-<p>
-  <strong>Workout:</strong>
-  <%= @subscription.workout_id %>
-</p>
-
-<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
-<%= link_to 'Back', subscriptions_path %>
+		<p>
+		  <strong>Workout:</strong>
+		  <%= @subscription.workout_id %>
+		</p>
+	</div>
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+		<%= link_to 'Back', subscriptions_path %>
+	</div>
+</div>

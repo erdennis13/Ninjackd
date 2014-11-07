@@ -32,30 +32,37 @@
 
     </table>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Description</th>
-          <th>Duration (min)</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @workouts.each do |workout| %>
+    <% unless @workouts.blank? %>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= link_to workout.name, workout, class: "workoutLink" %></td>
-            <td><%= workout.category %></td>
-            <td><%= workout.description %></td>
-            <td><%= workout.duration %></td>
-            <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
-            <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Duration (min)</th>
+            <th colspan="2"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @workouts.each do |workout| %>
+            <tr>
+              <td><%= link_to workout.name, workout, class: "workoutLink" %></td>
+              <td><%= workout.category %></td>
+              <td><%= workout.description %></td>
+              <td><%= workout.duration %></td>
+              <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
+              <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+
+    <% if @workouts.blank? %>
+     <h2>Sorry, no workouts matched these filters. Please try something else</h2>
+
+    <% end %>
 
 
   </div>
