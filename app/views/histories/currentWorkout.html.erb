@@ -1,5 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-body">
+	<% if false %>
+		<%= @histories.blank? %>
 
 		<% @histories.each do |history| %>
 			<h2><%= history.subscription.workout.name %> <small>by <%= history.subscription.user.name %></small></h2>
@@ -8,11 +10,11 @@
 					<th>Exercise</th>
 					<th>Completed?</th>
 				</thead>
-				<% history.subscription.workout.workoutbits.each do |list| %>
 
+				<% history.subscription.workout.workoutbits.each do |list| %>
 				<tr>
-				<%= form_for @history do |form| %>
-				
+					<%= form_for @history do |form| %>
+					
 						<td><%= list.exercise.name %></td>
 					
 						<%= form.hidden_field :subscription_id, value: history.subscription_id %>
@@ -25,12 +27,45 @@
 
 						<td><%= form.submit "Mark complete" %></td>
 
-				<% end %>
+					<% end %>
 				</tr>
-
-
+			
 				<% end %>
+
 			</table>
 		<% end %>
+	<% end %>
+
+
+	<table class="table table-striped">
+		<thead>
+			<th>Exercise</th>
+			<th>Completed?</th>
+			<th></th>
+		</thead>
+		<% @subscription.workout.workoutbits.each do |this| %>
+			<tr>
+				<td><%= this.exercise.name %></td>
+
+				<%= form_for @history do |form| %>
+				
+					<%= form.hidden_field :subscription_id, value: @subscription.id %>
+					<%= form.hidden_field :exercise_id, value: this.exercise.id %>
+
+					<td>
+						<% form.label :complete %>
+						<%= form.check_box :complete %>
+					</td>
+
+					<td><%= form.submit "Mark complete" %></td>
+
+				<% end %>
+
+			</tr>
+		<% end %>
+	</table>
+
+
+
 	</div>
 </div>

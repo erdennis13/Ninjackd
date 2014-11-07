@@ -13,7 +13,9 @@ class HistoriesController < ApplicationController
   end
 
   def currentWorkout
-    @histories = History.all
+    #@histories = History.where(subscription_id: :subscription_id)
+    #@subscription = Subscription.first
+    @subscription = Subscription.find(params[:subscription_id])
     @history = History.new
   end
 
@@ -24,10 +26,10 @@ class HistoriesController < ApplicationController
     @history = History.new(history_params)
     respond_to do |format|
       if @history.save
-        format.html { redirect_to @history, notice: 'History was successfully created.' }
+        format.html { redirect_to :back, notice: 'History was successfully created' }
         format.json { render action: 'show', status: :created, location: @history }
       else
-        format.html { redirect_to @history, notice: 'History was unsuccessfully created.' }
+        format.html { redirect_to :back, notice: "You've already marked this as complete" }
         format.json { render action: 'show', status: :created, location: @history }
       end
     end
