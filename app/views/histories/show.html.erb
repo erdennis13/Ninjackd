@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<p>
+		  <strong>Subscription:</strong>
+		  <%= @history.subscription_id %>
+		</p>
+
+		<p>
+		  <strong>Exercise:</strong>
+		  <%= @history.exercise_id %>
+		</p>
+
+		<p>
+		  <strong>Complete:</strong>
+		  <%= @history.complete %>
+		</p>
+	</div>
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_history_path(@history) %> |
+		<%= link_to 'Back', histories_path %>
+	</div>
+</div>

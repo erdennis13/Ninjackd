@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107014002) do
+ActiveRecord::Schema.define(version: 20141107171132) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20141107014002) do
     t.string   "diagram_content_type"
     t.integer  "diagram_file_size"
     t.datetime "diagram_updated_at"
+  end
+
+  create_table "histories", force: true do |t|
+    t.integer  "subscription_id"
+    t.integer  "exercise_id"
+    t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscriptions", force: true do |t|
