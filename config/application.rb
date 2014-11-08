@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 #config.assets.initialize_on_precompile = false
+config.active_record.default_timezone = :local
 
 module Easyfit
   class Application < Rails::Application

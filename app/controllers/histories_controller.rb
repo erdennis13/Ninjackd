@@ -50,7 +50,7 @@ class HistoriesController < ApplicationController
   def destroy
     @history.destroy
     respond_to do |format|
-      format.html { redirect_to histories_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
@@ -61,6 +61,6 @@ class HistoriesController < ApplicationController
     end
 
     def history_params
-      params.require(:history).permit(:subscription_id, :exercise_id, :complete)
+      params.require(:history).permit(:subscription_id, :exercise_id, :complete, :sets, :reps)
     end
 end
