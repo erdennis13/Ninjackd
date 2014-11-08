@@ -13,11 +13,13 @@
 			            <th>Duration (min)</th>
 			            <th>Date Joined</th>
 			            <th></th>
+			            <th></th>
 	        		</tr>
 	        	</thead>
 				<% @subscriptions.each do |this| %>
-					<tr>
-						<td><%#= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
+					<tr>	
+						<%# this.complete = false %>
+
 						<td><%= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
 						<td><%= link_to this.workout.name, this.workout, class: "workoutLink" %></td>
 						<td><%= this.workout.category %></td>
@@ -25,6 +27,7 @@
 						<td><%= this.workout.duration %></td>
 						<td><%= this.created_at.month %>/<%= this.created_at.day %>/<%= this.created_at.year %></td>
 						<td><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						<td><%= this.complete %></td>
 					</tr>
 				<% end %>
 			</table>

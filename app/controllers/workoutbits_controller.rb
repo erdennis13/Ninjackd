@@ -16,6 +16,8 @@ class WorkoutbitsController < ApplicationController
   end
 
   def create
+    puts workoutbit_params
+    #@workoutbit.id = Workout.where(name: )
     @workoutbit = Workoutbit.new(workoutbit_params)
     respond_to do |format|
       if @workoutbit.save
@@ -56,6 +58,6 @@ class WorkoutbitsController < ApplicationController
 
     def workoutbit_params
       #params.require(:workoutbit).permit(workout_attributes: [:workout_id], exercise_attributes: [:exercise_id], :sets, :reps)
-      params.require(:workoutbit).permit(:workout_id, :exercise_id, :sets, :reps)
+      params.require(:workoutbit).permit(:workout_id , :exercise_id, :sets, :reps)
     end
 end

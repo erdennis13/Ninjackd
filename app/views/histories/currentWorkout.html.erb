@@ -1,40 +1,5 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-	<% if false %>
-		<%= @histories.blank? %>
-
-		<% @histories.each do |history| %>
-			<h2><%= history.subscription.workout.name %> <small>by <%= history.subscription.user.name %></small></h2>
-			<table class="table table-striped">
-				<thead>
-					<th>Exercise</th>
-					<th>Completed?</th>
-				</thead>
-
-				<% history.subscription.workout.workoutbits.each do |list| %>
-				<tr>
-					<%= form_for @history do |form| %>
-					
-						<td><%= list.exercise.name %></td>
-					
-						<%= form.hidden_field :subscription_id, value: history.subscription_id %>
-						<%= form.hidden_field :exercise_id, value: list.exercise.id %>
-
-						<td>
-							<%= form.label :complete %>
-							<%= form.check_box :complete %>
-						</td>
-
-						<td><%= form.submit "Mark complete" %></td>
-
-					<% end %>
-				</tr>
-			
-				<% end %>
-
-			</table>
-		<% end %>
-	<% end %>
 
 	<h1><%= @subscription.workout.name %> <small><%= @subscription.workout.description %></small></h1>
 	<table class="table table-striped">
@@ -59,20 +24,20 @@
 						<%= form.hidden_field :exercise_id, value: this.exercise.id %>
 						<%= form.hidden_field :complete, value: true %>
 						<td>
-							<%= form.number_field :reps, value: this.sets %>
+							<%= form.number_field :sets, value: this.sets %>
 						</td>
 
 						<td>
-							<%= form.number_field :sets, value: this.reps %>
+							<%= form.number_field :reps, value: this.reps %>
 						</td>
 
-						<td><%= form.submit "Mark Complete" %></td>
+						<td><%= form.submit "Mark Complete", class: "btn btn-default btn-sm" %></td>
 
 					<% end %>
 				<% else %>
 					<% history = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).first %>
-					<td><%= history.reps %></td>
-					<td><%= history.sets %></td>				
+					<td><%= history.sets %></td>
+					<td><%= history.reps %></td>				
 					<td><%= link_to 'Change', history, method: :delete %></td>
 				<% end %>
 
@@ -81,6 +46,24 @@
 		<% end %>
 	</table>
 
+<% if false %>
+	<%= form_for @subscription do |form| %>
+
+		<% @subscription.workout.workoutbits.each do |each| %>
+			<%# History.new(subscription_id: @subscription.id, exercise_id: each.exercise.id, complete: true, reps: each.reps, sets: each.sets) %>
+			<% history = History.new %>
+			<% history.subscription_id = @subscription.id %>
+			<% history.exercise_id = each.exercise.id %>
+			<% history.complete = true %>
+			<% history.sets = each.sets %>
+			<% history.reps = each.reps %>
+			<% history.save %>
+		<% end %>
+
+		<%= form.hidden_field :complete, value: true %>
+		<%= form.submit "Complete workout", class: "btn btn-primary"  %>
+	<% end %>
+<% end %>
 
 
 	</div>
