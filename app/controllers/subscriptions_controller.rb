@@ -26,7 +26,7 @@ class SubscriptionsController < ApplicationController
         format.html { redirect_to profile_url, notice: 'Subscription was successfully created.' }
         format.json { render action: 'show', status: :created, location: @subscription }
       else
-        format.html { redirect_to @subscription, notice: 'Subscription was unsuccessfully created.' }
+        format.html { redirect_to workouts_path, notice: "You're already subscribed to this workout" }
         format.json { render action: 'show', status: :created, location: @subscription }
       end
     end
