@@ -8,19 +8,22 @@
           <th>Name</th>
           <th>Description</th>
           <th>Diagram</th>
-          <th colspan="2"></th>
+          <% if current_user.try(:admin?) %>
+            <th colspan="2"></th>
+          <% end %>
         </tr>
       </thead>
 
       <tbody>
         <% @exercises.each do |exercise| %>
           <tr>
-            <td><%= exercise.name %></td>
+            <td><%= link_to exercise.name, exercise, class: "workoutLink" %></td>
             <td><%= exercise.description %></td>
             <td><%= image_tag exercise.diagram.url(:medium) %></td>
-            <td><%= link_to 'Show', exercise %></td>
-            <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-            <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if current_user.try(:admin?) %>
+              <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
+              <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
@@ -28,6 +31,10 @@
   </div>
   
   <div class="panel-footer">
-    <%= link_to 'New Exercise', new_exercise_path %>
+    <% if current_user.try(:admin?) %>
+      <%= link_to 'New Exercise', new_exercise_path %>
+    <% else %>
+      <%= mail_to("ethan@simplefitapp.com", name = "Want to see some more exercises? Let me know!", html_options = {subject: "Request for new exercises"}) %>
+    <% end %>
   </div>
 </div>

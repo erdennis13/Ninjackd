@@ -6,7 +6,9 @@
       <th>Category</th>
       <th>Description</th>
       <th>Duration (min)</th>
-      <th colspan="2"></th>
+      <% if current_user.try(:admin?) %>
+        <th colspan="2"></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -14,12 +16,18 @@
   <tbody>
     <% @workout.each do |workout| %>
       <tr>
-        <td><%= link_to workout.name, workout, class: "workoutLink" %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to workout.name, workout, class: "workoutLink" %></td>
+        <% else %>
+          <td><%= workout.name%></td>
+        <% end %>
         <td><%= workout.category %></td>
         <td><%= workout.description %></td>
         <td><%= workout.duration %></td>
-        <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
-        <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.try(:admin?) %>
+          <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
+          <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

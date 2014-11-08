@@ -1,34 +1,38 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h1>Listing workoutbits</h1>
+<% if current_user.try(:admin?) %> 
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h1>Listing workoutbits</h1>
 
-    <table class= "table">
-      <thead>
-        <tr>
-          <th>Workout</th>
-          <th>Exercise</th>
-          <th>Sets</th>
-          <th>Reps</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @workoutbits.each do |workoutbit| %>
+      <table class= "table">
+        <thead>
           <tr>
-            <td><%= workoutbit.workout.name %></td>
-            <td><%= workoutbit.exercise.name %></td>
-            <td><%= workoutbit.sets %></td>
-            <td><%= workoutbit.reps %></td>
-            <td><%= link_to 'Show', workoutbit %></td>
-            <td><%= link_to 'Edit', edit_workoutbit_path(workoutbit) %></td>
-            <td><%= link_to 'Destroy', workoutbit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Workout</th>
+            <th>Exercise</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <th colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @workoutbits.each do |workoutbit| %>
+            <tr>
+              <td><%= workoutbit.workout.name %></td>
+              <td><%= workoutbit.exercise.name %></td>
+              <td><%= workoutbit.sets %></td>
+              <td><%= workoutbit.reps %></td>
+              <td><%= link_to 'Show', workoutbit %></td>
+              <td><%= link_to 'Edit', edit_workoutbit_path(workoutbit) %></td>
+              <td><%= link_to 'Destroy', workoutbit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+      <%= link_to 'New Workoutbit', new_workoutbit_path %>
+    </div>
   </div>
-  <div class="panel-footer">
-    <%= link_to 'New Workoutbit', new_workoutbit_path %>
-  </div>
-</div>
+<% else %>
+  <%= render 'pages/unauth' %>
+<% end %> 

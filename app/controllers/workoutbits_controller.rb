@@ -2,7 +2,7 @@ class WorkoutbitsController < ApplicationController
   before_action :set_workoutbit, only: [:show, :edit, :update, :destroy]
 
   def index
-    @workoutbits = Workoutbit.all
+    @workoutbits = Workoutbit.all.order(:workout_id)
   end
 
   def show

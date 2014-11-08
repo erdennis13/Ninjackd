@@ -31,37 +31,43 @@
 				<td><h4><%= link_to work.exercise.name, work.exercise, class: "workoutLink" %></h4></td>
 				<td style="vertical-align:middle">Sets: <%= work.sets %> </td>
 				<td style="vertical-align:middle">Reps: <%= work.reps %> </td>
-				<td style="vertical-align:middle"><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+				<% if current_user.try(:admin?) %>
+					<td style="vertical-align:middle"><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+				<% end %>
 			</tr>
 
 		<% end %>
 	</table>
 
-	<table class="table">
-		<%= form_for :workoutbit, url: workoutbits_path do |form| %>
-			<%= form.hidden_field :workout_id, value: @workout.id %>
-			<tr>
-				<td>
-					<%= form.label :exercise_id, "Exercise ID:" %>
-					<%= form.select :exercise_id, options_for_select(@exerciseidoptions), {}, {class: "form-control"} %>
-				</td>
-				<td>
-					<%= form.label :sets, "Sets" %>
-					<%= form.number_field :sets, class: "form-control" %>
-				</td>
-				<td>
-					<%= form.label :reps, "Reps" %>
-					<%= form.number_field :reps, class: "form-control" %>
-				</td>		
-			
-				<td style="vertical-align:bottom"><%= form.submit "Add Exercise", class: "btn btn-primary alignRight" %></td>
-			</tr>
-		<% end %>
-	</table>
+	<% if current_user.try(:admin?) %>
+		<table class="table">
+			<%= form_for :workoutbit, url: workoutbits_path do |form| %>
+				<%= form.hidden_field :workout_id, value: @workout.id %>
+				<tr>
+					<td>
+						<%= form.label :exercise_id, "Exercise ID:" %>
+						<%= form.select :exercise_id, options_for_select(@exerciseidoptions), {}, {class: "form-control"} %>
+					</td>
+					<td>
+						<%= form.label :sets, "Sets" %>
+						<%= form.number_field :sets, class: "form-control" %>
+					</td>
+					<td>
+						<%= form.label :reps, "Reps" %>
+						<%= form.number_field :reps, class: "form-control" %>
+					</td>		
+				
+					<td style="vertical-align:bottom"><%= form.submit "Add Exercise", class: "btn btn-primary alignRight" %></td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
 
 	</div>
 	<div class="panel-footer">
-		<%= link_to 'Edit', edit_workout_path(@workout) %> | 
+		<% if current_user.try(:admin?) %>
+			<%= link_to 'Edit', edit_workout_path(@workout) %> | 
+		<% end %>
 		<%= link_to 'Back', workouts_path %>
 	</div>
 </div>
