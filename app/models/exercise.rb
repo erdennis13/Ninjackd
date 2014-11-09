@@ -4,5 +4,6 @@ class Exercise < ActiveRecord::Base
 	
 	has_attached_file :diagram, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 	validates_attachment_content_type :diagram, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+	validates_presence_of :name, :description
 
 end

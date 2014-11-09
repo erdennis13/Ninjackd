@@ -30,6 +30,11 @@
     </table>
   </div>
   
+  <% if @exercises.blank? %>
+    <h1>We'll be coming soon! Stay Posted</h1>
+  <% end %>
+
+
   <div class="panel-footer">
     <% if current_user.try(:admin?) %>
       <%= link_to 'New Exercise', new_exercise_path %>

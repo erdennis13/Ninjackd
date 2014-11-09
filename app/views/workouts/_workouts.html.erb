@@ -12,9 +12,9 @@
     </tr>
   </thead>
 
-  <% @workout= Workout.all %>
+  <% @workouts = Workout.all %>
   <tbody>
-    <% @workout.each do |workout| %>
+    <% @workouts.each do |workout| %>
       <tr>
         <% if user_signed_in? %>
           <td><%= link_to workout.name, workout, class: "workoutLink" %></td>
@@ -32,3 +32,7 @@
     <% end %>
   </tbody>
 </table>
+
+<% if @workouts.blank? %>
+  <h1>We'll be coming soon! Stay Posted</h1>
+<% end %>
