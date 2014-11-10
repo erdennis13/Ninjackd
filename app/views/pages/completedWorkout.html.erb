@@ -1,5 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		<h1>Way to go! You have completed the workout!</h1>
+		<% @workout = Workout.find(params[:workout_id]) %>
+		<h1>Way to go! You finished <%= @workout.name %>!</h1>
+		
 	</div>
 </div>

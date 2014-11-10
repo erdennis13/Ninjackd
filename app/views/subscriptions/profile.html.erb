@@ -27,7 +27,7 @@
 						<td><%= this.workout.duration %></td>
 						<td><%= this.created_at.month %>/<%= this.created_at.day %>/<%= this.created_at.year %></td>
 						<td><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-						<td><%= this.complete %></td>
+						<td><%#= this.complete %></td>
 					</tr>
 				<% end %>
 			</table>

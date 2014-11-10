@@ -20,12 +20,12 @@ class HistoriesController < ApplicationController
     if @sublength == @workoutlength
       @subscription.complete = true
       @subscription.save
-      redirect_to completedWorkout_url
+      redirect_to completedWorkout_url(workout_id: @subscription.workout.id)
     else
       @subscription.complete = false
       @subscription.save
     end
-    
+
     @history = History.new
   end
 
