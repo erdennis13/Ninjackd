@@ -13,8 +13,19 @@ class HistoriesController < ApplicationController
   end
 
   def currentWorkout
-    #@histories = History.where(subscription_id: :subscription_id)
     @subscription = Subscription.find(params[:subscription_id])
+    @sublength = @subscription.histories.count
+    @workoutlength = @subscription.workout.workoutbits.count
+
+    if @sublength == @workoutlength
+      @subscription.complete = true
+      @subscription.save
+      redirect_to completedWorkout_url
+    else
+      @subscription.complete = false
+      @subscription.save
+    end
+    
     @history = History.new
   end
 
