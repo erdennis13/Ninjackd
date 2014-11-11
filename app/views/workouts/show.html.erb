@@ -64,6 +64,17 @@
 		</table>
 	<% end %>
 
+
+	<%= form_for :like, url: likes_path do |form| %>
+		<%= form.hidden_field :workout_id, value: @workout.id %>
+		<%= form.hidden_field :user_id, value: current_user.id %>
+		<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+ 			<span class="glyphicon glyphicon-thumbs-up"></span>
+		<% end %>
+	<% end %>
+
+	<%= @workout.likes.count %>
+
 	</div>
 	<div class="panel-footer">
 		<% if current_user.try(:admin?) %>

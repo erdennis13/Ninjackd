@@ -5,6 +5,8 @@ class Workout < ActiveRecord::Base
 
 	has_many :subscriptions
 	has_many :users, :through => :subscriptions
+	has_many :likes
+	has_many :users, :through => :likes
 
 	validates_presence_of :name, :description, :category, :duration
 
@@ -16,4 +18,5 @@ class Workout < ActiveRecord::Base
 	def self.search(term)
    		where("name like :term", term: "%#{term}%")
  	end
+
 end

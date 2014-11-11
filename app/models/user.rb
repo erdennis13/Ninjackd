@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :subscriptions
   has_many :workouts, :through => :subscriptions
+  has_many :likes
+  has_many :workouts, :through => :likes
+
 end
