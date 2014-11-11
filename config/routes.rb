@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "currentWorkout" => "histories#currentWorkout"
   get "completedWorkout" => "pages#completedWorkout"
   get "workoutHistory" => "pages#workoutHistory"
+  get "admin" => "workouts#admin"
   #get "category" => "workouts#category"
   #post "category" => "workouts#category"
   #get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'

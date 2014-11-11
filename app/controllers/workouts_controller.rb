@@ -13,6 +13,10 @@ class WorkoutsController < ApplicationController
     @workouts = @workouts.search(params[:search]) if params[:search].present?
   end
 
+  def admin
+    @workouts = Workout.all
+  end
+
   def show
     @exerciseOptions = Exercise.all
     @exerciseidoptions = []
@@ -72,7 +76,7 @@ class WorkoutsController < ApplicationController
 
     def workout_params
       #params.require(:workout).permit(:name, :category, :description, :duration)
-      params.require(:workout).permit(:name, :category, :description, :duration, workoutbits_attributes: [ :id, :sets, :reps, exercise_attributes: [:id]])
+      params.require(:workout).permit(:name, :category, :description, :hits, :duration, workoutbits_attributes: [ :id, :sets, :reps, exercise_attributes: [:id]])
     end
 
 end

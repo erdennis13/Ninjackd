@@ -1,0 +1,36 @@
+<% if current_user.try(:admin?) %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+
+			<h1>Workout Subscription History</h1>
+			<table class="table">
+				<thead>
+					<th>Name</th>
+					<th>Category</th>
+					<th>Description</th>
+					<th>Hits</th>
+				</thead>
+
+
+				<% @workouts.each do |list| %>
+					<tr>
+						<td><%= list.name %></td>
+						<td><%= list.category %></td>
+						<td><%= list.description %></td>
+						<td><%= list.subscriptions.count %></td>
+					</tr>
+				<% end %>
+
+			</table>
+
+
+
+
+
+		</div>
+
+	</div>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>
+
