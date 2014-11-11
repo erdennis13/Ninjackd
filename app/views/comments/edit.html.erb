@@ -1,6 +1,10 @@
-<h1>Editing comment</h1>
+<% if current_user.try(:admin?) %>
+	<h1>Editing comment</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+	<%= link_to 'Show', @comment %> |
+	<%= link_to 'Back', comments_path %>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>

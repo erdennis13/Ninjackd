@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.try(:admin?) %>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @comment.user_id %>
-</p>
+	<p>
+	  <strong>User:</strong>
+	  <%= @comment.user_id %>
+	</p>
 
-<p>
-  <strong>Workout:</strong>
-  <%= @comment.workout_id %>
-</p>
+	<p>
+	  <strong>Workout:</strong>
+	  <%= @comment.workout_id %>
+	</p>
 
-<p>
-  <strong>Comment:</strong>
-  <%= @comment.comment %>
-</p>
+	<p>
+	  <strong>Comment:</strong>
+	  <%= @comment.comment %>
+	</p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+	<%= link_to 'Edit', edit_comment_path(@comment) %> |
+	<%= link_to 'Back', comments_path %>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>

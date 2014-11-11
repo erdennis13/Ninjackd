@@ -1,6 +1,10 @@
-<h1>Editing like</h1>
+<% if current_user.try(:admin?) %>
+	<h1>Editing like</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @like %> |
-<%= link_to 'Back', likes_path %>
+	<%= link_to 'Show', @like %> |
+	<%= link_to 'Back', likes_path %>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>

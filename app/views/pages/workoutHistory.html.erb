@@ -16,7 +16,7 @@
 			<% current_user.subscriptions.each do |this| %>
 				<% if this.complete? %>
 					<tr>
-						<td><%= this.workout.name %></td>
+						<td><%= link_to this.workout.name , detailedHistory_path(subscription_id: this.id), class: "workoutLink" %></td>
 						<td><%= this.workout.category %></td>
 						<td><%= this.workout.description %></td>
 						<td><%= this.workout.duration %></td>
