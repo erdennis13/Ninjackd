@@ -11,6 +11,7 @@
 			<td>
 				<h3>Duration (min): <small><%= @workout.duration %></small></h3>
 			</td>
+			<!-- This form is for subscribing to a workout -->
 			<td style="vertical-align:bottom" align="right">
 				<%= form_for :subscription, url: subscriptions_path do |form| %>
 					<%# @workout.hits = @workout.hits + 1 %>
@@ -33,7 +34,7 @@
 				<td style="vertical-align:middle">Sets: <%= work.sets %> </td>
 				<td style="vertical-align:middle">Reps: <%= work.reps %> </td>
 				<% if current_user.try(:admin?) %>
-					<td style="vertical-align:middle"><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+					<td style="vertical-align:middle" align="right"><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
 				<% end %>
 			</tr>
 
@@ -64,16 +65,37 @@
 		</table>
 	<% end %>
 
+	<table class='table'>
+		<tr>
+			<%= form_for :like, url: likes_path do |form| %>
+				<%= form.hidden_field :workout_id, value: @workout.id %>
+				<%= form.hidden_field :user_id, value: current_user.id %>
+				<td style="padding:10px"><%= button_tag(type: 'submit', class: "btn btn-primary btn-sm") do %>
+		 			<span class="glyphicon glyphicon-thumbs-up"></span>
+				<% end %>
+			<% end %>
+		
+			<%= pluralize(@workout.likes.count, "like") %></td>
 
-	<%= form_for :like, url: likes_path do |form| %>
-		<%= form.hidden_field :workout_id, value: @workout.id %>
-		<%= form.hidden_field :user_id, value: current_user.id %>
-		<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
- 			<span class="glyphicon glyphicon-thumbs-up"></span>
-		<% end %>
-	<% end %>
+			<%= form_for :comment, url: comments_path do |form| %>
 
-	<%= @workout.likes.count %>
+				<%= form.hidden_field :workout_id, value: @workout.id %>
+				<%= form.hidden_field :user_id, value: current_user.id %>
+				<td width="80%"><%= form.text_field :comment, class: "form-control", placeholder: "Add a comment here..." %></td>
+				<td style="vertical-align:middle" align="right"><%= form.submit "Comment", class: 'btn btn-default' %></td>
+			<% end %>
+		</tr>
+	</table>
+
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10"
+			<ul class="list-group" width="80%">
+				<% @workout.comments.each do |print| %>
+					<li class="list-group-item"><strong><%= print.user.try(:username) %>:</strong> <%= print.comment %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
 
 	</div>
 	<div class="panel-footer">

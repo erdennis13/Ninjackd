@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
   has_many :workouts, :through => :subscriptions
   has_many :likes
   has_many :workouts, :through => :likes
+  has_many :comments
+  has_many :users, :through => :comments
 
 end

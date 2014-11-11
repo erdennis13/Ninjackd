@@ -7,6 +7,9 @@ class Workout < ActiveRecord::Base
 	has_many :users, :through => :subscriptions
 	has_many :likes
 	has_many :users, :through => :likes
+	has_many :comments
+	has_many :users, :through => :comments
+	
 
 	validates_presence_of :name, :description, :category, :duration
 
