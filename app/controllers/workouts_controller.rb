@@ -17,6 +17,18 @@ class WorkoutsController < ApplicationController
     @workouts = Workout.all
   end
 
+  def findWorkout
+    @workouts = Workout.all
+    @workoutCategories = ["",]
+    @workouts.each do |add|
+      @workoutCategories.append(add.category)
+    end
+    @workouts = @workouts.cat(params[:cat]) if params[:cat].present?
+    @workouts = @workouts.starts_with(params[:starts_with]) if params[:starts_with].present?
+    @workouts = @workouts.duration_lt(params[:less_than]) if params[:less_than].present?
+    @workouts = @workouts.search(params[:search]) if params[:search].present?
+  end
+
   def show
     @exerciseOptions = Exercise.all
     @exerciseidoptions = []
