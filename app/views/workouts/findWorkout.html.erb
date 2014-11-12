@@ -2,16 +2,25 @@
 	<div class="panel-body">
 
 		<% catHolder = "" %>
-   		<% facilityHolder = ""%>
+   		<% facilityHolder = "" %>
     	<% timeHolder = "" %>
 
 		What type of workout would you like?<br/>
-
+		<%= form_tag workouts_path, :method => 'get' do %>
+ 			<%= label_tag(:cat, "Category:") %>
+            <%= select_tag :cat, options_for_select(@workoutCategories), class: "form-control" %>
+		<%# end %>
 
 		Do you have access to a weight room/exercise equipment?<br/>
-
+		<%#= form_tag workouts_path, :method => 'get' do %>
+ 			<%= label_tag(:facility, "Do you have access to a weight room?") %>
+            <%= select_tag :facility, options_for_select(@facilityOptions), class: "form-control" %>
+		<%# end %>
 		How long do you have to workout?<br/>
-
+		<%#= form_tag workouts_path, :method => 'get' do %>
+ 			<%= label_tag(:less_than, "Duration (min) <= ") %>
+            <%= number_field_tag :less_than, params[:less_than], class: "form-control" %>
+		<% end %>
 
 
 

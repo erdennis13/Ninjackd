@@ -23,10 +23,12 @@ class WorkoutsController < ApplicationController
     @workouts.each do |add|
       @workoutCategories.append(add.category)
     end
+    @facilityOptions = ["","yes", "no"]
     @workouts = @workouts.cat(params[:cat]) if params[:cat].present?
     @workouts = @workouts.starts_with(params[:starts_with]) if params[:starts_with].present?
     @workouts = @workouts.duration_lt(params[:less_than]) if params[:less_than].present?
     @workouts = @workouts.search(params[:search]) if params[:search].present?
+    @workouts = @workouts.facility(params[:facility]) if params[:facility].present?
   end
 
   def show
@@ -41,9 +43,11 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new
     @workoutbits = @workout.workoutbits.build
     @exercise = @workoutbits.build_exercise
+    @facilityOptions = ["","yes", "no"]
   end
 
   def edit
+    @facilityOptions = ["","yes", "no"]
   end
 
   def create
@@ -88,7 +92,7 @@ class WorkoutsController < ApplicationController
 
     def workout_params
       #params.require(:workout).permit(:name, :category, :description, :duration)
-      params.require(:workout).permit(:name, :category, :description, :hits, :duration, workoutbits_attributes: [ :id, :sets, :reps, exercise_attributes: [:id]])
+      params.require(:workout).permit(:name, :category, :description, :hits, :duration, :weightFacility, workoutbits_attributes: [ :id, :sets, :reps, exercise_attributes: [:id]])
     end
 
 end
