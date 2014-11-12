@@ -80,10 +80,10 @@ Rails.application.configure do
 
   #config.action_mailer.default_url_options = { :host => 'http://www.simplefitapp.com' }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.perform_deliveries = true
+  #config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.default :charset => "utf-8"
 
   #config.action_mailer.smtp_settings = {
   #address: "smtp.simplefitapp.com",
@@ -100,12 +100,25 @@ Rails.application.configure do
   #}
 
   #ActionMailer::Base.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  :address => 'smtpout.secureserver.net',
-  :domain  => 'www.simplefitapp.com',
-  :port      => 80,
-  :user_name => 'ethan@simplefitapp.com',
-  :password => 'MICHtrack13!',
-  :authentication => :plain
-  }
+  #config.action_mailer.smtp_settings = {
+  #:address => 'smtpout.secureserver.net',
+  #:domain  => 'www.simplefitapp.com',
+  #:port      => 80,
+  #:user_name => 'ethan@simplefitapp.com',
+  #:password => 'MICHtrack13!',
+  #:authentication => :plain}
+
+  config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :address              => "smtpout.secureserver.net",
+  :port                 => 465,
+  :user_name            => 'ethan@simplefitapp.com',
+  :domain               => "simplefitapp.com",
+  :password             => 'MICHtrack13',
+  :authentication       => 'plain',
+  :enable_starttls_auto => true  }
+config.action_mailer.default_url_options = { :host => "http://www.simplefitapp.com" }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+
 end
