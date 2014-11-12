@@ -86,12 +86,12 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-  address: "ethan@simplefitapp.com",
+  address: "smtp.gmail.com",
   port: 587,
   domain: 'simplefitapp.com',
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: 'ethan',
-  password: 'MICHtrack13!'
+  user_name: 'erdennis13',
+  password: 'michtrack1204'
   }
 end
