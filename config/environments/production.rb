@@ -76,14 +76,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.routes.default_url_options[:host] = 'www.simplefitapp.com'
+  #Rails.application.routes.default_url_options[:host] = 'www.simplefitapp.com'
 
-  config.action_mailer.default_url_options = { :host => 'http://www.simplefitapp.com' }
+  #config.action_mailer.default_url_options = { :host => 'http://www.simplefitapp.com' }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.perform_deliveries = true
+  #config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.default :charset => "utf-8"
 
   #config.action_mailer.smtp_settings = {
   #address: "smtp.simplefitapp.com",
@@ -94,6 +94,10 @@ Rails.application.configure do
   #user_name: 'ethan',
   #password: 'MICHtrack13!'
   #}
+  ActionMailer::Base.delivery_method = :sendmail
+  ActionMailer::Base.server_settings = {
+  :domain  => ‘www.simplefitapp.com’
+  }
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
