@@ -85,13 +85,23 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.smtp_settings = {
-  address: "smtp.simplefitapp.com",
-  port: 587,
-  domain: 'simplefitapp.com',
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: 'ethan',
-  password: 'MICHtrack13!'
+  #config.action_mailer.smtp_settings = {
+  #address: "smtp.simplefitapp.com",
+  #port: 587,
+  #domain: 'simplefitapp.com',
+  #authentication: "plain",
+  #enable_starttls_auto: true,
+  #user_name: 'ethan',
+  #password: 'MICHtrack13!'
+  #}
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+  :address => 'smtpout.secureserver.net',
+  :domain  => 'www.simplefitapp.com',
+  :port      => 80,
+  :user_name => 'ethan@simplefitapp.com',
+  :password => 'MICHtrack13!',
+  :authentication => :plain
   }
 end
