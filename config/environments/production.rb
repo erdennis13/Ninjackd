@@ -96,7 +96,7 @@ Rails.application.configure do
   #}
   ActionMailer::Base.delivery_method = :sendmail
   ActionMailer::Base.server_settings = {
-  :domain  => ‘www.simplefitapp.com’
+  :domain  => 'www.simplefitapp.com'
   }
 
   ActionMailer::Base.delivery_method = :smtp
