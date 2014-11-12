@@ -94,13 +94,13 @@ Rails.application.configure do
   #user_name: 'ethan',
   #password: 'MICHtrack13!'
   #}
-  ActionMailer::Base.delivery_method = :sendmail
-  ActionMailer::Base.server_settings = {
-  :domain  => 'www.simplefitapp.com'
-  }
+  #ActionMailer::Base.delivery_method = :sendmail
+  #ActionMailer::Base.server_settings = {
+  #:domain  => 'www.simplefitapp.com'
+  #}
 
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
+  #ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
   :address => 'smtpout.secureserver.net',
   :domain  => 'www.simplefitapp.com',
   :port      => 80,
