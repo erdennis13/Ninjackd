@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   def index
-    @exercises = Exercise.all
+    @exercises = Exercise.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     #respond_with(@exercises)
   end
 

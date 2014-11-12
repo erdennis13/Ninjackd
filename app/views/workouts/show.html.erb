@@ -14,7 +14,6 @@
 			<!-- This form is for subscribing to a workout -->
 			<td style="vertical-align:bottom" align="right">
 				<%= form_for :subscription, url: subscriptions_path do |form| %>
-					<%# @workout.hits = @workout.hits + 1 %>
 					<%= form.hidden_field :workout_id, value: @workout.id %>
 					<%= form.hidden_field :user_id, value: current_user.id %>
 					<%= form.submit "Subscribe" , class: "btn btn-primary" %>

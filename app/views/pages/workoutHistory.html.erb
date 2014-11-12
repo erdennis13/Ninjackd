@@ -3,6 +3,8 @@
 
 		<h1>Here's your completed workout!</h1>
 
+		<% @subscriptions = current_user.subscriptions.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10) %>
+
 		<table class="table">
 			<thead>
 				<tr>
@@ -13,7 +15,7 @@
 				<tr>
 			</thead>
 
-			<% current_user.subscriptions.each do |this| %>
+			<% @subscriptions.each do |this| %>
 				<% if this.complete? %>
 					<tr>
 						<td><%= link_to this.workout.name , detailedHistory_path(subscription_id: this.id), class: "workoutLink" %></td>
@@ -26,4 +28,8 @@
 
 		</table>
 	</div>
+</div>
+
+<div class="center">
+  <%= will_paginate @subscriptions, renderer: BootstrapPagination::Rails %>
 </div>

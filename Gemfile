@@ -32,6 +32,8 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'will_paginate', '~> 3.0.5'
+gem 'will_paginate-bootstrap'
 # gem 'filterrific'
 
 # Use unicorn as the app server

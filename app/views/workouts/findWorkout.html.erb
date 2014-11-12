@@ -1,12 +1,9 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 
-		<% catHolder = "" %>
-   		<% facilityHolder = "" %>
-    	<% timeHolder = "" %>
 
 		What type of workout would you like?<br/>
-		<%= form_tag workouts_path, :method => 'get' do %>
+		<%= form_tag findWorkout_path, :method => 'get' do %>
  			<%= label_tag(:cat, "Category:") %>
             <%= select_tag :cat, options_for_select(@workoutCategories), class: "form-control" %>
 		<%# end %>
@@ -22,6 +19,25 @@
             <%= number_field_tag :less_than, params[:less_than], class: "form-control" %>
 		<% end %>
 
+		<% if params[:facility].present? & params[:less_than].present? & params[:cat].present? %>
+			<table class="table">
+				<thead>
+					<th>Name</th>
+		            <th>Category</th>
+		            <th>Description</th>
+		            <th>Duration (min)</th>
+				</thead>
+				<% @workouts.each do |this| %>
+					<tr>
+						<td><%= this.name %></td>
+						<td><%= this.category %></td>
+						<td><%= this.description %></td>
+						<td><%= this.duration %></td>
+					</tr>
+				<% end %>
+
+			</table>
+		<% end %>
 
 
 	</div>

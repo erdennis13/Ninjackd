@@ -1,7 +1,11 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<% @workout = Workout.find(params[:workout_id]) %>
-		<h1>Way to go! You finished <%= @workout.name %>!</h1>
+		<h1>Way to go! You finished <%= @workout.name %> <small>You kicked that workout's butt!</small></h1>
+
+		<div class="center">
+			<%= image_tag "ninjakick.png", style:"height: 250px; float:left; padding: 10px" %>
+		</div>
 		
 	</div>
 </div>
