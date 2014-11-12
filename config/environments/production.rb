@@ -112,7 +112,7 @@ Rails.application.configure do
 config.action_mailer.smtp_settings = {
   :address              => "smtpout.secureserver.net",
   :port                 => 465,
-  :user_name            => 'ethan@simplefitapp.com',
+  :user_name            => 'ethan',
   :domain               => "simplefitapp.com",
   :password             => 'MICHtrack13',
   :authentication       => 'plain',
