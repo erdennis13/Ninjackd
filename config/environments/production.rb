@@ -102,8 +102,8 @@ Rails.application.configure do
   authentication: "plain",
   enable_starttls_auto: true,
   user_name: 'erdennis13',
-  password: 'michtrack1204'
-=end
+  password: 'michtrack1204'}
+
 
   ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -113,17 +113,13 @@ Rails.application.configure do
   :user_name => 'ethan',
   :password => 'MICHtrack13!',
   :authentication => :plain}
+=end
 
-=begin config.action_mailer.delivery_method = :smtp
-config.action_mailer.perform_deliveries = true
 config.action_mailer.smtp_settings = {  
   :address              => "relay-hosting.secureserver.net",  
   :port                 => 25,  
   :domain               => "www.simplefitapp.com",  
   :authentication       => "plain"
 }
-config.action_mailer.default_url_options = { :host => "http://www.simplefitapp.com" }
 
-config.action_mailer.raise_delivery_errors = false
-=end 
 end
