@@ -20,8 +20,11 @@
 
 					<% unless this.try(:complete?) %>
 						<tr>	
-							<%# this.complete = false %>
-							<td><%= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
+							<% if this.histories.count > 0 %>
+								<td><%= link_to "Continue Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
+							<% else %>
+								<td><%= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
+							<% end %>
 							<td><%= link_to this.workout.name, this.workout, class: "workoutLink" %></td>
 							<td><%= this.workout.category %></td>
 							<td><%= this.workout.description %></td>

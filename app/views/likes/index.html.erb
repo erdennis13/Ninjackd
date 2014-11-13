@@ -1,31 +1,34 @@
 <% if current_user.try(:admin?) %>
-  <h1>Listing likes</h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h1>Listing likes</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Workout</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Workout</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <% @likes.each do |like| %>
-        <tr>
-          <td><%= like.user_id %></td>
-          <td><%= like.workout_id %></td>
-          <td><%= link_to 'Show', like %></td>
-          <td><%= link_to 'Edit', edit_like_path(like) %></td>
-          <td><%= link_to 'Destroy', like, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Like', new_like_path %>
+        <tbody>
+          <% @likes.each do |like| %>
+            <tr>
+              <td><%= like.user_id %></td>
+              <td><%= like.workout_id %></td>
+              <td><%= link_to 'Show', like %></td>
+              <td><%= link_to 'Edit', edit_like_path(like) %></td>
+              <td><%= link_to 'Destroy', like, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+      <%= link_to 'New Like', new_like_path %>
+    </div>
+  </div>
 <% else %>
   <%= render 'pages/unauth' %>
 <% end %>

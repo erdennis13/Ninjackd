@@ -1,10 +1,15 @@
 <% if current_user.try(:admin?) %>
-	<h1>Editing comment</h1>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>Editing comment</h1>
 
-	<%= render 'form' %>
-
-	<%= link_to 'Show', @comment %> |
-	<%= link_to 'Back', comments_path %>
+			<%= render 'form' %>
+		</div>
+		<div class="panel-footer">
+			<%= link_to 'Show', @comment %> |
+			<%= link_to 'Back', comments_path %>
+		</div>
+	</div>
 <% else %>
 	<%= render 'pages/unauth' %>
 <% end %>

@@ -1,9 +1,14 @@
 <% if current_user.try(:admin?) %>
-	<h1>New like</h1>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>New like</h1>
 
-	<%= render 'form' %>
-
-	<%= link_to 'Back', likes_path %>
+			<%= render 'form' %>
+		</div>
+		<div class="panel-footer">
+			<%= link_to 'Back', likes_path %>
+		</div>
+	</div>
 <% else %>
 	<%= render 'pages/unauth' %>
 <% end %>

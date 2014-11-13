@@ -1,23 +1,28 @@
 <% if current_user.try(:admin?) %>
-	<p id="notice"><%= notice %></p>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<p id="notice"><%= notice %></p>
 
-	<p>
-	  <strong>User:</strong>
-	  <%= @comment.user_id %>
-	</p>
+			<p>
+			  <strong>User:</strong>
+			  <%= @comment.user_id %>
+			</p>
 
-	<p>
-	  <strong>Workout:</strong>
-	  <%= @comment.workout_id %>
-	</p>
+			<p>
+			  <strong>Workout:</strong>
+			  <%= @comment.workout_id %>
+			</p>
 
-	<p>
-	  <strong>Comment:</strong>
-	  <%= @comment.comment %>
-	</p>
-
-	<%= link_to 'Edit', edit_comment_path(@comment) %> |
-	<%= link_to 'Back', comments_path %>
+			<p>
+			  <strong>Comment:</strong>
+			  <%= @comment.comment %>
+			</p>
+		</div>
+		<div class="panel-footer">
+			<%= link_to 'Edit', edit_comment_path(@comment) %> |
+			<%= link_to 'Back', comments_path %>
+		</div>
+	</div>
 <% else %>
 	<%= render 'pages/unauth' %>
 <% end %>
