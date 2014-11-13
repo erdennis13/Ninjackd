@@ -34,10 +34,10 @@ class WorkoutbitsController < ApplicationController
     @workoutbit.update(workoutbit_params)
     respond_to do |format|
       if @workoutbit.save
-        format.html { redirect_to @workoutbits, notice: 'Workoutbit was successfully updated.' }
+        format.html { redirect_to workoutbits_path, notice: 'Workoutbit was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @workoutbit }
       else
-        format.html { redirect_to @workoutbits, notice: 'Workoutbit was unsuccessfully updated.' }
+        format.html { redirect_to workoutbits_path, notice: 'Workoutbit was unsuccessfully updated.' }
         format.json { render action: 'show', status: :created, location: @workoutbit }
       end
     end
@@ -58,6 +58,6 @@ class WorkoutbitsController < ApplicationController
 
     def workoutbit_params
       #params.require(:workoutbit).permit(workout_attributes: [:workout_id], exercise_attributes: [:exercise_id], :sets, :reps)
-      params.require(:workoutbit).permit(:workout_id , :exercise_id, :sets, :reps)
+      params.require(:workoutbit).permit(:workout_id , :exercise_id, :sets, :reps, :restime)
     end
 end

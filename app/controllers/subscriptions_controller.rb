@@ -59,6 +59,6 @@ class SubscriptionsController < ApplicationController
     end
 
     def subscription_params
-      params.require(:subscription).permit(:user_id, :workout_id, :complete)
+      params.require(:subscription).permit(:user_id, :workout_id, :complete, :start_time, :finish_time)
     end
 end

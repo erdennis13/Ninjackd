@@ -11,6 +11,7 @@
 			<th>Exercise</th>
 			<th>Sets</th>
 			<th>Reps</th>
+			<th>Time Between Sets</th>
 			<th></th>
 		</thead>
 		<% @subscription.workout.workoutbits.each do |this| %>
@@ -35,13 +36,17 @@
 							<%= form.number_field :reps, value: this.reps %>
 						</td>
 
+						<td>
+							<%= this.restime %> seconds
+						</td>
 						<td><%= form.submit "Mark Complete", class: "btn btn-default btn-sm" %></td>
 
 					<% end %>
 				<% else %>
 					<% history = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).first %>
 					<td><%= history.sets %></td>
-					<td><%= history.reps %></td>				
+					<td><%= history.reps %></td>
+					<td></td>				
 					<td><%= link_to 'Change', history, method: :delete %></td>
 				<% end %>
 

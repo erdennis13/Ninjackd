@@ -12,6 +12,8 @@
 		            <th>Category</th>
 		            <th>Description</th>
 		            <th>Duration (min)</th>
+		            <th>Time Started</th>
+		            <th>Time Ended</th>
 				<tr>
 			</thead>
 
@@ -22,6 +24,8 @@
 						<td><%= this.workout.category %></td>
 						<td><%= this.workout.description %></td>
 						<td><%= this.workout.duration %></td>
+						<td><%= this.start_time %></td>
+						<td><%= this.finish_time %></td>
 					</tr>
 				<% end %>
 			<% end %>

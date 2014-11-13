@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112173506) do
+ActiveRecord::Schema.define(version: 20141113012442) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -54,7 +54,9 @@ ActiveRecord::Schema.define(version: 20141112173506) do
     t.integer  "workout_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "complete",   default: false
+    t.boolean  "complete",    default: false
+    t.datetime "start_time"
+    t.datetime "finish_time"
   end
 
   create_table "users", force: true do |t|
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(version: 20141112173506) do
     t.integer  "reps"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "restime"
   end
 
   create_table "workouts", force: true do |t|

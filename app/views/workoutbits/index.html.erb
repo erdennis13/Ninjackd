@@ -10,6 +10,7 @@
             <th>Exercise</th>
             <th>Sets</th>
             <th>Reps</th>
+            <th>Restime (s)</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -21,6 +22,7 @@
               <td><%= workoutbit.exercise.name %></td>
               <td><%= workoutbit.sets %></td>
               <td><%= workoutbit.reps %></td>
+              <td><%= workoutbit.restime %></td>
               <td><%= link_to 'Show', workoutbit %></td>
               <td><%= link_to 'Edit', edit_workoutbit_path(workoutbit) %></td>
               <td><%= link_to 'Destroy', workoutbit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
