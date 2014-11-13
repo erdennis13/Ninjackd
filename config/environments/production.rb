@@ -108,17 +108,16 @@ Rails.application.configure do
   #:password => 'MICHtrack13!',
   #:authentication => :plain}
 
-  config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :address              => "smtpout.secureserver.net",
-  :port                 => 465,
-  :user_name            => 'ethan',
-  :domain               => "simplefitapp.com",
-  :password             => 'MICHtrack13',
-  :authentication       => 'plain',
-  :enable_starttls_auto => true  }
-config.action_mailer.default_url_options = { :host => "http://www.simplefitapp.com" }
+config.action_mailer.delivery_method = :smtp
 config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = true
+config.action_mailer.smtp_settings = {  
+  :address              => "relay-hosting.secureserver.net",  
+  :port                 => 25,  
+  :domain               => "www.simplefitapp.com",  
+  :authentication       => "plain"
+}
+config.action_mailer.default_url_options = { :host => "http://www.simplefitapp.com" }
+
+config.action_mailer.raise_delivery_errors = false
 
 end
