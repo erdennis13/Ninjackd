@@ -78,7 +78,7 @@ Rails.application.configure do
 
   #Rails.application.routes.default_url_options[:host] = 'www.simplefitapp.com'
 
-  #config.action_mailer.default_url_options = { :host => 'http://www.simplefitapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://www.simplefitapp.com' }
 
   #config.action_mailer.delivery_method = :smtp
   #config.action_mailer.perform_deliveries = true
@@ -98,11 +98,12 @@ Rails.application.configure do
   #ActionMailer::Base.server_settings = {
   #:domain  => 'www.simplefitapp.com'
   #}
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
-
+=begin
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
@@ -111,9 +112,8 @@ Rails.application.configure do
   enable_starttls_auto: true,
   user_name: 'erdennis13',
   password: 'michtrack1204'
-  }
+=end
 
-=begin
   ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   :address => 'smtpout.secureserver.net',
@@ -122,7 +122,6 @@ Rails.application.configure do
   :user_name => 'ethan@simplefitapp.com',
   :password => 'MICHtrack13!',
   :authentication => :plain}
-=end
 
 =begin config.action_mailer.delivery_method = :smtp
 config.action_mailer.perform_deliveries = true
