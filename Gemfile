@@ -34,7 +34,8 @@ gem 'devise'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
-# gem 'filterrific'
+
+gem 'aws-sdk', '~> 1.20.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
