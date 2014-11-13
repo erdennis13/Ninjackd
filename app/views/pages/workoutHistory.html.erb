@@ -12,8 +12,7 @@
 		            <th>Category</th>
 		            <th>Description</th>
 		            <th>Duration (min)</th>
-		            <th>Time Started</th>
-		            <th>Time Ended</th>
+		            <th>Elapsed Time (min)</th>
 				<tr>
 			</thead>
 
@@ -24,8 +23,11 @@
 						<td><%= this.workout.category %></td>
 						<td><%= this.workout.description %></td>
 						<td><%= this.workout.duration %></td>
-						<td><%= this.start_time %></td>
-						<td><%= this.finish_time %></td>
+						<% unless this.finish_time.blank? or this.start_time.blank? %>
+							<td><%= elapsed_time = (((this.finish_time - this.start_time))/60).round(0) %> min</td>
+						<% else %>
+							<td></td>
+						<% end %>
 					</tr>
 				<% end %>
 			<% end %>
