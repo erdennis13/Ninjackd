@@ -53,38 +53,43 @@
 </div>
 
 
-<% if false %>
-		<div id="weeks" class="transitions-enabled">
-			<% dayofweek = 0 %>
-			<% @scheduled.each do |schedule| %>
-				<div class="box panel panel-default">
-					<div class="panel-heading">
-						<%= Date::DAYNAMES[dayofweek] %>
-					</div>
-					<div class="panel-body">
-						<h3 class="center"><%= schedule.workout.name %></h3>
-						<p><%= schedule.schedule %></p>
-						<p><%= schedule.workout.description %></p>
-					</div>
-				</div>
-				<% dayofweek += 1 %>
-			<% end %>
-		</div>
-<% end %>
-
 
 <div id="weeks" class="transitions-enabled">
-	<% dayofweek = 0 %>
-	<% while dayofweek < 7 do  %>
+	<% @days_from_this_week.each do |list| %>
 		<div class="box panel panel-default">
 			<div class="panel-heading center">
-				<%= Date::DAYNAMES[dayofweek] %>
+				<%= Date::DAYNAMES[list.wday] %><br/>
+				<%= Date::MONTHNAMES[list.month] %> <%= list.day %>
 			</div>
-			<div class="panel-body">
 
+			<div class="panel-body">
+					<% none = 0 %>
+					<% @scheduled.each do |check| %>
+						<% count = 0 %>
+						<% if check.schedule == list %>
+							<% unless check.try(:complete?) %>
+								<div class="center">
+									<% if check.histories.count > 0 %>
+										<%= link_to "Continue Workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
+									<% else %>
+										<%= link_to "Start workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
+									<% end %>
+								</div>	
+								<h4><%= check.workout.name %></h4>
+								<p><%= check.workout.description %></p>
+								<% if count > 0 %>
+									<hr/>
+								<% end %>
+								<% none += 1 %>
+								<% count += 1 %>
+							<% end %>
+						<% end %>
+					<% end %>
+					<% if none == 0 %>
+						<%= image_tag "ninja folder/#{rand(3)}.png" %>
+					<% end %>
 			</div>
 		</div>
-		<% dayofweek += 1 %>
 	<% end %>
 </div>
 

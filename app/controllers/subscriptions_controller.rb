@@ -18,6 +18,8 @@ class SubscriptionsController < ApplicationController
   def profile
     @subscriptions = current_user.subscriptions.where(:complete => false).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     @scheduled = current_user.subscriptions.where.not(schedule: nil )
+    today = Date.today
+    @days_from_this_week = (today.at_beginning_of_week(:sunday)..today.at_end_of_week(:sunday)).map
   end
 
   def create
