@@ -78,7 +78,7 @@ Rails.application.configure do
 
   #Rails.application.routes.default_url_options[:host] = 'www.simplefitapp.com'
 
-  config.action_mailer.default_url_options = { :host => 'http://www.simplefitapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://www.ninjackd.com' }
 
   #config.action_mailer.smtp_settings = {
   #address: "smtp.simplefitapp.com",
@@ -98,11 +98,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
-  domain: 'simplefitapp.com',
+  domain: 'ninjackd.com',
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: 'erdennis13',
-  password: 'michtrack1204'
+  user_name: 'ethan',
+  password: 'michtrack13'
 }
 
 =begin
