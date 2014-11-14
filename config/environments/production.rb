@@ -99,7 +99,7 @@ Rails.application.configure do
   address: "smtp-relay.gmail.com",
   port: 587,
   domain: 'ninjackd.com',
-  authentication: "login",
+  authentication: "plain",
   enable_starttls_auto: true,
   user_name: 'ethan@ninjackd.com',
   password: 'michtrack13'
