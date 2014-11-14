@@ -17,6 +17,7 @@ class SubscriptionsController < ApplicationController
 
   def profile
     @subscriptions = current_user.subscriptions.where(:complete => false).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @scheduled = current_user.subscriptions.where.not(schedule: nil )
   end
 
   def create
@@ -59,6 +60,6 @@ class SubscriptionsController < ApplicationController
     end
 
     def subscription_params
-      params.require(:subscription).permit(:user_id, :workout_id, :complete, :start_time, :finish_time)
+      params.require(:subscription).permit(:user_id, :workout_id, :complete, :start_time, :finish_time, :schedule)
     end
 end
