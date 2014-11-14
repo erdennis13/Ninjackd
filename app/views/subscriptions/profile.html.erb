@@ -52,14 +52,39 @@
   <%= will_paginate @subscriptions, renderer: BootstrapPagination::Rails %>
 </div>
 
+
+<% if false %>
+		<div id="weeks" class="transitions-enabled">
+			<% dayofweek = 0 %>
+			<% @scheduled.each do |schedule| %>
+				<div class="box panel panel-default">
+					<div class="panel-heading">
+						<%= Date::DAYNAMES[dayofweek] %>
+					</div>
+					<div class="panel-body">
+						<h3 class="center"><%= schedule.workout.name %></h3>
+						<p><%= schedule.schedule %></p>
+						<p><%= schedule.workout.description %></p>
+					</div>
+				</div>
+				<% dayofweek += 1 %>
+			<% end %>
+		</div>
+<% end %>
+
+
 <div id="weeks" class="transitions-enabled">
-	<% @scheduled.each do |schedule| %>
+	<% dayofweek = 0 %>
+	<% while dayofweek < 7 do  %>
 		<div class="box panel panel-default">
+			<div class="panel-heading center">
+				<%= Date::DAYNAMES[dayofweek] %>
+			</div>
 			<div class="panel-body">
-				<%= schedule.workout.name %>
-				<%= schedule.workout.description %>
+
 			</div>
 		</div>
+		<% dayofweek += 1 %>
 	<% end %>
 </div>
 
