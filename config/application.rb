@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 #config.assets.initialize_on_precompile = false
 #config.active_record.default_timezone = :local
 
-module Simplefit
+module Ninjackd
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

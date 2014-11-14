@@ -2,48 +2,11 @@
 	<div class="panel-body">
 		<h1><%= current_user.name %> <small>Here are your workouts</small></h1>
 
-		<% unless @subscriptions.blank? %>
-			<table class="table table-striped">
-				<thead>
-	        		<tr>
-	        			<th></th>
-			            <th>Name</th>
-			            <th>Category</th>
-			            <th>Description</th>
-			            <th>Duration (min)</th>
-			            <th>Date Joined</th>
-			            <th></th>
-			            
-	        		</tr>
-	        	</thead>
-				<% @subscriptions.each do |this| %>
-
-					<% unless this.try(:complete?) %>
-						<tr>	
-							<% if this.histories.count > 0 %>
-								<td><%= link_to "Continue Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
-							<% else %>
-								<td><%= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
-							<% end %>
-							<td><%= link_to this.workout.name, this.workout, class: "workoutLink" %></td>
-							<td><%= this.workout.category %></td>
-							<td><%= this.workout.description %></td>
-							<td><%= this.workout.duration %></td>
-							<td><%= this.created_at.month %>/<%= this.created_at.day %>/<%= this.created_at.year %></td>
-							<td><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-							
-						</tr>
-					<% end %>
-				<% end %>
-			</table>
-		<% end %>
-		<% if @subscriptions.blank? %>
-			<h3>You don't have any active workouts right now!</h3>
-			<h3><%= link_to "Fix that", workouts_path %></h3>
-
-		<% end %>
-
-
+		<%= render 'list' %>
+			<% if @subscriptions.blank? %>
+				<h3>You don't have any active workouts right now!</h3>
+				<h3><%= link_to "Fix that", workouts_path %></h3>
+			<% end %>
 	</div>
 
 </div>
@@ -52,54 +15,4 @@
   <%= will_paginate @subscriptions, renderer: BootstrapPagination::Rails %>
 </div>
 
-
-
-<div id="weeks" class="transitions-enabled">
-	<% @days_from_this_week.each do |list| %>
-		<div class="box panel panel-default">
-			<div class="panel-heading center">
-				<%= Date::DAYNAMES[list.wday] %><br/>
-				<%= Date::MONTHNAMES[list.month] %> <%= list.day %>
-			</div>
-
-			<div class="panel-body">
-					<% none = 0 %>
-					<% @scheduled.each do |check| %>
-						<% count = 0 %>
-						<% if check.schedule == list %>
-							<% unless check.try(:complete?) %>
-								<div class="center">
-									<% if check.histories.count > 0 %>
-										<%= link_to "Continue Workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
-									<% else %>
-										<%= link_to "Start workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
-									<% end %>
-								</div>	
-								<h4><%= check.workout.name %></h4>
-								<p><%= check.workout.description %></p>
-								<% if count > 0 %>
-									<hr/>
-								<% end %>
-								<% none += 1 %>
-								<% count += 1 %>
-							<% end %>
-						<% end %>
-					<% end %>
-					<% if none == 0 %>
-						<%= image_tag "ninja folder/#{rand(3)}.png" %>
-					<% end %>
-			</div>
-		</div>
-	<% end %>
-</div>
-
-
-
-
-
-
-
-
-
-
-
+<%= render 'calendar' %>
