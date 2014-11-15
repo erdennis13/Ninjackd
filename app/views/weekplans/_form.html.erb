@@ -1,0 +1,49 @@
+<%= form_for(@weekplan) do |f| %>
+  <% if @weekplan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@weekplan.errors.count, "error") %> prohibited this weekplan from being saved:</h2>
+
+      <ul>
+      <% @weekplan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sunday_workout_id %><br>
+    <%= f.select :sunday_workout_id, options_for_select(@workoutOptions) %>
+  </div>
+  <div class="field">
+    <%= f.label :monday_workout_id %><br>
+    <%= f.select :monday_workout_id, options_for_select(@workoutOptions) %>
+  </div>
+  <div class="field">
+    <%= f.label :tuesday_workout_id %><br>
+    <%= f.select :tuesday_workout_id, options_for_select(@workoutOptions) %>
+  </div>
+  <div class="field">
+    <%= f.label :wednesday_workout_id %><br>
+    <%= f.select :wednesday_workout_id, options_for_select(@workoutOptions) %>
+  </div>
+  <div class="field">
+    <%= f.label :thursday_workout_id %><br>
+    <%= f.select :thursday_workout_id, options_for_select(@workoutOptions) %>
+  </div>
+  <div class="field">
+    <%= f.label :friday_workout_id %><br>
+    <%= f.select :friday_workout_id, options_for_select(@workoutOptions) %>
+  </div>
+  <div class="field">
+    <%= f.label :saturday_workout_id %><br>
+    <%= f.select :saturday_workout_id, options_for_select(@workoutOptions) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

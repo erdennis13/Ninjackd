@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115044243) do
+ActiveRecord::Schema.define(version: 20141115170830) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -84,6 +84,19 @@ ActiveRecord::Schema.define(version: 20141115044243) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "weekplans", force: true do |t|
+    t.string   "name"
+    t.integer  "sunday_workout_id"
+    t.integer  "monday_workout_id"
+    t.integer  "tuesday_workout_id"
+    t.integer  "wednesday_workout_id"
+    t.integer  "thursday_workout_id"
+    t.integer  "friday_workout_id"
+    t.integer  "saturday_workout_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "workoutbits", force: true do |t|
     t.integer  "workout_id"

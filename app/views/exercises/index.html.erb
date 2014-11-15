@@ -1,6 +1,31 @@
 <div class="panel panel-default">
   <div class="panel-body">
+
     <h1>Listing exercises</h1>
+
+    <table class="table">
+      <tr>
+        <%= form_tag exercises_path, :method => 'get' do %>
+          <td>
+              <%= label_tag(:search, "Search by name") %>
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "type here..." %>
+          </td>
+
+          <td>
+              <%= label_tag(:lookfor, "Search by description") %>
+              <%= text_field_tag :lookfor, params[:lookfor], class: "form-control", placeholder: "type here..." %>
+          </td>
+
+          <td align="center", style="vertical-align:bottom", width="10%">
+            <%= submit_tag("Filter", :name => nil, class: "btn btn-success") %>
+          </td>
+        <% end %>
+
+        <%= form_tag exercises_path, :method => 'get' do %>
+          <td align="center" style="vertical-align:bottom", width="10%"><%= submit_tag("Reset Filter", class: "btn btn-primary" )%></td>
+        <% end %>     
+      </tr>
+    </table>
 
     <table class="table table-striped">
       <thead>

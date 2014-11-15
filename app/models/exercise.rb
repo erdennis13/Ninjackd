@@ -6,4 +6,11 @@ class Exercise < ActiveRecord::Base
 	validates_attachment_content_type :diagram, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 	validates_presence_of :name, :description
 
+	def self.search(term)
+   		where("name like :term", term: "%#{term}%")
+ 	end
+ 	def self.lookfor(term)
+   		where("description like :term", term: "%#{term}%")
+ 	end
+
 end

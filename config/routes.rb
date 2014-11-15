@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :weekplans
+
   resources :comments
 
   resources :likes

@@ -3,16 +3,15 @@ class ExercisesController < ApplicationController
 
   def index
     @exercises = Exercise.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
-    #respond_with(@exercises)
+    @exercises = @exercises.search(params[:search]) if params[:search].present?
+    @exercises = @exercises.lookfor(params[:lookfor]) if params[:lookfor].present?
   end
 
   def show
-    #respond_with(@exercise)
   end
 
   def new
     @exercise = Exercise.new
-   # respond_with(@exercise)
   end
 
   def edit
@@ -29,7 +28,6 @@ class ExercisesController < ApplicationController
         format.json { render action: 'show', status: :created, location: @exercise }
       end
     end
-    #respond_with(@exercise)
   end
 
   def update
@@ -43,7 +41,6 @@ class ExercisesController < ApplicationController
         format.json { render action: 'show', status: :created, location: @exercise }
       end
     end
-    #respond_with(@exercise)
   end
 
   def destroy
@@ -52,7 +49,6 @@ class ExercisesController < ApplicationController
       format.html { redirect_to exercises_url }
       format.json { head :no_content }
     end
-    #respond_with(@exercise)
   end
 
   private

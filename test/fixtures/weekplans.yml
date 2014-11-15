@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  sunday_workout_id: 1
+  monday_workout_id: 1
+  tuesday_workout_id: 1
+  wednesday_workout_id: 1
+  thursday_workout_id: 1
+  friday_workout_id: 1
+  saturday_workout_id: 1
+
+two:
+  name: MyString
+  sunday_workout_id: 1
+  monday_workout_id: 1
+  tuesday_workout_id: 1
+  wednesday_workout_id: 1
+  thursday_workout_id: 1
+  friday_workout_id: 1
+  saturday_workout_id: 1

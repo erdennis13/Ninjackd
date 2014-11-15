@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @weekplan.name %>
+</p>
+
+<p>
+  <strong>Sunday workout:</strong>
+  <%= @weekplan.sunday_workout_id %>
+</p>
+
+<p>
+  <strong>Monday workout:</strong>
+  <%= @weekplan.monday_workout_id %>
+</p>
+
+<p>
+  <strong>Tuesday workout:</strong>
+  <%= @weekplan.tuesday_workout_id %>
+</p>
+
+<p>
+  <strong>Wednesday workout:</strong>
+  <%= @weekplan.wednesday_workout_id %>
+</p>
+
+<p>
+  <strong>Thursday workout:</strong>
+  <%= @weekplan.thursday_workout_id %>
+</p>
+
+<p>
+  <strong>Friday workout:</strong>
+  <%= @weekplan.friday_workout_id %>
+</p>
+
+<p>
+  <strong>Saturday workout:</strong>
+  <%= @weekplan.saturday_workout_id %>
+</p>
+
+<%= link_to 'Edit', edit_weekplan_path(@weekplan) %> |
+<%= link_to 'Back', weekplans_path %>
