@@ -3,6 +3,7 @@ class WorkoutsController < ApplicationController
 
   def index
     @workouts = Workout.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @weekplans = Weekplan.all
     @workoutCategories = ["",]
     @workouts.each do |add|
       @workoutCategories.append(add.category)
@@ -45,7 +46,7 @@ class WorkoutsController < ApplicationController
     @exercise = @workoutbits.build_exercise
     @facilityOptions = ["","yes", "no"]
   end
-
+  
   def edit
     @facilityOptions = ["","yes", "no"]
   end

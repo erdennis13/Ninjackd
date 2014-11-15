@@ -76,7 +76,7 @@
     <% if current_user.try(:admin?) %>
       <%= link_to 'New Workout', new_workout_path %>
     <% else %>
-      <%= mail_to("ethan@ninjackd.com", name = "Can't find anything? Let me know!", html_options = {subject: "Request for new workouts"}) %>
+      <%= mail_to("ethan@ninjackd.com", name = "Want to see something else? Let me know!", html_options = {subject: "Request for new workouts"}) %>
     <% end %>
   </div>
 </div>
@@ -102,9 +102,7 @@
 
 <% end %>
 
-
-
-
+<%= render 'weekview' %>
 
 <div class="center">
   <%= will_paginate @workouts, renderer: BootstrapPagination::Rails %>

@@ -19,6 +19,13 @@
 
       <tbody>
         <% @weekplans.each do |weekplan| %>
+          <% sunworkout = "" %>
+          <% monworkout = "" %>
+          <% tuesworkout = "" %>
+          <% wedworkout = "" %>
+          <% thursworkout = "" %>
+          <% friworkout =""%>
+          <% satworkout = "" %>
           <% unless weekplan.sunday_workout_id.blank? %>
             <% sunworkout = Workout.find(weekplan.sunday_workout_id) %>
           <% end %>
@@ -43,19 +50,19 @@
           <tr>
             <td><%= weekplan.name %></td>
 
-            <td><%= sunworkout.try(:name) %></td>
+            <td><%= unless sunworkout.blank?; link_to sunworkout.try(:name), sunworkout, class: "workoutLink" end %></td>
 
-            <td><%= monworkout.try(:name) %></td>
+            <td><%= unless monworkout.blank?; link_to monworkout.try(:name), monworkout, class: "workoutLink" end %></td>
 
-            <td><%= tuesworkout.try(:name) %></td>
+            <td><%= unless tuesworkout.blank?; link_to tuesworkout.try(:name), tuesworkout, class: "workoutLink" end %></td>
 
-            <td><%= wedworkout.try(:name) %></td>
+            <td><%= unless wedworkout.blank?; link_to wedworkout.try(:name), wedworkout, class: "workoutLink" end %></td>
 
-            <td><%= thursworkout.try(:name) %></td>
+            <td><%= unless thursworkout.blank?; link_to thursworkout.try(:name), thursworkout, class: "workoutLink" end %></td>
 
-            <td><%= friworkout.try(:name) %></td>
+            <td><%= unless friworkout.blank?; link_to friworkout.try(:name), friworkout, class: "workoutLink" end %></td>
 
-            <td><%= satworkout.try(:name) %></td>
+            <td><%= unless satworkout.blank?; link_to satworkout.try(:name), satworkout, class: "workoutLink" end %></td>
 
             <td><%= link_to 'Show', weekplan %></td>
             <td><%= link_to 'Edit', edit_weekplan_path(weekplan) %></td>
