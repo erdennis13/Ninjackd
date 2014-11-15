@@ -67,7 +67,7 @@
 
     <% if @workouts.blank? %>
      <h2>Sorry, no workouts matched these filters. Please try something else</h2>
-     <p>If there's some different type of workouts you'd like to see, email us at <%= mail_to("ethan@simplefitapp.com", name = nil, html_options = {subject: "Request for new workouts"}) %> </p>
+     <p>If there's some different type of workouts you'd like to see, email us at <%= mail_to("ethan@ninjackd.com", name = nil, html_options = {subject: "Request for new workouts"}) %> </p>
     <% end %>
 
 
@@ -76,7 +76,7 @@
     <% if current_user.try(:admin?) %>
       <%= link_to 'New Workout', new_workout_path %>
     <% else %>
-      <%= mail_to("ethan@simplefitapp.com", name = "Can't find anything? Let me know!", html_options = {subject: "Request for new workouts"}) %>
+      <%= mail_to("ethan@ninjackd.com", name = "Can't find anything? Let me know!", html_options = {subject: "Request for new workouts"}) %>
     <% end %>
   </div>
 </div>

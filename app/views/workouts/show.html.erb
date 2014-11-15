@@ -12,13 +12,14 @@
 				<h3>Duration (min): <small><%= @workout.duration %></small></h3>
 			</td>
 			<!-- This form is for subscribing to a workout -->
-			<td style="vertical-align:bottom" align="right">
 				<%= form_for :subscription, url: subscriptions_path do |form| %>
 					<%= form.hidden_field :workout_id, value: @workout.id %>
 					<%= form.hidden_field :user_id, value: current_user.id %>
-					<%= form.label :schedule, "Schedule this workout" %>
-					<%= form.date_select :schedule, class: "btn-control" %>
-					<%= form.submit "Subscribe" , class: "btn btn-primary" %>
+					<td style="vertical-align:bottom">
+						<%= form.label :schedule, "Schedule this workout" %>
+						<%= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month },class: "form-control" %>
+					</td>
+					<td style="vertical-align:bottom" align="right"><%= form.submit "Subscribe" , class: "btn btn-primary" %></td>
 				<% end %>
 			</td>
 		</tr>
