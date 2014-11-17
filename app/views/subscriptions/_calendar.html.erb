@@ -7,31 +7,39 @@
 			</div>
 
 			<div class="panel-body">
-					<% none = 0 %>
+					<% @none = 0 %>
+					<% @count = 0 %>
 					<% @scheduled.each do |check| %>
-						<% count = 0 %>
+						
 						<% if check.schedule == list %>
 							<% unless check.try(:complete?) %>
+								<% if @count > 0 %>
+									<hr/>
+								<% end %>
 								<div class="center">
+								<% if list == Date.today %>
 									<% if check.histories.count > 0 %>
 										<%= link_to "Continue Workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
 									<% else %>
 										<%= link_to "Start workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
 									<% end %>
-								</div>	
-								<h4><%= check.workout.name %></h4>
-								<p><%= check.workout.description %></p>
-								<% if count > 0 %>
-									<hr/>
 								<% end %>
-								<% none += 1 %>
-								<% count += 1 %>
+								</div>
+								<h4><%= link_to check.workout.name, check.workout, class: "workoutLink" %></h4>
+								<p><%= check.workout.description %></p>
+								
+								
+								<% @none += 1 %>
+								<% @count += 1 %>
+								<%= link_to 'Unsubscibe', check, method: :delete, data: { confirm: 'Are you sure?' } %>
 							<% end %>
+
 						<% end %>
 					<% end %>
-					<% if none == 0 %>
+					<% if @none == 0 %>
 						<%= image_tag "ninja folder/#{rand(27)}.png" %>
 					<% end %>
+
 			</div>
 		</div>
 	<% end %>

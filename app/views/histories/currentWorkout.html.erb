@@ -3,9 +3,10 @@
 <% end %>
 
 <div class="panel panel-default">
-	<div class="panel-body">
+	<div class="panel-body" data-no-turbolink="true">
 
 	<h1><%= @subscription.workout.name %> <small><%= @subscription.workout.description %></small></h1>
+	<%#= form_for :history, url: histories_path do |form| %>
 	<table class="table table-striped">
 		<thead>
 			<th>Exercise</th>
@@ -54,6 +55,7 @@
 			</tr>
 		<% end %>
 	</table>
+	<%# end %>
 
 <% if false %><!-- This was an attempt to make a button that submitted all exercises at once. -->
 	<%= form_for @subscription do |form| %>
