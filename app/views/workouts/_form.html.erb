@@ -37,7 +37,6 @@
     <%= f.label :weightFacility, "Weight room needed?" %>
     <%= f.select :weightFacility, options_for_select(@facilityOptions), class: "form-control" %>
   </div>
-    <%= f.hidden_field :hits, value: 0 %>
   <div class="actions form-group">
     <%= f.submit 'Submit', class: "btn btn-primary" %>
   </div>
