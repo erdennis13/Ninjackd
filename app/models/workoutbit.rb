@@ -4,5 +4,5 @@ class Workoutbit < ActiveRecord::Base
 	accepts_nested_attributes_for :exercise
 
 	validates_uniqueness_of :exercise_id, scope: :workout_id
-	validates_presence_of :exercise_id, :workout_id, :sets, :reps
+	validates_presence_of :exercise_id, :workout_id, :sets, :reps, :restime
 end
