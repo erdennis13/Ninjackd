@@ -1,79 +1,83 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h1>Listing weekplans</h1>
+<% if current_user.try(:admin?) %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h1>Listing weekplans</h1>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Sunday workout</th>
-          <th>Monday workout</th>
-          <th>Tuesday workout</th>
-          <th>Wednesday workout</th>
-          <th>Thursday workout</th>
-          <th>Friday workout</th>
-          <th>Saturday workout</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @weekplans.each do |weekplan| %>
-          <% sunworkout = "" %>
-          <% monworkout = "" %>
-          <% tuesworkout = "" %>
-          <% wedworkout = "" %>
-          <% thursworkout = "" %>
-          <% friworkout =""%>
-          <% satworkout = "" %>
-          <% unless weekplan.sunday_workout_id.blank? %>
-            <% sunworkout = Workout.find(weekplan.sunday_workout_id) %>
-          <% end %>
-          <% unless weekplan.monday_workout_id.blank? %>
-            <% monworkout = Workout.find(weekplan.monday_workout_id) %>
-          <% end %>
-          <% unless weekplan.tuesday_workout_id.blank? %>
-            <% tuesworkout = Workout.find(weekplan.tuesday_workout_id) %>
-          <% end %>
-          <% unless weekplan.wednesday_workout_id.blank? %>
-            <% wedworkout = Workout.find(weekplan.wednesday_workout_id) %>
-          <% end %>
-          <% unless weekplan.thursday_workout_id.blank? %>
-            <% thursworkout = Workout.find(weekplan.thursday_workout_id) %>
-          <% end %>
-          <% unless weekplan.friday_workout_id.blank? %>
-            <% friworkout = Workout.find(weekplan.friday_workout_id) %>
-          <% end %>
-          <% unless weekplan.saturday_workout_id.blank? %>
-            <% satworkout = Workout.find(weekplan.saturday_workout_id) %>
-          <% end %>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= weekplan.name %></td>
-
-            <td><%= unless sunworkout.blank?; link_to sunworkout.try(:name), sunworkout, class: "workoutLink" end %></td>
-
-            <td><%= unless monworkout.blank?; link_to monworkout.try(:name), monworkout, class: "workoutLink" end %></td>
-
-            <td><%= unless tuesworkout.blank?; link_to tuesworkout.try(:name), tuesworkout, class: "workoutLink" end %></td>
-
-            <td><%= unless wedworkout.blank?; link_to wedworkout.try(:name), wedworkout, class: "workoutLink" end %></td>
-
-            <td><%= unless thursworkout.blank?; link_to thursworkout.try(:name), thursworkout, class: "workoutLink" end %></td>
-
-            <td><%= unless friworkout.blank?; link_to friworkout.try(:name), friworkout, class: "workoutLink" end %></td>
-
-            <td><%= unless satworkout.blank?; link_to satworkout.try(:name), satworkout, class: "workoutLink" end %></td>
-
-            <td><%= link_to 'Show', weekplan %></td>
-            <td><%= link_to 'Edit', edit_weekplan_path(weekplan) %></td>
-            <td><%= link_to 'Destroy', weekplan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Name</th>
+            <th>Sunday workout</th>
+            <th>Monday workout</th>
+            <th>Tuesday workout</th>
+            <th>Wednesday workout</th>
+            <th>Thursday workout</th>
+            <th>Friday workout</th>
+            <th>Saturday workout</th>
+            <th colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="panel-footer">
+        </thead>
 
-    <%= link_to 'New Weekplan', new_weekplan_path %>
+        <tbody>
+          <% @weekplans.each do |weekplan| %>
+            <% sunworkout = "" %>
+            <% monworkout = "" %>
+            <% tuesworkout = "" %>
+            <% wedworkout = "" %>
+            <% thursworkout = "" %>
+            <% friworkout = "" %>
+            <% satworkout = "" %>
+            <% unless weekplan.sunday_workout_id.blank? %>
+              <% sunworkout = Workout.find(weekplan.sunday_workout_id) %>
+            <% end %>
+            <% unless weekplan.monday_workout_id.blank? %>
+              <% monworkout = Workout.find(weekplan.monday_workout_id) %>
+            <% end %>
+            <% unless weekplan.tuesday_workout_id.blank? %>
+              <% tuesworkout = Workout.find(weekplan.tuesday_workout_id) %>
+            <% end %>
+            <% unless weekplan.wednesday_workout_id.blank? %>
+              <% wedworkout = Workout.find(weekplan.wednesday_workout_id) %>
+            <% end %>
+            <% unless weekplan.thursday_workout_id.blank? %>
+              <% thursworkout = Workout.find(weekplan.thursday_workout_id) %>
+            <% end %>
+            <% unless weekplan.friday_workout_id.blank? %>
+              <% friworkout = Workout.find(weekplan.friday_workout_id) %>
+            <% end %>
+            <% unless weekplan.saturday_workout_id.blank? %>
+              <% satworkout = Workout.find(weekplan.saturday_workout_id) %>
+            <% end %>
+            <tr>
+              <td><%= weekplan.name %></td>
+
+              <td><%= unless sunworkout.blank?; link_to sunworkout.try(:name), sunworkout, class: "workoutLink" end %></td>
+
+              <td><%= unless monworkout.blank?; link_to monworkout.try(:name), monworkout, class: "workoutLink" end %></td>
+
+              <td><%= unless tuesworkout.blank?; link_to tuesworkout.try(:name), tuesworkout, class: "workoutLink" end %></td>
+
+              <td><%= unless wedworkout.blank?; link_to wedworkout.try(:name), wedworkout, class: "workoutLink" end %></td>
+
+              <td><%= unless thursworkout.blank?; link_to thursworkout.try(:name), thursworkout, class: "workoutLink" end %></td>
+
+              <td><%= unless friworkout.blank?; link_to friworkout.try(:name), friworkout, class: "workoutLink" end %></td>
+
+              <td><%= unless satworkout.blank?; link_to satworkout.try(:name), satworkout, class: "workoutLink" end %></td>
+
+              <td><%= link_to 'Show', weekplan %></td>
+              <td><%= link_to 'Edit', edit_weekplan_path(weekplan) %></td>
+              <td><%= link_to 'Destroy', weekplan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+
+      <%= link_to 'New Weekplan', new_weekplan_path %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render 'pages/unauth' %>
+<% end %>

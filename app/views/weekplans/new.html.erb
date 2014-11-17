@@ -1,5 +1,14 @@
-<h1>New weekplan</h1>
+<% if current_user.try(:admin?) %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>New weekplan</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', weekplans_path %>
+			<%= render 'form' %>
+		</div>
+		<div class="panel-footer">
+			<%= link_to 'Back', weekplans_path %>
+		</div>
+	</div>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>

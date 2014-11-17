@@ -2,6 +2,7 @@ class Subscription < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :workout
 	has_many :histories, dependent: :destroy
+	accepts_nested_attributes_for :workout
 
 	#This only allows users to be subscribed to unique workouts, however, once they complete them, they can subscribe again
 	validates_uniqueness_of :workout_id, scope: [:user_id, :schedule], conditions: -> { where(complete: false) }

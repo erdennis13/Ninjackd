@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 
-		<h1>Here's your completed workout!</h1>
+		<h1>Here's your completed workouts!</h1>
 
 		<% @subscriptions = current_user.subscriptions.where(:complete => true).order("created_at DESC").paginate(:page => params[:page], :per_page => 10) %>
 
@@ -11,7 +11,7 @@
 		            <th>Name</th>
 		            <th>Category</th>
 		            <th>Description</th>
-		            <th>Duration (min)</th>
+		            <th>Date</th>
 		            <th>Time Taken (min)</th>
 				<tr>
 			</thead>
@@ -22,7 +22,10 @@
 						<td><%= link_to this.workout.name , detailedHistory_path(subscription_id: this.id), class: "workoutLink" %></td>
 						<td><%= this.workout.category %></td>
 						<td><%= this.workout.description %></td>
-						<td><%= this.workout.duration %></td>
+						<% finish = this.try :finish_time %>
+						<td><%unless finish.blank? %>
+							<%= finish.try :month %>/<%= finish.try :day %>
+							<% end %></td>
 						<% unless this.finish_time.blank? or this.start_time.blank? %>
 							<td><%= elapsed_time = (((this.finish_time - this.start_time))/60).round(0) %> min</td>
 						<% else %>

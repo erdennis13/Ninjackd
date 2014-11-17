@@ -9,14 +9,23 @@ class SubscriptionsController < ApplicationController
   end
 
   def new
-    @subscription = Subscription.new
+    @weekplan = Weekplan.find(params[:id])
+    @workoutCount = 0
+    unless @weekplan.mon_workout_id.blank?; @workoutCount +=1 end
+    unless @weekplan.tues_workout_id.blank?; @workoutCount +=1 end
+    unless @weekplan.wed_workout_id.blank?; @workoutCount +=1 end
+    unless @weekplan.thurs_workout_id.blank?; @workoutCount +=1 end
+    unless @weekplan.fri_workout_id.blank?; @workoutCount +=1 end
+    unless @weekplan.sat_workout_id.blank?; @workoutCount +=1 end
+    unless @weekplan.sun_workout_id.blank?; @workoutCount +=1 end
+    @subscription = Subscription.new(@workoutCount)
   end
 
   def edit
   end
 
   def profile
-    @subscriptions = current_user.subscriptions.where(:complete => false).order("complete DESC").paginate(:page => params[:page], :per_page => 10)
+    @subscriptions = current_user.subscriptions.where(:complete => false).order("schedule ASC").paginate(:page => params[:page], :per_page => 10)
     @scheduled = current_user.subscriptions.where.not(schedule: nil )
     today = Date.today
     @days_from_this_week = (today.at_beginning_of_week(:sunday)..today.at_end_of_week(:sunday)).map
@@ -34,6 +43,7 @@ class SubscriptionsController < ApplicationController
       end
     end
   end
+
 
   def update
     @subscription.update(subscription_params)

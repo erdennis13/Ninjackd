@@ -4,8 +4,10 @@
 		<h1>Way to go! You finished <%= @workout.name %> <small>You kicked that workout's butt!</small></h1>
 
 		<div class="center">
-			<%= image_tag "ninja folder/#{rand(27)}.png", style:"height: 250px; float:left; padding: 10px" %>
+			<%= image_tag "ninja folder/#{rand(27)}.png", style:"height: 250px; float:center; padding: 10px" %>
 		</div>
+
+		<%= link_to "Check out your past workouts", 'workoutHistory', class: "workoutLink" %>
 		
 	</div>
 </div>

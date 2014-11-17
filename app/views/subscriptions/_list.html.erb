@@ -25,7 +25,10 @@
 					<td><%= this.workout.category %></td>
 					<td><%= this.workout.description %></td>
 					<td><%= this.workout.duration %></td>
-					<td><%= this.try(:schedule) %></td>
+					<% date = this.try(:schedule) %>
+					<% unless date.blank? %>
+						<td><%= Date::MONTHNAMES[date.month] %> <%= date.day %></td>
+					<% end %>
 					<td><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					
 				</tr>
