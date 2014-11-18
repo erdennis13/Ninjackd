@@ -101,8 +101,8 @@ Rails.application.configure do
   domain: 'ninjackd.com',
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: 'ethan',
-  password: 'michtrack13'
+  user_name: 'ethan@ninjackd.com',
+  password: 'MICHtrack13!'
 }
 
 =begin
