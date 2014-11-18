@@ -30,7 +30,7 @@ class HistoriesController < ApplicationController
       @subscription.complete = false
       @subscription.save
     end
-
+    @warmups = @subscription.workout.warmworks.all
     @history = History.new
   end
 

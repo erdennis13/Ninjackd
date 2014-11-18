@@ -22,7 +22,7 @@ class WarmworksController < ApplicationController
         format.html { redirect_to @warmwork, notice: 'Warmwork was successfully created.' }
         format.json { render action: 'show', status: :created, location: @warmwork }
       else
-        format.html { redirect_to @warmwork, notice: 'Warmwork was unsuccessfully created.' }
+        format.html { redirect_to @warmwork, notice: 'Workout already has this warmup.' }
         format.json { render action: 'show', status: :created, location: @warmwork }
       end
     end

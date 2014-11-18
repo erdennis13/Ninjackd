@@ -1,12 +1,12 @@
-<% if @subscription.complete? %>
-	<%# redirect_to completedWorkout_url %>
-<% end %>
-
 <div class="panel panel-default">
 	<div class="panel-body" data-no-turbolink="true">
 
 	<h1><%= @subscription.workout.name %> <small><%= @subscription.workout.description %></small></h1>
 	<%#= form_for :history, url: histories_path do |form| %>
+	<h3>Warmup:<small>
+	<% @warmups.each do |show| %>
+		<%= show.warmup.description %>
+	<% end %></small></h3>
 	<table class="table table-striped">
 		<thead>
 			<th>Exercise</th>
