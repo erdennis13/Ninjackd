@@ -3,9 +3,11 @@
 
 	<h1><%= @subscription.workout.name %> <small><%= @subscription.workout.description %></small></h1>
 	<%#= form_for :history, url: histories_path do |form| %>
+
+	<!-- This displays the associated warmup for each subscription -->
 	<h3>Warmup:<small>
 	<% @warmups.each do |show| %>
-		<%= show.warmup.description %>
+		<%= show.warmup.try(:description) %>
 	<% end %></small></h3>
 	<table class="table table-striped">
 		<thead>

@@ -1,18 +1,22 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<p>
-		  <strong>Name:</strong>
-		  <%= @warmup.name %>
-		</p>
+<% if current_user.try(:admin?) %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<p>
+			  <strong>Name:</strong>
+			  <%= @warmup.name %>
+			</p>
 
-		<p>
-		  <strong>Description:</strong>
-		  <%= @warmup.description %>
-		</p>
-	</div>
-	<div class="panel-footer">
+			<p>
+			  <strong>Description:</strong>
+			  <%= @warmup.description %>
+			</p>
+		</div>
+		<div class="panel-footer">
 
-		<%= link_to 'Edit', edit_warmup_path(@warmup) %> |
-		<%= link_to 'Back', warmups_path %>
+			<%= link_to 'Edit', edit_warmup_path(@warmup) %> |
+			<%= link_to 'Back', warmups_path %>
+		</div>
 	</div>
-</div>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>

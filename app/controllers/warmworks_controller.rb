@@ -19,10 +19,10 @@ class WarmworksController < ApplicationController
     @warmwork = Warmwork.new(warmwork_params)
     respond_to do |format|
       if @warmwork.save
-        format.html { redirect_to @warmwork, notice: 'Warmwork was successfully created.' }
+        format.html { redirect_to :back, notice: 'Warmwork was successfully created.' }
         format.json { render action: 'show', status: :created, location: @warmwork }
       else
-        format.html { redirect_to @warmwork, notice: 'Workout already has this warmup.' }
+        format.html { redirect_to :back, notice: 'Workout already has this warmup.' }
         format.json { render action: 'show', status: :created, location: @warmwork }
       end
     end
@@ -32,10 +32,10 @@ class WarmworksController < ApplicationController
     @warmwork.update(warmwork_params)
     respond_to do |format|
       if @warmwork.save
-        format.html { redirect_to @warmwork, notice: 'Warmwork was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Warmwork was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @warmwork }
       else
-        format.html { redirect_to @warmwork, notice: 'Warmwork was unsuccessfully updated.' }
+        format.html { redirect_to :back, notice: 'Warmwork was unsuccessfully updated.' }
         format.json { render action: 'show', status: :created, location: @warmwork }
       end
     end
@@ -44,7 +44,7 @@ class WarmworksController < ApplicationController
   def destroy
     @warmwork.destroy
     respond_to do |format|
-      format.html { redirect_to warmworks_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

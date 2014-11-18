@@ -1,32 +1,36 @@
-<div class="panel panel-default">
-  <div class="panel-body">
+<% if current_user.try(:admin) %>
+  <div class="panel panel-default">
+    <div class="panel-body">
 
-    <h1>Listing warmworks</h1>
+      <h1>Listing warmworks</h1>
 
-    <table class="table table-striped" >
-      <thead>
-        <tr>
-          <th>Warmup</th>
-          <th>Workout</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @warmworks.each do |warmwork| %>
+      <table class="table table-striped" >
+        <thead>
           <tr>
-            <td><%= warmwork.warmup_id %></td>
-            <td><%= warmwork.workout_id %></td>
-            <td><%= link_to 'Show', warmwork %></td>
-            <td><%= link_to 'Edit', edit_warmwork_path(warmwork) %></td>
-            <td><%= link_to 'Destroy', warmwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Warmup</th>
+            <th>Workout</th>
+            <th colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="panel-footer">
+        </thead>
 
-    <%= link_to 'New Warmwork', new_warmwork_path %>
+        <tbody>
+          <% @warmworks.each do |warmwork| %>
+            <tr>
+              <td><%= warmwork.warmup_id %></td>
+              <td><%= warmwork.workout_id %></td>
+              <td><%= link_to 'Show', warmwork %></td>
+              <td><%= link_to 'Edit', edit_warmwork_path(warmwork) %></td>
+              <td><%= link_to 'Destroy', warmwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+
+      <%= link_to 'New Warmwork', new_warmwork_path %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render 'pages/unauth' %>
+<% end %>

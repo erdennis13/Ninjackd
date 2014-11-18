@@ -1,11 +1,15 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<h1>Editing warmwork</h1>
+<% if current_user.try(:admin?) %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>Editing warmwork</h1>
 
-		<%= render 'form' %>
+			<%= render 'form' %>
+		</div>
+		<div class="panel-footer">
+			<%= link_to 'Show', @warmwork %> |
+			<%= link_to 'Back', warmworks_path %>
+		</div>
 	</div>
-	<div class="panel-footer">
-		<%= link_to 'Show', @warmwork %> |
-		<%= link_to 'Back', warmworks_path %>
-	</div>
-</div>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>

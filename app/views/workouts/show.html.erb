@@ -4,19 +4,19 @@
 
 	<table class="table">
 		<tr>
-			<td>
+			<td style="vertical-align:bottom">
 				<h3>Category: <small><%= @workout.category %></small></h3>
 			</td>
-			<td>
+			<td style="vertical-align:bottom">
 				<h3>Duration (min): <small><%= @workout.duration %></small></h3>
 			</td>
 			<!-- This form is for subscribing to a workout -->
 				<%= form_for :subscription, url: subscriptions_path do |form| %>
 					<%= form.hidden_field :workout_id, value: @workout.id %>
 					<%= form.hidden_field :user_id, value: current_user.id %>
-					<td style="vertical-align:bottom">
+					<td style="vertical-align:bottom", align="right">
 						<%= form.label :schedule, "Schedule this workout" %>
-						<%= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year }, class: "form-control" %>
+						<%= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } %>
 					</td>
 					<td style="vertical-align:bottom" align="right"><%= form.submit "Subscribe" , class: "btn btn-primary" %></td>
 				<% end %>
@@ -49,6 +49,8 @@
 		<% end %>
 	</table>
 
+	<!-- This section adds workoutbits to the workout -->
+
 	<% if current_user.try(:admin?) %>
 		<table class="table">
 			<%= form_for :workoutbit, url: workoutbits_path do |form| %>
@@ -56,7 +58,7 @@
 				<tr>
 					<td>
 						<%= form.label :exercise_id, "Exercise ID:" %>
-						<%= form.select :exercise_id, options_for_select(@exerciseidoptions), {}, {class: "form-control"} %>
+						<%= form.select :exercise_id, options_from_collection_for_select(@exerciseidoptions, "id", "name"), {}, {class: "form-control"} %>
 					</td>
 					<td>
 						<%= form.label :sets, "Sets" %>
@@ -77,6 +79,9 @@
 			<% end %>
 		</table>
 	<% end %>
+
+	<!-- This checks to see if a warmup already exists for workout, if not, it displays the form to add a warmup. -->
+
 	<% if @warmups.count < 1 %>
 	<% if current_user.try(:admin?) %>
 		<table class="table">
@@ -84,13 +89,16 @@
 				<%= form_for :warmwork, url: warmworks_path do |form| %>
 					<%= form.hidden_field :workout_id, value: @workout.id %>
 					<td align="right"><%= form.label :warmup_id %></td>
-					<td><%= form.select :warmup_id, options_for_select(@warmupidoptions), {}, class: "form-control" %></td>
+					<td><%= form.select :warmup_id, options_from_collection_for_select(@warmupidoptions, "id", "name"), {}, class: "form-control" %></td>
 					<td><%= form.submit "Add warmup", class: "btn btn-primary" %></td>
 				<% end %>
 			</tr>
 		</table>
 	<% end %>
 	<% end %>
+
+	<!-- This section is for adding and displaying comments -->
+
 	<table class='table'>
 		<tr>
 			<%= form_for :like, url: likes_path do |form| %>

@@ -18,7 +18,7 @@ class SubscriptionsController < ApplicationController
     unless @weekplan.fri_workout_id.blank?; @workoutCount +=1 end
     unless @weekplan.sat_workout_id.blank?; @workoutCount +=1 end
     unless @weekplan.sun_workout_id.blank?; @workoutCount +=1 end
-    @subscription = Subscription.new(@workoutCount)
+    @subscription = Subscription.new
   end
 
   def edit
@@ -30,6 +30,7 @@ class SubscriptionsController < ApplicationController
     today = Date.today
     @days_from_this_week = (today.at_beginning_of_week(:sunday)..today.at_end_of_week(:sunday)).map
     @todaySubscriptions = current_user.subscriptions.where(schedule: Date.today, complete: false)
+    
   end
 
   def create
