@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :warmworks
+
+  resources :warmups
+
   resources :weekplans
 
   resources :comments

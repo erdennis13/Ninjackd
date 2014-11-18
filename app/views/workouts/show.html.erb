@@ -1,6 +1,5 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-
 	<h1><%= @workout.name %> <small><%= @workout.description %></small></h1>
 
 	<table class="table">
@@ -23,7 +22,13 @@
 				<% end %>
 			</td>
 		</tr>
+		<tr>
+		</tr>
 	</table>
+			<% @warmups.each do |show| %>
+				<h4>Warmup: <small><%= show.warmup.description %></small> <%= if current_user.try(:admin?); link_to "Delete", show, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs" end %></h4>
+
+			<% end %>
 
 	<h2>Exercises:</h2>
 
@@ -72,7 +77,18 @@
 			<% end %>
 		</table>
 	<% end %>
-
+	<% if current_user.try(:admin?) %>
+		<table class="table">
+			<tr>
+				<%= form_for :warmwork, url: warmworks_path do |form| %>
+					<%= form.hidden_field :workout_id, value: @workout.id %>
+					<td align="right"><%= form.label :warmup_id %></td>
+					<td><%= form.select :warmup_id, options_for_select(@warmupidoptions), {}, class: "form-control" %></td>
+					<td><%= form.submit "Add warmup", class: "btn btn-primary" %></td>
+				<% end %>
+			</tr>
+		</table>
+	<% end %>
 	<table class='table'>
 		<tr>
 			<%= form_for :like, url: likes_path do |form| %>
@@ -96,7 +112,7 @@
 	</table>
 
 	<div class="row">
-		<div class="col-md-offset-1 col-md-10"
+		<div class="col-md-offset-1 col-md-10">
 			<ul class="list-group" width="80%">
 				<% @workout.comments.each do |print| %>
 					<li class="list-group-item"><strong><%= print.user.try(:username) %>:</strong> <%= print.comment %></li>

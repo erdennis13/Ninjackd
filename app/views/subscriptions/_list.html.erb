@@ -16,9 +16,9 @@
 	    	<% @todaySubscriptions.each do |this| %>
 	    		<tr>
 	    			<% if this.histories.count > 0 %>
-						<td><%= link_to "Continue Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
+						<td data-no-turbolink="true"><%= link_to "Continue Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
 					<% else %>
-						<td><%= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
+						<td  data-no-turbolink="true"><%= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
 					<% end %>
 					<td><%= link_to this.workout.name, this.workout, class: "workoutLink" %></td>
 					<td><%= this.workout.category %></td>

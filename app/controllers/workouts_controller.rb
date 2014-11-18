@@ -39,6 +39,15 @@ class WorkoutsController < ApplicationController
     @exerciseOptions.each do |add|
       @exerciseidoptions.append(add.id)
     end
+
+    @warmupoptions = Warmup.all
+    @warmupidoptions = []
+    @warmupoptions.each do |add|
+      @warmupidoptions.append(add.id)
+    end
+
+    @warmups = @workout.warmworks.all
+
   end
 
   def new
@@ -46,6 +55,12 @@ class WorkoutsController < ApplicationController
     @workoutbits = @workout.workoutbits.build
     @exercise = @workoutbits.build_exercise
     @facilityOptions = ["","yes", "no"]
+
+    @warmupoptions = Warmup.all
+    @warmupidoptions = []
+    @warmupoptions.each do |add|
+      @warmupidoptions.append(add.id)
+    end
   end
   
   def edit

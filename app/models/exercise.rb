@@ -1,5 +1,5 @@
 class Exercise < ActiveRecord::Base
-	has_many :workoutbits
+	has_many :workoutbits, dependent: :destroy
 	has_many :workouts, :through => :workoutbits
 	
 	has_attached_file :diagram, :styles => { :medium => "300x300>", :thumb => "100x100>" }

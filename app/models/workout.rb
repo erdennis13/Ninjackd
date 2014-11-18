@@ -3,6 +3,10 @@ class Workout < ActiveRecord::Base
 	has_many :exercises, :through => :workoutbits
 	accepts_nested_attributes_for :workoutbits
 
+	has_many :warmworks, dependent: :destroy
+	has_many :warmups, through: :warmworks
+	accepts_nested_attributes_for :warmworks
+
 	has_many :subscriptions
 	has_many :users, :through => :subscriptions
 	has_many :likes

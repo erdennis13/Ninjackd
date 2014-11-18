@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<p>
+		  <strong>Warmup:</strong>
+		  <%= @warmwork.warmup_id %>
+		</p>
+
+		<p>
+		  <strong>Workout:</strong>
+		  <%= @warmwork.workout_id %>
+		</p>
+	</div>
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_warmwork_path(@warmwork) %> |
+		<%= link_to 'Back', warmworks_path %>
+	</div>
+</div>

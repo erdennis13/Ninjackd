@@ -1,0 +1,25 @@
+<%= form_for(@warmwork) do |f| %>
+  <% if @warmwork.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@warmwork.errors.count, "error") %> prohibited this warmwork from being saved:</h2>
+
+      <ul>
+      <% @warmwork.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :warmup_id %>
+    <%= f.number_field :warmup_id, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :workout_id %>
+    <%= f.number_field :workout_id, class: "form-control" %>
+  </div>
+  <div class="actions form-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

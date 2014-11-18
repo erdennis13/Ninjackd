@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class=panel-body>
+  <div class="panel-body">
     <h1>Workouts</h1>
 
     <table class="table">
@@ -51,7 +51,7 @@
         <tbody>
           <% @workouts.each do |workout| %>
             <tr>
-              <td><%= link_to workout.name, workout, class: "workoutLink" %></td>
+              <td data-no-turbolink="true"><%= link_to workout.name, workout, class: "workoutLink" %></td>
               <td><%= workout.category %></td>
               <td><%= workout.description %></td>
               <td><%= workout.duration %></td>
