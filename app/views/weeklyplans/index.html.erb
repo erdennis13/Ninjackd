@@ -13,8 +13,7 @@
       <tbody>
         <% @weeklyplans.each do |weeklyplan| %>
           <tr>
-            <td><%= weeklyplan.name %></td>
-            <td><%= link_to 'Show', weeklyplan %></td>
+            <td><%= link_to weeklyplan.name, weeklyplan, class: "workoutLink" %></td>
             <td><%= link_to 'Edit', edit_weeklyplan_path(weeklyplan) %></td>
             <td><%= link_to 'Destroy', weeklyplan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

@@ -19,7 +19,7 @@ class WeeklybitsController < ApplicationController
     @weeklybit = Weeklybit.new(weeklybit_params)
    respond_to do |format|
       if @weeklybit.save
-        format.html { redirect_to weeklybits_url, notice: 'Weeklybit was successfully created.' }
+        format.html { redirect_to :back, notice: 'Weeklybit was successfully created.' }
         format.json { render action: 'show', status: :created, location: @weeklybit }
       else
         format.html { redirect_to weeklybits_url, notice: 'Weeklybit was unsuccessfully created.' }
@@ -44,7 +44,7 @@ class WeeklybitsController < ApplicationController
   def destroy
     @weeklybit.destroy
     respond_to do |format|
-      format.html { redirect_to weekbit_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
