@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<p>
+		  <strong>Name:</strong>
+		  <%= @weeklyplan.name %>
+		</p>
+		
+	</div>
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_weeklyplan_path(@weeklyplan) %> |
+		<%= link_to 'Back', weeklyplans_path %>
+	</div>
+</div>

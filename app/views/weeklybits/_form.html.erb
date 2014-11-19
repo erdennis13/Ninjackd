@@ -1,0 +1,29 @@
+<%= form_for(@weeklybit) do |f| %>
+  <% if @weeklybit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@weeklybit.errors.count, "error") %> prohibited this weeklybit from being saved:</h2>
+
+      <ul>
+      <% @weeklybit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :weeklyplan_id %>
+    <%= f.number_field :weeklyplan_id, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :workout_id %>
+    <%= f.number_field :workout_id, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :day %>
+    <%= f.number_field :day, class: "form-control" %>
+  </div>
+  <div class="actions form-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

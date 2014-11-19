@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<p>
+		  <strong>Weeklyplan:</strong>
+		  <%= @weeklybit.weeklyplan_id %>
+		</p>
+
+		<p>
+		  <strong>Workout:</strong>
+		  <%= @weeklybit.workout_id %>
+		</p>
+
+		<p>
+		  <strong>Day:</strong>
+		  <%= @weeklybit.day %>
+		</p>
+	</div>
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_weeklybit_path(@weeklybit) %> |
+		<%= link_to 'Back', weeklybits_path %>
+	</div>
+</div>
+

@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>Listing weeklyplans</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @weeklyplans.each do |weeklyplan| %>
+          <tr>
+            <td><%= weeklyplan.name %></td>
+            <td><%= link_to 'Show', weeklyplan %></td>
+            <td><%= link_to 'Edit', edit_weeklyplan_path(weeklyplan) %></td>
+            <td><%= link_to 'Destroy', weeklyplan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+
+    <%= link_to 'New Weeklyplan', new_weeklyplan_path %>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118010209) do
+ActiveRecord::Schema.define(version: 20141119023021) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -95,6 +95,20 @@ ActiveRecord::Schema.define(version: 20141118010209) do
   create_table "warmworks", force: true do |t|
     t.integer  "warmup_id"
     t.integer  "workout_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "weeklybits", force: true do |t|
+    t.integer  "weeklyplan_id"
+    t.integer  "workout_id"
+    t.integer  "day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "weeklyplans", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :weeklybits
+
+  resources :weeklyplans
+
   resources :warmworks
 
   resources :warmups
