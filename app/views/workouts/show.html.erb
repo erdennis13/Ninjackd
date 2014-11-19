@@ -1,54 +1,54 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 	<h1><%= @workout.name %> <small><%= @workout.description %></small></h1>
+	<div class="table-responsive">
+		<table class="table">
+			<tr>
+				<td style="vertical-align:bottom">
+					<h3>Category: <small><%= @workout.category %></small></h3>
+				</td>
+				<td style="vertical-align:bottom">
+					<h3>Duration (min): <small><%= @workout.duration %></small></h3>
+				</td>
+				<!-- This form is for subscribing to a workout -->
+					<%= form_for :subscription, url: subscriptions_path do |form| %>
+						<%= form.hidden_field :workout_id, value: @workout.id %>
+						<%= form.hidden_field :user_id, value: current_user.id %>
+						<td style="vertical-align:bottom", align="right">
+							<%= form.label :schedule, "Schedule this workout" %>
+							<%= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } %>
+						</td>
+						<td style="vertical-align:bottom" align="right"><%= form.submit "Subscribe" , class: "btn btn-primary" %></td>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+			</tr>
+		</table>
 
-	<table class="table">
-		<tr>
-			<td style="vertical-align:bottom">
-				<h3>Category: <small><%= @workout.category %></small></h3>
-			</td>
-			<td style="vertical-align:bottom">
-				<h3>Duration (min): <small><%= @workout.duration %></small></h3>
-			</td>
-			<!-- This form is for subscribing to a workout -->
-				<%= form_for :subscription, url: subscriptions_path do |form| %>
-					<%= form.hidden_field :workout_id, value: @workout.id %>
-					<%= form.hidden_field :user_id, value: current_user.id %>
-					<td style="vertical-align:bottom", align="right">
-						<%= form.label :schedule, "Schedule this workout" %>
-						<%= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } %>
-					</td>
-					<td style="vertical-align:bottom" align="right"><%= form.submit "Subscribe" , class: "btn btn-primary" %></td>
-				<% end %>
-			</td>
-		</tr>
-		<tr>
-		</tr>
-	</table>
 			<% @warmups.each do |show| %>
 				<h4>Warmup: <small><%= show.warmup.description %></small> <%= if current_user.try(:admin?); link_to "Delete", show, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs" end %></h4>
 
 			<% end %>
 
 	<h2>Exercises:</h2>
+		<table class="table table-striped">
+			<% @workout.workoutbits.each do |work|  %>
 
-	<table class="table table-striped">
-		<% @workout.workoutbits.each do |work|  %>
+				<%#= link_to Exercise.find(work.exercise_id).name, Exercise.find(work.exercise_id), class: "workoutLink" %>
+				<tr>
+					<td><h4><%= link_to work.exercise.name, work.exercise, class: "workoutLink" %></h4></td>
+					<td style="vertical-align:middle">Sets: <%= work.sets %> </td>
+					<td style="vertical-align:middle">Reps: <%= work.reps %> </td>
+					<td style="vertical-align:middle">Restime: <%= work.restime %> seconds</td>
+					<% if current_user.try(:admin?) %>
+						<td style="vertical-align:middle" align="right"><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+					<% end %>
+				</tr>
 
-			<%#= link_to Exercise.find(work.exercise_id).name, Exercise.find(work.exercise_id), class: "workoutLink" %>
-			<tr>
-				<td><h4><%= link_to work.exercise.name, work.exercise, class: "workoutLink" %></h4></td>
-				<td style="vertical-align:middle">Sets: <%= work.sets %> </td>
-				<td style="vertical-align:middle">Reps: <%= work.reps %> </td>
-				<td style="vertical-align:middle">Restime: <%= work.restime %> seconds</td>
-				<% if current_user.try(:admin?) %>
-					<td style="vertical-align:middle" align="right"><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
-				<% end %>
-			</tr>
-
-		<% end %>
-	</table>
-
+			<% end %>
+		</table>
+	</div>
 	<!-- This section adds workoutbits to the workout -->
 
 	<% if current_user.try(:admin?) %>

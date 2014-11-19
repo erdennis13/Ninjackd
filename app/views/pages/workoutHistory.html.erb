@@ -4,38 +4,38 @@
 		<h1>Here's your completed workouts!</h1>
 
 		<% @subscriptions = current_user.subscriptions.where(:complete => true).order("created_at DESC").paginate(:page => params[:page], :per_page => 10) %>
-
-		<table class="table table-striped">
-			<thead>
-				<tr>
-		            <th>Name</th>
-		            <th>Category</th>
-		            <th>Description</th>
-		            <th>Date</th>
-		            <th>Time Taken (min)</th>
-				<tr>
-			</thead>
-
-			<% @subscriptions.each do |this| %>
-				<% if this.complete? %>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
 					<tr>
-						<td><%= link_to this.workout.name , detailedHistory_path(subscription_id: this.id), class: "workoutLink" %></td>
-						<td><%= this.workout.category %></td>
-						<td><%= this.workout.description %></td>
-						<% finish = this.try :finish_time %>
-						<td><%unless finish.blank? %>
-							<%= finish.try :month %>/<%= finish.try :day %>
-							<% end %></td>
-						<% unless this.finish_time.blank? or this.start_time.blank? %>
-							<td><%= elapsed_time = (((this.finish_time - this.start_time))/60).round(0) %> min</td>
-						<% else %>
-							<td></td>
-						<% end %>
-					</tr>
-				<% end %>
-			<% end %>
+			            <th>Name</th>
+			            <th>Category</th>
+			            <th>Description</th>
+			            <th>Date</th>
+			            <th>Time Taken (min)</th>
+					<tr>
+				</thead>
 
-		</table>
+				<% @subscriptions.each do |this| %>
+					<% if this.complete? %>
+						<tr>
+							<td><%= link_to this.workout.name , detailedHistory_path(subscription_id: this.id), class: "workoutLink" %></td>
+							<td><%= this.workout.category %></td>
+							<td><%= this.workout.description %></td>
+							<% finish = this.try :finish_time %>
+							<td><%unless finish.blank? %>
+								<%= finish.try :month %>/<%= finish.try :day %>
+								<% end %></td>
+							<% unless this.finish_time.blank? or this.start_time.blank? %>
+								<td><%= elapsed_time = (((this.finish_time - this.start_time))/60).round(0) %> min</td>
+							<% else %>
+								<td></td>
+							<% end %>
+						</tr>
+					<% end %>
+				<% end %>
+			</table>
+		</div>
 	</div>
 </div>
 

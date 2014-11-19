@@ -3,23 +3,24 @@
 		<% @subscription = Subscription.find(params[:subscription_id]) %>
 
 		<h2><%= @subscription.workout.name %> <small>Keep up the great work!</small> </h2>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<th>Exercise</th>
+					<th>Sets</th>
+					<th>Reps</th>
+				</thead>
 
-		<table class="table table-striped">
-			<thead>
-				<th>Exercise</th>
-				<th>Sets</th>
-				<th>Reps</th>
-			</thead>
 
-
-			<% @subscription.workout.workoutbits.each do |this| %>
-				<tr>
-					<td><%= link_to this.exercise.name, this.exercise, class: "workoutLink" %></td>
-					<td><%= this.sets %></td>
-					<td><%= this.reps %></td>
-				</tr>
-			<% end %>
-		</table>
+				<% @subscription.workout.workoutbits.each do |this| %>
+					<tr>
+						<td><%= link_to this.exercise.name, this.exercise, class: "workoutLink" %></td>
+						<td><%= this.sets %></td>
+						<td><%= this.reps %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
 	</div>
 	<div class="panel-footer">
 		<%= link_to "Back", workoutHistory_path %>

@@ -3,29 +3,31 @@
 		<div class="panel-body">
 
 			<h1>Workout Subscription History</h1>
-			<table class="table">
-				<thead>
-					<th>Name</th>
-					<th>Category</th>
-					<th>Description</th>
-					<th>Hits</th>
-					<th>Likes</th>
-					<th>Comments</th>
-				</thead>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<th>Name</th>
+						<th>Category</th>
+						<th>Description</th>
+						<th>Hits</th>
+						<th>Likes</th>
+						<th>Comments</th>
+					</thead>
 
 
-				<% @workouts.each do |list| %>
-					<tr>
-						<td><%= list.name %></td>
-						<td><%= list.category %></td>
-						<td><%= list.description %></td>
-						<td><%= list.subscriptions.count %></td>
-						<td><%= list.likes.count %></td>
-						<td><%= list.comments.count %></td>
-					</tr>
-				<% end %>
+					<% @workouts.each do |list| %>
+						<tr>
+							<td><%= list.name %></td>
+							<td><%= list.category %></td>
+							<td><%= list.description %></td>
+							<td><%= list.subscriptions.count %></td>
+							<td><%= list.likes.count %></td>
+							<td><%= list.comments.count %></td>
+						</tr>
+					<% end %>
 
-			</table>
+				</table>
+			</div>
 
 		</div>
 
