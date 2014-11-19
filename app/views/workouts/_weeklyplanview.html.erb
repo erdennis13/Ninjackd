@@ -1,1 +1,46 @@
-<h1>Hey, bitch</h1>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h1>Weekly Plans</h1>
+		<table class="table table-striped">
+			<thead>
+				<th>Name</th>
+				<th>Sunday</th>
+				<th>Monday</th>
+				<th>Tuesday</th>
+				<th>Wednesday</th>
+				<th>Thursday</th>
+				<th>Friday</th>
+				<th>Saturday</th>
+			</thead>
+			<% @weeklyplans.each do |weeklyplan| %>
+					<tr>
+						<td><%= weeklyplan.name %></td>
+						<% @dayinc = 1 %>
+						<% 7.times do %>
+							<% @hasbit = false %>
+							<% weeklyplan.weeklybits.each do |check| %>
+								<% if check.day == @dayinc %>
+									<% @hasbit = true %>
+								<% end %>
+							<% end %>
+
+
+							<% if @hasbit %>
+								<% weeklyplan.weeklybits.each do |check| %>
+									<% if check.day == @dayinc %>
+										<td>
+											<%= link_to check.workout.name, check.workout, class: "workoutLink" %><br/>
+										</td>
+									<% end %>
+								<% end %>
+							<% else %>
+								<td></td>
+							<% end %>
+						<% @dayinc += 1 %>
+
+						<% end %>
+					</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

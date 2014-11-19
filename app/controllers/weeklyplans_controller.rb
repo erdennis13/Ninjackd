@@ -7,8 +7,6 @@ class WeeklyplansController < ApplicationController
 
   def show
     @workouts = Workout.all
-    @dayoptions = [""]
-    @dayoptions += (1...8).to_a
   end
 
   def new
