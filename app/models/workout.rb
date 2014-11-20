@@ -17,7 +17,6 @@ class Workout < ActiveRecord::Base
 	has_many :users, :through => :likes
 	has_many :comments
 	has_many :users, :through => :comments
-	has_many :weekplans
 	
 
 	validates_presence_of :name, :description, :category, :duration
@@ -30,6 +29,14 @@ class Workout < ActiveRecord::Base
 
 	def self.search(term)
    		where("name like :term", term: "%#{term}%")
+ 	end
+
+ 	def create_subscription(user, workout, schedule)
+ 		@subscription = Subscription.new
+ 		@subscription.user_id = user
+ 		@subscription.workout_id = workout
+ 		@subscription.schedule = schedule
+ 		@subscription.save
  	end
 
 end

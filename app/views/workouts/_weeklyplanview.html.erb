@@ -32,6 +32,7 @@
 							<% weeklyplan.weeklybits.each do |check| %>
 								<% if check.day == @dayinc %>
 									<% @hasbit = true %>
+									
 								<% end %>
 							<% end %>
 
@@ -39,6 +40,8 @@
 								<% weeklyplan.weeklybits.each do |check| %>
 									<% if check.day == @dayinc %>
 										<td>
+											<!-- Need to tie this button to a subscribe button, to only run once clicked -->
+											<% check.create_subscription(current_user.id, check.workout.id, dates[check.day]) %>
 											<%= link_to check.workout.name, check.workout, class: "workoutLink" %><br/>
 											<%= form_for :subscription, url: subscriptions_path do |form| %>
 												<%= form.hidden_field :user_id, value: current_user.id %>
@@ -66,6 +69,7 @@
 							<td><%= form.submit "Subscribe", class: "btn btn-primary" %></td>
 						<% end %>
 
+					
 
 					</tr>
 			<% end %>
