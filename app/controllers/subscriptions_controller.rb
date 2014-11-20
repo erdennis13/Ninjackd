@@ -17,10 +17,11 @@ class SubscriptionsController < ApplicationController
 
   def profile
     @subscriptions = current_user.subscriptions.where(:complete => false, schedule: Date.today..Date.today + 14).where.not(schedule: Date.today).order("schedule ASC").paginate(:page => params[:page], :per_page => 10)
-    @scheduled = current_user.subscriptions.where.not(schedule: nil )
+    @scheduled = current_user.subscriptions.where.not(schedule: nil, schedule: Date.today - 7..Date.today - 1)
     today = Date.today
     @days_from_this_week = (today.at_beginning_of_week(:sunday)..today.at_end_of_week(:sunday)).map
     @todaySubscriptions = current_user.subscriptions.where(schedule: Date.today, complete: false)
+    @completedSubscriptions = current_user.subscriptions.where(complete: true, schedule: Date.today-7..Date.today-1)
     
   end
 

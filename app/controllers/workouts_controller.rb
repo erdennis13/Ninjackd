@@ -12,7 +12,7 @@ class WorkoutsController < ApplicationController
     @workouts = @workouts.duration_lt(params[:less_than]) if params[:less_than].present?
     @workouts = @workouts.search(params[:search]) if params[:search].present?
     @user = current_user
-    @weeklyplans = Weeklyplan.all
+    @weeklyplans = Weeklyplan.where(active: true)
   end
 
   def admin

@@ -15,6 +15,20 @@
 			<div class="panel-body">
 					<% @none = 0 %>
 					<% @count = 0 %>
+					<% @completedSubscriptions.each do |past| %>
+						<% if @count > 0 %>
+							<hr/>
+						<% end %>
+						<% if past.schedule == list %>
+							<div class="well">
+							<h4><%= link_to past.workout.name, past.workout, class: "workoutLink" %></h4>
+							<p><%= past.workout.description %></p>
+							</div>
+							<% @count +=1 %>
+							<% @none += 1%>
+						<% end %>
+					<% end %>
+					<% @count = 0 %>
 					<% @scheduled.each do |check| %>
 						
 						<% if check.schedule == list %>
