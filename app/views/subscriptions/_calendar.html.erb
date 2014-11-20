@@ -1,6 +1,12 @@
+<h1>Here's your week looks like</h1>
 <div id="weeks" class="transitions-enabled">
 	<% @days_from_this_week.each do |list| %>
-		<div class="box panel panel-default">
+		<% if list == Date.today %>
+			<div class="box panel panel-primary">
+		<% else %>
+			<div class="box panel panel-default">
+		<% end %>
+
 			<div class="panel-heading center">
 				<%= Date::DAYNAMES[list.wday] %><br/>
 				<%= Date::MONTHNAMES[list.month] %> <%= list.day %>

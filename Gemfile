@@ -40,6 +40,7 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
 
 gem 'aws-sdk', '~> 1.20.0'
+gem 'newrelic_rpm'
 
 # Use unicorn as the app server
 # gem 'unicorn'
