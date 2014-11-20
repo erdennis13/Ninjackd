@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119023021) do
+ActiveRecord::Schema.define(version: 20141120020651) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -109,19 +109,6 @@ ActiveRecord::Schema.define(version: 20141119023021) do
 
   create_table "weeklyplans", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "weekplans", force: true do |t|
-    t.string   "name"
-    t.integer  "sunday_workout_id"
-    t.integer  "monday_workout_id"
-    t.integer  "tuesday_workout_id"
-    t.integer  "wednesday_workout_id"
-    t.integer  "thursday_workout_id"
-    t.integer  "friday_workout_id"
-    t.integer  "saturday_workout_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

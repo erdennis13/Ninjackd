@@ -9,17 +9,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def new
-    @weekplan = Weekplan.find(params[:id])
-    @workoutCount = 0
-    unless @weekplan.mon_workout_id.blank?; @workoutCount +=1 end
-    unless @weekplan.tues_workout_id.blank?; @workoutCount +=1 end
-    unless @weekplan.wed_workout_id.blank?; @workoutCount +=1 end
-    unless @weekplan.thurs_workout_id.blank?; @workoutCount +=1 end
-    unless @weekplan.fri_workout_id.blank?; @workoutCount +=1 end
-    unless @weekplan.sat_workout_id.blank?; @workoutCount +=1 end
-    unless @weekplan.sun_workout_id.blank?; @workoutCount +=1 end
     @subscription = Subscription.new
-    7.times {@subscription.workouts.build}
   end
 
   def edit

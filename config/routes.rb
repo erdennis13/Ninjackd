@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   resources :warmups
 
-  resources :weekplans
-
   resources :comments
 
   resources :likes
