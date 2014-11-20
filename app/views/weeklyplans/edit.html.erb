@@ -1,11 +1,15 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<h1>Editing weeklyplan</h1>
+<% if current_user.try(:admin?) %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>Editing weeklyplan</h1>
 
-		<%= render 'form' %>
+			<%= render 'form' %>
+		</div>
+		<div class="panel-footer">
+			<%= link_to 'Show', @weeklyplan %> |
+			<%= link_to 'Back', weeklyplans_path %>
+		</div>
 	</div>
-	<div class="panel-footer">
-		<%= link_to 'Show', @weeklyplan %> |
-		<%= link_to 'Back', weeklyplans_path %>
-	</div>
-</div>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>

@@ -15,16 +15,20 @@
 							<h3><%= check.workout.name %></h3>
 							<p><%= check.workout.description %></p>
 							<% @count +=1 %>
-							<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
+							<% if current_user.try(:admin?) %>
+								<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
+							<% end %>
 						<% end %>
 						
 					<% end %>
-					<% if @count == 0 %>
-						<%= form_for :weeklybit, url: weeklybits_url do |form| %>
-							<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
-							<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name") %><br/>
-							<%= form.hidden_field :day, value: @dayinc %>
-							<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
+					<% if current_user.try(:admin?) %>
+						<% if @count == 0 %>
+							<%= form_for :weeklybit, url: weeklybits_url do |form| %>
+								<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
+								<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name") %><br/>
+								<%= form.hidden_field :day, value: @dayinc %>
+								<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
+							<% end %>
 						<% end %>
 					<% end %>
 			</div>

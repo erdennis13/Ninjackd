@@ -1,31 +1,36 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h1>Listing weeklybits</h1>
+<% if current_user.try(:admin?) %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h1>Listing weeklybits</h1>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Weeklyplan</th>
-          <th>Workout</th>
-          <th>Day</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @weeklybits.each do |weeklybit| %>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= weeklybit.weeklyplan_id %></td>
-            <td><%= weeklybit.workout_id %></td>
-            <td><%= weeklybit.day %></td>
-            <td><%= link_to 'Show', weeklybit %></td>
-            <td><%= link_to 'Edit', edit_weeklybit_path(weeklybit) %></td>
-            <td><%= link_to 'Destroy', weeklybit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Weeklyplan</th>
+            <th>Workout</th>
+            <th>Day</th>
+            <th colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @weeklybits.each do |weeklybit| %>
+            <tr>
+              <td><%= weeklybit.weeklyplan_id %></td>
+              <td><%= weeklybit.workout_id %></td>
+              <td><%= weeklybit.day %></td>
+              <td><%= link_to 'Show', weeklybit %></td>
+              <td><%= link_to 'Edit', edit_weeklybit_path(weeklybit) %></td>
+              <td><%= link_to 'Destroy', weeklybit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">
+      <%= link_to 'New Weeklybit', new_weeklybit_path %>
+    </div>
   </div>
-  <div class="panel-footer">
-    <%= link_to 'New Weeklybit', new_weeklybit_path %>
-  </div>
+<% else %>
+  <%= render 'pages/unauth' %>
+<% end %>

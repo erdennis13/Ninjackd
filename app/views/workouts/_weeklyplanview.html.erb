@@ -1,6 +1,16 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<h1>Weekly Plans</h1>
+		<% @date = Date.today.beginning_of_week(:sunday) %>
+		<% dates = Hash.new %>
+		<% dates[1] = @date %>
+		<% dates[2] = @date + 1 %>
+		<% dates[3] = @date + 2 %>
+		<% dates[4] = @date + 3 %>
+		<% dates[5] = @date + 4 %>
+		<% dates[6] = @date + 5 %>
+		<% dates[7] = @date + 6 %>
+
 		<table class="table table-striped">
 			<thead>
 				<th>Name</th>
@@ -11,6 +21,7 @@
 				<th>Thursday</th>
 				<th>Friday</th>
 				<th>Saturday</th>
+				<th></th>
 			</thead>
 			<% @weeklyplans.each do |weeklyplan| %>
 					<tr>
@@ -30,6 +41,12 @@
 									<% if check.day == @dayinc %>
 										<td>
 											<%= link_to check.workout.name, check.workout, class: "workoutLink" %><br/>
+											<%= form_for :subscription, url: subscriptions_path do |form| %>
+												<%= form.hidden_field :user_id, value: current_user.id %>
+												<%= form.hidden_field :workout_id, value: check.workout.id %>
+												<%= form.hidden_field :schedule, value: dates[check.day] %>
+												<%= form.submit "Subscribe", class: "btn btn-primary btn-xs" %>
+											<% end %>
 										</td>
 									<% end %>
 								<% end %>
@@ -37,8 +54,20 @@
 								<td></td>
 							<% end %>
 						<% @dayinc += 1 %>
-
 						<% end %>
+
+						<%= form_for :subscription, url: subscriptions_path do |form| %>
+							<% weeklyplan.weeklybits.each do |workout| %>
+								<%= fields_for workout, url: subscriptions_path do |r| %>
+									<%= r.hidden_field :user_id, value: current_user.id %>
+									<%= r.hidden_field :workout_id, value: workout.workout.id %>
+									<%= r.hidden_field :schedule, value: dates[workout.day] %>
+								<% end %>
+							<% end %>
+							<td><%= form.submit "Subscribe", class: "btn btn-primary" %></td>
+						<% end %>
+
+
 					</tr>
 			<% end %>
 		</table>

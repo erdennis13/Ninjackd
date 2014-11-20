@@ -19,6 +19,7 @@ class SubscriptionsController < ApplicationController
     unless @weekplan.sat_workout_id.blank?; @workoutCount +=1 end
     unless @weekplan.sun_workout_id.blank?; @workoutCount +=1 end
     @subscription = Subscription.new
+    7.times {@subscription.workouts.build}
   end
 
   def edit
