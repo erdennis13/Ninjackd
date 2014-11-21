@@ -10,4 +10,6 @@ class Weeklybit < ActiveRecord::Base
  		@sub.schedule = schedule
  		@sub.save
  	end
+
+
 end
