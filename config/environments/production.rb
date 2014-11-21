@@ -101,11 +101,13 @@ Rails.application.configure do
   domain: 'ninjackd.com',
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: 'ethan@ninjackd.com',
-  password: 'MICHtrack13!'
+  user_name: ENV["GMAIL_USERNAME"],
+  password: ENV["GMAIL_PASSWORD"]
 }
 
 =begin
+  user_name: 'ethan@ninjackd.com',
+  password: 'MICHtrack13!'
   ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   :address => 'smtpout.secureserver.net',

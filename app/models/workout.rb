@@ -31,12 +31,4 @@ class Workout < ActiveRecord::Base
    		where("name like :term", term: "%#{term}%")
  	end
 
- 	def create_subscription(user, workout, schedule)
- 		@subscription = Subscription.new
- 		@subscription.user_id = user
- 		@subscription.workout_id = workout
- 		@subscription.schedule = schedule
- 		@subscription.save
- 	end
-
 end
