@@ -80,15 +80,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'http://www.ninjackd.com' }
 
-  #config.action_mailer.smtp_settings = {
-  #address: "smtp.simplefitapp.com",
-  #port: 587,
-  #domain: 'simplefitapp.com',
-  #authentication: "plain",
-  #enable_starttls_auto: true,
-  #user_name: 'ethan',
-  #password: 'MICHtrack13!'
-  #}
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -105,26 +96,6 @@ Rails.application.configure do
   password: ENV["GMAIL_PASSWORD"]
 }
 
-=begin
-  user_name: 'ethan@ninjackd.com',
-  password: 'MICHtrack13!'
-  ActionMailer::Base.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  :address => 'smtpout.secureserver.net',
-  :domain  => 'www.simplefitapp.com',
-  :port      => 80,
-  :user_name => 'ethan',
-  :password => 'MICHtrack13!',
-  :authentication => :plain}
-=end
-=begin
-config.action_mailer.smtp_settings = {  
-  :address              => "relay-hosting.secureserver.net",  
-  :port                 => 25,  
-  :domain               => "www.simplefitapp.com",  
-  :authentication       => "plain"
-}
-=end
 
 #saves images in Amazon S3 for paperclip
   config.paperclip_defaults = {

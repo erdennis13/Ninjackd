@@ -33,12 +33,18 @@
 		    		</tr>
 		    	<% end %>
 			</table>
+		<% if @subscriptions.blank? %>
+			</div>
+		<% end %>
 <% end %>
 
 	<% unless @subscriptions.blank? %>
 		<br/>
 		<h2>These are coming up on your calendar</h2>
-		<table class="table table-striped">
+		<% if @todaySubscriptions.blank? %>
+			<div class="table-responsive">
+		<% end %>
+			<table class="table table-striped">
 			<thead>
 	    		<tr>
 	    			

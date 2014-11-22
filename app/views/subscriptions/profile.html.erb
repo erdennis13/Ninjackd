@@ -3,7 +3,7 @@
 		<h1><%= current_user.name %> <small>Here are your workouts</small></h1>
 
 		<%= render 'list' %>
-			<% if @subscriptions.blank? and false %>
+			<% if @subscriptions.blank? and @todaySubscriptions.blank? %>
 				<h3>You don't have any active workouts right now!</h3>
 				<h3><%= link_to "Fix that", workouts_path %></h3>
 			<% end %>

@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   get "admin" => "workouts#admin"
   get "detailedHistory" => "pages#detailedHistory"
   get "findWorkout" => "workouts#findWorkout"
+
+  get "add_weekly_subscription" => "workouts#add_weekly_subscription"
+  post "add_weekly_subscription" => "workouts#add_weekly_subscription"
+
   #get "category" => "workouts#category"
   #post "category" => "workouts#category"
   #get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'

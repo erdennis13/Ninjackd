@@ -50,6 +50,36 @@ class WorkoutsController < ApplicationController
 
   end
 
+  def add_weekly_subscription
+    weeklyplan = Weeklyplan.find(params[:weeklyplan_id])
+    @date = Date.today.beginning_of_week(:sunday)
+    @user = current_user.id
+    dates = Hash.new
+    dates[1] = @date
+    dates[2] = @date + 1
+    dates[3] = @date + 2
+    dates[4] = @date + 3
+    dates[5] = @date + 4
+    dates[6] = @date + 5
+    dates[7] = @date + 6
+    @weeklyplan = weeklyplan
+    @dayinc = 1
+    7.times do
+      @weeklyplan.weeklybits.each do |check|
+        if check.day == @dayinc
+          @sub = Subscription.new
+          @sub.user_id = @user
+          @sub.workout_id = check.workout.id
+          @sub.schedule = dates[check.day]
+          @sub.save
+        end
+      end
+      @dayinc += 1
+    end
+    redirect_to profile_url
+    flash[:notice] = 'Weeklyplan was added successfully, bitch'
+  end
+
   def new
     @workout = Workout.new
     @workoutbits = @workout.workoutbits.build
