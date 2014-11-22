@@ -7,3 +7,4 @@ $ ->
 		$('#weeks').masonry ->
 			itemSelector: '.box'
 			isFitWidth: true
+

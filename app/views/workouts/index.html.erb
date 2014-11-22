@@ -1,90 +1,19 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h1>Workouts</h1>
-    <div class="table-responsive">
-      <table class="table">
-        <tr>
-          <%= form_tag workouts_path, :method => 'get' do %>
-            <td>
-                <%= label_tag(:search, "Search here") %>
-                <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "type here..." %>
-            </td>
-            
-              <%#= label_tag(:starts_with, "Search") %>
-              <%#= text_field_tag :starts_with, params[:starts_with], class: "form-control", placeholder: "type here..." %>
-            
-            <td width="20%">
-              <%= label_tag(:cat, "Category:") %>
-              <%= select_tag :cat, options_for_select(@workoutCategories), class: "form-control" %>
-            </td>
+<div class="tabbable"> 
+  <ul class="nav nav-pills nav-justified">
+    <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">All Workouts</a></li>
+    <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">Weekly Plans</a></li>
+  </ul>
 
-            <td width="20%">
-              <%= label_tag(:less_than, "Duration (min) <= ") %>
-              <%= number_field_tag :less_than, params[:less_than], class: "form-control" %>
-            </td>
-
-            <td align="center", style="vertical-align:bottom", width="10%">
-              <%= submit_tag("Filter", :name => nil, class: "btn btn-success") %>
-            </td>
-          <% end %>
-
-          <%= form_tag workouts_path, :method => 'get' do %>
-            <td align="center" style="vertical-align:bottom", width="10%"><%= submit_tag("Reset Filter", class: "btn btn-primary" )%></td>
-          <% end %>     
-        </tr>
-      </table>
-
-
-    <% unless @workouts.blank? %>
-
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Description</th>
-              <th>Duration (min)</th>
-              <% if current_user.try(:admin?) %>
-                <th colspan="2"></th>
-              <% end %>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @workouts.each do |workout| %>
-              <tr>
-                <td data-no-turbolink="true"><%= link_to workout.name, workout, class: "workoutLink" %></td>
-                <td><%= workout.category %></td>
-                <td><%= workout.description %></td>
-                <td><%= workout.duration %></td>
-                <% if current_user.try(:admin?) %>
-                  <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
-                  <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% end %>
-
-    <% if @workouts.blank? %>
-     <h2>Sorry, no workouts matched these filters. Please try something else</h2>
-     <p>If there's some different type of workouts you'd like to see, email us at <%= mail_to("ethan@ninjackd.com", name = nil, html_options = {subject: "Request for new workouts"}) %> </p>
-    <% end %>
-
-
-  </div>
-  <div class= "panel-footer">
-    <% if current_user.try(:admin?) %>
-      <%= link_to 'New Workout', new_workout_path %>
-    <% else %>
-      <%= mail_to("ethan@ninjackd.com", name = "Want to see something else? Let me know!", html_options = {subject: "Request for new workouts"}) %>
-    <% end %>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <%= render 'listview' %>
+    </div>
+    <div class="tab-pane" id="tab2" >
+      <%= render 'weeklyplanview' %>
+    </div>
   </div>
 </div>
 
-<%= render "weeklyplanview" %>
 
 <div class="center">
   <%= will_paginate @workouts, renderer: BootstrapPagination::Rails %>

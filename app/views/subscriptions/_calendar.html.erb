@@ -1,71 +1,70 @@
 
-	<h1>Here's your week looks like</h1>
-	<div id="weeks" class="transitions-enabled">
-		<% @days_from_this_week.each do |list| %>
-			<% if list == Date.today %>
-				<div class="box panel panel-primary">
-			<% elsif list > Date.today and list <= Date.today + 6 %>
-				<div class="box panel panel-info">
-			<% else %>
-				<div class="box panel panel-default">
-			<% end %>
+		<h1 class="center">Here's your week looks like</h1>
+		<div id="weeks" class="transitions-enabled">
+			<% @days_from_this_week.each do |list| %>
+				<% if list == Date.today %>
+					<div class="box panel panel-primary">
+				<% elsif list > Date.today and list <= Date.today + 6 %>
+					<div class="box panel panel-info">
+				<% else %>
+					<div class="box panel panel-default">
+				<% end %>
 
-				<div class="panel-heading center">
-					<%= Date::DAYNAMES[list.wday] %><br/>
-					<%= Date::MONTHNAMES[list.month] %> <%= list.day %>
-				</div>
+					<div class="panel-heading center">
+						<%= Date::DAYNAMES[list.wday] %><br/>
+						<%= Date::MONTHNAMES[list.month] %> <%= list.day %>
+					</div>
 
-				<div class="panel-body">
-						<% @none = 0 %>
-						<% @count = 0 %>
-						<% @scheduled.each do |check| %>
-							
-							<% if check.schedule == list %>
-								<% unless check.try(:complete?) %>
+					<div class="panel-body">
+							<% @none = 0 %>
+							<% @count = 0 %>
+							<% @scheduled.each do |check| %>
+								
+								<% if check.schedule == list %>
+									<% unless check.try(:complete?) %>
+										<% if @count > 0 %>
+											<hr/>
+										<% end %>
+										<div class="center">
+										<% if list == Date.today %>
+											<% if check.histories.count > 0 %>
+												<%= link_to "Continue Workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
+											<% else %>
+												<%= link_to "Start workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
+											<% end %>
+										<% end %>
+										</div>
+										<h4><%= link_to check.workout.name, check.workout, class: "workoutLink" %></h4>
+										<p><%= check.workout.description %></p>
+										
+										
+										<% @none += 1 %>
+										<% @count += 1 %>
+										<%= link_to 'Unsubscibe', check, method: :delete, data: { confirm: 'Are you sure?' } %>
+									<% end %>
+
+								<% end %>
+							<% end %>
+							<% @count = 0 %>
+							<% @completedSubscriptions.each do |past| %>
+								
+								<% if past.schedule == list %>
 									<% if @count > 0 %>
 										<hr/>
 									<% end %>
-									<div class="center">
-									<% if list == Date.today %>
-										<% if check.histories.count > 0 %>
-											<%= link_to "Continue Workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
-										<% else %>
-											<%= link_to "Start workout", currentWorkout_path(subscription_id: check.id), class: "btn btn-primary btn-sm" %>
-										<% end %>
-									<% end %>
-									</div>
-									<h4><%= link_to check.workout.name, check.workout, class: "workoutLink" %></h4>
-									<p><%= check.workout.description %></p>
 									
+									<h4><%= link_to past.workout.name, past.workout, class: "workoutLink" %></h4>
+									<p><%= past.workout.description %></p>
 									
+									<% @count +=1 %>
 									<% @none += 1 %>
-									<% @count += 1 %>
-									<%= link_to 'Unsubscibe', check, method: :delete, data: { confirm: 'Are you sure?' } %>
 								<% end %>
-
 							<% end %>
-						<% end %>
-						<% @count = 0 %>
-						<% @completedSubscriptions.each do |past| %>
-							
-							<% if past.schedule == list %>
-								<% if @count > 0 %>
-									<hr/>
-								<% end %>
-								
-								<h4><%= link_to past.workout.name, past.workout, class: "workoutLink" %></h4>
-								<p><%= past.workout.description %></p>
-								
-								<% @count +=1 %>
-								<% @none += 1 %>
+							<% if @none == 0 %>
+								<%= image_tag "ninja folder/#{rand(27)}.png" %>
 							<% end %>
-						<% end %>
-						<% if @none == 0 %>
-							<%= image_tag "ninja folder/#{rand(27)}.png" %>
-						<% end %>
 
+					</div>
 				</div>
-			</div>
-		<% end %>
-	</div>
-
+			<% end %>
+		</div>

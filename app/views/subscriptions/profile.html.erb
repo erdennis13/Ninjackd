@@ -1,20 +1,24 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<h1><%= current_user.name %> <small>Here are your workouts</small></h1>
+<div class="tabbable"> 
+	<ul class="nav nav-pills nav-justified">
+	  <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">Calendar View</a></li>
+	  <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">List View</a></li>
+	</ul>
 
-		<%= render 'list' %>
-			<% if @subscriptions.blank? and @todaySubscriptions.blank? %>
-				<h3>You don't have any active workouts right now!</h3>
-				<h3><%= link_to "Fix that", workouts_path %></h3>
-			<% end %>
+	<div class="tab-content">
+		<div class="tab-pane active" id="tab1">
+			<%= render 'calendar' %>
+		</div>
+		<div class="tab-pane" id="tab2" >
+			<%= render 'list' %>
+		</div>
 	</div>
-
 </div>
+
+
+<%#= render 'list' %>
+<%#= render 'calendar' %>
+
 
 <div class="center">
   <%= will_paginate @subscriptions, renderer: BootstrapPagination::Rails %>
 </div>
-
-
-<%= render 'calendar' %>
-

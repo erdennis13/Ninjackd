@@ -17,3 +17,7 @@
 //= require turbolinks
 //= require masonry/jquery.masonry
 //= require_tree .
+
+$(document).ready(function() {
+	$('#tabbable').bootstrapWizard({'tabClass': 'nav nav-pills'});
+});
