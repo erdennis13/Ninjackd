@@ -77,7 +77,7 @@ class WorkoutsController < ApplicationController
       @dayinc += 1
     end
     redirect_to profile_url
-    flash[:notice] = 'Weeklyplan was added successfully, bitch'
+    flash[:notice] = 'Weeklyplan was added successfully to your subscriptions. Enjoy!'
   end
 
   def new

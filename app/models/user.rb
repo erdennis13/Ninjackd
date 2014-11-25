@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   has_many :users, :through => :comments
 
   accepts_nested_attributes_for :subscriptions
+
+  validates_presence_of :name, :username
 end
