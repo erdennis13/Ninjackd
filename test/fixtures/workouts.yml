@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  type: 
+  category: Strength
   description: MyText
   duration: 1
 
 two:
   name: MyString
-  type: 
+  category: Cardio
   description: MyText
   duration: 1

@@ -34,6 +34,10 @@ Rails.application.routes.draw do
   get "add_weekly_subscription" => "workouts#add_weekly_subscription"
   post "add_weekly_subscription" => "workouts#add_weekly_subscription"
 
+  get "welcome" => "pages#welcome"
+  get "cancel" => 'pages#cancel'
+  get 'purchase' => 'pages#purchase'
+
   #get "category" => "workouts#category"
   #post "category" => "workouts#category"
   #get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'

@@ -14,4 +14,5 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :subscriptions
 
   validates_presence_of :name, :username
+  validates_uniqueness_of :username, :email
 end
