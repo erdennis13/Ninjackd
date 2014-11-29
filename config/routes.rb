@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get "cancel" => 'pages#cancel'
   get 'purchase' => 'pages#purchase'
 
+  get 'paypal/checkout', to: "pages#paypal_checkout"
+
   #get "category" => "workouts#category"
   #post "category" => "workouts#category"
   #get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'
