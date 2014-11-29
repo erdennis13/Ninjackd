@@ -16,6 +16,35 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :username
   validates_uniqueness_of :username, :email
 
-  
+  def request_paypal_payment
+    @user = current_user
+    ppr = PayPal::Recurring.new({
+      :token       => @user.paypal_payment_token,
+      :payer_id    => @user.paypal_customer_token,
+      :amount      => 9.99,
+      :description => "Ninjackd Subscription"
+      })
+    response = ppr.request_payment
+    response.approved?
+    response.completed?
+  end
+
+  def make_recurring_profile
+    @user = current_user
+    ppr = PayPal::Recurring.new({
+      amount: 9.99,
+      currency: "USD",
+      description: "Ninjackd Subscription",
+      frequency: 1,
+      period: :monthly,
+      payer_id: @user.paypal_payment_token,
+      start_at: Time.zone.now,
+      failed: 1,
+      outstanding: :next_billing,
+
+      })
+    response = ppr.create_recurring_profile
+    @user.paypal_recurring_profile = response.profile_id
+  end
 
 end

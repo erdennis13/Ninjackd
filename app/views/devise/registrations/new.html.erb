@@ -10,7 +10,29 @@
 				  	<% if params[:token] %>
 				  		<%= f.hidden_field :paypal_customer_token, value: params[:PayerId] %>
 				  		<%= f.hidden_field :paypal_payment_token, value: params[:token] %>
-				  		<p>Payment has been recieved. Please fill out form to complete subscription. You will not be charged until you hit sign up.</p>
+
+				  		<p>Payment has been recieved. Please fill out form to complete your profile.</p>
+
+				  		<% ppr = PayPal::Recurring.new({ %>
+					      <% :token       => params[:token],%>
+					      <% :payer_id    => params[:PayerID],%>
+					      <% :amount      => 9.99,%>
+					      <% :description => "Ninjackd Subscription", %>
+					      <% currency: "USD", %>
+					      <% frequency: 1, %>
+					      <% period: :monthly, %>
+					      <% start_at: Time.zone.now, %>
+					      <% failed: 1, %>
+      					  <% outstanding: :next_billing%>
+					      <% }) %>
+					     
+					    <% response = ppr.request_payment %>
+					    <% response.approved? %>
+					    <% response.completed? %>
+
+					    <% response = ppr.create_recurring_profile %>
+					    <%= f.hidden_field :paypal_recurring_profile, value: response.profile_id %>
+
 				  	<% end %>
 
 				    <div class="form-group">
