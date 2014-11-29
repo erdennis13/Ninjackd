@@ -23,7 +23,10 @@
 					      <% period: :monthly, %>
 					      <% start_at: Time.zone.now, %>
 					      <% failed: 1, %>
-      					  <% outstanding: :next_billing%>
+      					  <% outstanding: :next_billing, %>
+      					  <% trial_length: 14, %>
+      					  <% trial_period: :daily, %>
+      					  <% trial_frequency: 1 %>
 					      <% }) %>
 					     
 					    <% response = ppr.request_payment %>
