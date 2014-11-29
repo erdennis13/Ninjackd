@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128223801) do
+ActiveRecord::Schema.define(version: 20141129233653) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20141128223801) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",     default: true
+    t.integer  "hits",       default: 0
   end
 
   create_table "workoutbits", force: true do |t|

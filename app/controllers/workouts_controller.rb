@@ -18,6 +18,7 @@ class WorkoutsController < ApplicationController
   def admin
     @workouts = Workout.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @users = User.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+    @weeklyplans = Weeklyplan.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
   end
 
   def findWorkout
@@ -77,6 +78,8 @@ class WorkoutsController < ApplicationController
       end
       @dayinc += 1
     end
+    weeklyplan.hits += 1
+    weeklyplan.save
     redirect_to profile_url
     flash[:notice] = 'Weeklyplan was added successfully to your subscriptions. Enjoy!'
   end
