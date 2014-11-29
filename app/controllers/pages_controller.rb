@@ -27,7 +27,7 @@ class PagesController < ApplicationController
   	ppr.cancel
   	@user.destroy
 
-  	flash[:notice] = "Your account has been cancelled. We're sorry to see you go, but come back anytime!"
+  	flash[:notice] = "Your account has been cancelled and billing will be discontinued. We're sorry to see you go, but come back anytime!"
   	redirect_to root_url
   end
 

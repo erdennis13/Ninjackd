@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   get 'paypal/checkout', to: "pages#paypal_checkout"
   get 'cancel_account', to: "pages#cancel_account"
+  post 'cancel_account', to: 'pages#cancel_account'
   get 'request_payment_process', to: "pages#request_payment_process"
   post 'request_payment_process', to: "pages#request_payment_process"
 

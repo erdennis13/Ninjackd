@@ -32,6 +32,8 @@ class HistoriesController < ApplicationController
     end
     @warmups = @subscription.workout.warmworks.all
     @history = History.new
+
+    flash[:notice] = "Make sure you mark your exercises complete as you do them"
   end
 
   def edit

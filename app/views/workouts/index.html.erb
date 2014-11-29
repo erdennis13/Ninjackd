@@ -1,22 +1,26 @@
-<div class="tabbable"> 
-  <ul class="nav nav-pills", style="margin-left:40%; margin-right:40%;">
-    <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">All Workouts</a></li>
-    <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">Weekly Plans</a></li>
-  </ul>
+<% if user_signed_in? %>
+  <div class="tabbable"> 
+    <ul class="nav nav-pills", style="margin-left:40%; margin-right:40%;">
+      <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">All Workouts</a></li>
+      <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">Weekly Plans</a></li>
+    </ul>
 
-  <div class="tab-content">
-    <div class="tab-pane active" id="tab1">
-      <br/>
-      <%= render 'listview' %>
-    </div>
-    <div class="tab-pane" id="tab2" >
-      <br/>
-      <%= render 'weeklyplanview' %>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        <br/>
+        <%= render 'listview' %>
+      </div>
+      <div class="tab-pane" id="tab2" >
+        <br/>
+        <%= render 'weeklyplanview' %>
+      </div>
     </div>
   </div>
-</div>
 
 
-<div class="center">
-  <%= will_paginate @workouts, renderer: BootstrapPagination::Rails %>
-</div>
+  <div class="center">
+    <%= will_paginate @workouts, renderer: BootstrapPagination::Rails %>
+  </div>
+<% else %>
+  <%= render 'pages/pleasesignin' %>
+<% end %>

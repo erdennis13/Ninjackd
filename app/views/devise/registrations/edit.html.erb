@@ -47,18 +47,10 @@
       </div>
 
       <div class="panel-footer">
-        <h3>Cancel my account</h3>
+        <h3>Unhappy with Ninjack'd?</h3>
+        <p><%= button_to "Cancel my account", cancel_account_path, data: { confirm: "Are you sure? You cannot undo this"}, class: "btn btn-danger" %></p>
 
-        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
-        
-        <%= link_to image_tag("https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif"), cancel_account_path %>
-       
-        <!--
-        <A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=YHDFP6EJ7KZRY">
-        <IMG SRC="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" BORDER="0">
-        </A>
-        -->
-        
+
       </div>
     </div>
   </div>
