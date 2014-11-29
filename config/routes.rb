@@ -44,6 +44,9 @@ Rails.application.routes.draw do
   get 'request_payment_process', to: "pages#request_payment_process"
   post 'request_payment_process', to: "pages#request_payment_process"
 
+  get 'mark_all_complete', to: 'histories#mark_all_complete'
+  post 'mark_all_complete', to: 'histories#mark_all_complete'
+
   #get "category" => "workouts#category"
   #post "category" => "workouts#category"
   #get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'

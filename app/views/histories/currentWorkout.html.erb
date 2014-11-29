@@ -2,7 +2,7 @@
 	<div class="panel-body" data-no-turbolink="true">
 
 	<h1><%= @subscription.workout.name %> <small><%= @subscription.workout.description %></small></h1>
-	<%#= form_for :history, url: histories_path do |form| %>
+	
 
 	<!-- This displays the associated warmup for each subscription -->
 	<h3>Warmup:<small>
@@ -56,27 +56,13 @@
 
 			</tr>
 		<% end %>
+		<tr>
+			<td colspan="4"></td>
+			<td><%= link_to "Mark all complete", mark_all_complete_url(subscription_id: @subscription.id), class: "btn btn-success" %></td>
+		</tr>
 	</table>
-	<%# end %>
 
-<% if false %><!-- This was an attempt to make a button that submitted all exercises at once. -->
-	<%= form_for @subscription do |form| %>
 
-		<% @subscription.workout.workoutbits.each do |each| %>
-			<%# History.new(subscription_id: @subscription.id, exercise_id: each.exercise.id, complete: true, reps: each.reps, sets: each.sets) %>
-			<% history = History.new %>
-			<% history.subscription_id = @subscription.id %>
-			<% history.exercise_id = each.exercise.id %>
-			<% history.complete = true %>
-			<% history.sets = each.sets %>
-			<% history.reps = each.reps %>
-			<% history.save %>
-		<% end %>
-
-		<%= form.hidden_field :complete, value: true %>
-		<%= form.submit "Complete workout", class: "btn btn-primary"  %>
-	<% end %>
-<% end %>
 
 
 	</div>

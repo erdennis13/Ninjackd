@@ -11,10 +11,19 @@
 					<th>Reps</th>
 				</thead>
 
-
+				<% if false %>
 				<% @subscription.workout.workoutbits.each do |this| %>
 					<tr>
 						<td><%= link_to this.exercise.name, this.exercise, class: "workoutLink" %></td>
+						<td><%= this.sets %></td>
+						<td><%= this.reps %></td>
+					</tr>
+				<% end %>
+				<% end %>
+
+				<% @subscription.histories.each do |this| %>
+					<tr>
+						<td><%= Exercise.find(this.exercise_id).name %></td>
 						<td><%= this.sets %></td>
 						<td><%= this.reps %></td>
 					</tr>

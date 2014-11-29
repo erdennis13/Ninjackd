@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h1>Showing User Statistics</h1>
+		<table class="table table-striped">
+			<thead>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Paid?</th>
+				<th>Num Completed Workouts</th>
+				<th>Member since</th>
+			</thead>
+			<% @users.each do |look| %>
+				<tr>
+					<td><%= look.try(:username) %></td>
+					<td><%= look.try(:email) %></td>
+					<td><%= look.paypal_customer_token.nil? ? "No": "Yes" %></td>
+					<td><%= look.subscriptions.where(complete: true).count %></td>
+					<td><%= look.created_at.month %>/<%= look.created_at.day %>/<%= look.created_at.year %></td>
+				</tr>
+
+			<% end %>
+		</table>
+	</div>
+</div>
+
+<div class="center">
+	<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+</div>

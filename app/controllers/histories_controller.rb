@@ -36,6 +36,26 @@ class HistoriesController < ApplicationController
     flash[:notice] = "Make sure you mark your exercises complete as you do them"
   end
 
+  def mark_all_complete
+    @subscription = Subscription.find(params[:subscription_id])
+    histories = History.where(subscription_id: :subscription_id)
+    @subscription.workout.workoutbits.each do |complete|
+
+      @history = History.new
+      @history.subscription_id = @subscription.id
+      @history.exercise_id = complete.exercise_id
+      @history.complete = true
+      @history.reps = complete.reps
+      @history.sets = complete.sets
+      @history.save
+        
+    end
+    @subscription.complete = true
+    @subscription.finish_time = Time.now
+    @subscription.save
+    redirect_to completedWorkout_url(workout_id: @subscription.workout_id)
+  end
+
   def edit
   end
 

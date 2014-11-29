@@ -1,41 +1,23 @@
 <% if current_user.try(:admin?) %>
-	<div class="panel panel-default">
-		<div class="panel-body">
 
-			<h1>Workout Subscription History</h1>
-			<div class="table-responsive">
-				<table class="table">
-					<thead>
-						<th>Name</th>
-						<th>Category</th>
-						<th>Description</th>
-						<th>Hits</th>
-						<th>Likes</th>
-						<th>Comments</th>
-					</thead>
+<div class="tabbable"> 
+	<ul class="nav nav-pills">
+	  <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">Subscription History</a></li>
+	  <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">User info</a></li>
+	</ul>
 
-
-					<% @workouts.each do |list| %>
-						<tr>
-							<td><%= list.name %></td>
-							<td><%= list.category %></td>
-							<td><%= list.description %></td>
-							<td><%= list.subscriptions.count %></td>
-							<td><%= list.likes.count %></td>
-							<td><%= list.comments.count %></td>
-						</tr>
-					<% end %>
-
-				</table>
-			</div>
-
+	<div class="tab-content">
+		<div class="tab-pane active" id="tab1">
+			<br/>
+			<%= render 'adminSubscriptionCount' %>
 		</div>
-
+		<div class="tab-pane" id="tab2" >
+			<br/>
+			<%= render 'userCount' %>
+		</div>
 	</div>
+</div>
 
-	<div class="center">
-		<%= will_paginate @workouts, renderer: BootstrapPagination::Rails %>
-	</div>
 <% else %>
 	<%= render 'pages/unauth' %>
 <% end %>
