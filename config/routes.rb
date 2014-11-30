@@ -47,6 +47,9 @@ Rails.application.routes.draw do
   get 'mark_all_complete', to: 'histories#mark_all_complete'
   post 'mark_all_complete', to: 'histories#mark_all_complete'
 
+  get 'add_new_user', to: "workouts#add_new_user"
+  post 'add_new_user', to: "workouts#add_new_user"
+
   #get "category" => "workouts#category"
   #post "category" => "workouts#category"
   #get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'

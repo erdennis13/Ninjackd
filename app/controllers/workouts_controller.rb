@@ -19,6 +19,20 @@ class WorkoutsController < ApplicationController
     @workouts = Workout.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @users = User.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @weeklyplans = Weeklyplan.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+    @user = User.new
+  end
+
+  def add_new_user
+    @newuser = User.new
+    @newuser.name = params["user"][:name]
+    @newuser.username = params["user"][:username]
+    @newuser.password = params["user"][:password]
+    @newuser.admin = params["user"][:admin]
+    @newuser.email = params["user"][:email]
+    @newuser.paypal_payment_token = params["user"][:paypal_payment_token]
+    @newuser.save!
+    flash[:notice] = "#{@newuser.name} has been added to the users"
+    redirect_to admin_path
   end
 
   def findWorkout

@@ -27,7 +27,7 @@ class PagesController < ApplicationController
   	ppr.cancel
   	@user.destroy
 
-  	flash[:notice] = "Your account has been cancelled and billing will be discontinued. We're sorry to see you go, but come back anytime!"
+  	flash[:notice] = "Your account has been cancelled and billing will be discontinued. We're sorry to see you go; come back anytime!"
   	redirect_to root_url
   end
 
@@ -40,7 +40,7 @@ class PagesController < ApplicationController
   	email = params["user"][:email]
   	password = params["user"][:password]
 
-
+    #This function sets up a recurring billing profile and requests payment from paypal
   	ppr = PayPal::Recurring.new({
   		token: paypal_payment_token,
   		payer_id: paypal_customer_token,
