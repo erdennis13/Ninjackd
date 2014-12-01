@@ -29,9 +29,9 @@
             <li><%= link_to "Profile", profile_path %></li>
             <li><%= link_to "Workout History", workoutHistory_path %></li>
             <% if current_user.try(:admin?) %>
-              <li><%= link_to "Admin page", admin_path %></li>
               <li><%= link_to "Weekly Plans", weeklyplans_path %></li>
               <li><%= link_to "Warmups", warmups_path %></li>
+              <li><%= link_to "Admin page", admin_path %></li>
             <% end %>
             <li class="divider"></li>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
