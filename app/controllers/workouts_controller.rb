@@ -30,9 +30,13 @@ class WorkoutsController < ApplicationController
     @newuser.admin = params["user"][:admin]
     @newuser.email = params["user"][:email]
     @newuser.paypal_payment_token = params["user"][:paypal_payment_token]
-    @newuser.save!
-    flash[:notice] = "#{@newuser.name} has been added to the users"
-    redirect_to admin_path
+
+    if @newuser.save
+      format.html { redirect_to admin_path, notice: "#{@newuser.name} has been added to the users" }
+    else
+      redirect_to admin_path 
+      flash[:notice] = "User unable to be saved"
+    end
   end
 
   def findWorkout

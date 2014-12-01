@@ -33,3 +33,7 @@
 .alignRight {
 	float: right;
 }
+
+ul.nav a:hover {
+	color: #bdc3c7 !important;
+}

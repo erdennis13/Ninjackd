@@ -8,13 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Ninjack'd", root_path, class:"navbar-brand easyFitFont" %>
+      <div style="margin-top:10px" alt="Brand"><%= link_to image_tag("ninjack'd-crop.png", height: "30px"), root_path %></div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
+        <li class="nav-hov"><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", about_path %></li> 
         <% if user_signed_in? %>
           <li data-no-turbolink="true"><%= link_to "Workouts", workouts_path %></li>

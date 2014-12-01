@@ -5,6 +5,7 @@
 				<div class="panel-body">		
 					<h1>Add a user directly from here</h1>
 					<%= form_for @user, url: add_new_user_path do |form| %>
+						
 						<%= form.hidden_field :paypal_payment_token, value: "this is a dummy value" %>
 
 						<div class="form-group">
