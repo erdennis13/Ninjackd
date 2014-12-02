@@ -6,6 +6,9 @@
 		<%= link_to "Signup", purchase_path, class: "btn btn-primary" %>
 	<% end %>
 </div>
+
+<%= render 'dailytips/tipofday', {dailytip: Dailytip.where(show_date: Date.today).first } %>
+
 <div class="panel panel-default">
 	<div class="panel-body" data-no-turbolink="true">
 		<%= render "workouts/workouts" %>

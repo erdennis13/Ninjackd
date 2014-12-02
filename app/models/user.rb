@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :workouts, :through => :likes
   has_many :comments
   has_many :users, :through => :comments
+  has_many :dailytips
 
   accepts_nested_attributes_for :subscriptions
 

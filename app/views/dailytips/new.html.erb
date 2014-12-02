@@ -1,0 +1,14 @@
+<% if current_user.try(:admin) %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>New dailytip</h1>
+
+			<%= render 'form' %>
+		</div>
+		<div class="panel-footer">
+			<%= link_to 'Back', dailytips_path %>
+		</div>
+	</div>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>

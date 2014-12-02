@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<p>
+		  <strong>Tip:</strong>
+		  <%= @dailytip.tip %>
+		</p>
+		<p>
+		  <strong>Show Date:</strong>
+		  <%= @dailytip.show_date %>
+		</p>
+		<p>
+		  <strong>Created by:</strong>
+		  <%= @dailytip.user.username %>
+		</p>
+	</div>
+	<div class="panel-footer">
+		<% if current_user.try(:admin) %>
+			<%= link_to 'Edit', edit_dailytip_path(@dailytip) %> |
+		<% end %>
+		<%= link_to 'Back', dailytips_path %>
+	</div>
+</div>

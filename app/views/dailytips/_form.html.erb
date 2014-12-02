@@ -1,0 +1,27 @@
+<%= form_for(@dailytip) do |f| %>
+  <% if @dailytip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dailytip.errors.count, "error") %> prohibited this dailytip from being saved:</h2>
+
+      <ul>
+      <% @dailytip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="field form-group">
+    <%= f.label :tip %>
+    <%= f.text_field :tip, class: 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :show_date %>
+    <%= f.date_select :show_date, class: 'form-control' %>
+  </div>
+  <div class="actions form-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
