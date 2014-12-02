@@ -2,7 +2,11 @@ class DailytipsController < ApplicationController
   before_action :set_dailytip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dailytips = Dailytip.all
+    if current_user.try(:admin)
+      @dailytips = Dailytip.all.order("show_date DESC").paginate(:page => params[:page], :per_page => 10)
+    else
+      @dailytips = Dailytip.where('show_date <= ?', Date.today).all.order("show_date DESC").paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def show

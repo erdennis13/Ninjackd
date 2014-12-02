@@ -19,7 +19,7 @@
   </div>
   <div class="field form-group">
     <%= f.label :show_date %>
-    <%= f.date_select :show_date, class: 'form-control' %>
+    <%= f.date_select :show_date, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } %>
   </div>
   <div class="actions form-group">
     <%= f.submit "Submit", class: "btn btn-primary" %>

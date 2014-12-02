@@ -1,12 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-body">
 
-    <h1>Listing dailytips</h1>
+    <h1>NinjaTips</h1>
 
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Tip</th>
+          <th></th>
           <th>Created by</th>
           <% if current_user.try(:admin) %>
             <th>Show Date</th>
@@ -21,7 +21,7 @@
             <td><%= link_to dailytip.tip, dailytip, class: "workoutLink" %></td>
             <td><%= dailytip.user.username %></td>
             <% if current_user.try(:admin) %>
-              <td><%= dailytip.show_date %></td>
+              <td><%= dailytip.show_date.month %>/<%= dailytip.show_date.day %>/<%= dailytip.show_date.year %></td>
               <td><%= link_to 'Edit', edit_dailytip_path(dailytip) %></td>
               <td><%= link_to 'Destroy', dailytip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
@@ -34,4 +34,8 @@
   <div class="panel-footer">
     <%= link_to 'New Dailytip', new_dailytip_path %>
   </div>
+</div>
+
+<div class="center">
+  <%= will_paginate @dailytips, renderer: BootstrapPagination::Rails %>
 </div>

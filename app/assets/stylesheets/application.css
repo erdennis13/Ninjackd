@@ -37,3 +37,22 @@
 ul.nav a:hover {
 	color: #bdc3c7 !important;
 }
+
+.row li {
+  width: 50%;
+  float: left;
+  display: inline-block;
+}
+
+#logoimg {
+  border: 0 none;
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.homepagelogo {
+	display: inline-block;
+}

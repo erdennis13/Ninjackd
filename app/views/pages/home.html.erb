@@ -1,5 +1,7 @@
 <div class="jumbotron center">
-	<h1>Welcome to <%= image_tag "ninjack'd-final-no-bg2.png", style:"height: 100px; padding: 0px" %></h1>
+
+		<h1>Welcome to <%= image_tag "ninjack'd-final-no-bg2.png", style:"height: 100px; padding: 0px;", class: "logoimg" %></h1>
+
 	<p>We're here to help you get fit. Come, follow me down the rabbit hole!</p>
 	<% unless user_signed_in? %>
 		<%= link_to "Login", new_user_session_path, class: "btn btn-default" %>

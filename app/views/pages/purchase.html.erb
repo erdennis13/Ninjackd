@@ -4,35 +4,33 @@
 			<div class="panel-body">
 				<h1>Purchase your Ninjack'd account here</h1>
 				<br/>
-				<div style="float:left; text-align:left">
-				<!-- Begin Official PayPal Seal -->
-				<a href="https://www.paypal.com/us/verified/pal=ethan%40ninjackd%2ecom" target="_blank">
-					<img src="https://www.paypal.com/en_US/i/icon/verification_seal.gif" border="0" alt="Official PayPal Seal" style="padding-right: 75px"></A>
-				<!-- End Official PayPal Seal -->
-				</div>
+					<div style="float:left; text-align:left">
+					<!-- Begin Official PayPal Seal -->
+					<a href="https://www.paypal.com/us/verified/pal=ethan%40ninjackd%2ecom" target="_blank">
+						<img src="https://www.paypal.com/en_US/i/icon/verification_seal.gif" border="0" alt="Official PayPal Seal" style="padding-right: 75px"></A>
+					<!-- End Official PayPal Seal -->
+					</div>
+					
+
+					<div class="container">
+
+						<div style="text-align:left; padding-left: 10px">
+						<p><strong>Instructions</strong></p>
+							<ol>
+								<li>Click subscribe button below</li>
+								<li>Pay through the PayPal portal (You even get the first 2 weeks free!!)</li>
+								<li>Add your user info, once you're back on ninjackd.com</li>
+								<li>Kick some butt on the workouts, it's that easy!</li>
+							</ol>
+						</div>
+					</div>
+
+		
 				
-				<div style="text-align:left; padding-left: 10px">
-				<p><strong>Instructions</strong></p>
-					<ol>
-						<li>Click subscribe button below</li>
-						<li>Pay through the PayPal portal (You even get the first 2 weeks free!!)</li>
-						<li>Add your user info, once you're back on ninjackd.com</li>
-						<li>Kick some butt on the workouts, it's that easy!</li>
-					</ol>
-				</div>
-
-					<hr/>
-					<!--
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="MELDYY9D775Z8">
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-					</form>
-					-->
-
-					<%= link_to image_tag("https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif"), paypal_checkout_path %>
-
+			</div>
+			<div class="panel-footer">
+				<p><strong>Details:</strong> $9.99 per month for unlimited use. First two weeks free!<p>
+				<%= link_to image_tag("https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif"), paypal_checkout_path %>
 			</div>
 		</div>
 	</div>
