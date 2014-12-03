@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>New userreview</h1>
+
+			<%= render 'form' %>
+		</div>
+		<div class="panel-footer">
+
+			<%= link_to 'Back', userreviews_path %>
+		</div>
+	</div>
+<% else %>
+	<%= render 'pages/pleasesignin' %>
+<% end %>
+

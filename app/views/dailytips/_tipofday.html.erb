@@ -1,23 +1,22 @@
-<div class="row"> 
-  <div class="col-md-offset-4 col-md-4">
-		<div class="panel panel-primary center">
-			<div class="panel-heading">
-				<h1 class="panel-title"><%= link_to "NinjaTip of the Day", dailytips_path %></h1>
-			</div>
-			<div class="panel-body">
-				<% if dailytip.nil? %>
-					<h4>Sensei say: <small>Check out our past tips <%= link_to 'here', dailytips_path, class: "workoutLink" %>!</small></h4>
-				<% else %>
-					<div class="row">
-						<div class="col-md-2">
-							<h4><%= dailytip.try(:user).try(:name) %>: </h4>
-						</div>
-						<div class="col-md-10" style="text-align:left">
-							<h4 style="padding-left:10px"><small><%= dailytip.try(:tip) %></small></h4>
-						</div>
+<div class="col-md-4 col-centered">
+	<div class="panel panel-info center">
+		<div class="panel-heading">
+			<h1 class="panel-title"><%= link_to "NinjaTip of the Day", dailytips_path %></h1>
+		</div>
+		<div class="panel-body">
+			<% if dailytip.nil? %>
+				<h4>Sensei say: <small>Check out our past tips <%= link_to 'here', dailytips_path, class: "workoutLink" %>!</small></h4>
+			<% else %>
+				<div class="row">
+					<div class="col-md-2">
+						<h4><%= dailytip.try(:user).try(:name) %>: </h4>
 					</div>
-				<% end %>
-			</div>
+					<div class="col-md-10" style="text-align:left">
+						<h4 style="padding-left:10px"><small><%= dailytip.try(:tip) %></small></h4>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>
+

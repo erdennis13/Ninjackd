@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :userreviews
+
   resources :pastusers
 
   resources :dailytips

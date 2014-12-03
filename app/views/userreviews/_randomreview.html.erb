@@ -1,0 +1,24 @@
+<div class="col-md-4 col-centered">
+	<div class="panel panel-success center">
+		<div class="panel-heading">
+			<h1 class="panel-title">Here's what a fellow Ninja has to say</h1>
+		</div>
+		<div class="panel-body">
+			
+				<div class="row">
+					<div class="col-md-2">
+						<h4><%= userreview.user.name %>: </h4>
+					</div>
+					<div class="col-md-10" style="text-align:left">
+						<h4 style="padding-left:10px"><small><%= userreview.review %></small></h4>
+						<% if user_signed_in? %>
+							<p style="padding-left:10px">Leave us your own <%= link_to "review", new_userreview_path %>!</p>
+						<% end %>
+					</div>
+
+					
+				</div>
+		</div>
+	</div>
+</div>
+

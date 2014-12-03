@@ -49,10 +49,29 @@ ul.nav a:hover {
   display: inline-block;
   height: auto;
   max-width: 100%;
-  vertical-align: middle;
+  vertical-align: bottom;
   text-align: left;
 }
 
 .homepagelogo {
 	display: inline-block;
+}
+
+.hometext { 
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
 }

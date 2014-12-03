@@ -35,3 +35,7 @@
 		</div>
 	</div>
 </div>
+
+<div class="row row-centered">
+	<%= render 'userreviews/randomreview', {userreview: Userreview.offset(rand(Userreview.count)).first} %>
+</div>

@@ -1,0 +1,22 @@
+<% if current_user.try(:admin) %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<p>
+			  <strong>User:</strong>
+			  <%= @userreview.user_id %>
+			</p>
+
+			<p>
+			  <strong>Review:</strong>
+			  <%= @userreview.review %>
+			</p>
+		</div>
+		<div class="panel-footer">
+
+			<%= link_to 'Edit', edit_userreview_path(@userreview) %> |
+			<%= link_to 'Back', userreviews_path %>
+		</div>
+	</div>
+<% else %>
+	<%= render 'pages/unauth' %>
+<% end %>
