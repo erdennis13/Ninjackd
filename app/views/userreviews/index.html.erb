@@ -9,7 +9,10 @@
           <th></th>
           <% if current_user.try(:admin) %>
             <th colspan="3"></th>
+          <% else %>
+            <th></th>
           <% end %>
+
         </tr>
       </thead>
 
@@ -22,7 +25,10 @@
               <td><%= link_to 'Show', userreview %></td>
               <td><%= link_to 'Edit', edit_userreview_path(userreview) %></td>
               <td><%= link_to 'Destroy', userreview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% elsif current_user == userreview.user %>
+              <td><%= link_to 'Edit', edit_userreview_path(userreview) %></td>
             <% end %>
+
           </tr>
         <% end %>
       </tbody>

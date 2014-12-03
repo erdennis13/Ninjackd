@@ -1,13 +1,17 @@
 <% if user_signed_in? %>
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<h1>New userreview</h1>
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h1>Leave a review here</h1>
 
-			<%= render 'form' %>
-		</div>
-		<div class="panel-footer">
+					<%= render 'form' %>
+				</div>
+				<div class="panel-footer">
 
-			<%= link_to 'Back', userreviews_path %>
+					<%= link_to 'Back', :back %>
+				</div>
+			</div>
 		</div>
 	</div>
 <% else %>

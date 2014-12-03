@@ -6,6 +6,8 @@
 	  <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">Weeklyplan Info</a></li>
 	  <li><a href="#tab3" data-toggle="pill" data-no-turbolink="true">User Info</a></li>
 	  <li><a href="#tab4" data-toggle="pill" data-no-turbolink="true">Add New User</a></li>
+	  <li><a href="#tab5" data-toggle="pill" data-no-turbolink="true">NinjaTips</a></li>
+	  <li><a href="#tab6" data-toggle="pill" data-no-turbolink="true">Add NinjaTip</a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -24,6 +26,14 @@
 		<div class="tab-pane" id="tab4" >
 			<br/>
 			<%= render 'addnewuser' %>
+		</div>
+		<div class="tab-pane" id="tab5" >
+			<br/>
+			<%= render 'allNinjaTips' %>
+		</div>
+		<div class="tab-pane" id="tab6" >
+			<br/>
+			<%= render 'addNinjaTip' %>
 		</div>
 	</div>
 </div>

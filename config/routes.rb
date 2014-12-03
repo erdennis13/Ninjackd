@@ -56,6 +56,9 @@ Rails.application.routes.draw do
   get 'add_new_user', to: "workouts#add_new_user"
   post 'add_new_user', to: "workouts#add_new_user"
 
+  get 'add_daily_tip', to: "workouts#add_daily_tip"
+  post 'add_daily_tip', to: "workouts#add_daily_tip"
+
   get "tipofday" => "dailytips#tipofday"
 
   #get "category" => "workouts#category"

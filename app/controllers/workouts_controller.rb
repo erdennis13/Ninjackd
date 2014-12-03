@@ -20,6 +20,25 @@ class WorkoutsController < ApplicationController
     @users = User.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @weeklyplans = Weeklyplan.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @user = User.new
+    @dailytips = Dailytip.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+    @dailytip = Dailytip.new
+  end
+
+  def add_daily_tip
+    @dailytip = Dailytip.new
+    dailytip = params['dailytip']
+    @dailytip.user_id = params["dailytip"][:user_id]
+    @dailytip.tip = params["dailytip"][:tip]
+    @dailytip.show_date = Date.new(dailytip["show_date(1i)"].to_i, dailytip["show_date(2i)"].to_i, dailytip["show_date(3i)"].to_i)
+
+
+    if @dailytip.save!
+      redirect_to admin_path
+      flash[:notice] =  "NinjaTip has been added for #{@dailytip.show_date}"
+    else
+      redirect_to admin_path
+      flash[:notice] = "NinjaTip was unable to save"
+    end 
   end
 
   def add_new_user
@@ -32,7 +51,8 @@ class WorkoutsController < ApplicationController
     @newuser.paypal_payment_token = params["user"][:paypal_payment_token]
 
     if @newuser.save
-      format.html { redirect_to admin_path, notice: "#{@newuser.name} has been added to the users" }
+      redirect_to admin_path
+      flash[:notice] = "#{@newuser.name} has been added to the users"
     else
       redirect_to admin_path 
       flash[:notice] = "User unable to be saved"
