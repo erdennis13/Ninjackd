@@ -69,7 +69,9 @@ ul.nav a:hover {
 }
 .col-centered {
     display:inline-block;
+    margin-top: none;
     float:none;
+	vertical-align: top;
     /* reset the text-align */
     text-align:left;
     /* inline-block space fix */

@@ -2,10 +2,10 @@
 
 		<div class="row row-centered">
 			<div class="col-md-6 col-centered">
-				<h1 style="text-align:right; vertical-align:top" class="hometext">Welcome to </h1>
+				<h1 style="text-align:right; vertical-align:top" class="hometext">Welcome to</h1>
 			</div>
 			<div class="col-md-6 col-centered logoimg img-responsive">
-				 <%= image_tag "ninjack'd-final-no-bg2.png", style:"height: 100px; padding: 0px", class: "img-responsive logoimg" %>
+				 <%= image_tag "ninjack'd-final-no-bg2.png", style:"width: 351px; padding: 0px", class: "img-responsive logoimg" %>
 			</div>
 		</div>
 
@@ -18,7 +18,8 @@
 </div>
 
 <div class="row row-centered">
-	<%= render 'dailytips/tipofday', {dailytip: Dailytip.where(show_date: Date.today).first } %>
+	<% unless Dailytip.where(show_date: Date.today).nil? then dailytip = Dailytip.offset(rand(Dailytip.count)).first else dailytip = Dailytip.where(show_date: Date.today).first end %>
+	<%= render 'dailytips/tipofday', {dailytip: dailytip } %>
 	<%= render 'userreviews/randomreview', {userreview: Userreview.offset(rand(Userreview.count)).first} %>
 </div>
 
