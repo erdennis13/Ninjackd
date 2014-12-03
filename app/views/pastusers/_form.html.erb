@@ -1,0 +1,25 @@
+<%= form_for(@pastuser) do |f| %>
+  <% if @pastuser.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pastuser.errors.count, "error") %> prohibited this pastuser from being saved:</h2>
+
+      <ul>
+      <% @pastuser.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

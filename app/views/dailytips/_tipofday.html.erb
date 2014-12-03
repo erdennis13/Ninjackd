@@ -8,14 +8,14 @@
 				<% if dailytip.nil? %>
 					<h4>Sensei say: <small>Check out our past tips <%= link_to 'here', dailytips_path, class: "workoutLink" %>!</small></h4>
 				<% else %>
-				<div class="row">
-					<div class="col-md-2">
-						<h4><%= dailytip.try(:user).try(:name) %>: </h4>
+					<div class="row">
+						<div class="col-md-2">
+							<h4><%= dailytip.try(:user).try(:name) %>: </h4>
+						</div>
+						<div class="col-md-10" style="text-align:left">
+							<h4 style="padding-left:10px"><small><%= dailytip.try(:tip) %></small></h4>
+						</div>
 					</div>
-					<div class="col-md-10" style="text-align:left">
-						<h4><small><%= dailytip.try(:tip) %></small></h4>
-					</div>
-				</div>
 				<% end %>
 			</div>
 		</div>

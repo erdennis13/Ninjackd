@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pastusers
+
   resources :dailytips
 
   resources :weeklybits

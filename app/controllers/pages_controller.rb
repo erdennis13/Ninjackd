@@ -23,6 +23,12 @@ class PagesController < ApplicationController
 
   def cancel_account
   	@user = current_user
+
+    @pastuser = Pastuser.new
+    @pastuser.username = @user.username
+    @pastuser.email = @user.email
+    @pastuser.save
+
   	ppr = PayPal::Recurring.new(profile_id: @user.try(:paypal_customer_token))
   	ppr.cancel
   	@user.destroy
