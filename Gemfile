@@ -44,6 +44,8 @@ gem 'newrelic_rpm'
 
 gem 'paypal-recurring'
 
+gem 'bootstrap-datepicker-rails', '~> 1.3.0.2'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

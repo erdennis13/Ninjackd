@@ -22,6 +22,7 @@ class WorkoutsController < ApplicationController
     @user = User.new
     @dailytips = Dailytip.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @dailytip = Dailytip.new
+    @userreviews = Userreview.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
   end
 
   def add_daily_tip
@@ -30,9 +31,7 @@ class WorkoutsController < ApplicationController
     @dailytip.user_id = params["dailytip"][:user_id]
     @dailytip.tip = params["dailytip"][:tip]
     @dailytip.show_date = Date.new(dailytip["show_date(1i)"].to_i, dailytip["show_date(2i)"].to_i, dailytip["show_date(3i)"].to_i)
-
-
-    if @dailytip.save!
+    if @dailytip.save
       redirect_to admin_path
       flash[:notice] =  "NinjaTip has been added for #{@dailytip.show_date}"
     else
