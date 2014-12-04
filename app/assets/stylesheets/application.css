@@ -35,6 +35,10 @@
 	float: right;
 }
 
+.alignBottom {
+  vertical-align: bottom;
+}
+
 ul.nav a:hover {
 	color: #bdc3c7 !important;
 }

@@ -16,7 +16,7 @@
 							<%= form.hidden_field :workout_id, value: @workout.id %>
 							<%= form.hidden_field :user_id, value: current_user.id %>
 							<td style="vertical-align:bottom", align="right">
-								<h5><%= form.label :schedule, "Schedule this workout" %> <small>(yyyy/mm/dd)</strong></h5>
+								<h5><%= form.label :schedule, "Schedule this workout" %> <small>(mm/dd/yyyy)</strong></h5>
 
 								<%#= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } {format: 'yyyy/mm/dd'}%>
 								<%= form.text_field :schedule, 'data-behaviour' => 'datepicker' %>
@@ -58,6 +58,8 @@
 		</div>
 		<!-- This section adds workoutbits to the workout -->
 
+
+
 		<% if current_user.try(:admin?) %>
 			<table class="table">
 				<%= form_for :workoutbit, url: workoutbits_path do |form| %>
@@ -86,6 +88,39 @@
 				<% end %>
 			</table>
 		<% end %>
+
+
+
+
+		<% if current_user.try(:admin?) %>
+			<div class="row">
+				<%= form_for :workoutbit, url: workoutbits_path do |form| %>
+					<%= form.hidden_field :workout_id, value: @workout.id %>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<%= form.label :exercise_id, "Exercise ID:" %>
+							<%= form.select :exercise_id, options_from_collection_for_select(@exerciseidoptions, "id", "name"), {}, {class: "form-control"} %>
+						</div>
+						<div class="col-sm-2 col-md-2 col-lg-2">
+							<%= form.label :sets, "Sets" %>
+							<%= form.number_field :sets, class: "form-control" %>
+						</div>
+						<div class="col-sm-2 col-md-2 col-lg-2">
+							<%= form.label :reps, "Reps" %>
+							<%= form.number_field :reps, class: "form-control" %>
+						</div>
+						<div class="col-sm-2 col-md-2 col-lg-2">
+							<%= form.label :restime, "Time between sets" %>
+							<%= form.number_field :restime, class: "form-control" %>
+						</div>
+						<div class="col-sm-2 col-md-2 col-lg-2">
+							<%= form.submit "Add Exercise", class: "btn btn-primary alignRight alignBottom" %>
+						</div>
+				<% end %>
+			</div>
+		<% end %>
+
+
+
 
 		<!-- This checks to see if a warmup already exists for workout, if not, it displays the form to add a warmup. -->
 
@@ -128,13 +163,17 @@
 			</tr>
 		</table>
 
+
+
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
-				<ul class="list-group" width="80%">
+				<table class="table">
 					<% @workout.comments.each do |print| %>
-						<li class="list-group-item"><strong><%= print.user.try(:username) %>:</strong> <%= print.comment %></li>
+						<tr><td>
+							<strong><%= print.user.try(:username) %>:</strong> <%= print.comment %>
+						</td></tr>
 					<% end %>
-				</ul>
+				</table>
 			</div>
 		</div>
 
