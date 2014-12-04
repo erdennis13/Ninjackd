@@ -14,7 +14,11 @@
 						</div>
 						<div class="form-group">
 							<%= form.label :show_date %>
-							<%= form.date_select :show_date, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } %>
+							<%#= form.date_select :show_date, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } %>
+							<%= form.text_field :show_date, 'data-behaviour' => 'datepicker' %>
+								<script type="text/javascript">
+								  $('[data-behaviour~=datepicker]').datepicker();
+								</script>
 						</div>
 					    <div class="form-group">
 				    		<%= button_to "Add NinjaTip", add_daily_tip_path, class: "btn btn-primary" %>

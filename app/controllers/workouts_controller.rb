@@ -28,9 +28,11 @@ class WorkoutsController < ApplicationController
   def add_daily_tip
     @dailytip = Dailytip.new
     dailytip = params['dailytip']
-    @dailytip.user_id = params["dailytip"][:user_id]
-    @dailytip.tip = params["dailytip"][:tip]
-    @dailytip.show_date = Date.new(dailytip["show_date(1i)"].to_i, dailytip["show_date(2i)"].to_i, dailytip["show_date(3i)"].to_i)
+    d = Date.parse(dailytip[:show_date])
+    @dailytip.user_id = dailytip[:user_id]
+    @dailytip.tip = dailytip[:tip]
+    @dailytip.show_date = d.strftime('%Y/%d/%m')
+    #@dailytip.show_date = Date.new(dailytip["show_date(3i)"].to_i, dailytip["show_date(2i)"].to_i, dailytip["show_date(1i)"].to_i)
     if @dailytip.save
       redirect_to admin_path
       flash[:notice] =  "NinjaTip has been added for #{@dailytip.show_date}"

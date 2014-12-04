@@ -16,8 +16,9 @@
 							<%= form.hidden_field :workout_id, value: @workout.id %>
 							<%= form.hidden_field :user_id, value: current_user.id %>
 							<td style="vertical-align:bottom", align="right">
-								<%= form.label :schedule, "Schedule this workout" %>
-								<%#= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } %>
+								<h5><%= form.label :schedule, "Schedule this workout" %> <small>(yyyy/mm/dd)</strong></h5>
+
+								<%#= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } {format: 'yyyy/mm/dd'}%>
 								<%= form.text_field :schedule, 'data-behaviour' => 'datepicker' %>
 								<script type="text/javascript">
 								  $('[data-behaviour~=datepicker]').datepicker();
