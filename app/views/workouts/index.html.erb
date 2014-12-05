@@ -1,26 +1,56 @@
 <% if user_signed_in? %>
-  <div class="tabbable"> 
-    <ul class="nav nav-pills", style="margin-left:40%; margin-right:40%;">
-      <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">All Workouts</a></li>
-      <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">Weekly Plans</a></li>
-    </ul>
+  <div class="visible-md-block visible-lg-block visible-sm-block homepagework">
+      <div class="tabbable"> 
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">All Workouts</a></li>
+          <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">Weekly Plans</a></li>
+        </ul>
 
-    <div class="tab-content">
-      <div class="tab-pane active" id="tab1">
-        <br/>
-        <%= render 'listview' %>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <br/>
+            <%= render 'listview' %>
+          </div>
+          <div class="tab-pane" id="tab2" >
+            <br/>
+            <%= render 'weeklyplanview' %>
+          </div>
+        </div>
       </div>
-      <div class="tab-pane" id="tab2" >
-        <br/>
-        <%= render 'weeklyplanview' %>
+
+
+      <div class="center">
+        <%= will_paginate @workouts, renderer: BootstrapPagination::Rails %>
+      </div>
+  </div>
+  <div class="visible-xs-block homepagework">
+  <div class="tabbable"> 
+      <ul class="nav nav-pills">
+        <li class="active"><a href="#tab3" data-toggle="pill" data-no-turbolink="true">All Workouts</a></li>
+        <li><a href="#tab4" data-toggle="pill" data-no-turbolink="true">Weekly Plans</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab3">
+          <br/>
+          <%= render 'listviewsm' %>
+        </div>
+        <div class="tab-pane" id="tab4" >
+          <br/>
+          <%= render 'weeklyplanviewsm' %>
+        </div>
       </div>
     </div>
-  </div>
 
 
   <div class="center">
     <%= will_paginate @workouts, renderer: BootstrapPagination::Rails %>
   </div>
+</div>
+
+
+
 <% else %>
   <%= render 'pages/pleasesignin' %>
 <% end %>
+

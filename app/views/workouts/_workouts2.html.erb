@@ -1,40 +1,29 @@
-<h2 class="center">Here's a look into this week's workouts</h2>
+<div class="row">
+  <% workouts.each_with_index do |workout, list_pos| %>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title center">Take a look at this week's workouts</h1>
+        </div>
+        <div class="panel-body">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Description</th>
-      <th class="numeric">Duration (min)</th>
-      <% if current_user.try(:admin?) %>
-        <th colspan="2"></th>
-      <% end %>
-    </tr>
-  </thead>
+          <h1><%= link_to workout.name, workout, class: "workoutLink" %></h1>
+          <h3>Category: <small><%= workout.category %></small></h3>
+          <p><%= workout.description %></p>
 
+          <h5>Exercises: </h5>
+            
+              <% workout.workoutbits.each do |workoutbit| %>
+                <%= workoutbit.exercise.name%>: <%= workoutbit.sets %> x <%= workoutbit.reps %><br/>
+              <% end %>
+          
 
-  <tbody>
-    <% workouts.each do |workout| %>
-      <tr>
-        <% if user_signed_in? %>
-          <td data-title="Name"><%= link_to workout.name, workout, class: "workoutLink" %></td>
-        <% else %>
-          <td data-title="Name"><%= workout.name%></td>
-        <% end %>
-        <td data-title="Category"><%= workout.category %></td>
-        <td data-title="Description (min)"><%= workout.description %></td>
-        <td data-title="Code" class="numeric"><%= workout.duration %></td>
-        <% if current_user.try(:admin?) %>
-          <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
-          <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
-<% if workouts.blank? %>
-  <h1>We'll be coming soon! Stay Posted</h1>
-<% end %>
+  <div class="center">
+    <%= will_paginate workouts, renderer: BootstrapPagination::Rails %>
+  </div>

@@ -1,0 +1,74 @@
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h1>Workouts</h1>
+      
+      <div class="row">
+            <%= form_tag workouts_path, :method => 'get' do %>
+                <div class="col-sm-4">
+                  <%= label_tag(:search, "Search here") %>
+                  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "type here..." %>
+                </div>
+              
+                <%#= label_tag(:starts_with, "Search") %>
+                <%#= text_field_tag :starts_with, params[:starts_with], class: "form-control", placeholder: "type here..." %>
+              
+              <div class="col-sm-2">
+                <%= label_tag(:cat, "Category:") %>
+                <%= select_tag :cat, options_for_select(@workoutCategories), class: "form-control" %>
+              </div>
+
+              <div class="col-sm-2">
+                <%= label_tag(:less_than, "Duration (min) <= ") %>
+                <%= number_field_tag :less_than, params[:less_than], class: "form-control" %>
+              </div>
+
+              <div class="col-xs-4" style="padding-top:10px">
+                <%= submit_tag("Filter", :name => nil, class: "btn btn-success") %>
+              </div>
+            <% end %>
+
+            <%= form_tag workouts_path, :method => 'get' do %>
+              <div style="padding:10px"><%= submit_tag("Reset Filter", class: "btn btn-primary" )%></div>
+            <% end %> 
+      </div>   
+
+
+
+
+
+      <% unless @workouts.blank? %>
+
+              <% @workouts.each do |workout| %>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h4><div data-no-turbolink="true"><%= link_to workout.name, workout, class: "workoutLink" %> <small><%= workout.description %></small></div></h4>
+                    <strong>Category: </strong><%= workout.category %><br/>
+                    <strong>Duration (min): </strong><%= workout.duration %><br/>
+                    <% if current_user.try(:admin?) %>
+                      <%= link_to 'Edit', edit_workout_path(workout) %><br/>
+                      <%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+
+      <% end %>
+
+
+
+
+      <% if @workouts.blank? %>
+       <h2>Sorry, no workouts matched these filters. Please try something else</h2>
+       <p>If there's some different type of workouts you'd like to see, email us at <%= mail_to("ethan@ninjackd.com", name = nil, html_options = {subject: "Request for new workouts"}) %> </p>
+      <% end %>
+
+
+    </div>
+    <div class= "panel-footer">
+      <% if current_user.try(:admin?) %>
+        <%= link_to 'New Workout', new_workout_path %>
+      <% else %>
+        <%= mail_to("ethan@ninjackd.com", name = "Want to see something else? Let me know!", html_options = {subject: "Request for new workouts"}) %>
+      <% end %>
+    </div>
+  </div>

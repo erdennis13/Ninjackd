@@ -13,10 +13,10 @@
 
 				<% else %>
 					<div class="row">
-						<div class="col-md-2">
+						<div class="col-lg-2">
 							<h4><%= userreview.user.name %>: </h4>
 						</div>
-						<div class="col-md-10" style="text-align:left">
+						<div class="col-lg-10" style="text-align:left">
 							<h4 style="padding-left:10px"><small><%= userreview.review %></small></h4>
 							<% if user_signed_in? %>
 								<p style="padding-left:10px">Leave us your own <%= link_to "review", new_userreview_path %>!</p>

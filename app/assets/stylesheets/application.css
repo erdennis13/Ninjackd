@@ -92,4 +92,13 @@ ul.nav a:hover {
     /* inline-block space fix */
     margin-right:-4px;
 }
+/* This is to hide an display home page panels based on screen size */
+.homepagework {
+  display: block;
+}
 
+.item-bg {
+    height:480px;
+    width:100%;
+    background-color: #ecf0f1;
+}
