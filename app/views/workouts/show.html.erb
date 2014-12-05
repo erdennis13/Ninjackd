@@ -1,37 +1,38 @@
 <% if user_signed_in? %>
 	<div class="panel panel-default">
 		<div class="panel-body">
-		<h1><%= @workout.name %> <small><%= @workout.description %></small></h1>
-		<div class="table-responsive">
-			<table class="table">
-				<tr>
-					<td style="vertical-align:bottom">
-						<h3>Category: <small><%= @workout.category %></small></h3>
-					</td>
-					<td style="vertical-align:bottom">
-						<h3>Duration (min): <small><%= @workout.duration %></small></h3>
-					</td>
-					<!-- This form is for subscribing to a workout -->
-						<%= form_for :subscription, url: subscriptions_path do |form| %>
-							<%= form.hidden_field :workout_id, value: @workout.id %>
-							<%= form.hidden_field :user_id, value: current_user.id %>
-							<td style="vertical-align:bottom", align="right">
-								<h5><%= form.label :schedule, "Schedule this workout" %> <small>(mm/dd/yyyy)</strong></h5>
+		<h1><%= @workout.name %> <small><%= @workout.description %></small></h1><br/>
 
-								<%#= form.date_select :schedule, options = { :start_year => Date.current.year, :end_year => Date.current.year, month: Date.current.month, discard_year: true}, default: { year: Date.current.year } {format: 'yyyy/mm/dd'}%>
-								<%= form.text_field :schedule, 'data-behaviour' => 'datepicker' %>
-								<script type="text/javascript">
-								  $('[data-behaviour~=datepicker]').datepicker();
-								</script>
-								
-							</td>
-							<td style="vertical-align:bottom" align="right"><%= form.submit "Subscribe" , class: "btn btn-primary" %></td>
-						<% end %>
-					</td>
-				</tr>
-				<tr>
-				</tr>
-			</table>
+			<div class="row">
+				<div class="col-md-3">
+					<h3>Category: <small><%= @workout.category %></small></h3>
+				</div>
+				<div class="col-md-3">
+					<h3>Duration (min): <small><%= @workout.duration %></small></h3>
+				</div>
+				
+				<!-- This form is for subscribing to a workout -->
+				<%= form_for :subscription, url: subscriptions_path do |form| %>
+					<%= form.hidden_field :workout_id, value: @workout.id %>
+					<%= form.hidden_field :user_id, value: current_user.id %>
+
+						<div class="col-md-6">
+							<%= form.label :schedule, "Schedule this workout" %> (mm/dd/yyyy)
+							<%= form.text_field :schedule, 'data-behaviour' => 'datepicker' %>
+							<script type="text/javascript">
+							  $('[data-behaviour~=datepicker]').datepicker();
+							</script>
+						
+
+						
+							<%= form.submit "Subscribe" , class: "btn btn-primary" %>
+						</div>
+				<% end %>
+			</div>
+
+
+
+
 
 				<% @warmups.each do |show| %>
 					<h4>Warmup: <small><%= show.warmup.description %></small> <%= if current_user.try(:admin?); link_to "Delete", show, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs" end %></h4>
@@ -39,6 +40,7 @@
 				<% end %>
 
 		<h2>Exercises:</h2>
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<% @workout.workoutbits.each do |work|  %>
 
@@ -59,67 +61,35 @@
 		<!-- This section adds workoutbits to the workout -->
 
 
-
-		<% if current_user.try(:admin?) %>
-			<table class="table">
-				<%= form_for :workoutbit, url: workoutbits_path do |form| %>
-					<%= form.hidden_field :workout_id, value: @workout.id %>
-					<tr>
-						<td>
-							<%= form.label :exercise_id, "Exercise ID:" %>
-							<%= form.select :exercise_id, options_from_collection_for_select(@exerciseidoptions, "id", "name"), {}, {class: "form-control"} %>
-						</td>
-						<td>
-							<%= form.label :sets, "Sets" %>
-							<%= form.number_field :sets, class: "form-control" %>
-						</td>
-						<td>
-							<%= form.label :reps, "Reps" %>
-							<%= form.number_field :reps, class: "form-control" %>
-						</td>		
-
-						<td>
-							<%= form.label :restime, "Time between sets" %>
-							<%= form.number_field :restime, class: "form-control" %>
-						</td>
-					
-						<td style="vertical-align:bottom"><%= form.submit "Add Exercise", class: "btn btn-primary alignRight" %></td>
-					</tr>
-				<% end %>
-			</table>
-		<% end %>
-
-
-
-
 		<% if current_user.try(:admin?) %>
 			<div class="row">
 				<%= form_for :workoutbit, url: workoutbits_path do |form| %>
 					<%= form.hidden_field :workout_id, value: @workout.id %>
-						<div class="col-sm-4 col-md-4 col-lg-4">
+						<div class="col-md-4">
 							<%= form.label :exercise_id, "Exercise ID:" %>
 							<%= form.select :exercise_id, options_from_collection_for_select(@exerciseidoptions, "id", "name"), {}, {class: "form-control"} %>
 						</div>
-						<div class="col-sm-2 col-md-2 col-lg-2">
+						<div class="col-md-2">
 							<%= form.label :sets, "Sets" %>
 							<%= form.number_field :sets, class: "form-control" %>
 						</div>
-						<div class="col-sm-2 col-md-2 col-lg-2">
+						<div class="col-md-2">
 							<%= form.label :reps, "Reps" %>
 							<%= form.number_field :reps, class: "form-control" %>
 						</div>
-						<div class="col-sm-2 col-md-2 col-lg-2">
+						<div class="col-md-2">
 							<%= form.label :restime, "Time between sets" %>
 							<%= form.number_field :restime, class: "form-control" %>
 						</div>
-						<div class="col-sm-2 col-md-2 col-lg-2">
-							<%= form.submit "Add Exercise", class: "btn btn-primary alignRight alignBottom" %>
+						<div class="col-md-2 buttonBox" >
+							
+							<%= form.submit "Add Exercise", class: "btn btn-primary" %>
 						</div>
 				<% end %>
 			</div>
 		<% end %>
 
-
+		<br/>
 
 
 		<!-- This checks to see if a warmup already exists for workout, if not, it displays the form to add a warmup. -->
@@ -141,27 +111,30 @@
 
 		<!-- This section is for adding and displaying comments -->
 
-		<table class='table'>
-			<tr>
+		<div class="row">
 				<%= form_for :like, url: likes_path do |form| %>
 					<%= form.hidden_field :workout_id, value: @workout.id %>
 					<%= form.hidden_field :user_id, value: current_user.id %>
-					<td style="padding:10px"><%= button_tag(type: 'submit', class: "btn btn-primary btn-sm") do %>
+					<div class="col-md-2">
+					<%= button_tag(type: 'submit', class: "btn btn-primary btn-sm") do %>
 			 			<span class="glyphicon glyphicon-thumbs-up"></span>
 					<% end %>
+					
 				<% end %>
 			
-				<%= pluralize(@workout.likes.count, "like") %></td>
+				<%= pluralize(@workout.likes.count, "like") %></div>
 
 				<%= form_for :comment, url: comments_path do |form| %>
 
 					<%= form.hidden_field :workout_id, value: @workout.id %>
 					<%= form.hidden_field :user_id, value: current_user.id %>
-					<td width="80%"><%= form.text_field :comment, class: "form-control", placeholder: "Add a comment here..." %></td>
-					<td style="vertical-align:middle" align="right"><%= form.submit "Comment", class: 'btn btn-default' %></td>
+					<div class="col-md-8"><%= form.text_field :comment, class: "form-control", placeholder: "Add a comment here..." %></div>
+					<div class="col-md-2 buttonBox"><%= form.submit "Comment", class: 'btn btn-default' %></div>
 				<% end %>
 			</tr>
-		</table>
+		</div>
+
+		<br/>
 
 
 

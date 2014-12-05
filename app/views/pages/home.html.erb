@@ -25,6 +25,12 @@
 
 <div class="panel panel-default">
 	<div class="panel-body" data-no-turbolink="true">
-		<%= render "workouts/workouts" %>
+		<%= render "workouts/workouts", {workouts: Workout.all} %>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body" data-no-turbolink="true">
+		<%= render "workouts/workouts2", {workouts: Workout.all} %>
 	</div>
 </div>

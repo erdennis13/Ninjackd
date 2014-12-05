@@ -1,12 +1,12 @@
 <h2 class="center">Here's a look into this week's workouts</h2>
-<div class="table-responsive">
-<table class="table table-striped">
+
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Category</th>
       <th>Description</th>
-      <th>Duration (min)</th>
+      <th class="numeric">Duration (min)</th>
       <% if current_user.try(:admin?) %>
         <th colspan="2"></th>
       <% end %>
@@ -18,13 +18,13 @@
     <% workouts.each do |workout| %>
       <tr>
         <% if user_signed_in? %>
-          <td><%= link_to workout.name, workout, class: "workoutLink" %></td>
+          <td data-title="Name"><%= link_to workout.name, workout, class: "workoutLink" %></td>
         <% else %>
-          <td><%= workout.name%></td>
+          <td data-title="Name"><%= workout.name%></td>
         <% end %>
-        <td><%= workout.category %></td>
-        <td><%= workout.description %></td>
-        <td><%= workout.duration %></td>
+        <td data-title="Category"><%= workout.category %></td>
+        <td data-title="Description (min)"><%= workout.description %></td>
+        <td data-title="Code" class="numeric"><%= workout.duration %></td>
         <% if current_user.try(:admin?) %>
           <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
           <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>

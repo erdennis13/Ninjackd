@@ -39,6 +39,16 @@
   vertical-align: bottom;
 }
 
+.buttonBox {
+    position: absolute;
+    bottom:0;
+    right:0;
+}
+.row {
+    position: relative;
+}
+
+
 ul.nav a:hover {
 	color: #bdc3c7 !important;
 }
@@ -76,9 +86,10 @@ ul.nav a:hover {
     display:inline-block;
     margin-top: none;
     float:none;
-	vertical-align: top;
+	  vertical-align: top;
     /* reset the text-align */
     text-align:left;
     /* inline-block space fix */
     margin-right:-4px;
 }
+
