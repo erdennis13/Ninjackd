@@ -252,8 +252,72 @@
 					</div>
 				<% end %>
 				
+					<!-- This checks to see if a warmup already exists for workout, if not, it displays the form to add a warmup. -->
+
+						<% if @warmups.count < 1 %>
+						<% if current_user.try(:admin?) %>
+								<hr/>
+									<%= form_for :warmwork, url: warmworks_path do |form| %>
+										<%= form.hidden_field :workout_id, value: @workout.id %>
+										<%= form.label :warmup_id %>
+										<%= form.select :warmup_id, options_from_collection_for_select(@warmupidoptions, "id", "name"), {}, class: "form-control" %><br/>
+										<%= form.submit "Add warmup", class: "btn btn-primary" %>
+									<% end %>
+								<hr/>
+								
+						<% end %>
+						<% end %>
+
+						<!-- This section is for adding and displaying comments -->
+
+							<div class="row">
+								<div class="col-xs-1">
+									<%= form_for :like, url: likes_path do |form| %>
+										<%= form.hidden_field :workout_id, value: @workout.id %>
+										<%= form.hidden_field :user_id, value: current_user.id %>
+										
+										<%= button_tag(type: 'submit', class: "btn btn-primary btn-xs") do %>
+								 			<span class="glyphicon glyphicon-thumbs-up"></span>
+										<% end %>
+										
+									<% end %>
+								</div>
+								<div class="col-xs-6">
+									<%= pluralize(@workout.likes.count, "like") %>
+								</div>
+							</div>
+							<br/>
+
+								<%= form_for :comment, url: comments_path do |form| %>
+
+									<%= form.hidden_field :workout_id, value: @workout.id %>
+									<%= form.hidden_field :user_id, value: current_user.id %>
+									<%= form.text_area :comment, class: "form-control", placeholder: "Add a comment here..." %>
+									<%= form.submit "Comment", class: 'btn btn-default alignRight' %>
+								<% end %>
+							
+						</div>
 
 
+						<div class="row">
+							<div class="col-xs-12">
+								<table class="table table-condensed">
+									<% @workout.comments.each do |print| %>
+										<tr><td>
+											<h5><%= print.user.try(:username) %>:<small> <%= print.comment %></small></h5>
+										</td></tr>
+									<% end %>
+								</table>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<% if current_user.try(:admin?) %>
+								<%= link_to 'Edit', edit_workout_path(@workout) %> | 
+							<% end %>
+							<%= link_to 'Back', workouts_path %>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

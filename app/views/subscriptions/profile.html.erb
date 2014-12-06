@@ -1,22 +1,42 @@
-<div class="tabbable"> 
-	<ul class="nav nav-pills", style="margin-left:40%; margin-right:40%;">
-	  <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">Calendar View</a></li>
-	  <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">List View</a></li>
-	</ul>
+<div class="visible-md-block visible-lg-block visible-sm-block homepagework">
+	<div class="tabbable">
+		<ul class="nav nav-pills">
+		  <li class="active"><a href="#tab1" data-toggle="pill" data-no-turbolink="true">Calendar View</a></li>
+		  <li><a href="#tab2" data-toggle="pill" data-no-turbolink="true">List View</a></li>
+		</ul>
 
-	<div class="tab-content">
-		<div class="tab-pane active" id="tab1" data-no-turbolink="true">
-			<br/>
-			<%= render 'calendar' %>
-		</div>
-		<div class="tab-pane" id="tab2" data-no-turbolink="true" >
-			<br/>
-			<%= render 'list' %>
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab1" data-no-turbolink="true">
+				<br/>
+				<%= render 'calendar' %>
+			</div>
+			<div class="tab-pane" id="tab2" data-no-turbolink="true" >
+				<br/>
+				<%= render 'list' %>
+			</div>
 		</div>
 	</div>
 </div>
 
+<div class="visible-xs-block homepagework">
+	<div class="tabbable">
+		<ul class="nav nav-pills">
+		  <li class="active"><a href="#tab3" data-toggle="pill" data-no-turbolink="true">Calendar View</a></li>
+		  <li><a href="#tab4" data-toggle="pill" data-no-turbolink="true">List View</a></li>
+		</ul>
 
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab3" data-no-turbolink="true">
+				<br/>
+				<%= render 'calendarsm' %>
+			</div>
+			<div class="tab-pane" id="tab4" data-no-turbolink="true" >
+				<br/>
+				<%= render 'listsm' %>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="center">
   <%= will_paginate @subscriptions, renderer: BootstrapPagination::Rails %>
