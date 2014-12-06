@@ -11,14 +11,13 @@
           <h3>Category: <small><%= workout.category %></small></h3>
           <p><%= workout.description %></p>
 
-          <% if false %><!--
+          <% if user_signed_in? %>
 
             <h5>Exercises: </h5>
-              
                 <% workout.workoutbits.each do |workoutbit| %>
                   <%= workoutbit.exercise.name%>: <%= workoutbit.sets %> x <%= workoutbit.reps %><br/>
-                <% end %>-->
-            <% end %>
+                <% end %>
+          <% end %>
           
 
         </div>

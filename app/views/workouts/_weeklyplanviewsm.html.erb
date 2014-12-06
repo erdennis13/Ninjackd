@@ -18,6 +18,7 @@
 					</div>
 					<div class="panel-body">
 						
+						<table class="table table-striped table-condensed">
 							<% @dayinc = 1 %>
 							<% 7.times do %>
 								<% @hasbit = false %>
@@ -27,20 +28,23 @@
 									<% end %>
 								<% end %>
 
+
 								<% if @hasbit %>
 									
 										<% weeklyplan.weeklybits.each do |check| %>
 											<% if check.day == @dayinc %>
 													<%# check.create_subscription(current_user.id, check.workout.id, dates[check.day]) %>
-													<strong><%= Date::DAYNAMES[@dayinc-1] %>:</strong> <%= link_to check.workout.name, check.workout, class: "workoutLink" %><br/>
+													<tr><td><strong><%= Date::DAYNAMES[@dayinc-1] %>:</strong> <%= link_to check.workout.name, check.workout, class: "workoutLink" %></td></tr>
 											<% end %>
 										<% end %>
 								<% else %>
-									<%= Date::DAYNAMES[@dayinc-1] %>: off<br/>
+									<tr><td><%= Date::DAYNAMES[@dayinc-1] %>: off</td></tr>
 								<% end %>
+							
 						
 							<% @dayinc += 1 %>
 							<% end %>
+							</table>
 							<hr/>
 							<!-- This little bit of magic makes an ajax request to workouts controller, to add the weeklyplan as a subscription -->
 							<%= button_to "Subscribe", {action: "add_weekly_subscription", :weeklyplan_id => weeklyplan.id, remote: true}, {class: "btn btn-primary"} %>
