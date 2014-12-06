@@ -9,27 +9,43 @@
 						
 				    	<% @todaySubscriptions.each do |this| %>
 				    		<div class="panel panel-default">
-				    			<div class="panel-body" style="padding-left:0; padding-right:0">
-						    		
-						    		
-						    			<% if this.histories.count > 0 %>
-											<div data-no-turbolink="true"><%= link_to "Continue Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></div>
-											<%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %>
-										<% else %>
-											<div data-no-turbolink="true"><%= link_to "Start Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></div>
-											<div style="float:none; vertical-align:middle"><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-										<% end %>
-										<table class="table table-striped table-condensed">
-										<tr><td colspan="2"><h4><%= link_to this.workout.name, this.workout, class: "workoutLink" %> <small><%= this.workout.category %></small></h4></td><tr>
+				    			<div class="panel-heading">
+				    				<h4><%= link_to this.workout.name, this.workout, class: "workoutLink" %> <small><%= this.workout.description %></small></h4>
+				    			</div>
+				    			<div class="panel-body" style="padding:0">
 
-										<tr><td colspan="2"><%= this.workout.description %></td></tr>
-										
-										<% date = this.try(:schedule) %>
-										<tr>
-										<% unless date.blank? %>
-											<td><h5><%= Date::MONTHNAMES[date.month] %> <%= date.day %></h5></td>
-										<% end %>
-										<td><h5>Duration: <small><%= this.workout.duration %> min</small></h5></td></tr>
+						    		
+						    		
+
+
+										<table class="table table-striped table-condensed">
+											<tr></tr>
+
+											<tr><td colspan="2"><h5>Category: <small><%= this.workout.category %></small></h5></td></tr>
+											
+											<% date = this.try(:schedule) %>
+											<tr>
+											<% unless date.blank? %>
+												<td><h5><%= Date::MONTHNAMES[date.month] %> <%= date.day %></h5></td>
+											<% end %>
+											<td><h5>Duration: <small><%= this.workout.duration %> min</small></h5></td></tr>
+
+							    		<% if this.histories.count > 0 %>
+												<tr>
+														<td><div data-no-turbolink="true"><%= link_to "Continue Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></div></td>
+													
+													
+														<td><div align="right"><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+													
+												</tr>
+											<% else %>
+												<tr>
+														<td style="margin-top:5px"><div data-no-turbolink="true"><%= link_to "Start Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></div></td>
+													
+														<td style="margin-top:5px" class="vert-align" ><div align="middle"><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+												</tr>
+											<% end %>
+																			
 									</table>
 								</div>
 							</div>
@@ -39,47 +55,52 @@
 				
 		<% end %>
 
+
 			<% unless @subscriptions.blank? %>
-				<br/>
-				<h2>These are coming up on your calendar</h2>
+			<hr/>
 				
-					<table class="table table-striped">
-					<thead>
-			    		<tr>
-			    			
-				            <th>Name</th>
-				            <th>Category</th>
-				            <th>Description</th>
-				            <th>Duration (min)</th>
-				            <th>Scheduled</th>
-				            <th></th>
-				            
-			    		</tr>
-			    	</thead>
+				<h4>These are coming up on your calendar</h4>
+				
+					
 					<% @subscriptions.each do |this| %>
 
 						<% unless this.try(:complete?) %>
-							<tr>	
-								
-								<td><%= link_to this.workout.name, this.workout, class: "workoutLink" %></td>
-								<td><%= this.workout.category %></td>
-								<td><%= this.workout.description %></td>
-								<td><%= this.workout.duration %></td>
-								<% date = this.try(:schedule) %>
-								<% unless date.blank? %>
-									<td><%= Date::MONTHNAMES[date.month] %> <%= date.day %></td>
-								<% end %>
-								<td><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-								
-							</tr>
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4><%= link_to this.workout.name, this.workout, class: "workoutLink" %> <small><%= this.workout.description %></small></h4>
+								</div>
+								<div class="panel-body" style="padding:0">
+
+									<table class="table table-striped tabled-condensed">
+										<tr></tr>
+										<tr><td colspan="2">
+											<h5>Category: <small><%= this.workout.category %></small></h5>
+										</td></tr>
+										<tr>
+											<% date = this.try(:schedule) %>
+											<% unless date.blank? %>
+												<td><%= Date::MONTHNAMES[date.month] %> <%= date.day %></td>
+											<% end %>
+											<td><%= this.workout.duration %></td>
+										</tr>
+										<tr><td colspan="2" class="vert-align"><%= link_to 'Unsubscibe', this, method: :delete, data: { confirm: 'Are you sure?' }, class: "alignRight" %></td></tr>
+									</table>
+
+								</div>
+							</div>
+
 						<% end %>
 					<% end %>
-				</table>
 			
 		<% end %>
 		<% if @subscriptions.blank? and @todaySubscriptions.blank? %>
-			<h3>You don't have any active workouts right now!</h3>
-			<h3><%= link_to "Fix that", workouts_path %></h3>
+			<div class="panel panel-default">
+				<div class="panel-body" style="padding:5">
+					<h4>You don't have any active workouts right now!</h4>
+					<h4><%= link_to "Fix that", workouts_path %></h4>
+				</div>
+			</div>
 		<% end %>
 	</div>
 </div>

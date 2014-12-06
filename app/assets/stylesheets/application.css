@@ -102,3 +102,8 @@ ul.nav a:hover {
     width:100%;
     background-color: #ecf0f1;
 }
+
+.table tbody>tr>td.vert-align
+{
+    vertical-align: middle;
+}

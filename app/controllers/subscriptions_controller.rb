@@ -23,6 +23,7 @@ class SubscriptionsController < ApplicationController
     @todaySubscriptions = current_user.subscriptions.where(schedule: Date.today, complete: false)
     @completedSubscriptions = current_user.subscriptions.where(complete: true, schedule: Date.today-7..Date.today)
     
+    
   end
 
   def create

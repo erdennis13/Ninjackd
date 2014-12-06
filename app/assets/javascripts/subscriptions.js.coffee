@@ -8,3 +8,9 @@ $ ->
 			itemSelector: '.box'
 			isFitWidth: true
 
+
+$ ->
+	$('#weekssm').imagesLoaded ->
+		$('#weekssm').masonry ->
+			itemSelector: '.boxsm'
+			isFitWidth: true
