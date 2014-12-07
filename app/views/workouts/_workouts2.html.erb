@@ -5,15 +5,15 @@
         <div class="panel-heading">
           <h1 class="panel-title center">Take a look at this week's workouts</h1>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="padding-top: 5px">
 
-          <h1><%= link_to workout.name, workout, class: "workoutLink" %></h1>
-          <h3>Category: <small><%= workout.category %></small></h3>
-          <p><%= workout.description %></p>
+          <h3><%= link_to workout.name, workout, class: "workoutLink" %> <small><%= workout.description %></small></h3>
+          <h4>Category: <small><%= workout.category %></small></h4>
+          
 
           <% if user_signed_in? %>
 
-            <h5>Exercises: </h5>
+            <strong>Exercises: </strong><br/>
                 <% workout.workoutbits.each do |workoutbit| %>
                   <%= workoutbit.exercise.name%>: <%= workoutbit.sets %> x <%= workoutbit.reps %><br/>
                 <% end %>

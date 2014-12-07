@@ -1,69 +1,7 @@
-<div class="panel panel-default">
-	<div class="panel-body" data-no-turbolink="true">
+<div class="visible-sm-block visible-md-block visible-lg-blockhomepagework">
+	<%= render 'currentWorkoutBG' %>
+</div>
 
-	<h1><%= @subscription.workout.name %> <small><%= @subscription.workout.description %></small></h1>
-	
-
-	<!-- This displays the associated warmup for each subscription -->
-	<h3>Warmup:<small>
-	<% @warmups.each do |show| %>
-		<%= show.warmup.try(:description) %>
-	<% end %></small></h3>
-	<table class="table table-striped">
-		<thead>
-			<th>Exercise</th>
-			<th>Sets</th>
-			<th>Reps</th>
-			<th>Time Between Sets</th>
-			<th></th>
-		</thead>
-		<% @subscription.workout.workoutbits.each do |this| %>
-			<tr>
-				<td><%= this.exercise.name %></td>
-
-				<%# This queury checks whether or not the user has already marked an exercise as complete and changes the output accordingly %>
-				<% check = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).exists? %>
-
-				<% unless check %>
-					<%= form_for @history do |form| %>
-					
-						
-						<%= form.hidden_field :subscription_id, value: @subscription.id %>
-						<%= form.hidden_field :exercise_id, value: this.exercise.id %>
-						<%= form.hidden_field :complete, value: true %>
-						<td>
-							<%= form.number_field :sets, value: this.sets %>
-						</td>
-
-						<td>
-							<%= form.number_field :reps, value: this.reps %>
-						</td>
-
-						<td>
-							<%= this.restime %> seconds
-						</td>
-						<td><%= form.submit "Mark Complete", class: "btn btn-default btn-sm" %></td>
-
-					<% end %>
-				<% else %>
-					<% history = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).first %>
-					<td><%= history.sets %></td>
-					<td><%= history.reps %></td>
-					<td></td>				
-					<td><%= link_to 'Change', history, method: :delete %></td>
-				<% end %>
-
-
-			</tr>
-		<% end %>
-		<tr>
-			<td colspan="4"></td>
-			<td><%= link_to "Mark all complete", mark_all_complete_url(subscription_id: @subscription.id), class: "btn btn-success" %></td>
-		</tr>
-	</table>
-
-
-
-
-	</div>
+<div class="visible-xs-block homepagework">
+	<%= render 'currentWorkoutSM' %>
 </div>

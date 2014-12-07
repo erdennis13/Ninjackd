@@ -107,3 +107,7 @@ ul.nav a:hover {
 {
     vertical-align: middle;
 }
+
+.borderless tbody tr td, .borderless thead tr th {
+    border: none;
+}
