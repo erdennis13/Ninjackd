@@ -1,13 +1,30 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		<% @workout = Workout.find(params[:workout_id]) %>
-		<h1>Way to go! You finished <%= @workout.name %> <small>You kicked that workout's butt!</small></h1>
 
-		<div class="center">
-			<%= image_tag "ninja folder/#{rand(27)}.png", style:"height: 250px; float:center; padding: 10px" %>
+		<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+			<% @workout = Workout.find(params[:workout_id]) %>
+			<h1>Way to go! You finished <%= @workout.name %> <small>You kicked that workout's butt!</small></h1>
+
+			<div class="center">
+				<%= image_tag "ninja folder/#{rand(27)}.png", style:"height: 250px; float:center; padding: 10px" %>
+			</div>
+
+			<%= link_to "Check out your past workouts", 'workoutHistory', class: "workoutLink" %>
 		</div>
 
-		<%= link_to "Check out your past workouts", 'workoutHistory', class: "workoutLink" %>
+
+
+		<div class="visible-xs-block homepagework">
+			<% @workout = Workout.find(params[:workout_id]) %>
+			<h3>Way to go! You finished <%= @workout.name %></h3> 
+			<p class="center">You kicked that workout's butt!</p>
+
+			<div class="center">
+				<%= image_tag "ninja folder/#{rand(27)}.png", style:"height: 200px; float:center; padding: 10px" %>
+			</div>
+
+			<div class="center"><%= link_to "Check out your past workouts", 'workoutHistory', class: "workoutLink" %></div>
+		</div>
 		
 	</div>
 </div>

@@ -2,24 +2,24 @@
 	<div class="panel-body">
 		<% @subscription = Subscription.find(params[:subscription_id]) %>
 
-		<h2><%= @subscription.workout.name %> <small>Keep up the great work!</small> </h2>
+		
+
+		<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+			<h2><%= @subscription.workout.name %> <small>Keep up the great work!</small> </h2>
+		</div>
+
+		<div class="visible-xs-block homepagework">
+			<h3><%= @subscription.workout.name %> <small>Keep up the great work!</small> </h3>
+		</div>
+
+
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<th>Exercise</th>
 					<th>Sets</th>
 					<th>Reps</th>
-				</thead>
-
-				<% if false %>
-				<% @subscription.workout.workoutbits.each do |this| %>
-					<tr>
-						<td><%= link_to this.exercise.name, this.exercise, class: "workoutLink" %></td>
-						<td><%= this.sets %></td>
-						<td><%= this.reps %></td>
-					</tr>
-				<% end %>
-				<% end %>
+				</thead>			
 
 				<% @subscription.histories.each do |this| %>
 					<tr>
@@ -30,6 +30,15 @@
 				<% end %>
 			</table>
 		</div>
+		
+		<% unless @subscription.finish_time.blank? or @subscription.start_time.blank? %>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="pull-right">Duration: <%= elapsed_time = (((@subscription.finish_time - @subscription.start_time))/60).round(0) %> min</div>
+				</div>
+			</div>
+		<% end %>
+
 	</div>
 	<div class="panel-footer">
 		<%= link_to "Back", workoutHistory_path %>

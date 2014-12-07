@@ -2,7 +2,6 @@
 	<div class="panel-body" data-no-turbolink="true">
 
 	<h3><%= @subscription.workout.name %> <small><%= @subscription.workout.description %></small></h3>
-	
 
 	<!-- This displays the associated warmup for each subscription -->
 	<% unless @warmups.count == 0 %>
@@ -11,67 +10,58 @@
 			<%= show.warmup.try(:description) %>
 		<% end %></small></h4>
 	<% end %>
-	
-	
 
-		<% @subscription.workout.workoutbits.each do |this| %>
-			
+	<% @subscription.workout.workoutbits.each do |this| %>
 
+		<%# This queury checks whether or not the user has already marked an exercise as complete and changes the output accordingly %>
+		<% check = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).exists? %>
+
+		<% unless check %>
+			<div class="panel panel-default">
+				<div class="panel-body" style="padding:5px">
+					<div class="row">
+						<div class="col-xs-7" style="padding-right:0"><h4><%= this.exercise.name %></h4></div> 
+						<div class="col-xs-5" align="right" style="padding-left:5"><h4><small>Rest: <%= this.restime %> s</small></h4></div>
+					</div>
+					<%= form_for @history do |form| %>
 					
 						
-					
+						<%= form.hidden_field :subscription_id, value: @subscription.id %>
+						<%= form.hidden_field :exercise_id, value: this.exercise.id %>
+						<%= form.hidden_field :complete, value: true %>
 
-					<%# This queury checks whether or not the user has already marked an exercise as complete and changes the output accordingly %>
-					<% check = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).exists? %>
+						<table class="table borderless">
+							<tr>
+								<td width="50%"><strong>Sets: </strong><%= form.number_field :sets, value: this.sets, class: "form-control input-sm" %></td>
+							
+								<td width="50%"><strong>Reps: </strong><%= form.number_field :reps, value: this.reps, class: "form-control input-sm" %></td>
+							</tr>
+						</table>
 
-					<% unless check %>
-						<div class="panel panel-default">
-							<div class="panel-body" style="padding:5px">
-								<div class="row">
-									<div class="col-xs-7" style="padding-right:0"><h4><%= this.exercise.name %></h4></div> 
-									<div class="col-xs-5" align="right" style="padding-left:5"><h4><small>Rest: <%= this.restime %> s</small></h4></div>
-								</div>
-								<%= form_for @history do |form| %>
-								
-									
-									<%= form.hidden_field :subscription_id, value: @subscription.id %>
-									<%= form.hidden_field :exercise_id, value: this.exercise.id %>
-									<%= form.hidden_field :complete, value: true %>
+						<%= form.submit "Mark Complete", class: "btn btn-default btn-sm alignRight" %>
 
-									<table class="table borderless">
-										<tr>
-											<td width="50%"><strong>Sets: </strong><%= form.number_field :sets, value: this.sets, class: "form-control input-sm" %></td>
-										
-											<td width="50%"><strong>Reps: </strong><%= form.number_field :reps, value: this.reps, class: "form-control input-sm" %></td>
-										</tr>
-									</table>
-
-									<%= form.submit "Mark Complete", class: "btn btn-default btn-sm alignRight" %>
-
-								<% end %>
-							</div>
-						</div>
-
-					<% else %>
-						<div class="well" style="padding:5px">
-							<div class="row">
-								<div class="col-xs-7" style="padding-right:0"><h4><%= this.exercise.name %></h4></div> 
-								<div class="col-xs-5" align="right" style="padding-left:5"><h4><small>Rest: <%= this.restime %> s</small></h4></div>
-							</div>
-							<% history = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).first %>
-							<table class="table table-condensed borderless">
-								<tr>
-									<td><strong>Sets: </strong><%= history.sets %></td>
-									<td><strong>Reps: </strong><%= history.reps %></td>
-								</tr>
-								<tr><td colspan="2" align="right"><%= link_to 'Change', history, method: :delete %></td>
-							</table>
-						</div>
 					<% end %>
+				</div>
+			</div>
 
-
-
+		<% else %>
+			<div class="well" style="padding:5px">
+				<div class="row">
+					<div class="col-xs-7" style="padding-right:0"><h4><%= this.exercise.name %></h4></div> 
+					<div class="col-xs-5" align="right" style="padding-left:5"><h4><small>Rest: <%= this.restime %> s</small></h4></div>
+				</div>
+				<% history = History.where("subscription_id = ? AND exercise_id = ?", @subscription.id, this.exercise.id).first %>
+				<table class="table table-condensed borderless">
+					<tr>
+						<td><strong>Sets: </strong><%= history.sets %></td>
+						<td><strong>Reps: </strong><%= history.reps %></td>
+					</tr>
+					<tr><td colspan="2" align="right"><%= link_to 'Change', history, method: :delete %></td>
+				</table>
+			</div>
 		<% end %>
+
+	<% end %>
 		
 		<div class="row">
 			<div class="col-xs-12">
