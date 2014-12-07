@@ -3,7 +3,16 @@
 		<div class="col-md-offset-3 col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">		
-					<h1>Add a user directly from here</h1>
+					<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+						<h1>Add a user directly from here</h1>
+					</div>
+
+					<div class="visible-xs-block homepagework">
+						<h3>Add a user directly from here</h3>
+					</div>
+						
+
+
 					<%= form_for @user, url: add_new_user_path do |form| %>
 						
 						<%= form.hidden_field :paypal_payment_token, value: "this is a dummy value" %>

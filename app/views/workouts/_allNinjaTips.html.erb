@@ -1,38 +1,62 @@
-<div class="panel panel-default">
-  <div class="panel-body">
+<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+  <div class="panel panel-default">
+    <div class="panel-body">
 
-    <h1>NinjaTips</h1>
+      <h1>NinjaTips</h1>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Created by</th>
-          <% if current_user.try(:admin) %>
-            <th>Show Date</th>
-            <th colspan="2"></th>
-          <% end %>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @dailytips.each do |dailytip| %>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= link_to dailytip.tip, dailytip, class: "workoutLink" %></td>
-            <td><%= dailytip.user.username %></td>
+            <th></th>
+            <th>Created by</th>
             <% if current_user.try(:admin) %>
-              <td><%= dailytip.show_date.month %>/<%= dailytip.show_date.day %>/<%= dailytip.show_date.year %></td>
-              <td><%= link_to 'Edit', edit_dailytip_path(dailytip) %></td>
-              <td><%= link_to 'Destroy', dailytip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th>Show Date</th>
+              <th colspan="2"></th>
             <% end %>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
 
+        <tbody>
+          <% @dailytips.each do |dailytip| %>
+            <tr>
+              <td><%= link_to dailytip.tip, dailytip, class: "workoutLink" %></td>
+              <td><%= dailytip.user.username %></td>
+              <% if current_user.try(:admin) %>
+                <td><%= dailytip.show_date.month %>/<%= dailytip.show_date.day %>/<%= dailytip.show_date.year %></td>
+                <td><%= link_to 'Edit', edit_dailytip_path(dailytip) %></td>
+                <td><%= link_to 'Destroy', dailytip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="panel-footer">
+      <%= link_to 'New Dailytip', new_dailytip_path %>
+    </div>
   </div>
-  <div class="panel-footer">
-    <%= link_to 'New Dailytip', new_dailytip_path %>
+</div>
+
+<div class="visible-xs-block homepagework">
+  <div class="panel panel-default">
+    <div class="panel-body" style="padding:5">
+
+      <h3>NinjaTips</h3>
+
+      <% @dailytips.each do |dailytip| %>
+        <hr/>
+        <p><strong><%= dailytip.user.username %>: </strong><%= link_to dailytip.tip, dailytip, class: "workoutLink" %></p>
+          <% if current_user.try(:admin) %>
+            Show Date: <%= dailytip.show_date.month %>/<%= dailytip.show_date.day %>/<%= dailytip.show_date.year %><br/>
+            <%= link_to 'Edit', edit_dailytip_path(dailytip) %> | <%= link_to 'Destroy', dailytip, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      <% end %>
+
+    </div>
+    <div class="panel-footer">
+      <%= link_to 'New Dailytip', new_dailytip_path %>
+    </div>
   </div>
 </div>
 

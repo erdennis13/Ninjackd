@@ -1,42 +1,71 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h1>All Reviews</h1>
+<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h1>All Reviews</h1>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>User</th>
-          <th></th>
-          <% if current_user.try(:admin) %>
-            <th colspan="3"></th>
-          <% else %>
-            <th></th>
-          <% end %>
-
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @userreviews.each do |userreview| %>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= userreview.user.username %></td>
-            <td><%= userreview.review %></td>
+            <th>User</th>
+            <th></th>
             <% if current_user.try(:admin) %>
-              <td><%= link_to 'Show', userreview %></td>
-              <td><%= link_to 'Edit', edit_userreview_path(userreview) %></td>
-              <td><%= link_to 'Destroy', userreview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% elsif current_user == userreview.user %>
-              <td><%= link_to 'Edit', edit_userreview_path(userreview) %></td>
+              <th colspan="3"></th>
+            <% else %>
+              <th></th>
             <% end %>
 
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
 
-  </div>
-  <div class="panel-footer">
+        <tbody>
+          <% @userreviews.each do |userreview| %>
+            <tr>
+              <td><%= userreview.user.username %></td>
+              <td><%= userreview.review %></td>
+              <% if current_user.try(:admin) %>
+                <td><%= link_to 'Show', userreview %></td>
+                <td><%= link_to 'Edit', edit_userreview_path(userreview) %></td>
+                <td><%= link_to 'Destroy', userreview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% elsif current_user == userreview.user %>
+                <td><%= link_to 'Edit', edit_userreview_path(userreview) %></td>
+              <% end %>
 
-    <%= link_to 'New Userreview', new_userreview_path %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="panel-footer">
+
+      <%= link_to 'New Userreview', new_userreview_path %>
+    </div>
   </div>
+</div>
+
+<div class="visible-xs-block homepagework">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h3>All Reviews</h3>
+          <% @userreviews.each do |userreview| %>
+            <hr/>
+              <p><strong><%= userreview.user.username %>: </strong>
+              <%= userreview.review %></p>
+              <% if current_user.try(:admin) %>
+                <%= link_to 'Show', userreview %> |
+                <%= link_to 'Edit', edit_userreview_path(userreview) %> |
+                <%= link_to 'Destroy', userreview, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% elsif current_user == userreview.user %>
+                <%= link_to 'Edit', edit_userreview_path(userreview) %>
+              <% end %>
+          <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to 'New Userreview', new_userreview_path %>
+    </div>
+  </div>
+</div>
+
+<div class="center">
+  <%= will_paginate @usereviews, renderer: BootstrapPagination::Rails %>
 </div>

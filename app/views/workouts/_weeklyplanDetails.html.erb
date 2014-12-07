@@ -1,22 +1,56 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<h1>Weeklyplan History</h1>
-		<table class="table table-striped">
-			<thead>
-				<th>Weeklyplan</th>
-				<th>Created at</th>
-				<th>Active?</th>
-				<th>Hits</th>
-			</thead>
-				<% @weeklyplans.each do |list| %>
-					<tr>
-						<td><%= list.name %></td>
-						<td><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></td>
-						<td><%= list.active ? "Yes" : "No" %></td>
-						<td><%= list.hits %></td>
-					</tr>
-				<% end %>
+<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>Weeklyplan History</h1>
+			<table class="table table-striped">
+				<thead>
+					<th>Weeklyplan</th>
+					<th>Created at</th>
+					<th>Active?</th>
+					<th>Hits</th>
+				</thead>
+					<% @weeklyplans.each do |list| %>
+						<tr>
+							<td><%= list.name %></td>
+							<td><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></td>
+							<td><%= list.active ? "Yes" : "No" %></td>
+							<td><%= list.hits %></td>
+						</tr>
+					<% end %>
 
-		</table>
+			</table>
+		</div>
 	</div>
+	
+</div>
+
+<div class="visible-xs-block homepagework">
+	<div class="panel panel-default">
+		<div class="panel-body" style="padding:0">
+			<h3 style="padding:5px">Weeklyplan History</h3>
+			<div class="table-responsive">
+				<table class="table table-striped table-condensed">
+					<thead>
+						<th>Weeklyplan</th>
+						<th>Created at</th>
+						<th>Active?</th>
+						<th>Hits</th>
+					</thead>
+						<% @weeklyplans.each do |list| %>
+							<tr>
+								<td><small><%= list.name %></small></td>
+								<td><small><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></small></td>
+								<td><small><%= list.active ? "Yes" : "No" %></small></td>
+								<td align="right"><small><%= list.hits %></small></td>
+							</tr>
+						<% end %>
+
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="center">
+  <%= will_paginate @weeklyplans, renderer: BootstrapPagination::Rails %>
 </div>

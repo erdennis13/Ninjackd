@@ -1,27 +1,58 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<h1>Showing User Statistics</h1>
-		<table class="table table-striped">
-			<thead>
-				<th>Username</th>
-				<th>Email</th>
-				<th>Paid?</th>
-				<th>Num Subscribed Workouts</th>
-				<th>Num Completed Workouts</th>
-				<th>Member since</th>
-			</thead>
-			<% @users.each do |look| %>
-				<tr>
-					<td><%= look.try(:username) %></td>
-					<td><%= look.try(:email) %></td>
-					<td><%= look.paypal_customer_token.nil? ? "No": "Yes" %></td>
-					<td><%= look.subscriptions.count %></td>
-					<td><%= look.subscriptions.where(complete: true).count %></td>
-					<td><%= look.created_at.month %>/<%= look.created_at.day %>/<%= look.created_at.year %></td>
-				</tr>
+<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1>Showing User Statistics</h1>
+			<table class="table table-striped">
+				<thead>
+					<th>Username</th>
+					<th>Email</th>
+					<th>Paid?</th>
+					<th>Num Subscribed Workouts</th>
+					<th>Num Completed Workouts</th>
+					<th>Member since</th>
+				</thead>
+				<% @users.each do |look| %>
+					<tr>
+						<td><%= look.try(:username) %></td>
+						<td><%= look.try(:email) %></td>
+						<td><%= look.paypal_customer_token.nil? ? "No": "Yes" %></td>
+						<td><%= look.subscriptions.count %></td>
+						<td><%= look.subscriptions.where(complete: true).count %></td>
+						<td><%= look.created_at.month %>/<%= look.created_at.day %>/<%= look.created_at.year %></td>
+					</tr>
 
-			<% end %>
-		</table>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="visible-xs-block homepagework">
+	<div class="panel panel-default">
+		<div class="panel-body" style="padding:0">
+			<h3 style="padding:5px">User Statistics</h3>
+			<div class="table-responsive">
+				<table class="table table-striped table-condensed">
+					<thead>
+						<th>Username</th>
+						<th>Paid?</th>
+						<th>#sub'd</th>
+						<th>#complete</th>
+						<th>Joined</th>
+					</thead>
+					<% @users.each do |look| %>
+						<tr>
+							<td><small><%= look.try(:username) %></small></td>
+							<td><small><%= look.paypal_customer_token.nil? ? "No": "Yes" %></small></td>
+							<td align="right"><small><%= look.subscriptions.count %></small></td>
+							<td align="right"><small><%= look.subscriptions.where(complete: true).count %></small></td>
+							<td align="right"><small><%= look.created_at.month %>/<%= look.created_at.day %>/<%= look.created_at.year %></small></td>
+						</tr>
+
+					<% end %>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
 
