@@ -10,7 +10,14 @@
 				</div>
 			</li>
 			<li class="list-group-item center">
-			  <%= image_tag @exercise.diagram.url(:medium) %>	
+				<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+					<%= image_tag @exercise.diagram.url(:medium) %>
+				</div>
+
+				<div class="visible-xs-block homepagework">
+					<%= image_tag @exercise.diagram.url(:thumb) %>
+				</div>
+			  	
 			</li>
 		</ul>
 	</div>

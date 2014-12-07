@@ -9,7 +9,6 @@
 				<thead>
 					<tr>
             <th>Name</th>
-            <th>Category</th>
             <th>Date</th>
             <th>Duration</th>
 					<tr>
@@ -19,7 +18,6 @@
 					<% if this.complete? %>
 						<tr>
 							<td><strong><%= link_to this.workout.name , detailedHistory_path(subscription_id: this.id), class: "workoutLink" %></strong></td>
-							<td><small><%= this.workout.category %></small></td>
 							
 							<% finish = this.try :finish_time %>
 							<td align="right"><%unless finish.blank? %>
