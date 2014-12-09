@@ -1,5 +1,5 @@
 <div class="row">
-  <% workouts.each_with_index do |workout, list_pos| %>
+  <% workouts.each do |workout| %>
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -19,13 +19,14 @@
                 <% end %>
           <% end %>
           
-
         </div>
       </div>
     </div>
   <% end %>
 </div>
 
-  <div class="center">
-    <%= will_paginate workouts, renderer: BootstrapPagination::Rails %>
+<div class="center">
+  <div id="homeworkouts" >
+    <%= will_paginate workouts, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
   </div>
+</div>

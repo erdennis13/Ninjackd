@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato|Permanent+Marker|Rock+Salt);
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
 $font-family-sans-serif: 'Lato', Helvetica, Arial, sans-serif;
 
@@ -13,5 +13,9 @@ $jumbotron-bg: #ecf0f1;
 $body-bg: #ecf0f1;
 //$panel-bg: #ecf0f1;
 //$panel-default-heading-bg: #d35400;
+
+
 @import "bootstrap-sprockets";
 @import 'bootstrap';
+
+

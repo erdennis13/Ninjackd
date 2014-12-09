@@ -2,7 +2,14 @@
   <div class="col-md-offset-3 col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<h2>Change your password</h2>
+				<div class="visible-sm-block visible-md-block visible-lg-block homepagework">
+					<h2>Change your password</h2>
+				</div>
+
+				<div class="visible-xs-block homepagework">
+					<h3>Change your password</h3>
+				</div>
+				
 
 				<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
 				  <%= devise_error_messages! %>

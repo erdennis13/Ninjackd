@@ -82,9 +82,15 @@
 								<%= form.label :restime, "Time between sets" %>
 								<%= form.number_field :restime, class: "form-control" %>
 							</div>
-							<div class="col-md-2 buttonBox" >
-								
-								<%= form.submit "Add Exercise", class: "btn btn-primary" %>
+							<div class="visible-sm-block homepagework">
+								<div class="col-md-2 pull-right" >
+									<%= form.submit "Add Exercise", class: "btn btn-primary" %>
+								</div>
+							</div>
+							<div class="visible-lg-block visible-md-block homepagework">
+								<div class="col-md-2 buttonBox" >
+									<%= form.submit "Add Exercise", class: "btn btn-primary" %>
+								</div>
 							</div>
 					<% end %>
 				</div>
@@ -130,7 +136,7 @@
 						<%= form.hidden_field :workout_id, value: @workout.id %>
 						<%= form.hidden_field :user_id, value: current_user.id %>
 						<div class="col-md-8"><%= form.text_field :comment, class: "form-control", placeholder: "Add a comment here..." %></div>
-						<div class="col-md-2 buttonBox"><%= form.submit "Comment", class: 'btn btn-default' %></div>
+						<div class="col-md-2 pull-right"><%= form.submit "Comment", class: 'btn btn-default' %></div>
 					<% end %>
 				</tr>
 			</div>
@@ -142,7 +148,7 @@
 			<div class="row">
 				<div class="col-md-offset-1 col-md-10">
 					<table class="table">
-						<% @workout.comments.each do |print| %>
+						<% @comments.each do |print| %>
 							<tr><td>
 								<strong><%= print.user.try(:username) %>:</strong> <%= print.comment %>
 							</td></tr>
@@ -150,6 +156,9 @@
 					</table>
 				</div>
 			</div>
+			<div class="center">
+		    <%= will_paginate @comments, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
+		  </div>
 
 			</div>
 			<div class="panel-footer">
@@ -187,17 +196,19 @@
 							<h5><%= form.label :schedule, "Schedule this workout" %> <small>(mm/dd/yyyy)</small></h5> 
 						</div></div>
 					<div class="row">
-						<div class="col-xs-6">
-							<%= form.text_field :schedule, 'data-behaviour' => 'datepicker' %>
+						<div class="col-md-6">
+							<div class="form-group">
+								<%= form.text_field :schedule, 'data-behaviour' => 'datepicker', class: "form-control" %>
+							</div>
 						</div>
 							<script type="text/javascript">
 							  $('[data-behaviour~=datepicker]').datepicker();
 							</script>
-						<div class="alignRight">
-							<div class="col-xs-6">
+						
+							<div class="col-md-6 pull-right">
 								<%= form.submit "Subscribe" , class: "btn btn-primary btn-sm" %>
 							</div>
-						</div>
+						
 					</div>
 						
 				<% end %>
@@ -292,8 +303,9 @@
 
 									<%= form.hidden_field :workout_id, value: @workout.id %>
 									<%= form.hidden_field :user_id, value: current_user.id %>
+
 									<%= form.text_area :comment, class: "form-control", placeholder: "Add a comment here..." %>
-									<%= form.submit "Comment", class: 'btn btn-default alignRight' %>
+									<%= form.submit "Comment", class: 'btn btn-default' %>
 								<% end %>
 							
 						</div>
@@ -302,7 +314,7 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<table class="table table-condensed">
-									<% @workout.comments.each do |print| %>
+									<% @comments.each do |print| %>
 										<tr><td>
 											<h5><%= print.user.try(:username) %>:<small> <%= print.comment %></small></h5>
 										</td></tr>
@@ -310,6 +322,11 @@
 								</table>
 							</div>
 						</div>
+						<div class="center">
+							<div class="pagination-sm">
+					    	<%= will_paginate @comments, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
+					    </div>
+					  </div>
 						<div class="panel-footer">
 							<% if current_user.try(:admin?) %>
 								<%= link_to 'Edit', edit_workout_path(@workout) %> | 
@@ -321,10 +338,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 
 <% else %>
 	<%= render 'pages/pleasesignin' %>

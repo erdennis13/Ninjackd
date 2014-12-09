@@ -88,6 +88,7 @@ class WorkoutsController < ApplicationController
     end
 
     @warmups = @workout.warmworks.all
+    @comments= @workout.comments.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 1)
 
   end
 
@@ -107,12 +108,14 @@ class WorkoutsController < ApplicationController
     @dayinc = 1
     7.times do
       @weeklyplan.weeklybits.each do |check|
-        if check.day == @dayinc
-          @sub = Subscription.new
-          @sub.user_id = @user
-          @sub.workout_id = check.workout.id
-          @sub.schedule = dates[check.day]
-          @sub.save
+        unless dates[check.day] < Date.today
+          if check.day == @dayinc
+            @sub = Subscription.new
+            @sub.user_id = @user
+            @sub.workout_id = check.workout.id
+            @sub.schedule = dates[check.day]
+            @sub.save
+          end
         end
       end
       @dayinc += 1
