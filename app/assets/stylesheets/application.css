@@ -111,3 +111,7 @@ ul.nav a:hover {
 .borderless tbody tr td, .borderless thead tr th {
     border: none;
 }
+
+.activeWorkout {
+  background-color: #e67e22;
+}

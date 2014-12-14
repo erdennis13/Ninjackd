@@ -6,16 +6,22 @@
 				<thead>
 					<th>Weeklyplan</th>
 					<th>Created at</th>
-					<th>Active?</th>
 					<th>Hits</th>
 				</thead>
 					<% @weeklyplans.each do |list| %>
-						<tr>
-							<td><%= list.name %></td>
-							<td><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></td>
-							<td><%= list.active ? "Yes" : "No" %></td>
-							<td><%= list.hits %></td>
-						</tr>
+						<% if list.active? %>
+							<tr class="activeWorkout">
+								<td><%= list.name %></td>
+								<td><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></td>
+								<td><%= list.hits %></td>
+							</tr>
+						<% else %>
+							<tr>
+								<td><%= list.name %></td>
+								<td><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></td>
+								<td><%= list.hits %></td>
+							</tr>
+						<% end %>
 					<% end %>
 
 			</table>
@@ -33,16 +39,22 @@
 					<thead>
 						<th>Weeklyplan</th>
 						<th>Created at</th>
-						<th>Active?</th>
 						<th>Hits</th>
 					</thead>
 						<% @weeklyplans.each do |list| %>
-							<tr>
-								<td><small><%= list.name %></small></td>
-								<td><small><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></small></td>
-								<td><small><%= list.active ? "Yes" : "No" %></small></td>
-								<td align="right"><small><%= list.hits %></small></td>
-							</tr>
+							<% if list.active? %>
+								<tr class="activeWorkout">
+									<td><small><%= list.name %></small></td>
+									<td><small><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></small></td>
+									<td align="right"><small><%= list.hits %></small></td>
+								</tr>
+							<% else %>
+								<tr>
+									<td><small><%= list.name %></small></td>
+									<td><small><%= list.created_at.month %>/<%= list.created_at.day %>/<%= list.created_at.year %></small></td>
+									<td align="right"><small><%= list.hits %></small></td>
+								</tr>
+							<% end %>
 						<% end %>
 
 				</table>

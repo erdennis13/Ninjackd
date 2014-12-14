@@ -2,7 +2,7 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy, :assign]
 
   def index
-    @workouts = Workout.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @workouts = Workout.all.where(active: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     @workoutCategories = ["",]
     @workouts.each do |add|
       @workoutCategories.append(add.category)
@@ -185,7 +185,7 @@ class WorkoutsController < ApplicationController
 
     def workout_params
       #params.require(:workout).permit(:name, :category, :description, :duration)
-      params.require(:workout).permit(:name, :category, :description, :duration, :weightFacility, workoutbits_attributes: [ :id, :sets, :reps, exercise_attributes: [:id]])
+      params.require(:workout).permit(:name, :category, :description, :duration, :weightFacility, :active ,workoutbits_attributes: [ :id, :sets, :reps, exercise_attributes: [:id]])
     end
 
 end

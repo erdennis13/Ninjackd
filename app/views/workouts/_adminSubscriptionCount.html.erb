@@ -16,14 +16,25 @@
 
 
 					<% @workouts.each do |list| %>
-						<tr>
-							<td><%= list.name %></td>
-							<td><%= list.category %></td>
-							<td><%= list.description %></td>
-							<td><%= list.subscriptions.count %></td>
-							<td><%= list.likes.count %></td>
-							<td><%= list.comments.count %></td>
-						</tr>
+						<% if list.active? %>
+							<tr class="activeWorkout">
+								<td><%= link_to list.name, list, class: "workoutLink" %></td>
+								<td><%= list.category %></td>
+								<td><%= list.description %></td>
+								<td><%= list.subscriptions.count %></td>
+								<td><%= list.likes.count %></td>
+								<td><%= list.comments.count %></td>
+							</tr>
+						<% else %>
+							<tr>
+								<td><%= link_to list.name, list, class: "workoutLink" %></td>
+								<td><%= list.category %></td>
+								<td><%= list.description %></td>
+								<td><%= list.subscriptions.count %></td>
+								<td><%= list.likes.count %></td>
+								<td><%= list.comments.count %></td>
+							</tr>
+						<% end %>
 					<% end %>
 
 				</table>
@@ -50,12 +61,21 @@
 
 
 					<% @workouts.each do |list| %>
-						<tr>
-							<td><small><%= list.name %></small></td>
-							<td align="right"><small><%= list.subscriptions.count %></small></td>
-							<td align="right"><small><%= list.likes.count %></small></td>
-							<td align="right"><small><%= list.comments.count %></small></td>
-						</tr>
+						<% if list.active? %>
+							<tr class="activeWorkout">
+								<td><small><%= link_to list.name, list, class: "workoutLink" %></small></td>
+								<td align="right"><small><%= list.subscriptions.count %></small></td>
+								<td align="right"><small><%= list.likes.count %></small></td>
+								<td align="right"><small><%= list.comments.count %></small></td>
+							</tr>
+						<% else %>
+							<tr>
+								<td><small><%= link_to list.name, list, class: "workoutLink" %></small></td>
+								<td align="right"><small><%= list.subscriptions.count %></small></td>
+								<td align="right"><small><%= list.likes.count %></small></td>
+								<td align="right"><small><%= list.comments.count %></small></td>
+							</tr>
+						<% end %>
 					<% end %>
 
 				</table>
