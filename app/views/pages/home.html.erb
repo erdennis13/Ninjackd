@@ -31,15 +31,10 @@
 	</div>
 </div>
 
-
-<div class="visible-xs-block homepagework">
-	<!--<div id="homeworkouts">
-	<div class="sort_paginate_ajax">-->
-		<% render 'workouts/workouts2', {workouts: Workout.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 1)} %>
-</div>
-
-<div class="visible-xs-block homepagework" >
-	<div id="homeworkoutspage">
-		<%= render 'homeworkoutspage' %>
+<div class="homepage">
+	<div class="visible-xs-block homepagework" >
+		<div id="homeworkoutspage">
+			<%= render 'homeworkoutspage' %>
+		</div>
 	</div>
 </div>

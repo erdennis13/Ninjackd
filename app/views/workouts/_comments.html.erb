@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-xs-12">
+		<table class="table table-condensed">
+			<% @comments.each do |print| %>
+				<tr><td>
+					<h5><%= print.user.try(:username) %>:<small> <%= print.comment %></small></h5>
+				</td></tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+<div class="center">
+	<div class="pagination-sm">
+  	<%= will_paginate @comments, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
+  </div>
+</div>

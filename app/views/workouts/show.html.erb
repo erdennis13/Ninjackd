@@ -310,23 +310,10 @@
 							
 						</div>
 
-
-						<div class="row">
-							<div class="col-xs-12">
-								<table class="table table-condensed">
-									<% @comments.each do |print| %>
-										<tr><td>
-											<h5><%= print.user.try(:username) %>:<small> <%= print.comment %></small></h5>
-										</td></tr>
-									<% end %>
-								</table>
-							</div>
+						<div id="comments_ajax" >
+							<%= render 'comments' %>
 						</div>
-						<div class="center">
-							<div class="pagination-sm">
-					    	<%= will_paginate @comments, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
-					    </div>
-					  </div>
+
 						<div class="panel-footer">
 							<% if current_user.try(:admin?) %>
 								<%= link_to 'Edit', edit_workout_path(@workout) %> | 
