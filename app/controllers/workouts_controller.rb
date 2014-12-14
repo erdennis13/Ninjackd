@@ -88,7 +88,7 @@ class WorkoutsController < ApplicationController
     end
 
     @warmups = @workout.warmworks.all
-    @comments= @workout.comments.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 1)
+    @comments= @workout.comments.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
 
   end
 
