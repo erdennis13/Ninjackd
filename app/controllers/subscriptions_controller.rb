@@ -27,8 +27,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    sched = Date.parse(params["subscription"][:schedule]).strftime('%Y/%m/%d')
     @subscription = Subscription.new(subscription_params)
-    @subscription.schedule = @subscription.schedule.strftime('%Y/%d/%m')
+    @subscription.schedule = sched
+    #@subscription.schedule = @subscription.schedule.strftime('%Y/%d/%m')
     respond_to do |format|
       if @subscription.save
         format.html { redirect_to profile_url, notice: 'Subscription was successfully created.' }
