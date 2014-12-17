@@ -1,5 +1,6 @@
 <div class="panel panel-default">
 	<div class="panel-body">
+		<%= link_to "Ethans History", ethans_history_url %>
 		<h1><%= current_user.name %> <small>Here are your workouts</small></h1>
 		<% unless @todaySubscriptions.blank? %>
 			<hr/>
