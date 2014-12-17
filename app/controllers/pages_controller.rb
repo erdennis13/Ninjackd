@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   	end
   end
 
-  def ethans_history
+  def ethans_week
     @ethan = User.find(1)
     @subscriptions = Subscription.where(user_id: @ethan.id).where(schedule: Date.today.at_beginning_of_week(:sunday)..Date.today.at_end_of_week(:sunday)).all
     @date = Date.today.beginning_of_week(:sunday)
