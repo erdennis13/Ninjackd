@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get "admin" => "workouts#admin"
   get "detailedHistory" => "pages#detailedHistory"
   get "findWorkout" => "workouts#findWorkout"
+  get "Ethans_History" => "pages#Ethans_History"
 
   get "add_weekly_subscription" => "workouts#add_weekly_subscription"
   post "add_weekly_subscription" => "workouts#add_weekly_subscription"

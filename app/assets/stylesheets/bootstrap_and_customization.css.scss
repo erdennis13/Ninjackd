@@ -18,4 +18,16 @@ $body-bg: #ecf0f1;
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 
+.panel-dark-bg .panel-body {
+	background: #323232;
+}
+
+.grid7 .col-md-1 { width: 14.285714285714%; }
+.grid7 .col-md-2 { width: 28.571428571429%; }
+.grid7 .col-md-3 { width: 42.857142857143%; }
+.grid7 .col-md-4 { width: 57.142857142857%; }
+.grid7 .col-md-5 { width: 71.428571428571%; }
+.grid7 .col-md-6 { width: 85.714285714286%; }
+.grid7 .col-md-7 { width: 100%; }
+
 

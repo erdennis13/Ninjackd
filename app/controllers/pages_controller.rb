@@ -22,6 +22,20 @@ class PagesController < ApplicationController
   	end
   end
 
+  def Ethans_History
+    @ethan = User.find(1)
+    @subscriptions = Subscription.where(user_id: @ethan.id).where(schedule: Date.today.at_beginning_of_week(:sunday)..Date.today.at_end_of_week(:sunday)).all
+    @date = Date.today.beginning_of_week(:sunday)
+    @dates = Hash.new
+    @dates[0] = @date
+    @dates[1] = @date + 1
+    @dates[2] = @date + 2
+    @dates[3] = @date + 3
+    @dates[4] = @date + 4
+    @dates[5] = @date + 5
+    @dates[6] = @date + 6
+  end
+
   def cancel_account
   	@user = current_user
 

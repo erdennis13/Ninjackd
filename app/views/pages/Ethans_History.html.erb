@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h1><%= @ethan.name %> <small>Take a look at what I'm up to this week!</small></h1>
+		<hr/>
+
+	<div class="visible-md-block visible-lg-block homepagework">
+		<div class="row grid7">
+			<% @dayinc = 0 %>
+			<% 7.times do %>
+				<div class="col-md-1">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong><%= Date::DAYNAMES[@dayinc] %></strong>
+						</div>
+						<div class="panel-body">
+							<% @dayinc += 1 %>
+							<% @subscriptions.each do |check| %>
+								<% if check.schedule == @dates[@dayinc] %>
+									<h4><%= link_to check.workout.name, check.workout, class: "workoutLink" %></h4>
+									<% check.workout.workoutbits.each do |exercise| %>
+										<%= link_to exercise.exercise.name, exercise.exercise, class: "workoutLink" %></br>
+									<% end %>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="visible-xs-block visible-sm-block homepagework">
+		<div class="row">
+			<% @dayinc = 0 %>
+			<% 7.times do %>
+				<div class="col-md-2">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong><%= Date::DAYNAMES[@dayinc] %></strong>
+						</div>
+						<div class="panel-body">
+							<% @dayinc += 1 %>
+							<% @subscriptions.each do |check| %>
+								<% if check.schedule == @dates[@dayinc] %>
+									<h4><%= link_to check.workout.name, check.workout, class: "workoutLink" %></h4>
+									<% check.workout.workoutbits.each do |exercise| %>
+										<%= link_to exercise.exercise.name, exercise.exercise, class: "workoutLink" %></br>
+									<% end %>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	</div>
+</div>
