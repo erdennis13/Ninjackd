@@ -23,7 +23,13 @@ class PagesController < ApplicationController
   end
 
   def ethans_week
-    @ethan = User.find(1)
+    if Rails.env == 'development'
+      @ethan = User.find(1)
+    elsif Rails.env == 'production'
+      @ethan = User.find(3)
+    end
+    
+
     @subscriptions = Subscription.where(user_id: @ethan.id).where(schedule: Date.today.at_beginning_of_week(:sunday)..Date.today.at_end_of_week(:sunday)).all
     @date = Date.today.beginning_of_week(:sunday)
     @dates = Hash.new
