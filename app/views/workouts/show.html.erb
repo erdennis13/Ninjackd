@@ -96,6 +96,36 @@
 
 			<br/>
 
+			<% if @workout.note.present? %>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="well"><strong>Notes: </strong><%= @workout.try(:note) %></div>
+					</div>
+				</div>
+			<% end %>
+			
+			<% if current_user.try(:admin?) %>
+				<div class="row">
+					<div class="col-xs-12">
+						<%= form_for @workout do |form| %>
+							<div class="col-xs-11">
+								<div class="field form-group">
+									<%= form.label :note %>
+									<%= form.text_field :note, class: "form-control" %>
+								</div>
+							</div>
+							<div class="col-xs-1">
+								<div class="field form-group">
+									<br/>
+									<%= form.submit "Save", class: "btn btn-primary" %>
+								</div>
+							</div>
+
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+			
 
 			<!-- This checks to see if a warmup already exists for workout, if not, it displays the form to add a warmup. -->
 
@@ -261,6 +291,38 @@
 					</div>
 				<% end %>
 				
+
+			<% if @workout.note.present? %>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="well"><strong>Notes: </strong><%= @workout.try(:note) %></div>
+					</div>
+				</div>
+			<% end %>
+			
+				<% if current_user.try(:admin?) %>
+				<div class="row">
+					<div class="col-xs-12">
+						<%= form_for @workout do |form| %>
+							<div class="col-xs-11">
+								<div class="field form-group">
+									<%= form.label :note %>
+									<%= form.text_field :note, class: "form-control" %>
+								</div>
+							</div>
+							<div class="col-xs-1">
+								<div class="field form-group">
+									<br/>
+									<%= form.submit "Save", class: "btn btn-primary" %>
+								</div>
+							</div>
+
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+
+
 					<!-- This checks to see if a warmup already exists for workout, if not, it displays the form to add a warmup. -->
 
 						<% if @warmups.count < 1 %>

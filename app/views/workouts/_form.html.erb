@@ -34,6 +34,10 @@
     <%= f.number_field :duration, class: "form-control" %>
   </div>
   <div class="field form-group">
+    <%= f.label :note %>
+    <%= f.text_field :note, class: "form-control" %>
+  </div>
+  <div class="field form-group">
     <%= f.label :weightFacility, "Weight room needed?" %>
     <%= f.select :weightFacility, options_for_select(@facilityOptions), class: "form-control" %>
   </div>
