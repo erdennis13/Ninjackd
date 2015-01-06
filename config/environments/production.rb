@@ -78,7 +78,7 @@ Rails.application.configure do
 
   #Rails.application.routes.default_url_options[:host] = 'www.simplefitapp.com'
 
-  config.action_mailer.default_url_options = { :host => 'http://www.ninjackd.com' }
+  #config.action_mailer.default_url_options = { :host => 'http://www.ninjackd.com' }
 
 
   config.action_mailer.delivery_method = :smtp
