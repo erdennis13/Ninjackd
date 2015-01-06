@@ -41,12 +41,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-  address: "ethan@simplefitapp.com",
+  address: "ninjackd@gmail.com",
   port: 587,
-  domain: 'simplefitapp.com',
+  domain: 'gmail.com',
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: 'ethan',
-  password: 'MICHtrack13!'
+  user_name: 'ninjackd',
+  password: 'michtrack13'
   }
 end
