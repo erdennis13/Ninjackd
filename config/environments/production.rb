@@ -97,6 +97,7 @@ Rails.application.configure do
 }
 =end
 
+#try this
  config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
