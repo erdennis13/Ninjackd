@@ -1,11 +1,19 @@
 <div id="showpage">
+	<div id="loading-icon">
+    <div class="center">
+      <%= image_tag 'ajax_loader_blue_32.gif', id: "loading-icon"%>
+    </div>
+  </div>
 	<div class="row">
 		<div class="col-xs-12">
 			<table class="table table-condensed">
 				<% @comments.each do |print| %>
-					<tr><td>
-						<h5><%= print.user.try(:username) %>:<small> <%= print.comment %></small></h5>
-					</td></tr>
+					<tr>
+						<td><h5><%= print.user.try(:username) %>:<small> <%= print.comment %></small></h5></td>
+						<% if current_user == print.user or current_user.try(:admin?) %>
+							<td align="right"><%= link_to "Delete", print, method: :destroy %></td>
+						<% end %>
+					</tr>
 				<% end %>
 			</table>
 		</div>
@@ -15,9 +23,5 @@
 	  	<%= will_paginate @comments, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
 	  </div>
 	</div>
-	<div id="loading-icon">
-    <div class="center">
-      <%= image_tag 'ajax_loader_blue_32.gif', id: "loading-icon"%>
-    </div>
-  </div>
+
 </div>

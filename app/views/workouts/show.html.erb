@@ -172,21 +172,11 @@
 			<br/>
 
 
-
-			<div class="row">
-				<div class="col-md-offset-1 col-md-10">
-					<table class="table">
-						<% @comments.each do |print| %>
-							<tr><td>
-								<strong><%= print.user.try(:username) %>:</strong> <%= print.comment %>
-							</td></tr>
-						<% end %>
-					</table>
-				</div>
-			</div>
-			<div class="center">
-		    <%= will_paginate @comments, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
-		  </div>
+					<div class="showpage" >
+						<div id="showpagecomments">
+							<%= render 'comments' %>
+						</div>
+					</div>
 
 			</div>
 			<div class="panel-footer">
@@ -299,7 +289,7 @@
 					</div>
 				</div>
 			<% end %>
-			
+
 				<% if current_user.try(:admin?) %>
 				<div class="row">
 					<div class="col-xs-12">

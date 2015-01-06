@@ -1,38 +1,84 @@
-<div id="weeks" class="transitions-enabled">
-	<% @dayinc = 1 %>
-	
-	<% 7.times do %>
-		<div class="box panel panel-default">
-			<div class="panel-heading center">
-				<%= Date::DAYNAMES[@dayinc - 1] %><br/>
-			</div>
+<div class="visible-lg-block homepagework">
+	<div class="row grid7">
+		<% @dayinc = 1 %>
+		<% 7.times do %>
+		<div class="col-lg-1">
+			<div class="panel panel-default">
+				<div class="panel-heading center">
+					<%= Date::DAYNAMES[@dayinc - 1] %><br/>
+				</div>
 
-			<div class="panel-body">
-					<% @none = 0 %>
-					<% @count = 0 %>
-					<% @weeklyplan.weeklybits.each do |check| %>
-						<% if check.day == @dayinc %>
-							<h3><%= check.workout.name %></h3>
-							<p><%= check.workout.description %></p>
-							<% @count +=1 %>
-							<% if current_user.try(:admin?) %>
-								<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
+				<div class="panel-body">
+						<% @none = 0 %>
+						<% @count = 0 %>
+						<% @weeklyplan.weeklybits.each do |check| %>
+							<% if check.day == @dayinc %>
+								<h3><%= check.workout.name %></h3>
+								<p><%= check.workout.description %></p>
+								<% @count +=1 %>
+								<% if current_user.try(:admin?) %>
+									<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
+								<% end %>
+							<% end %>
+							
+						<% end %>
+						<% if current_user.try(:admin?) %>
+							<% if @count == 0 %>
+								<%= form_for :weeklybit, url: weeklybits_url do |form| %>
+									<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
+									<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name") %><br/>
+									<%= form.hidden_field :day, value: @dayinc %>
+									<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
+								<% end %>
 							<% end %>
 						<% end %>
-						
-					<% end %>
-					<% if current_user.try(:admin?) %>
-						<% if @count == 0 %>
-							<%= form_for :weeklybit, url: weeklybits_url do |form| %>
-								<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
-								<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name") %><br/>
-								<%= form.hidden_field :day, value: @dayinc %>
-								<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
-							<% end %>
-						<% end %>
-					<% end %>
+					</div>
+				</div>
+			<% @dayinc +=1 %>
 			</div>
-		</div>
-		<% @dayinc +=1 %>
-	<% end %>
+		<% end %>
+	</div>
 </div>
+
+<div class="visible-xs-block visible-sm-block visible-md-block homepagework">
+	<div class="row">
+		<% @dayinc = 1 %>
+		<% 7.times do %>
+		<div class="col-md-3 pull-left col-sm-6 pull-left col-xs-12 pull-left">
+			<div class="panel panel-default center">
+				<div class="panel-heading center">
+					<%= Date::DAYNAMES[@dayinc - 1] %><br/>
+				</div>
+
+				<div class="panel-body">
+						<% @none = 0 %>
+						<% @count = 0 %>
+						<% @weeklyplan.weeklybits.each do |check| %>
+							<% if check.day == @dayinc %>
+								<h3><%= check.workout.name %></h3>
+								<p><%= check.workout.description %></p>
+								<% @count +=1 %>
+								<% if current_user.try(:admin?) %>
+									<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
+								<% end %>
+							<% end %>
+							
+						<% end %>
+						<% if current_user.try(:admin?) %>
+							<% if @count == 0 %>
+								<%= form_for :weeklybit, url: weeklybits_url do |form| %>
+									<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
+									<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name") %><br/>
+									<%= form.hidden_field :day, value: @dayinc %>
+									<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
+								<% end %>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+			<% @dayinc +=1 %>
+			</div>
+		<% end %>
+	</div>
+</div>
+

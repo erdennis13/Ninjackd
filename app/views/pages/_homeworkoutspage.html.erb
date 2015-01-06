@@ -26,15 +26,17 @@
     <% end %>
   </div>
 
-  <div class="center">
-    <div id="homeworkouts" >
-      <%= will_paginate @workouts, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
-    </div>
-  </div>
   <div id="loading-icon">
     <div class="center">
       <%= image_tag 'ajax_loader_blue_32.gif', id: "loading-icon"%>
     </div>
   </div>
+
+  <div class="center">
+    <div id="homeworkouts" >
+      <%= will_paginate @workouts, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
+    </div>
+  </div>
+
 
 </div>

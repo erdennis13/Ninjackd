@@ -10,6 +10,7 @@
 						<th>Category</th>
 						<th>Description</th>
 						<th>Hits</th>
+						<th>Completed</th>
 						<th>Likes</th>
 						<th>Comments</th>
 					</thead>
@@ -22,6 +23,7 @@
 								<td><%= list.category %></td>
 								<td><%= list.description %></td>
 								<td><%= list.subscriptions.count %></td>
+								<td><%= list.subscriptions.where(complete: true).count %></td>
 								<td><%= list.likes.count %></td>
 								<td><%= list.comments.count %></td>
 							</tr>
@@ -31,6 +33,7 @@
 								<td><%= list.category %></td>
 								<td><%= list.description %></td>
 								<td><%= list.subscriptions.count %></td>
+								<td><%= list.subscriptions.where(complete: true).count %></td>
 								<td><%= list.likes.count %></td>
 								<td><%= list.comments.count %></td>
 							</tr>
