@@ -5,7 +5,10 @@ class WorkoutsController < ApplicationController
     @workouts = Workout.all.where(active: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     @workoutCategories = ["",]
     @workouts.each do |add|
-      @workoutCategories.append(add.category)
+      unless @workoutCategories.include?(add)
+         @workoutCategories << add.category
+      end
+      #@workoutCategories.append(add.category)
     end
     @workouts = @workouts.cat(params[:cat]) if params[:cat].present?
     @workouts = @workouts.starts_with(params[:starts_with]) if params[:starts_with].present?
