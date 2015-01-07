@@ -67,7 +67,7 @@
         <% if current_user.try(:admin?) %>
           <%= link_to 'New Exercise', new_exercise_path %>
         <% else %>
-          <%= mail_to("ethan@ninjackd.com", name = "Want to see some more exercises? Let me know!", html_options = {subject: "Request for new exercises"}) %>
+          <%= mail_to("ninjackd@gmail.com", name = "Want to see some more exercises? Let me know!", html_options = {subject: "Request for new exercises"}) %>
         <% end %>
       </div>
     </div>
