@@ -56,6 +56,6 @@ class WeeklyplansController < ApplicationController
     end
 
     def weeklyplan_params
-      params.require(:weeklyplan).permit(:name, :active)
+      params.require(:weeklyplan).permit(:name, :active, :hits, :usercreate)
     end
 end

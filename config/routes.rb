@@ -62,6 +62,9 @@ Rails.application.routes.draw do
 
   get "tipofday" => "dailytips#tipofday"
 
+  get 'usercreate', to: "workouts#usercreate"
+  post 'usercreate', to: "workouts#usercreate"
+
   #get "category" => "workouts#category"
   #post "category" => "workouts#category"
   #get '/workouts/:id/assign', to: 'workouts#assign', as: 'assign'

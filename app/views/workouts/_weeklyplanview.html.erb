@@ -70,42 +70,11 @@
 					</tr>
 			<% end %>
 		</table>
+		<hr/>
+		<h3>Create you're own weeklyplan!</h3>
+		<%= button_to "Create here", {action: "usercreate", usercreate: current_user.id, remote: true}, class: "btn btn-success btn-sm" %>
 	</div>
 </div>
-
-<div class="panel panel-default">
-	<div class="panel-body">
-		<h1>Create your own week plan! <small>Note, you're weeklyplan will only be visible to you</small></h1>
-
-
-		<table class="table">
-			<thead>
-				<th>Name</th>
-				<th>Sunday</th>
-				<th>Monday</th>
-				<th>Tuesday</th>
-				<th>Wednesday</th>
-				<th>Thursday</th>
-				<th>Friday</th>
-				<th>Saturday</th>
-				<th></th>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-
-	</div>
-</div>
-
-
-
-
-
-
-
 
 
 

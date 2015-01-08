@@ -130,6 +130,21 @@ class WorkoutsController < ApplicationController
     flash[:notice] = 'Weeklyplan was added successfully to your subscriptions. Enjoy!'
   end
 
+  def usercreate
+    @weeklyplan = Weeklyplan.new
+    @weeklyplan.usercreate = current_user.id
+    @weeklyplan.name = current_user.try(:username) + "_weeklyplan_XX"
+    respond_to do |format|
+      if @weeklyplan.save
+        format.html { redirect_to @weeklyplan, notice: 'Weeklyplan was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @weeklyplan }
+      else
+        format.html { redirect_to :back, notice: 'Weeklyplan was unsuccessfully created.' }
+        format.json { render action: 'show', status: :created, location: @weeklyplan }
+      end
+    end
+  end
+
   def new
     @workout = Workout.new
     @workoutbits = @workout.workoutbits.build

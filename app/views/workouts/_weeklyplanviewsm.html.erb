@@ -59,6 +59,11 @@
 		
 	</div>
 	<div class="panel-footer">
-		<%= link_to "New Weeklyplan", new_weeklyplan_path %>
+		<% if current_user.try(:admin?) %>
+			<%= link_to "New Weeklyplan", new_weeklyplan_path %>
+		<% else %>
+			<%= button_to "Create you're own plan", {action: "usercreate", usercreate: current_user.id, remote: true}, class: "btn btn-success btn-sm" %>
+		<% end %>
+
 	</div>
 </div>

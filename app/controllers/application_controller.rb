@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
 	   devise_parameter_sanitizer.for(:sign_up) << :paypal_payment_token
 	   devise_parameter_sanitizer.for(:sign_up) << :paypal_customer_token
 	   devise_parameter_sanitizer.for(:sign_up) << :paypal_recurring_profile
+	   devise_parameter_sanitizer.for(:sign_up) << :numweeks
+	   devise_parameter_sanitizer.for(:account_update) << :numweeks
 	 end
 
 end

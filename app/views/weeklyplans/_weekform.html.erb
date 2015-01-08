@@ -16,13 +16,13 @@
 								<h3><%= check.workout.name %></h3>
 								<p><%= check.workout.description %></p>
 								<% @count +=1 %>
-								<% if current_user.try(:admin?) %>
+								<% if current_user.try(:admin?) or current_user.id == @weeklyplan.usercreate %>
 									<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
 								<% end %>
 							<% end %>
 							
 						<% end %>
-						<% if current_user.try(:admin?) %>
+						<% if current_user.try(:admin?) or current_user.id == @weeklyplan.usercreate %>
 							<% if @count == 0 %>
 								<%= form_for :weeklybit, url: weeklybits_url do |form| %>
 									<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
@@ -38,6 +38,7 @@
 			</div>
 		<% end %>
 	</div>
+	<%= link_to "Done? Return to workouts", workouts_url %>
 </div>
 
 <div class="visible-xs-block visible-sm-block visible-md-block homepagework">
@@ -58,13 +59,13 @@
 								<h3><%= check.workout.name %></h3>
 								<p><%= check.workout.description %></p>
 								<% @count +=1 %>
-								<% if current_user.try(:admin?) %>
+								<% if current_user.try(:admin?) or current_user.id == @weeklyplan.usercreate %>
 									<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
 								<% end %>
 							<% end %>
 							
 						<% end %>
-						<% if current_user.try(:admin?) %>
+						<% if current_user.try(:admin?) or current_user.id == @weeklyplan.usercreate %>
 							<% if @count == 0 %>
 								<%= form_for :weeklybit, url: weeklybits_url do |form| %>
 									<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
@@ -80,5 +81,6 @@
 			</div>
 		<% end %>
 	</div>
+	<%= link_to "Done? Return to workouts", workouts_url %>
 </div>
 
