@@ -8,7 +8,7 @@
 					<%= Date::DAYNAMES[@dayinc - 1] %><br/>
 				</div>
 
-				<div class="panel-body">
+				<div class="panel-body center">
 						<% @none = 0 %>
 						<% @count = 0 %>
 						<% @weeklyplan.weeklybits.each do |check| %>
@@ -31,7 +31,9 @@
 									</div>
 									<br/>
 									<%= form.hidden_field :day, value: @dayinc %>
-									<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
+									<div class="form-group">
+										<%= form.submit "Add Bit", class: "btn btn-primary btn-xs form-control" %>
+									</div>
 								<% end %>
 							<% end %>
 						<% end %>
@@ -77,7 +79,9 @@
 									</div>
 									<br/>
 									<%= form.hidden_field :day, value: @dayinc %>
-									<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
+									<div class="form-group">
+										<%= form.submit "Add Bit", class: "btn btn-primary btn-xs form-control" %>
+									</div>
 								<% end %>
 							<% end %>
 						<% end %>

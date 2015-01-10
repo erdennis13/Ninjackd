@@ -1,61 +1,36 @@
-		<h1><%= @weeklyplan.name %></h1>
-		<% if current_user.id == @weeklyplan.usercreate %>
+<div class="visible-xs-block visible-sm-block visible-md-block homepagework">
+	<div class="planname">
+		<h3><%= @weeklyplan.name %></h3>
+	</div>
+	<% if current_user.id == @weeklyplan.usercreate %>
+		<div class="editfield">
 			<%= form_for @weeklyplan do |form| %>
 				<%= form.label :name %>
 				<%= form.text_field :name, placeholder: "type new name here..." %>
 				<%= form.submit "Save", class: "btn btn-primary btn-sm" %>
 			<% end %>
-		<% end %>
-		<br/>
-		
-		<% if false %>
-			<table class="table">
-				<thead>
-					<th>Sunday</th>
-					<th>Monday</th>
-					<th>Tuesday</th>
-					<th>Wednesday</th>
-					<th>Thursday</th>
-					<th>Friday</th>
-					<th>Saturday</th>
-				</thead>
-				<tr>
-					<% @dayinc = 1 %>
-					<% 7.times do %>
-						<% @hasbit = false %>
-						<% @weeklyplan.weeklybits.each do |check| %>
-							<% if check.day == @dayinc %>
-								<% @hasbit = true %>
-							<% end %>
-						<% end %>
+		</div>
+	<% end %>
+</div>
+<div class="visible-lg-block homepagework">
+	<div class="planname">
+		<h1><%= @weeklyplan.name %></h1>
+	</div>
+	<% if current_user.id == @weeklyplan.usercreate %>
+		<div class="editfield">
+			<%= form_for @weeklyplan do |form| %>
+				<%= form.label :name %>
+				<%= form.text_field :name, placeholder: "type new name here..." %>
+				<%= form.submit "Save", class: "btn btn-primary btn-sm" %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
 
 
-						<% if @hasbit %>
-							<% @weeklyplan.weeklybits.each do |check| %>
-								<% if check.day == @dayinc %>
-									<td>
-										<%= check.workout.name %><br/>
-										<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
-									</td>
-								<% end %>
-							<% end %>
-						<% else %>
-							<%= form_for :weeklybit, url: weeklybits_url do |form| %>
-								<td>
-									<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
-									<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name") %><br/>
-									<%= form.hidden_field :day, value: @dayinc %>
-									<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
-								</td>
-							<% end %>
-						<% end %>
-						<% @dayinc += 1 %>
-							
-						
-					<% end %>
-				</tr>
-			</table>
-		<% end %>
 
+<%#= link_to "Edit name", "#", class: "editname" %>
+
+<br/>
 
 <%= render 'weekform' %>
