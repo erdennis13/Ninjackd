@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     if Rails.env == 'development'
       @ethan = User.find(1)
     elsif Rails.env == 'production'
-      @ethan = User.find(3)
+      @ethan = User.find(6)
     end
     
 
