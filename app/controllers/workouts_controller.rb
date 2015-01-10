@@ -140,7 +140,7 @@ class WorkoutsController < ApplicationController
          @coeff << num
       end
     end
-    unless @coeff.nil?
+    if @coeff.length != 0
       @endcoeff = @coeff.max
     else
       @endcoeff = 0
