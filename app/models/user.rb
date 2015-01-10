@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :users, :through => :comments
   has_many :dailytips
   has_many :userreviews
+  has_many :weeklyplans
 
   accepts_nested_attributes_for :subscriptions
 

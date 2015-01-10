@@ -33,10 +33,10 @@ class WeeklyplansController < ApplicationController
     @weeklyplan.update(weeklyplan_params)
    respond_to do |format|
       if @weeklyplan.save
-        format.html { redirect_to weeklyplans_url, notice: 'Weeklyplan was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Weeklyplan was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @weeklyplan }
       else
-        format.html { redirect_to weeklyplans_url, notice: 'Weeklyplan was unsuccessfully updated.' }
+        format.html { redirect_to :back, notice: 'Weeklyplan was unsuccessfully updated.' }
         format.json { render action: 'show', status: :created, location: @weeklyplan }
       end
     end
@@ -45,7 +45,7 @@ class WeeklyplansController < ApplicationController
   def destroy
     @weeklyplan.destroy
     respond_to do |format|
-      format.html { redirect_to weeklyplans_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

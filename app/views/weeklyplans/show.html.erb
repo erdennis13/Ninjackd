@@ -1,4 +1,12 @@
 		<h1><%= @weeklyplan.name %></h1>
+		<% if current_user.id == @weeklyplan.usercreate %>
+			<%= form_for @weeklyplan do |form| %>
+				<%= form.label :name %>
+				<%= form.text_field :name, placeholder: "type new name here..." %>
+				<%= form.submit "Save", class: "btn btn-primary btn-sm" %>
+			<% end %>
+		<% end %>
+		<br/>
 		
 		<% if false %>
 			<table class="table">

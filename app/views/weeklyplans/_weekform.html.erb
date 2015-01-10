@@ -26,7 +26,10 @@
 							<% if @count == 0 %>
 								<%= form_for :weeklybit, url: weeklybits_url do |form| %>
 									<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
-									<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name") %><br/>
+									<div class="form-group">
+										<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name"), {}, class: "form-control" %>
+									</div>
+									<br/>
 									<%= form.hidden_field :day, value: @dayinc %>
 									<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
 								<% end %>
@@ -56,7 +59,7 @@
 						<% @count = 0 %>
 						<% @weeklyplan.weeklybits.each do |check| %>
 							<% if check.day == @dayinc %>
-								<h3><%= check.workout.name %></h3>
+								<h4><%= check.workout.name %></h4>
 								<p><%= check.workout.description %></p>
 								<% @count +=1 %>
 								<% if current_user.try(:admin?) or current_user.id == @weeklyplan.usercreate %>
@@ -69,7 +72,10 @@
 							<% if @count == 0 %>
 								<%= form_for :weeklybit, url: weeklybits_url do |form| %>
 									<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
-									<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name") %><br/>
+									<div class="form-group">
+										<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name"), {}, class: "form-control" %>
+									</div>
+									<br/>
 									<%= form.hidden_field :day, value: @dayinc %>
 									<%= form.submit "Add weeklybit", class: "btn btn-primary btn-xs" %>
 								<% end %>

@@ -15,7 +15,8 @@ class WorkoutsController < ApplicationController
     @workouts = @workouts.duration_lt(params[:less_than]) if params[:less_than].present?
     @workouts = @workouts.search(params[:search]) if params[:search].present?
     @user = current_user
-    @weeklyplans = Weeklyplan.where(active: true)
+    @weeklyplans = Weeklyplan.where(active: true, usercreate: nil)
+    @userplans = Weeklyplan.where(usercreate: current_user)
   end
 
   def admin
@@ -131,9 +132,23 @@ class WorkoutsController < ApplicationController
   end
 
   def usercreate
+    @alluserplans = Weeklyplan.where(usercreate: current_user.id)
+    @coeff = []
+    @alluserplans.each do |add|
+      num = add.name.split("_").last.to_i
+      unless @coeff.include?(num) and num.is_a? Integer
+         @coeff << num
+      end
+    end
+    unless @coeff.nil?
+      @endcoeff = @coeff.max
+    else
+      @endcoeff = 0
+    end
     @weeklyplan = Weeklyplan.new
     @weeklyplan.usercreate = current_user.id
-    @weeklyplan.name = current_user.try(:username) + "_weeklyplan_XX"
+    @planname = "#{current_user.try(:username)}_weeklyplan_#{@endcoeff + 1}"
+    @weeklyplan.name = @planname
     respond_to do |format|
       if @weeklyplan.save
         format.html { redirect_to @weeklyplan, notice: 'Weeklyplan was successfully created.' }

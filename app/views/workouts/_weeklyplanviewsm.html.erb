@@ -51,19 +51,66 @@
 						
 						
 							<!-- This little bit of magic makes an ajax request to workouts controller, to add the weeklyplan as a subscription -->
-							<%= button_to "Subscribe", {action: "add_weekly_subscription", :weeklyplan_id => weeklyplan.id, remote: true}, {class: "btn btn-primary alignRigt"} %>
+							<%= button_to "Subscribe", {action: "add_weekly_subscription", :weeklyplan_id => weeklyplan.id, remote: true}, {class: "btn btn-primary alignRight btn-xs"} %>
 						</div>
 					</div>
 
 			<% end %>
-		
+			<% unless @userplans.length == 0 %>
+				<h3>Custom Weekly Plans!</h3>
+				<%= button_to "Add custom plan", {action: "usercreate", usercreate: current_user.id, remote: true}, class: "btn btn-success btn-sm" %>
+				<br/>
+				<% @userplans.each do |userplan| %>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong><%= userplan.name %></strong>
+						</div>
+						<div class="panel-body">
+
+									<table class="table table-striped table-condensed">
+										<% @dayinc = 1 %>
+										<% 7.times do %>
+											<% @hasbit = false %>
+											<% userplan.weeklybits.each do |check| %>
+												<% if check.day == @dayinc %>
+													<% @hasbit = true %>
+												<% end %>
+											<% end %>
+
+
+											<% if @hasbit %>
+												
+													<% userplan.weeklybits.each do |check| %>
+														<% if check.day == @dayinc %>
+																<%# check.create_subscription(current_user.id, check.workout.id, dates[check.day]) %>
+																<tr><td><strong><%= Date::DAYNAMES[@dayinc-1] %>:</strong> <%= link_to check.workout.name, check.workout, class: "workoutLink" %></td></tr>
+														<% end %>
+													<% end %>
+											<% else %>
+												<tr><td><%= Date::DAYNAMES[@dayinc-1] %>: off</td></tr>
+											<% end %>
+										
+									
+										<% @dayinc += 1 %>
+										<% end %>
+										</table>
+							
+								<%= link_to "Edit", userplan %> | 
+								<%= link_to "Delete", method: :delete, data: {confirm: "Are you sure?"} %>
+								<!-- This little bit of magic makes an ajax request to workouts controller, to add the weeklyplan as a subscription -->
+								<%= button_to "Subscribe", {action: "add_weekly_subscription", :weeklyplan_id => userplan.id, remote: true}, {class: "btn btn-primary alignRight btn-xs"} %>
+								
+							</div>
+						</div>
+				<% end %>
+			<% end %>
 	</div>
 	<div class="panel-footer">
 		<% if current_user.try(:admin?) %>
 			<%= link_to "New Weeklyplan", new_weeklyplan_path %>
-		<% else %>
-			<%= button_to "Create you're own plan", {action: "usercreate", usercreate: current_user.id, remote: true}, class: "btn btn-success btn-sm" %>
+		<% elsif @userplans.length == 0 %>
+				<%= button_to "Add custom plan", {action: "usercreate", usercreate: current_user.id, remote: true}, class: "btn btn-success btn-sm" %>
 		<% end %>
-
 	</div>
+
 </div>
