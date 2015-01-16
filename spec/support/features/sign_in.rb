@@ -1,5 +1,5 @@
 module Features
-  def sign_in
+  def sign_user_in
     user = new_user(attributes)
     user.save!
     
@@ -9,8 +9,8 @@ module Features
     click_button "Log in"
   end
 
-  def sign_out
-    sign_in
+  def sign_user_out
+    sign_user_in
 
     click_on "Log out"
   end

@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "User signs in" do
 	scenario "successfully" do
-		sign_in
+		sign_user_in
 
 		expect(page).to have_css "h1", text: "Welcome to"
 	end
@@ -22,8 +22,8 @@ end
 
 feature "User signs out" do
 	scenario "successfully" do
-		sign_out
-		
+		sign_user_out
+
 		expect(page).to have_content "Signed out successfully."
 	end
 end
