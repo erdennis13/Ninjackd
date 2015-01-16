@@ -55,11 +55,18 @@ gem 'bootstrap-datepicker-rails', '~> 1.3.0.2'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 group :development, :test do
-     gem 'sqlite3'
+    gem 'sqlite3'
+   	gem 'rspec-rails', '~> 3.1.0'
 end
 
 group :production do
      gem 'pg', '~> 0.17.1'
      gem 'rails_12factor'
 end
+
+group :test do
+	gem 'capybara', '~> 2.4.4'
+	gem 'database_cleaner', '~> 1.4.0'
+end
+
 
