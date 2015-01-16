@@ -2,13 +2,13 @@
 	<div class="row grid7">
 		<% @dayinc = 1 %>
 		<% 7.times do %>
-		<div class="col-lg-1">
-			<div class="panel panel-default">
-				<div class="panel-heading center">
-					<%= Date::DAYNAMES[@dayinc - 1] %><br/>
-				</div>
+			<div class="col-lg-1">
+				<div class="panel panel-default">
+					<div class="panel-heading center">
+						<%= Date::DAYNAMES[@dayinc - 1] %><br/>
+					</div>
 
-				<div class="panel-body center">
+					<div class="panel-body center">
 						<% @none = 0 %>
 						<% @count = 0 %>
 						<% @weeklyplan.weeklybits.each do |check| %>
@@ -20,7 +20,7 @@
 									<%= link_to 'Delete', check, method: :delete, data: { confirm: 'Are you sure?' } %>
 								<% end %>
 							<% end %>
-							
+
 						<% end %>
 						<% if current_user.try(:admin?) or current_user.id == @weeklyplan.usercreate %>
 							<% if @count == 0 %>
