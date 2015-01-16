@@ -2,14 +2,7 @@ require "rails_helper"
 
 feature "User signs in" do
 	scenario "successfully" do
-		user = User.new(name: "User", username: "Username", admin: false, 
-			paypal_payment_token: "Test", email: "user@example.com", password: "password")
-		user.save!
-		
-		visit new_user_session_path
-		fill_in "Email", with: "user@example.com"
-		fill_in "Password", with: "password"
-		click_button "Log in"
+		sign_in
 
 		expect(page).to have_css "h1", text: "Welcome to"
 	end
@@ -23,5 +16,14 @@ feature "User signs in" do
 		click_on "Log in"
 
 		expect(page).to have_content "Invalid email or password"
+	end
+
+end
+
+feature "User signs out" do
+	scenario "successfully" do
+		sign_out
+		
+		expect(page).to have_content "Signed out successfully."
 	end
 end
