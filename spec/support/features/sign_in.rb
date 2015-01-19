@@ -15,6 +15,10 @@ module Features
     click_on "Log out"
   end
 
+  def sign_admin_in
+
+  end
+
   def new_user(attributes)
     User.new(attributes)
   end
