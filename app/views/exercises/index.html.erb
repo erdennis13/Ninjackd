@@ -49,7 +49,7 @@
                   <td><%= image_tag exercise.diagram.url(:medium) %></td>
                   <% if current_user.try(:admin?) %>
                     <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-                    <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "desktop_destroy_exercise" %></td>
                   <% end %>
                 </tr>
               <% end %>
@@ -65,7 +65,7 @@
 
       <div class="panel-footer">
         <% if current_user.try(:admin?) %>
-          <%= link_to 'New Exercise', new_exercise_path %>
+          <%= link_to 'New Exercise', new_exercise_path, id: "admin_add_exercise" %>
         <% else %>
           <%= mail_to("ninjackd@gmail.com", name = "Want to see some more exercises? Let me know!", html_options = {subject: "Request for new exercises"}) %>
         <% end %>
@@ -120,7 +120,7 @@
 
       </div>
       <div class="panel-footer">
-        <% if current_user.try(:admin) %><%= link_to "New Exercise", new_exercise_path, id: "admin_add_exercise" %><% end %>
+        <% if current_user.try(:admin) %><%= link_to "New Exercise", new_exercise_path %><% end %>
       </div>
     </div>
   </div>

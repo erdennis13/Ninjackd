@@ -11,10 +11,12 @@ feature "Admin modifies exercises by" do
 		fill_in "Description", with: "This is the test description"
 		click_button "Submit"
 
+		#Shows up in exercises show page
 		expect(page).to have_content "TestName"
 
 		visit exercises_path
 
+		#shows up in exercises index page
 		expect(page).to have_css "table tr td", text: "TestName"
 		expect(page).to have_css "table tr td", text: "This is the test description"
 	end
@@ -35,7 +37,16 @@ feature "Admin modifies exercises by" do
 		expect(page).to have_css "table tr td", text: "Edited test description"
 	end
 
-	scenario "destroy exercise" do
+	scenario "destroying exercise" do
+		add_exercise
+		sign_admin_in
+		exercise = Exercise.last
+		exercise.destroy!
+		visit exercises_path
+		# first('.desktop_destroy_exercise').click_link('Destroy')
+
+
+		expect(page).not_to have_css "table tr td", text: "TestEx"
 
 	end
 
