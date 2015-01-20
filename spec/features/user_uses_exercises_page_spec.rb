@@ -28,6 +28,12 @@ feature "User visits desktop exercises page" do
 
 		expect(page).to have_css "table tr td", text: "TestEx"
 		expect(page).to have_css "table tr td", text: "TestTwo"
+
+		fill_in "description_field_desktop", with: "Test Description"
+		click_on "filter_button"
+
+		expect(page).to have_css "table tr td", text: "TestEx"
+		expect(page).not_to have_css "table tr td", text: "TestTwo"
 	end
 
 	def visit_exercises_page
@@ -63,6 +69,12 @@ feature "User visits mobile exercises page" do
 
 		expect(page).to have_css "table tr td", text: "TestEx"
 		expect(page).to have_css "table tr td", text: "TestTwo"
+
+		fill_in "description_field_mobile", with: "Test Description"
+		click_on "filter_mobile_button"
+
+		expect(page).to have_css "table tr td", text: "TestEx"
+		expect(page).not_to have_css "table tr td", text: "TestTwo"
 	end
 
 	def visit_exercises_page

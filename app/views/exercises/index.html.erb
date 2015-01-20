@@ -15,7 +15,7 @@
 
                 <td>
                     <%= label_tag(:lookfor, "Search by description") %>
-                    <%= text_field_tag :lookfor, params[:lookfor], class: "form-control", placeholder: "type here..." %>
+                    <%= text_field_tag :lookfor, params[:lookfor], class: "form-control", placeholder: "type here...", id: "description_field_desktop" %>
                 </td>
 
                 <td align="center", style="vertical-align:bottom", width="10%">
@@ -93,7 +93,7 @@
             </div>
             <div class="col-sm-2">             
               <%= label_tag(:lookfor, "Search by description") %>
-              <%= text_field_tag :lookfor, params[:lookfor], class: "form-control", placeholder: "type here..." %>
+              <%= text_field_tag :lookfor, params[:lookfor], class: "form-control", placeholder: "type here...", id: "description_field_mobile" %>
             </div>
             <div class="col-xs-4" style="padding-top:10px">  
               <%= submit_tag("Filter", :name => nil, class: "btn btn-success", id: "filter_mobile_button") %>

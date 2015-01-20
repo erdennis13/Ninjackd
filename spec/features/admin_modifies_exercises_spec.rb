@@ -1,7 +1,7 @@
 require "rails_helper"
 
 #This feature is for the desktop version
-feature "Admin modifies exercises by" do
+feature "Admin modifies exercises on desktop by" do
 	scenario "creating exercise" do
 		sign_admin_in
 
@@ -43,11 +43,8 @@ feature "Admin modifies exercises by" do
 		exercise = Exercise.last
 		exercise.destroy!
 		visit exercises_path
-		# first('.desktop_destroy_exercise').click_link('Destroy')
-
 
 		expect(page).not_to have_css "table tr td", text: "TestEx"
-
 	end
 
 	def add_exercise
@@ -55,3 +52,6 @@ feature "Admin modifies exercises by" do
 		exercise.save!
 	end
 end
+
+#This feature is for the mobile version
+#The code is the same as desktop for now
