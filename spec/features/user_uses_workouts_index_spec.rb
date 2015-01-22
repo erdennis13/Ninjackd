@@ -1,5 +1,6 @@
 require "rails_helper"
 
+#Desktop version of site
 feature "User visits desktop workouts#index" do
 
 	scenario "and sees workouts listed" do
@@ -42,6 +43,13 @@ feature "User visits desktop workouts#index" do
 
 		expect(page).not_to have_css "table tr td", text: "TestOne"
 		expect(page).to have_css "table tr td", text: "TestTwo"
+	end
+
+	scenario "and there are no workouts" do
+		sign_user_in
+		visit workouts_path
+
+		expect(page).to have_css "h2", text: "Sorry, no workouts matched these filters. Please try something else"
 	end
 
 	def add_one_workout
