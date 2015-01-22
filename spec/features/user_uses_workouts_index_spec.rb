@@ -1,11 +1,9 @@
 require "rails_helper"
 
 feature "User visits workouts#index" do
-	before(:all) do
-    sign_user_in
-  end
 
 	scenario "and sees workouts listed" do
+		sign_user_in
 		add_one_workout
 		visit workouts_path
 
@@ -14,13 +12,37 @@ feature "User visits workouts#index" do
 
 	scenario "and searches for workouts" do
 		add_two_workouts
+		sign_user_in
 		visit workouts_path
+
 		#Searches by name
 		fill_in "workouts_search_field", with: "TestOne"
 		click_button "filter_button"
 
 		expect(page).to have_css "table tr td", text: "TestOne"
 		expect(page).not_to have_css "table tr td", text: "TestTwo"
+
+		#Resets Filter
+		click_button "reset_filter"
+
+		expect(page).to have_css "table tr td", text: "TestOne"
+		expect(page).to have_css "table tr td", text: "TestTwo"
+
+		#searches by category
+		select "Cardio", from: "workouts_category_field"
+		click_button "filter_button"
+
+		expect(page).not_to have_css "table tr td", text: "TestOne"
+		expect(page).to have_css "table tr td", text: "TestTwo"
+
+		#searches by duration
+		click_button "reset_filter"
+		fill_in "duration_search_field", with: 45
+		click_button "filter_button"
+
+		expect(page).not_to have_css "table tr td", text: "TestOne"
+		expect(page).to have_css "table tr td", text: "TestTwo"
+
 	end
 
 	def add_one_workout
