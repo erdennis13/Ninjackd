@@ -66,19 +66,19 @@
 						<%= form.hidden_field :workout_id, value: @workout.id %>
 							<div class="col-md-4">
 								<%= form.label :exercise_id, "Exercise ID:" %>
-								<%= form.select :exercise_id, options_from_collection_for_select(@exerciseidoptions, "id", "name"), {}, {class: "form-control"} %>
+								<%= form.select :exercise_id, options_from_collection_for_select(@exerciseidoptions, "id", "name"), {}, {class: "form-control", id: "add_exercise_desktop"} %>
 							</div>
 							<div class="col-md-2">
 								<%= form.label :sets, "Sets" %>
-								<%= form.number_field :sets, class: "form-control" %>
+								<%= form.number_field :sets, class: "form-control", id: "sets_desktop" %>
 							</div>
 							<div class="col-md-2">
 								<%= form.label :reps, "Reps" %>
-								<%= form.number_field :reps, class: "form-control" %>
+								<%= form.number_field :reps, class: "form-control", id: "reps_desktop" %>
 							</div>
 							<div class="col-md-2">
 								<%= form.label :restime, "Time between sets" %>
-								<%= form.number_field :restime, class: "form-control" %>
+								<%= form.number_field :restime, class: "form-control", id: "rest_time_desktop" %>
 							</div>
 							<div class="visible-sm-block homepagework">
 								<div class="col-md-2 pull-right" >
@@ -87,7 +87,7 @@
 							</div>
 							<div class="visible-lg-block visible-md-block homepagework">
 								<div class="col-md-2 buttonBox" >
-									<%= form.submit "Add Exercise", class: "btn btn-primary" %>
+									<%= form.submit "Add Exercise", class: "btn btn-primary", id: "add_exercise_button_desktop" %>
 								</div>
 							</div>
 					<% end %>
