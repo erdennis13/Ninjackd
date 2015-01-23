@@ -19,12 +19,12 @@
 
 							<div class="col-md-6">
 								<%= form.label :schedule, "Schedule this workout" %>
-								<%= form.text_field :schedule, 'data-behaviour' => 'datepicker', placeholder: "yyyy-mm-dd" %>
+								<%= form.text_field :schedule, 'data-behaviour' => 'datepicker', placeholder: "yyyy-mm-dd", id: "date_picker_desktop" %>
 								<script type="text/javascript">
 								  $('[data-behaviour~=datepicker]').datepicker({"format": "yyyy-mm-dd"});
 								</script>
 													
-								<%= form.submit "Subscribe" , class: "btn btn-primary" %>
+								<%= form.submit "Subscribe" , class: "btn btn-primary", id: "subscribe_button_desktop" %>
 							</div>
 					<% end %>
 				</div>

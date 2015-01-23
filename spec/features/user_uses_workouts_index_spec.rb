@@ -52,20 +52,6 @@ feature "User visits desktop workouts#index" do
 		expect(page).to have_css "h2", text: "Sorry, no workouts matched these filters. Please try something else"
 	end
 
-	def add_one_workout
-		w1 = Workout.new(name: "TestOne", category: "Strength", description: "Test strength workout", 
-			duration: 60, weightFacility: nil, active: true, note: "Testing note for TestOne")
-		w1.save!
-	end
-
-	def add_two_workouts
-		w1 = Workout.new(name: "TestOne", category: "Strength", description: "Test strength workout", 
-			duration: 60, weightFacility: nil, active: true, note: "Testing note for TestOne")
-		w2 = Workout.new(name: "TestTwo", category: "Cardio", description: "Test cardio workout", 
-			duration: 45, weightFacility: nil, active: true, note: "Testing note for TestTwo")
-		w1.save!
-		w2.save!
-	end
 end
 
 #this is for the mobile version
@@ -113,18 +99,4 @@ feature "User visits mobile workouts#index" do
 		expect(page).to have_css "h4", text: "TestTwo"
 	end
 
-	def add_one_workout
-		w1 = Workout.new(name: "TestOne", category: "Strength", description: "Test strength workout", 
-			duration: 60, weightFacility: nil, active: true, note: "Testing note for TestOne")
-		w1.save!
-	end
-
-	def add_two_workouts
-		w1 = Workout.new(name: "TestOne", category: "Strength", description: "Test strength workout", 
-			duration: 60, weightFacility: nil, active: true, note: "Testing note for TestOne")
-		w2 = Workout.new(name: "TestTwo", category: "Cardio", description: "Test cardio workout", 
-			duration: 45, weightFacility: nil, active: true, note: "Testing note for TestTwo")
-		w1.save!
-		w2.save!
-	end
 end

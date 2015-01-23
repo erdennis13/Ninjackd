@@ -20,9 +20,9 @@
 				    	<% @todaySubscriptions.each do |this| %>
 				    		<tr>
 				    			<% if this.histories.count > 0 %>
-									<td data-no-turbolink="true"><%= link_to "Continue Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
+									<td data-no-turbolink="true"><div id="<%= this.workout.name %>_continue" ><%= link_to "Continue Workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></div></td>
 								<% else %>
-									<td  data-no-turbolink="true"><%= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary" %></td>
+									<td  data-no-turbolink="true"><div id="<%= this.workout.name %>_start" ><%= link_to "Start workout", currentWorkout_path(subscription_id: this.id), class: "btn btn-primary"%></div></td>
 								<% end %>
 								<td><%= link_to this.workout.name, this.workout, class: "workoutLink" %></td>
 								<td><%= this.workout.category %></td>
