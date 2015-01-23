@@ -20,4 +20,16 @@ feature "Admin adds exercise to workout" do
 		expect(page).to have_css "table tr td", text: "ExerciseTest"
 
 	end
+
+	scenario "also successfully" do
+		add_exercise_to_workout("ExerciseTest", "This is a test exercise description")
+		sign_user_in
+		
+		visit workouts_path
+		within "#workouts_table" do
+			click_link "TestOne"
+		end
+
+		expect(page).to have_css "table tr td", text: "ExerciseTest"
+	end
 end

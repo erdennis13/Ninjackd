@@ -1,7 +1,6 @@
 module Features
 	def add_subscription
 		sign_user_in
-		add_one_workout
 		visit workouts_path
 
 		within "#workouts_table" do
