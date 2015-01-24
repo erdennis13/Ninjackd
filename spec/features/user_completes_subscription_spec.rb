@@ -12,5 +12,9 @@ feature "User completes subscription" do
 		click_link "mark_all_complete_desktop"
 
 		expect(page).to have_content "Way to go!"
+
+		click_link "workout_history_desktop"
+
+		expect(page).to have_content "Completed workouts"
 	end
 end
