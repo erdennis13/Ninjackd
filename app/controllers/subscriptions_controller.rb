@@ -27,18 +27,22 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    sched = Date.parse(params["subscription"][:schedule]).strftime('%Y/%m/%d')
-    @subscription = Subscription.new(subscription_params)
-    @subscription.schedule = sched
-    #@subscription.schedule = @subscription.schedule.strftime('%Y/%d/%m')
-    respond_to do |format|
-      if @subscription.save
-        format.html { redirect_to profile_url, notice: 'Subscription was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @subscription }
-      else
-        format.html { redirect_to profile_url, notice: "You're already subscribed to this workout" }
-        format.json { render action: 'show', status: :created, location: @subscription }
+    test_schedule = params["subscription"][:schedule]
+
+    unless ((DateTime.parse(test_schedule) rescue ArgumentError) == ArgumentError)
+      @subscription = Subscription.new(subscription_params)
+      #@subscription.schedule = Date.parse(test_schedule).strftime('%Y/%m/%d')
+      respond_to do |format|
+        if @subscription.save
+          format.html { redirect_to profile_url, notice: 'Subscription was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @subscription }
+        else
+          format.html { redirect_to profile_url, notice: "You're already subscribed to this workout" }
+          format.json { render action: 'show', status: :created, location: @subscription }
+        end
       end
+    else
+      redirect_to workout_path(params["subscription"][:workout_id]), notice: "Date is not valid"
     end
   end
 
