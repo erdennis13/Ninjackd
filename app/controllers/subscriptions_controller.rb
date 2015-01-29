@@ -29,7 +29,7 @@ class SubscriptionsController < ApplicationController
   def create
     test_schedule = params["subscription"][:schedule]
 
-    unless ((DateTime.parse(test_schedule).stfrtime('%Y/%m/%d') rescue ArgumentError) == ArgumentError)
+    unless ((Date.parse(test_schedule) rescue ArgumentError) == ArgumentError)
       @subscription = Subscription.new(subscription_params)
       #@subscription.schedule = Date.parse(test_schedule).strftime('%Y/%m/%d')
       respond_to do |format|
@@ -42,7 +42,9 @@ class SubscriptionsController < ApplicationController
         end
       end
     else
-      if test_schedule.length == 0
+      if test_schedule == nil
+        notice = "Date should not be empty"
+      elsif test_schedule.length == 0
         notice = "Date should not be empty"
       else
         notice = "#{test_schedule} is not a valid date"
