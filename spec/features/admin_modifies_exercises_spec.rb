@@ -21,6 +21,7 @@ feature "Admin modifies exercises on desktop by" do
 		expect(page).to have_css "table tr td", text: "This is the test description"
 	end
 
+
 	scenario "editing exercise" do
 		add_exercise
 		sign_admin_in
