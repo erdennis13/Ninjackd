@@ -136,8 +136,8 @@
 						<%= form_for :warmwork, url: warmworks_path do |form| %>
 							<%= form.hidden_field :workout_id, value: @workout.id %>
 							<td align="right"><%= form.label :warmup_id %></td>
-							<td><%= form.select :warmup_id, options_from_collection_for_select(@warmupidoptions, "id", "name"), {}, class: "form-control" %></td>
-							<td><%= form.submit "Add warmup", class: "btn btn-primary" %></td>
+							<td><%= form.select :warmup_id, options_from_collection_for_select(@warmupidoptions, "id", "name"), {}, class: "form-control", id: "desktop_warmup_select" %></td>
+							<td><%= form.submit "Add warmup", class: "btn btn-primary", id: "desktop_add_warmup" %></td>
 						<% end %>
 					</tr>
 				</table>
