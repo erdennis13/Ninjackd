@@ -12,7 +12,7 @@ feature "Admin adds warmup" do
 		expect(page).to have_content "Warmup was successfully created"
 	end
 
-	scenario "and adds to workout" do
+	scenario "and adds to workout, then removes from workout" do
 		sign_admin_in
 		add_one_workout
 		visit new_warmup_path
@@ -29,6 +29,10 @@ feature "Admin adds warmup" do
 		click_button "desktop_add_warmup"
 
 		expect(page).to have_css "h4", text: "This is a test warmup"
+
+		click_link "warmwork_delete_desktop"
+
+		expect(page).not_to have_css "h4", text: "This is a test warmup"
 
 	end
 end

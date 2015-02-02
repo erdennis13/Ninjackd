@@ -8,6 +8,7 @@ describe WarmworksController do
 			expect(response).to redirect_to workout_path(Workout.last)
 		end
 	end
+
 	def make_warmwork
 		workout = Workout.create(name: "TestOne", category: "Strength", description: "Test strength workout", 
 			duration: 60, weightFacility: nil, active: true, note: "Testing note for TestOne")

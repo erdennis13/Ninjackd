@@ -34,7 +34,7 @@
 
 
 					<% @warmups.each do |show| %>
-						<h4>Warmup: <small><%= show.warmup.description %></small> <%= if current_user.try(:admin?); link_to "Delete", show, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs" end %></h4>
+						<h4>Warmup: <small><%= show.warmup.description %></small> <%= if current_user.try(:admin?); link_to "Delete", show, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs", id: "warmwork_delete_desktop" end %></h4>
 
 					<% end %>
 
