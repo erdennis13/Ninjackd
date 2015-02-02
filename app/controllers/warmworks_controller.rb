@@ -16,10 +16,11 @@ class WarmworksController < ApplicationController
   end
 
   def create
+    workout = Workout.find(params["warmwork"][:workout_id])
     @warmwork = Warmwork.new(warmwork_params)
     respond_to do |format|
       if @warmwork.save
-        format.html { redirect_to :back, notice: 'Warmwork was successfully created.' }
+        format.html { redirect_to workout_path(workout), notice: 'Warmwork was successfully created.' }
         format.json { render action: 'show', status: :created, location: @warmwork }
       else
         format.html { redirect_to :back, notice: 'Workout already has this warmup.' }
