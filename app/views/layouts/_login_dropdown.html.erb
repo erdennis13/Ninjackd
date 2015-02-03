@@ -1,0 +1,27 @@
+<li class="dropdown"><a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Login <span class="caret"></span></a>
+<ul id="dropdown-login" class="dropdown-menu" style="padding: 5px 10px 0px 10px;">
+   <%= form_for("user", url: user_session_path) do |f| %>
+      <li>
+         <div class= "form-group" >
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control" %>
+         </div>
+      </li>
+      <li>
+         <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+         </div>
+      </li>
+      <li>
+            <%= f.label :remember_me %>
+            <%= f.check_box :remember_me %>
+      </li>
+      <li>
+         <div class="form-group">
+            <%= f.submit "Sign in", :class => "btn btn-primary" %>
+         </div>
+      </li>
+   <% end %>
+</ul>
+</li>

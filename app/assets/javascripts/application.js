@@ -31,3 +31,6 @@ $(function() {
   });
 });
 
+j$('#dropdown-login').click(function(e) {
+   e.stopPropagation();
+);

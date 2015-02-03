@@ -4,8 +4,8 @@ module Features
     user.save!
     
     visit new_user_session_path
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "password"
+    fill_in "email_sign_in", with: "user@example.com"
+    fill_in "password_sign_in", with: "password"
     click_button "Log in"
   end
 
@@ -20,8 +20,8 @@ module Features
     user.save!
     
     visit new_user_session_path
-    fill_in "Email", with: "admin@example.com"
-    fill_in "Password", with: "password"
+    fill_in "email_sign_in", with: "admin@example.com"
+    fill_in "password_sign_in", with: "password"
     click_button "Log in"
 
   end
