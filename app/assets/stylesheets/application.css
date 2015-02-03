@@ -25,12 +25,6 @@
 	text-decoration: none;
 }
 
-.easyFitFont {
-	/*font-family: 'Permanent Marker', cursive;*/
-	font-family: 'Rock Salt', cursive;
-	color:#e67e22;
-}
-
 .alignRight {
 	float: right;
 }
