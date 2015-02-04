@@ -1,4 +1,4 @@
-if Rails.env == 'development'
+if Rails.env == 'development' or Rails.env == 'test'
 	PayPal::Recurring.configure do |config|
 		config.sandbox = true
 		config.username = "ethan-facilitator_api1.ninjackd.com"

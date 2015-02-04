@@ -4,13 +4,13 @@
       <li>
          <div class= "form-group" >
             <%= f.label :email %>
-            <%= f.email_field :email, class: "form-control" %>
+            <%= f.email_field :email, class: "form-control", id: "navbar_email" %>
          </div>
       </li>
       <li>
          <div class="form-group">
             <%= f.label :password %>
-            <%= f.password_field :password, class: "form-control" %>
+            <%= f.password_field :password, class: "form-control", id: "navbar_password" %>
          </div>
       </li>
       <li>
@@ -19,7 +19,7 @@
       </li>
       <li>
          <div class="form-group">
-            <%= f.submit "Sign in", :class => "btn btn-primary" %>
+            <%= f.submit "Sign in", class: "btn btn-primary", id: "navbar_signin" %>
          </div>
       </li>
    <% end %>
