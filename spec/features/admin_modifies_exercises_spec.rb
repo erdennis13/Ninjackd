@@ -4,6 +4,9 @@ require "rails_helper"
 feature "Admin modifies exercises on desktop by" do
 	scenario "creating exercise" do
 		sign_admin_in
+		# admin = build(:admin)
+
+		# visit root_path
 
 		click_on "Exercises"
 		click_link "admin_add_exercise"
