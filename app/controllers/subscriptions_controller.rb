@@ -22,8 +22,6 @@ class SubscriptionsController < ApplicationController
     @days_from_this_week = (today.at_beginning_of_week(:sunday)..today.at_end_of_week(:sunday)).map
     @todaySubscriptions = current_user.subscriptions.where(schedule: Date.today, complete: false)
     @completedSubscriptions = current_user.subscriptions.where(complete: true, schedule: Date.today-7..Date.today)
-    
-    
   end
 
   def create
