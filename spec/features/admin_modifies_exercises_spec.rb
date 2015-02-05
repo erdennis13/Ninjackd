@@ -3,10 +3,15 @@ require "rails_helper"
 #This feature is for the desktop version
 feature "Admin modifies exercises on desktop by" do
 	scenario "creating exercise" do
-		sign_admin_in
-		# admin = build(:admin)
+		#sign_admin_in
+		visit root_path
 
-		# visit root_path
+		admin = create(:admin)
+		fill_in "navbar_email", with: admin.email
+		fill_in "navbar_password", with: admin.password
+		click_button "navbar_signin"
+
+		##Sign the admin in now!!
 
 		click_on "Exercises"
 		click_link "admin_add_exercise"

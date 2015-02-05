@@ -1,12 +1,12 @@
 module Features
   def sign_user_in
-    user = new_user(attributes)
-    user.save!
-    
-    visit new_user_session_path
-    fill_in "email_sign_in", with: "user@example.com"
-    fill_in "password_sign_in", with: "password"
-    click_button "Log in"
+    visit root_path
+
+    user = create(:user)
+    fill_in "navbar_email", with: user.email
+    fill_in "navbar_password", with: user.password
+    click_button "navbar_signin"
+
   end
 
   def sign_user_out
@@ -16,13 +16,12 @@ module Features
   end
 
   def sign_admin_in
-    user = new_user(admin_attributes)
-    user.save!
-    
-    visit new_user_session_path
-    fill_in "email_sign_in", with: "admin@example.com"
-    fill_in "password_sign_in", with: "password"
-    click_button "Log in"
+    visit root_path
+
+    admin = create(:admin)
+    fill_in "navbar_email", with: admin.email
+    fill_in "navbar_password", with: admin.password
+    click_button "navbar_signin"
 
   end
 
@@ -30,13 +29,4 @@ module Features
     User.new(attributes)
   end
 
-  def attributes
-    {name: "User", username: "Username", admin: false, paypal_payment_token: "Test", 
-      email: "user@example.com", password: "password"}
-  end
-
-  def admin_attributes
-    {name: "Admin", username: "Admin_name", admin: true, paypal_payment_token: "Test", 
-      email: "admin@example.com", password: "password"}
-  end
 end
