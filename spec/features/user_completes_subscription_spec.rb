@@ -2,10 +2,12 @@ require "rails_helper"
 
 feature "User completes subscription" do
 	scenario "successfully" do
-		add_exercise_to_workout("ExerciseTest", "This is a test exercise description")
-		add_subscription
+		exercise = create(:exercise)
+		workout = create(:workout)
+		add_exercise_to_workout(exercise, workout)
+		add_subscription(workout)
 
-		within "#TestOne_start" do
+		within "##{workout.name}_start" do
 			click_link "Start workout"
 		end
 

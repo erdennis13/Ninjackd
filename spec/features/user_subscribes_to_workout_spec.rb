@@ -1,14 +1,14 @@
 require "rails_helper"
 
 #This is only for the Desktop version
-feature "User subscibes to workout" do
+feature "User subscribes to workout" do
 	scenario "successfully" do
 		sign_user_in
-		add_one_workout
+		create(:workout)
 		visit workouts_path
 
 		within "#workouts_table" do
-			click_link "TestOne"
+			click_link "TestWorkout"
 		end
 
 		fill_in "date_picker_desktop", with: Date.today
