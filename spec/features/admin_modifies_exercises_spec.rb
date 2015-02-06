@@ -3,15 +3,8 @@ require "rails_helper"
 #This feature is for the desktop version
 feature "Admin modifies exercises on desktop by" do
 	scenario "creating exercise" do
-		#sign_admin_in
-		visit root_path
 
-		admin = create(:admin)
-		fill_in "navbar_email", with: admin.email
-		fill_in "navbar_password", with: admin.password
-		click_button "navbar_signin"
-
-		##Sign the admin in now!!
+		sign_admin_in
 
 		click_on "Exercises"
 		click_link "admin_add_exercise"
@@ -31,10 +24,10 @@ feature "Admin modifies exercises on desktop by" do
 
 
 	scenario "editing exercise" do
-		add_exercise
+		exercise = add_exercise
 		sign_admin_in
 
-		visit edit_exercise_path(Exercise.last)
+		visit edit_exercise_path(exercise)
 
 		fill_in "Name", with: "TestExEdit"
 		fill_in "Description", with: "Edited test description"
@@ -47,20 +40,15 @@ feature "Admin modifies exercises on desktop by" do
 	end
 
 	scenario "destroying exercise" do
-		add_exercise
+		exercise = create(:exercise)
 		sign_admin_in
-		exercise = Exercise.last
 		exercise.destroy!
 		visit exercises_path
 
-		expect(page).not_to have_css "table tr td", text: "TestEx"
+		expect(page).not_to have_css "table tr td", text: "Test Exercise"
 	end
 
 	def add_exercise
-		exercise = Exercise.new(name: "TestEx", description: "Test Description")
-		exercise.save!
+		create(:exercise)
 	end
 end
-
-#This feature is for the mobile version
-#The code is the same as desktop for now

@@ -25,8 +25,4 @@ module Features
 
   end
 
-  def new_user(attributes)
-    User.new(attributes)
-  end
-
 end

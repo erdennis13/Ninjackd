@@ -19,13 +19,12 @@ feature "User signs in" do
 	end
 
 	scenario "using navbar form" do
-		User.create(name: "User", username: "Username", admin: false, paypal_payment_token: "Test", 
-			email: "user@example.com", password: "password")
+		user = create(:user)
 
 		visit root_path
 
-		fill_in "navbar_email", with: "user@example.com"
-		fill_in "navbar_password", with: "password"
+		fill_in "navbar_email", with: user.email
+		fill_in "navbar_password", with: user.password
 		click_button "navbar_signin"
 
 		expect(page).to have_content "Signed in successfully."
