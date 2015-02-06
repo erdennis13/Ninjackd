@@ -3,13 +3,13 @@ require "rails_helper"
 feature "Admin adds exercise to workout" do
 	scenario "successfully" do
 		sign_admin_in
-		add_one_workout
+		workout = create(:workout)
 		#add_one_exercise("ExerciseTest", "This is a test exercise description.")
 		exercise = create(:exercise)
 
 		visit workouts_path
 		within "#workouts_table" do
-			click_link "TestOne"
+			click_link workout.name
 		end
 
 		select exercise.name, from: "add_exercise_desktop"

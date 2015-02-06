@@ -14,14 +14,14 @@ feature "Admin adds warmup" do
 
 	scenario "and adds to workout, then removes from workout" do
 		sign_admin_in
-		add_one_workout
+		workout = create(:workout)
 		visit new_warmup_path
 
 		fill_in "Name", with: "Warmup1"
 		fill_in "Description", with: "This is a test warmup"
 		click_button "Submit"
 
-		visit workout_path(Workout.last)
+		visit workout_path(workout)
 
 		#expect(page).to have_content "TestOne"
 
