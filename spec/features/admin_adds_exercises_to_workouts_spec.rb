@@ -4,7 +4,6 @@ feature "Admin adds exercise to workout" do
 	scenario "successfully" do
 		sign_admin_in
 		workout = create(:workout)
-		#add_one_exercise("ExerciseTest", "This is a test exercise description.")
 		exercise = create(:exercise)
 
 		visit workouts_path
