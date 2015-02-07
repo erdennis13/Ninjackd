@@ -20,7 +20,7 @@
           <li data-no-turbolink="true"><%= link_to "Workouts", workouts_path %></li>
           <li data-no-turbolink="true"><%= link_to "Exercises", exercises_path %></li>  
         <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Sign up", purchase_path %></li>
           <%= render "layouts/login_dropdown" %>
         <% end %>
         <% if user_signed_in? %>
