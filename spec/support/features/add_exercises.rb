@@ -4,8 +4,6 @@ module Features
 	end
 
 	def add_exercise_to_workout(exercise, workout)
-
-		Workoutbit.create(workout_id: workout.id, exercise_id: exercise.id, sets: 5, reps: 10, restime: 60)
-		
+		create(:workoutbit, exercise_id: exercise.id, workout_id: workout.id)
 	end
 end
