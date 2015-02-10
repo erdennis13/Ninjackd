@@ -163,8 +163,8 @@
 
 						<%= form.hidden_field :workout_id, value: @workout.id %>
 						<%= form.hidden_field :user_id, value: current_user.id %>
-						<div class="col-md-8"><%= form.text_field :comment, class: "form-control", placeholder: "Add a comment here..." %></div>
-						<div class="col-md-2 pull-right"><%= form.submit "Comment", class: 'btn btn-default' %></div>
+						<div class="col-md-8"><%= form.text_field :comment, class: "form-control", placeholder: "Add a comment here...", id: "comment_field_desktop" %></div>
+						<div class="col-md-2 pull-right"><%= form.submit "Comment", class: 'btn btn-default', id: "comment_button_desktop" %></div>
 					<% end %>
 				</tr>
 			</div>

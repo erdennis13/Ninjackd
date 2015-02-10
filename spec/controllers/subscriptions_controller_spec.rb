@@ -22,10 +22,8 @@ describe SubscriptionsController do
 
 	end
 	def set_up_creation schedule
-			workout = Workout.create(name: "TestOne", category: "Strength", description: "Test strength workout", 
-				duration: 60, weightFacility: nil, active: true, note: "Testing note for TestOne")
-			user = User.create(name: "User", username: "Username", admin: false, paypal_payment_token: "Test", 
-      	email: "user@example.com", password: "password")
+			workout = create(:workout)
+			user = create(:user)
 			sign_in user
 
 			new_sub = {user_id: user.id, workout_id: workout.id, schedule: schedule}
