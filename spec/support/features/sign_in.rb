@@ -9,6 +9,14 @@ module Features
 
   end
 
+  def sign_in_other user
+    visit root_path
+    
+    fill_in "navbar_email", with: user.email
+    fill_in "navbar_password", with: user.password
+    click_button "navbar_signin"
+  end
+
   def sign_user_out
     sign_user_in
 

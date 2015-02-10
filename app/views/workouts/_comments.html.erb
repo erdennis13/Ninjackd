@@ -13,7 +13,7 @@
 					<tr>
 						<td><h5><%= print.user.try(:username) %>:<small> <%= print.comment %></small></h5></td>
 						<% if current_user == print.user or current_user.try(:admin?) %>
-							<td align="right"><%= link_to "Delete", print, method: :delete %></td>
+							<td align="right"><%= link_to "Delete", print, method: :delete, class: "delete_comment" %></td>
 						<% end %>
 					</tr>
 				<% end %>
