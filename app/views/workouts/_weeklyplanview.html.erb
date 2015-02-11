@@ -61,7 +61,7 @@
 
 
 					<!-- This little bit of magic makes an ajax request to workouts controller, to add the weeklyplan as a subscription -->
-						<td><%= button_to "Subscribe", {action: "add_weekly_subscription", :weeklyplan_id => weeklyplan.id, remote: true}, {class: "btn btn-primary btn-sm"} %></td>
+						<td><%= button_to "Subscribe", {action: "add_weekly_subscription", :weeklyplan_id => weeklyplan.id, remote: true}, {class: "btn btn-primary btn-sm", id: "#{weeklyplan.name}_subscribe"} %></td>
 
 
 
