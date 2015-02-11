@@ -147,17 +147,24 @@
 			<!-- This section is for adding and displaying comments -->
 
 			<div class="row">
-					<%= form_for :like, url: likes_path do |form| %>
+					
+				<div class="col-md-2">
+					<% if current_user.already_liked? @workout %>
+						<%= form_for :like, url: likes_path do |form| %>
 						<%= form.hidden_field :workout_id, value: @workout.id %>
 						<%= form.hidden_field :user_id, value: current_user.id %>
-						<div class="col-md-2">
-						<%= button_tag(type: 'submit', class: "btn btn-primary btn-sm") do %>
-				 			<span class="glyphicon glyphicon-thumbs-up"></span>
+							<%= button_tag(type: 'submit', class: "btn btn-primary btn-sm", id: "like_desktop") do %>
+					 			<span class="glyphicon glyphicon-thumbs-up"></span>
+							<% end %>						
 						<% end %>
-						
+					<% else %>
+						<%= link_to current_user.likes.where(workout_id: @workout.id).first, method: :delete, id: "unlike_desktop", class: "btn btn-primary btn-sm" do %>
+							<span class="glyphicon glyphicon-thumbs-up"></span>
+						<% end %>
 					<% end %>
 				
-					<%= pluralize(@workout.likes.count, "like") %></div>
+					<%= pluralize(@workout.likes.count, "like") %>
+				</div>
 
 					<%= form_for :comment, url: comments_path do |form| %>
 
@@ -332,20 +339,27 @@
 						<!-- This section is for adding and displaying comments -->
 
 							<div class="row">
-								<div class="col-xs-1">
-									<%= form_for :like, url: likes_path do |form| %>
+
+								<div class="col-xs-2">
+									<% if current_user.already_liked? @workout %>
+										<%= form_for :like, url: likes_path do |form| %>
 										<%= form.hidden_field :workout_id, value: @workout.id %>
 										<%= form.hidden_field :user_id, value: current_user.id %>
-										
-										<%= button_tag(type: 'submit', class: "btn btn-primary btn-xs") do %>
-								 			<span class="glyphicon glyphicon-thumbs-up"></span>
+											<%= button_tag(type: 'submit', class: "btn btn-primary btn-sm", id: "like_mobile") do %>
+									 			<span class="glyphicon glyphicon-thumbs-up"></span>
+											<% end %>						
 										<% end %>
-										
+									<% else %>
+										<%= link_to current_user.likes.where(workout_id: @workout.id).first, method: :delete, id: "unlike_mobile", class: "btn btn-primary btn-sm" do %>
+											<span class="glyphicon glyphicon-thumbs-up"></span>
+										<% end %>
 									<% end %>
 								</div>
 								<div class="col-xs-6">
 									<%= pluralize(@workout.likes.count, "like") %>
 								</div>
+
+
 							</div>
 							<br/>
 

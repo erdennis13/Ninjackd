@@ -44,7 +44,7 @@ class LikesController < ApplicationController
   def destroy
     @like.destroy
     respond_to do |format|
-      format.html { redirect_to likes_url }
+      format.html { redirect_to :back, notice: "You have unliked this workout" }
       format.json { head :no_content }
     end
   end

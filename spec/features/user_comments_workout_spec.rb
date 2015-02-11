@@ -25,12 +25,6 @@ feature "User comments on workout" do
 		fill_in "comment_field_desktop", with: "This is a test comment"
 		click_button "comment_button_desktop"
 
-		expect(page).to have_css "h5", text: "This is a test comment"
-
-		# within "desktop_comments" do
-		# 	click_on "This is a test comment_delete_comment"
-		# end
-
 		first(".delete_comment").click
 
 		expect(page).not_to have_css "h5", text: "This is a test comment"

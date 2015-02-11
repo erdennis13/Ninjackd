@@ -50,4 +50,12 @@ class User < ActiveRecord::Base
     @user.paypal_recurring_profile = response.profile_id
   end
 
+  def already_liked? workout
+    if likes.where(workout_id: workout.id).blank?
+      true
+    else
+      false
+    end
+  end
+
 end

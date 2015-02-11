@@ -10,9 +10,7 @@ describe CommentsController do
 		end
 
 		it "makes a regular comment" do
-			post :create, comment: attributes_for(:comment)
-
-			expect(response).to redirect_to workout_path @workout
+			expect{ post :create, comment: attributes_for(:comment) }.to change(Comment,:count).by(1)
 		end
 		it "requires text in comment field" do
 			post :create, comment: {user_id: @user.id, workout_id: @workout.id, comment: nil}
