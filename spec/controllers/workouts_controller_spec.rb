@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe WorkoutsController do
-	render_views
 	describe "#index" do
 		it "renders workout list" do
 
@@ -30,4 +29,21 @@ describe WorkoutsController do
 			expect{ post :create, workout: attributes_for(:workout) }.to change(Workout,:count).by(1)
 		end
 	end
+
+	describe "#add_weekly_subscription" do
+		it "creates multiple subscriptions" do
+			user = create(:user)
+			sign_in(user)
+			weeklyplan = create(:weeklyplan)
+			workout = create(:workout)
+			i = 1
+			while i < 7 do
+				create(:weeklybit, workout_id: workout.id, weeklyplan_id: weeklyplan.id, day: i)
+				i+=1
+			end
+
+			expect{ post :add_weekly_subscription, weeklyplan_id: weeklyplan.id }.to change(Subscription,:count)
+		end
+	end
+
 end
