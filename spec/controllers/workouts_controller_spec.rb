@@ -12,18 +12,22 @@ describe WorkoutsController do
 		end
 
 		it "searches by scopes" do
-			Workout.create(name: "TestOne", category: "Strength", description: "Test strength workout", 
-			duration: 60, weightFacility: nil, active: true, note: "Testing note for TestOne")
-			user = User.create(name: "User", username: "Username", admin: false, paypal_payment_token: "Test", 
-      email: "user@example.com", password: "password")
+      workout = create(:workout)
+      user = create(:user)
 
 			sign_in user
 
-			get :index, search: "Test", less_than: 75, cat: "Strength"
+			get :index, search: "Test", less_than: 75, cat: workout.category
 
 			#expect(response).to have_css "table tr td", text: "TestOne"
 			expect(response).to render_template "index"
 		end
 
+	end
+
+	describe "#create" do
+		it "creates a workout" do
+			expect{ post :create, workout: attributes_for(:workout) }.to change(Workout,:count).by(1)
+		end
 	end
 end
