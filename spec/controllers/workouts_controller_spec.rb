@@ -42,7 +42,9 @@ describe WorkoutsController do
 				i+=1
 			end
 
-			expect{ post :add_weekly_subscription, weeklyplan_id: weeklyplan.id }.to change(Subscription,:count)
+			expectation = 7 - (Date.today.wday+1)
+
+			expect{ post :add_weekly_subscription, weeklyplan_id: weeklyplan.id }.to change(Subscription,:count).by(expectation)
 		end
 	end
 

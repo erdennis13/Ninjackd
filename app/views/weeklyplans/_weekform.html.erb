@@ -27,12 +27,12 @@
 								<%= form_for :weeklybit, url: weeklybits_url do |form| %>
 									<%= form.hidden_field :weeklyplan_id, value: @weeklyplan.id %>
 									<div class="form-group">
-										<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name"), {}, class: "form-control" %>
+										<%= form.select :workout_id, options_from_collection_for_select(@workouts, "id", "name"), {}, class: "form-control", id: "#{@dayinc}_workout_select" %>
 									</div>
 									<br/>
 									<%= form.hidden_field :day, value: @dayinc %>
 									<div class="form-group">
-										<%= form.submit "Add Bit", class: "btn btn-primary btn-xs form-control" %>
+										<%= form.submit "Add Bit", class: "btn btn-primary btn-xs form-control", id: "#{@dayinc}_add_weeklybit" %>
 									</div>
 								<% end %>
 							<% end %>
@@ -43,7 +43,7 @@
 			</div>
 		<% end %>
 	</div>
-	<%= link_to "Done? Return to workouts", workouts_url %>
+	<%= link_to "Done? Return to workouts", workouts_url, id: "return_to_weeklyplans" %>
 </div>
 
 <div class="visible-xs-block visible-sm-block visible-md-block homepagework">

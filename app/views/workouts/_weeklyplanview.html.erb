@@ -74,7 +74,7 @@
 		
 		<% if @userplans.length == 0 %>
 			<h3>Create you're own weekly plan here </h3>
-			<%= button_to "Add custom plan", {action: "usercreate", usercreate: current_user.id, remote: true}, class: "btn btn-success btn-sm" %>
+			<%= button_to "Add custom plan", {action: "usercreate", usercreate: current_user.id, remote: true}, class: "btn btn-success btn-sm", id: "create_custom_weeklyplan_desktop" %>
 		<% else %>
 			<h3>Custom Weekly Plans!</h3>
 			<%= button_to "Add custom plan", {action: "usercreate", usercreate: current_user.id, remote: true}, class: "btn btn-success btn-sm" %>
@@ -129,7 +129,7 @@
 
 
 							<!-- This little bit of magic makes an ajax request to workouts controller, to add the weeklyplan as a subscription -->
-								<td><%= button_to "Subscribe", {action: "add_weekly_subscription", :weeklyplan_id => userplan.id, remote: true}, {class: "btn btn-primary btn-sm"} %></td>
+								<td><%= button_to "Subscribe", {action: "add_weekly_subscription", :weeklyplan_id => userplan.id, remote: true}, {class: "btn btn-primary btn-sm", id: "#{userplan.name}_subscribe"} %></td>
 								<td><%= link_to "Edit", userplan %> | 
 								<%= link_to "Delete", userplan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 

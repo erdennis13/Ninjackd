@@ -20,8 +20,8 @@
 		<div class="editfield">
 			<%= form_for @weeklyplan do |form| %>
 				<%= form.label :name %>
-				<%= form.text_field :name, placeholder: "type new name here..." %>
-				<%= form.submit "Save", class: "btn btn-primary btn-sm" %>
+				<%= form.text_field :name, placeholder: "type new name here...", id: "update_weeklyplan_name" %>
+				<%= form.submit "Save", class: "btn btn-primary btn-sm", id: "update_name_button" %>
 			<% end %>
 		</div>
 	<% end %>
