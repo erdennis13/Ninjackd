@@ -35,7 +35,6 @@ Rails.application.routes.draw do
   get "workoutHistory" => "pages#workoutHistory"
   get "admin" => "workouts#admin"
   get "detailedHistory" => "pages#detailedHistory"
-  get "findWorkout" => "workouts#findWorkout"
   get "ethans_week" => "pages#ethans_week"
 
   get "add_weekly_subscription" => "workouts#add_weekly_subscription"

@@ -50,9 +50,26 @@ describe WorkoutsController do
 		end
 	end
 
+	describe "#show" do
+		it "shows workout" do
+			workout = create(:workout)
+			get :show, id: workout.id
+			expect(response).to render_template "show"
+		end
+	end
+
 	describe "#create" do
 		it "creates a workout" do
 			expect{ post :create, workout: attributes_for(:workout) }.to change(Workout,:count).by(1)
+		end
+	end
+
+	describe "#usercreate" do
+		it "creates multiple subscriptions" do
+			user = create(:user)
+			sign_in(user)
+
+			expect{ post :usercreate }.to change(Weeklyplan,:count).by(1)
 		end
 	end
 
