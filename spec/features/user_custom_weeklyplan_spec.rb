@@ -12,7 +12,6 @@ feature "User creates custom weeklyplan" do
 		expect(page).to have_content "Weeklyplan was successfully created."
 
 		# Now needs to add workouts to this weeklyplan
-
 		select workout.name, from: "2_workout_select"
 		click_button "2_add_weeklybit"
 
