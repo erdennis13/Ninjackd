@@ -29,4 +29,13 @@ describe PagesController do
 			expect(response.body).to have_css "h1", text: "Take a look at what I'm up to this week!"
 		end
 	end
+
+	describe "#paypal_checkout" do
+		it "Routes to the paypal page" do
+			matcher = "/^(?=[^,]+,[^,]+$)[a-zA-Z,]{1,20}$/"
+			get :paypal_checkout
+
+			expect(response).to redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=#{matcher}&useraction=commit"
+		end
+	end
 end
