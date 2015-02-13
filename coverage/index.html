@@ -14,27 +14,27 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-12T17:15:25-08:00">2015-02-12T17:15:25-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-12T17:45:49-08:00">2015-02-12T17:45:49-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">68.26%</span></span>
+    (<span class="covered_percent"><span class="red">69.73%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.65
+         2.69
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>46</b> files in total.
-    <b>772</b> relevant lines. 
-    <span class="green"><b>527</b> lines covered</span> and
-    <span class="red"><b>245</b> lines missed </span>
+    <b>773</b> relevant lines. 
+    <span class="green"><b>539</b> lines covered</span> and
+    <span class="red"><b>234</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -102,12 +102,12 @@
       
       <tr>
         <td class="strong"><a href="#9f7884186f214f8300b2b71e7fd9429b746f3124" class="src_link" title="app/controllers/pages_controller.rb">app/controllers/pages_controller.rb</a></td>
-        <td class="red strong">15.69 %</td>
-        <td>103</td>
-        <td>51</td>
-        <td>8</td>
-        <td>43</td>
-        <td>1.3</td>
+        <td class="red strong">38.46 %</td>
+        <td>105</td>
+        <td>52</td>
+        <td>20</td>
+        <td>32</td>
+        <td>1.8</td>
       </tr>
       
       <tr>
@@ -519,20 +519,20 @@
           <div class="file_list_container" id="Controllers">
   <h2>
     <span class="group_name">Controllers</span>
-    (<span class="covered_percent"><span class="red">65.95%</span></span>
+    (<span class="covered_percent"><span class="red">67.83%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.0
+         3.04
        </span>
     </span> hits/line)
   </h2>
   <a name="Controllers"></a>
   <div>
     <b>13</b> files in total.
-    <b>602</b> relevant lines. 
-    <span class="green"><b>397</b> lines covered</span> and
-    <span class="red"><b>205</b> lines missed </span>
+    <b>603</b> relevant lines. 
+    <span class="green"><b>409</b> lines covered</span> and
+    <span class="red"><b>194</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -600,12 +600,12 @@
       
       <tr>
         <td class="strong"><a href="#9f7884186f214f8300b2b71e7fd9429b746f3124" class="src_link" title="app/controllers/pages_controller.rb">app/controllers/pages_controller.rb</a></td>
-        <td class="red strong">15.69 %</td>
-        <td>103</td>
-        <td>51</td>
-        <td>8</td>
-        <td>43</td>
-        <td>1.3</td>
+        <td class="red strong">38.46 %</td>
+        <td>105</td>
+        <td>52</td>
+        <td>20</td>
+        <td>32</td>
+        <td>1.8</td>
       </tr>
       
       <tr>
@@ -3118,11 +3118,11 @@
         <div class="source_table" id="9f7884186f214f8300b2b71e7fd9429b746f3124">
   <div class="header">
     <h3>app/controllers/pages_controller.rb</h3>
-    <h4><span class="red">15.69 %</span> covered</h4>
+    <h4><span class="red">38.46 %</span> covered</h4>
     <div>
-      <b>51</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>43</b> lines missed.</span>
+      <b>52</b> relevant lines. 
+      <span class="green"><b>20</b> lines covered</span> and
+      <span class="red"><b>32</b> lines missed.</span>
     </div>
   </div>
   
@@ -3141,8 +3141,8 @@
           <code class="ruby">  def home</code>
         </li>
       
-        <li class="covered" data-hits="60" data-linenumber="3">
-          <span class="hits">60</span>
+        <li class="covered" data-hits="61" data-linenumber="3">
+          <span class="hits">61</span>
           
           <code class="ruby">    @workouts = Workout.all.order(&#39;created_at DESC&#39;).paginate(:page =&gt; params[:page], :per_page =&gt; 1)</code>
         </li>
@@ -3279,8 +3279,8 @@
           <code class="ruby">  def ethans_week</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="26">
-          
+        <li class="covered" data-hits="2" data-linenumber="26">
+          <span class="hits">2</span>
           
           <code class="ruby">    if Rails.env == &#39;development&#39;</code>
         </li>
@@ -3306,193 +3306,193 @@
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">    elsif Rails.env == &quot;test&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="31">
+        <li class="covered" data-hits="2" data-linenumber="31">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">    </code>
+          <code class="ruby">      @ethan = User.first</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="33">
-          
+        <li class="covered" data-hits="2" data-linenumber="35">
+          <span class="hits">2</span>
           
           <code class="ruby">    @subscriptions = Subscription.where(user_id: @ethan.id).where(schedule: Date.today.at_beginning_of_week(:sunday)..Date.today.at_end_of_week(:sunday)).all</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="34">
-          
+        <li class="covered" data-hits="2" data-linenumber="36">
+          <span class="hits">2</span>
           
           <code class="ruby">    @date = Date.today.beginning_of_week(:sunday)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="35">
-          
+        <li class="covered" data-hits="2" data-linenumber="37">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dates = Hash.new</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="36">
-          
+        <li class="covered" data-hits="2" data-linenumber="38">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dates[0] = @date</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="37">
-          
+        <li class="covered" data-hits="2" data-linenumber="39">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dates[1] = @date + 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="38">
-          
+        <li class="covered" data-hits="2" data-linenumber="40">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dates[2] = @date + 2</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="39">
-          
+        <li class="covered" data-hits="2" data-linenumber="41">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dates[3] = @date + 3</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
-          
+        <li class="covered" data-hits="2" data-linenumber="42">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dates[4] = @date + 4</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="41">
-          
+        <li class="covered" data-hits="2" data-linenumber="43">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dates[5] = @date + 5</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="42">
-          
+        <li class="covered" data-hits="2" data-linenumber="44">
+          <span class="hits">2</span>
           
           <code class="ruby">    @dates[6] = @date + 6</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
+        <li class="covered" data-hits="1" data-linenumber="47">
           <span class="hits">1</span>
           
           <code class="ruby">  def cancel_account</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="46">
+        <li class="missed" data-hits="0" data-linenumber="48">
           
           
           <code class="ruby">  	@user = current_user</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="48">
-          
-          
-          <code class="ruby">    @pastuser = Pastuser.new</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="49">
-          
-          
-          <code class="ruby">    @pastuser.username = @user.username</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="50">
           
           
-          <code class="ruby">    @pastuser.email = @user.email</code>
+          <code class="ruby">    @pastuser = Pastuser.new</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="51">
           
           
-          <code class="ruby">    @pastuser.save</code>
+          <code class="ruby">    @pastuser.username = @user.username</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="missed" data-hits="0" data-linenumber="52">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    @pastuser.email = @user.email</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="53">
           
           
-          <code class="ruby">  	ppr = PayPal::Recurring.new(profile_id: @user.try(:paypal_customer_token))</code>
+          <code class="ruby">    @pastuser.save</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="54">
           
           
-          <code class="ruby">  	ppr.cancel</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="55">
           
           
-          <code class="ruby">  	@user.destroy</code>
+          <code class="ruby">  	ppr = PayPal::Recurring.new(profile_id: @user.try(:paypal_customer_token))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="missed" data-hits="0" data-linenumber="56">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  	ppr.cancel</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="57">
           
           
-          <code class="ruby">  	flash[:notice] = &quot;Your account has been cancelled and billing will be discontinued. We&#39;re sorry to see you go; come back anytime!&quot;</code>
+          <code class="ruby">  	@user.destroy</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="58">
-          
-          
-          <code class="ruby">  	redirect_to root_url</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="59">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="60">
+        <li class="never" data-hits="" data-linenumber="58">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="61">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="59">
           
-          <code class="ruby">  def request_payment_process</code>
+          
+          <code class="ruby">  	flash[:notice] = &quot;Your account has been cancelled and billing will be discontinued. We&#39;re sorry to see you go; come back anytime!&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="60">
+          
+          
+          <code class="ruby">  	redirect_to root_url</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="62">
@@ -3501,214 +3501,214 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="63">
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  	name = params[&quot;user&quot;][:name]</code>
+          <code class="ruby">  def request_payment_process</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
-          <code class="ruby">  	paypal_payment_token = params[&quot;user&quot;][:paypal_payment_token]</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="65">
           
           
-          <code class="ruby">  	paypal_customer_token = params[&quot;user&quot;][:paypal_customer_token]</code>
+          <code class="ruby">  	name = params[&quot;user&quot;][:name]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="66">
           
           
-          <code class="ruby">  	username = params[&quot;user&quot;][:username]</code>
+          <code class="ruby">  	paypal_payment_token = params[&quot;user&quot;][:paypal_payment_token]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="67">
           
           
-          <code class="ruby">  	email = params[&quot;user&quot;][:email]</code>
+          <code class="ruby">  	paypal_customer_token = params[&quot;user&quot;][:paypal_customer_token]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="68">
           
           
+          <code class="ruby">  	username = params[&quot;user&quot;][:username]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="69">
+          
+          
+          <code class="ruby">  	email = params[&quot;user&quot;][:email]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="70">
+          
+          
           <code class="ruby">  	password = params[&quot;user&quot;][:password]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="69">
+        <li class="never" data-hits="" data-linenumber="71">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="70">
-          
-          
-          <code class="ruby">    #This function sets up a recurring billing profile and requests payment from paypal</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="71">
-          
-          
-          <code class="ruby">  	ppr = PayPal::Recurring.new({</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="72">
           
           
-          <code class="ruby">  		token: paypal_payment_token,</code>
+          <code class="ruby">    #This function sets up a recurring billing profile and requests payment from paypal</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
+        <li class="missed" data-hits="0" data-linenumber="73">
           
           
-          <code class="ruby">  		payer_id: paypal_customer_token,</code>
+          <code class="ruby">  	ppr = PayPal::Recurring.new({</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="74">
           
           
-          <code class="ruby">  		amount: 9.99,</code>
+          <code class="ruby">  		token: paypal_payment_token,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby">  		description: &quot;Ninjackd Subscription&quot;,</code>
+          <code class="ruby">  		payer_id: paypal_customer_token,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
           
           
-          <code class="ruby">  		currency: &quot;USD&quot;,</code>
+          <code class="ruby">  		amount: 9.99,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="77">
           
           
-          <code class="ruby">  		frequency: 1,</code>
+          <code class="ruby">  		description: &quot;Ninjackd Subscription&quot;,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="78">
           
           
-          <code class="ruby">  		period: :monthly,</code>
+          <code class="ruby">  		currency: &quot;USD&quot;,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="79">
           
           
-          <code class="ruby">  		start_at: Time.zone.now,</code>
+          <code class="ruby">  		frequency: 1,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="80">
           
           
-          <code class="ruby">  		failed: 1,</code>
+          <code class="ruby">  		period: :monthly,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="81">
           
           
-          <code class="ruby">  		outstanding: :next_billing,</code>
+          <code class="ruby">  		start_at: Time.zone.now,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="82">
           
           
-          <code class="ruby">  		trial_length: 14,</code>
+          <code class="ruby">  		failed: 1,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="83">
           
           
-          <code class="ruby">  		trial_period: :daily,</code>
+          <code class="ruby">  		outstanding: :next_billing,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="84">
           
           
-          <code class="ruby">  		trial_frequency: 1</code>
+          <code class="ruby">  		trial_length: 14,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="85">
           
           
-          <code class="ruby">  		})</code>
+          <code class="ruby">  		trial_period: :daily,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="86">
           
           
+          <code class="ruby">  		trial_frequency: 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby">  		})</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
+          
+          
           <code class="ruby"></code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="87">
-          
-          
-          <code class="ruby">  	response = ppr.request_payment</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="88">
-          
-          
-          <code class="ruby">  	response2 = ppr.create_recurring_profile</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="89">
           
           
+          <code class="ruby">  	response = ppr.request_payment</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="90">
+          
+          
+          <code class="ruby">  	response2 = ppr.create_recurring_profile</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="91">
+          
+          
           <code class="ruby">  	paypal_recurring_profile = response2.profile_id</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="90">
+        <li class="never" data-hits="" data-linenumber="92">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="91">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="92">
-          
-          
-          <code class="ruby">  	@user = User.new(name: name, username: username, email: email, password: password, paypal_payment_token: paypal_payment_token, </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="93">
           
           
-          <code class="ruby">  		paypal_customer_token: paypal_customer_token, paypal_recurring_profile: paypal_recurring_profile)</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="94">
           
           
+          <code class="ruby">  	@user = User.new(name: name, username: username, email: email, password: password, paypal_payment_token: paypal_payment_token, </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby">  		paypal_customer_token: paypal_customer_token, paypal_recurring_profile: paypal_recurring_profile)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="96">
+          
+          
           <code class="ruby">  	@user.save!</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="95">
-          
-          
-          <code class="ruby">  	sign_in @user</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="96">
-          
-          
-          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="97">
           
           
-          <code class="ruby">  	flash[:notice] = &quot;Thanks for joining us! Get started by checking out the workouts below.&quot;</code>
+          <code class="ruby">  	sign_in @user</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="98">
@@ -3720,28 +3720,40 @@
         <li class="missed" data-hits="0" data-linenumber="99">
           
           
-          <code class="ruby">  	redirect_to workouts_path</code>
+          <code class="ruby">  	flash[:notice] = &quot;Thanks for joining us! Get started by checking out the workouts below.&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="100">
           
           
-          <code class="ruby">  end	</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="101">
+        <li class="missed" data-hits="0" data-linenumber="101">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  	redirect_to workouts_path</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="102">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end	</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="103">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="104">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="105">
           
           
           <code class="ruby">end</code>

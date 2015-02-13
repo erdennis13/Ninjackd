@@ -45,7 +45,7 @@ describe WorkoutsController do
 			expect(response).to redirect_to admin_path
 		end
 
-		it "validates presence of items" do
+		it "validates presence of email" do
 			expect { post :add_new_user, user: attributes_for(:user, email: nil) }.to change(User,:count).by(0)
 		end
 	end
@@ -103,50 +103,35 @@ describe WorkoutsController do
 		before(:each) do
 			@workout = create(:workout)
 		end
-		it "Located the correct workout" do
-			put :update, id: @workout, workout: attributes_for(:workout, name: "Testing Update") 
 
-			expect(assigns(:contact)).to eq(@contact)
+		context "With valid workout attributes" do
+			it "Located the correct workout" do
+				put :update, id: @workout, workout: attributes_for(:workout, name: "Testing Update") 
+
+				expect(assigns(:contact)).to eq(@contact)
+			end
+
+			it "Updated the atttributes" do
+				put :update, id: @workout, workout: attributes_for(:workout, name: "Testing Update")
+
+				@workout.reload
+				expect(@workout.name).to eq("Testing Update")
+			end
 		end
 
-		it "Updated the atttributes" do
-			put :update, id: @workout, workout: attributes_for(:workout, name: "Testing Update")
+		context "With invalid workout attributes" do
+			it "Doesn't save the workout" do
+				put :update, id: @workout, workout: attributes_for(:workout, name: nil)
 
-			@workout.reload
-			expect(@workout.name).to eq("Testing Update")
-		end
+				@workout.reload
+				expect(@workout.name).not_to eq(nil)
+			end
 
-		it "Doesn't save invalid attributes" do
-			put :update, id: @workout, workout: attributes_for(:workout, name: nil)
+			it "invalid attributes re-renders edit template" do
+				put :update, id: @workout, workout: attributes_for(:workout, name: nil)
 
-			@workout.reload
-			expect(@workout.name).not_to eq(nil)
-		end
-
-		it "invalid attributes re-renders edit template" do
-			put :update, id: @workout, workout: attributes_for(:workout, name: nil)
-
-			expect(response).to redirect_to edit_workout_path @workout
+				expect(response).to redirect_to edit_workout_path @workout
+			end
 		end
 	end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

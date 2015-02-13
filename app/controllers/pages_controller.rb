@@ -27,6 +27,8 @@ class PagesController < ApplicationController
       @ethan = User.find(1)
     elsif Rails.env == 'production'
       @ethan = User.find(6)
+    elsif Rails.env == "test"
+      @ethan = User.first
     end
     
 
