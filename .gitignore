@@ -17,4 +17,5 @@
 /public/system/*
 
 #Ignore coverage folder
+/coverage
 /coverage/*
