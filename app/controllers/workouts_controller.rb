@@ -183,7 +183,7 @@ class WorkoutsController < ApplicationController
         format.html { redirect_to @workout, notice: 'Workout was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @workout }
       else
-        format.html { redirect_to @workout, notice: 'Workout was unsuccessfully updated.' }
+        format.html { redirect_to edit_workout_path(@workout), notice: 'Workout was unsuccessfully updated.' }
         format.json { render action: 'show', status: :created, location: @workout }
       end
     end

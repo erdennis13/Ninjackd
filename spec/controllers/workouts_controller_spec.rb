@@ -91,4 +91,62 @@ describe WorkoutsController do
 		end
 	end
 
+	describe "#new" do
+		it "saves a workout with attributes" do
+			get :new
+			expect(assigns(:workout)).to be_a_new(Workout)
+		end
+	end
+
+	describe "#update" do
+
+		before(:each) do
+			@workout = create(:workout)
+		end
+		it "Located the correct workout" do
+			put :update, id: @workout, workout: attributes_for(:workout, name: "Testing Update") 
+
+			expect(assigns(:contact)).to eq(@contact)
+		end
+
+		it "Updated the atttributes" do
+			put :update, id: @workout, workout: attributes_for(:workout, name: "Testing Update")
+
+			@workout.reload
+			expect(@workout.name).to eq("Testing Update")
+		end
+
+		it "Doesn't save invalid attributes" do
+			put :update, id: @workout, workout: attributes_for(:workout, name: nil)
+
+			@workout.reload
+			expect(@workout.name).not_to eq(nil)
+		end
+
+		it "invalid attributes re-renders edit template" do
+			put :update, id: @workout, workout: attributes_for(:workout, name: nil)
+
+			expect(response).to redirect_to edit_workout_path @workout
+		end
+	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
