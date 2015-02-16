@@ -6,6 +6,8 @@ Dir[File.expand_path(File.join(File.dirname(__FILE__),"support","**","*.rb"))].e
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
 # Add additional requires below this line. Rails is not loaded until this point!
 Capybara.javascript_driver = :poltergeist
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -23,6 +25,7 @@ Capybara.javascript_driver = :poltergeist
 #
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
@@ -34,4 +37,5 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include FactoryGirl::Syntax::Methods
   config.include Features, type: :feature
+
 end

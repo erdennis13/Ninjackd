@@ -41,6 +41,7 @@ group :test do
 	gem 'poltergeist', '~> 1.5.1'
 	gem 'database_cleaner', '~> 1.4.0'
 	gem "factory_girl_rails", "~> 4.0"
+	gem 'webmock', '~> 1.20.4'
 end
 
 gem 'simplecov', :require => false, :group => :test
