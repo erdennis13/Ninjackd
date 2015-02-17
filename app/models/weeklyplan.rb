@@ -3,6 +3,7 @@ class Weeklyplan < ActiveRecord::Base
 	has_many :workouts, :through => :weeklybits
 	accepts_nested_attributes_for :weeklybits
 	belongs_to :user
+	validates_presence_of :name
 
 	 def add_weeklyplan(weeklyplan, user)
  		@date = Date.today.beginning_of_week(:sunday)

@@ -90,7 +90,6 @@ class PagesController < ApplicationController
   	response2 = ppr.create_recurring_profile
   	paypal_recurring_profile = response2.profile_id
 
-
   	@user = User.new(name: name, username: username, email: email, password: password, paypal_payment_token: paypal_payment_token, 
   		paypal_customer_token: paypal_customer_token, paypal_recurring_profile: paypal_recurring_profile)
   	@user.save!

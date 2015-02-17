@@ -67,4 +67,14 @@ describe PagesController do
 			expect{ post :cancel_account }.to change(User,:count).by(-1)
 		end
 	end
+
+	describe "#request_payment_process" do
+		it "creates a user" do
+   #   	stub_request(:any, "https://api-3t.sandbox.paypal.com/nvp")
+
+			# post :request_payment_process, user: attributes_for(:user, paypal_customer_token: "test_customer")
+
+			# expect(response).to redirect_to new_user_registration_path
+		end
+	end
 end

@@ -108,7 +108,7 @@ describe WorkoutsController do
 			it "Located the correct workout" do
 				put :update, id: @workout, workout: attributes_for(:workout, name: "Testing Update") 
 
-				expect(assigns(:contact)).to eq(@contact)
+				expect(assigns(:workout)).to eq(@workout)
 			end
 
 			it "Updated the atttributes" do

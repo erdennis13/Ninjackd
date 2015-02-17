@@ -36,7 +36,7 @@ class WeeklyplansController < ApplicationController
         format.html { redirect_to :back, notice: 'Weeklyplan was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @weeklyplan }
       else
-        format.html { redirect_to :back, notice: 'Weeklyplan was unsuccessfully updated.' }
+        format.html { redirect_to edit_weeklyplan_path(@weeklyplan), notice: 'Weeklyplan was unsuccessfully updated.' }
         format.json { render action: 'show', status: :created, location: @weeklyplan }
       end
     end
