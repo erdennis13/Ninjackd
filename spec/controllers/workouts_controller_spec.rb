@@ -134,4 +134,20 @@ describe WorkoutsController do
 			end
 		end
 	end
+
+	describe "@destroy" do
+		before(:each) do
+			@workout = create(:workout)
+		end
+
+		it "deletes the workout" do
+			expect{ delete :destroy, id: @workout }.to change(Workout,:count).by(-1)
+		end
+
+		it "redirects to workouts index" do
+			delete :destroy, id: @workout
+
+			expect(response).to redirect_to workouts_path
+		end
+	end
 end
