@@ -28,4 +28,21 @@ describe SubscriptionsController do
 
 			new_sub = {user_id: user.id, workout_id: workout.id, schedule: schedule}
 	end
+
+	describe "#destroy" do
+		before(:each) do
+			@subscription = create(:subscription)
+		end
+
+		it "deletes the record" do
+			expect{ delete :destroy, id: @subscription }.to change(Subscription,:count).by(-1)
+		end
+
+		it "redirects to profile url" do
+			delete :destroy, id: @subscription
+
+			expect(response).to redirect_to profile_path
+		end
+
+	end
 end

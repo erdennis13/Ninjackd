@@ -35,7 +35,7 @@ class WarmupsController < ApplicationController
         format.html { redirect_to @warmup, notice: 'Warmup was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @warmup }
       else
-        format.html { redirect_to @warmup, notice: 'Warmup was unsuccessfully updated.' }
+        format.html { redirect_to edit_warmup_path(@warmup), notice: 'Warmup was unsuccessfully updated.' }
         format.json { render action: 'show', status: :created, location: @warmup }
       end
     end
