@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :subscriptions
 
-  validates_presence_of :name, :username, :paypal_payment_token
+  validates_presence_of :name, :username
+  #validates_presence_of :paypal_payment_token
   validates_uniqueness_of :username, :email
 
   def request_paypal_payment

@@ -13,7 +13,8 @@
 	<div class="row row-centered>"><div class="col-md-6 col-centered"><p>We're here to get you fit. Providing you with fresh, weekly workouts. Come, follow me down the rabbit hole!</p></div></div>
 	<% unless user_signed_in? %>
 		<%= link_to "Login", new_user_session_path, class: "btn btn-default" %>
-		<%= link_to "Signup", purchase_path, class: "btn btn-primary" %>
+		<%#= link_to "Signup", purchase_path, class: "btn btn-primary" %>
+		<%= link_to "Signup", new_user_registration_path, class: "btn btn-primary" %>
 	<% end %>
 </div>
 
