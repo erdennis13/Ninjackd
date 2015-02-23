@@ -66,6 +66,10 @@ describe PagesController do
 		it "deletes the user" do
 			expect{ post :cancel_account }.to change(User,:count).by(-1)
 		end
+
+		it "saves user info to pastusers" do
+			expect{ post :cancel_account }.to change(Pastuser,:count).by(1)
+		end
 	end
 
 	describe "#request_payment_process" do
