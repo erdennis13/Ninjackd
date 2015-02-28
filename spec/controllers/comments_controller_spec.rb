@@ -1,6 +1,30 @@
 require "rails_helper"
 
 describe CommentsController do
+	describe "#index" do
+		it "renders index template" do
+			get :index
+			expect(response).to render_template :index
+		end
+	end
+
+	describe "#show" do
+		it "renders show template" do
+			comment = create(:comment)
+			get :show, id: comment
+
+			expect(response).to render_template :show
+		end
+	end
+
+	describe "#new" do
+		it "creates a new comment with attribues" do
+			get :new
+
+			expect(assigns(:comment)).to be_a_new(Comment)
+		end	
+	end
+
 	describe "#create" do
 		before(:each) do
 			@request.env['HTTP_REFERER'] = '/workouts/1'
