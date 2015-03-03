@@ -1,6 +1,20 @@
 require "rails_helper"
 
 describe LikesController do
+	describe "#index" do
+		it "redirects to index page" do
+			get :index
+			expect(response).to render_template :index
+		end
+	end
+
+	describe "#new" do
+		it "creates a like with attributes" do
+			get :new
+			expect(assigns(:like)).to be_a_new Like
+		end
+	end
+
 	describe "#create" do
 		before(:each) do
 			@request.env['HTTP_REFERER'] = '/workouts/1'
