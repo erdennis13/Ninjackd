@@ -22,7 +22,7 @@ class WeeklybitsController < ApplicationController
         format.html { redirect_to :back, notice: 'Weeklybit was successfully created.' }
         format.json { render action: 'show', status: :created, location: @weeklybit }
       else
-        format.html { redirect_to weeklybits_url, notice: 'Weeklybit was unsuccessfully created.' }
+        format.html { redirect_to :back, notice: 'Weeklybit was unsuccessfully created.' }
         format.json { render action: 'show', status: :created, location: @weeklybit }
       end
     end

@@ -26,6 +26,34 @@ describe WeeklybitsController do
 		end
 	end
 
+	describe "#create" do
+		before(:each) do
+			@weeklyplan = create(:weeklyplan)
+			@request.env['HTTP_REFERER'] = '/weeklyplans/1'
+		end
+		context "valid attributes" do
+			it "creates weeklybit" do
+				expect{ post :create, weeklybit: attributes_for(:weeklybit)}.to change(Weeklybit,:count).by(1)
+			end
+			it "redirects back" do
+				post :create, weeklybit: attributes_for(:weeklybit)
+
+				expect(response).to redirect_to weeklyplan_path @weeklyplan
+			end
+		end
+
+		context "invalid attributes" do
+			it "doesnt create weeklybit" do
+				expect{ post :create, weeklybit: attributes_for(:weeklybit, day: nil)}.to change(Weeklybit,:count).by(0)
+			end
+			it "redirects back" do
+				post :create, weeklybit: attributes_for(:weeklybit, day: nil)
+
+				expect(response).to redirect_to weeklyplan_path @weeklyplan
+			end
+		end
+	end
+
 	describe "#update" do
 		it "saves an updated weeklybit" do
 			weeklybit = create(:weeklybit)

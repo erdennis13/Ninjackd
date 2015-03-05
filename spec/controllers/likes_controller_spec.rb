@@ -8,6 +8,15 @@ describe LikesController do
 		end
 	end
 
+	describe "#show" do
+		it "renders show template" do
+			like = create(:like)
+			get :show, id: like
+
+			expect(response).to render_template :show
+		end
+	end
+
 	describe "#new" do
 		it "creates a like with attributes" do
 			get :new
