@@ -18,6 +18,7 @@ describe WorkoutsController do
 
 			expect(response).to render_template "index"
 		end
+
 	end
 
 	describe "#add_daily_tip" do

@@ -5,7 +5,7 @@ class WorkoutsController < ApplicationController
     @workouts = Workout.all.where(active: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     @workoutCategories = ["",]
     @workouts.each do |add|
-      unless @workoutCategories.include?(add)
+      unless @workoutCategories.include?(add.category)
          @workoutCategories << add.category
       end
       #@workoutCategories.append(add.category)
