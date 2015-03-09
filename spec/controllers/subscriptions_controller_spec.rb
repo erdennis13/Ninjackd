@@ -29,9 +29,7 @@ describe SubscriptionsController do
 
 	describe "#create" do
 		it "makes a run of the mill subscription" do
-			post :create, subscription: set_up_creation(Date.today)
-
-			expect(response).to redirect_to profile_path
+			expect{ post :create, subscription: set_up_creation(Date.today) }.to change(Subscription,:count).by(1)
 		end
 
 		it "handles funky date formats" do
