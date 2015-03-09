@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.3'
 
 
-gem 'rails', '4.1.9'
+gem 'rails', '4.2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -19,7 +19,9 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
 
-gem 'aws-sdk', '~> 1.20.0'
+gem 'nokogiri', '~> 1.6.6.2'
+
+gem 'aws-sdk', '~> 2.0.29'
 gem 'newrelic_rpm'
 
 gem 'paypal-recurring'
