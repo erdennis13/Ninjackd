@@ -41,3 +41,4 @@ $(document).ready(function() {
 		$('#home_weeklyplan_view_sm').addClass('btn-primary');
 	});
 });
+

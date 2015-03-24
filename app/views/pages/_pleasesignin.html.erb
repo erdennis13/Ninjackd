@@ -1,9 +1,29 @@
 <div class="panel panel-default center">
 	<div class="panel-body">
-		<h1>You must be signed in to see this content</h1>
-		<%= link_to "Login", new_user_session_path, class: "btn btn-default" %>
-		<%= link_to "Signup", purchase_path, class: "btn btn-primary" %>
-		<br/><br/>
-		<%= image_tag "ninja folder/#{rand(27)}.png", style:"height: 250px; float:center; padding: 10px" %>
+		<h1 id="please_sign_in">You must be signed in to see this content</h1>
+		<h1 id="sign_in_label">Please sign in to continue</h1>
+		<%#= link_to "Login", new_user_session_path, class: "btn btn-default" %>
+		<button class="btn btn-default" id="show_login_form" >Login</button>
+		<%= link_to "Signup", purchase_path, class: "btn btn-primary", id: "sign_up_button" %>
+		<br/>
+
+		<div id="sign_in_form">
+	   <%= form_for("user", url: user_session_path) do |f| %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, id: "pleasesignin_email" %>
+
+	      <%= f.label :password %>
+	      <%= f.password_field :password, id: "pleasesignin_password" %>
+
+		    <%= f.label :remember_me %>
+		    <%= f.check_box :remember_me %>
+
+	      <%= f.submit "Sign in", class: "btn btn-primary", id: "pleasesignin_button" %>
+	   <% end %>
+	  </div>
+
+		<br/>
+		<%= image_tag "ninja folder/#{rand(27)}.png", style:"height: 250px; float:center; padding: 10px", id: "ninja_pic" %>
 	</div>
 </div>
