@@ -22,7 +22,12 @@ class WorkoutsController < ApplicationController
   def admin
     @workouts = Workout.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @users = User.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
-    @weeklyplans = Weeklyplan.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
+    if Rails.env == 'production'
+      user_num = 6
+    else
+      user_num = 1
+    end
+    @weeklyplans = Weeklyplan.where(usercreate: user_num).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @user = User.new
     @dailytips = Dailytip.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @dailytip = Dailytip.new
