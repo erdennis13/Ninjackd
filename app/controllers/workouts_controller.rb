@@ -23,7 +23,7 @@ class WorkoutsController < ApplicationController
     @workouts = Workout.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     @users = User.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     if Rails.env == 'production'
-      user_num = 6
+      user_num = [1,3,6]
     else
       user_num = 1
     end
